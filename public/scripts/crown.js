@@ -160,7 +160,7 @@
   function replace() {
     clearTimeout(reflow);
     reflow = setTimeout(function () {
-      if (docked) { stage.style.transform = restTransform(); return; }
+      if (docked) { applyRest(); return; }
       var next = introTransform();
       if (next) stage.style.transform = next;
     }, 120);
@@ -180,8 +180,20 @@
 
   body.classList.add('crown-drawing');
 
+  /* restTransform() returns '' when the word cannot be measured - the headline
+     mid-rewrap, or main.js's splitter holding the span in pieces. Assigning
+     that CLEARS the transform, and an untransformed stage sits where the
+     stylesheet parks it: the hero's top-right corner. That is the mark
+     "jumping to the side" instead of centring under the word. So never write
+     an empty transform - keep what is on screen and measure again shortly. */
+  function applyRest() {
+    var t = restTransform();
+    if (t) stage.style.transform = t;
+    return !!t;
+  }
+
   function settle() {
-    stage.style.transform = restTransform();
+    if (!applyRest()) setTimeout(applyRest, 220);
     body.classList.add('crown-docked');
     reveal();
   }
