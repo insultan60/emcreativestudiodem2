@@ -560,7 +560,16 @@ body.crown-docked .liquid__art{ opacity:.92; }
    round cap misses. Nothing here runs until crown.js opens the gate, which
    is what keeps a half-drawn crown off the screen on a slow first paint. */
 .crown-draw{ display:block; width:100%; height:auto; overflow:visible; }
-.crown-draw__rev{ stroke-dasharray:1000; stroke-dashoffset:1000; }
+/* Negative on purpose - it runs the reveal from the path's END backwards.
+   The path finishes on the tip of the left spike's tail, and its opening
+   curve passes within 44 units of that same point while the brush reaches
+   71, so drawing forwards uncovered the tail's tip before any of the tail
+   that connects to it: a loose droplet floating beside the mark. Drawn
+   backwards the tip is where the stroke BEGINS, so it is attached from the
+   first frame. No width fixes this - the swoosh's curl and that tip sit
+   closer together than the brush's own radius, and narrowing it far enough
+   to miss the tip (102) bites visible nicks out of the finished mark. */
+.crown-draw__rev{ stroke-dasharray:1000; stroke-dashoffset:-1000; }
 .crown-draw__full{ opacity:0; }
 body.crown-drawing .crown-draw__rev{
   animation:crownDraw 2200ms cubic-bezier(.42,0,.35,1) both;
