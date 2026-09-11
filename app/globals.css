@@ -34,7 +34,7 @@
   --color-taupe:        #A89A8B;
 
   --font-display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-sans:    "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --ease-out-soft: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out-soft: cubic-bezier(0.77, 0, 0.175, 1);
@@ -76,10 +76,18 @@
   --ink-faint:    rgba(0,0,0,.30);
   --hair:         rgba(0,0,0,.16);
 
-  /* Display: geometric, high-contrast weights, modern.
-     Alternates tested and ready to swap: "Manrope", "Outfit", "Bricolage Grotesque". */
+  /* One family across the whole site. Display and body used to be two
+     (Plus Jakarta Sans over Manrope), but the two are close enough in
+     the same weights that the pairing read as an inconsistency rather
+     than a contrast - and Manrope's lighter body colour made long copy
+     sit noticeably paler than the headings above it. Plus Jakarta Sans
+     carries 400 through 800, so the hierarchy is weight and size now,
+     not family. --serif is defined here for the three rules that ask
+     for it (the quote mark, testimonial copy, the CEO name); it used
+     to fall through to Georgia. */
   --display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --sans:    "Manrope", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --serif:   "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
