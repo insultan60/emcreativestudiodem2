@@ -173,7 +173,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       </div>
 
       <div class="tm-card" data-open-team="3">
-        <div class="tm-card__frame"><div class="tm-card__avatar" style="background:var(--cocoa)">H</div></div>
+        <div class="tm-card__frame"><img src="/images/pg/hayk.webp" alt="Hayk"></div>
         <div class="tm-card__wash"></div>
         <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
         <div class="tm-card__body">
@@ -184,7 +184,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       </div>
 
       <div class="tm-card" data-open-team="4">
-        <div class="tm-card__frame"><div class="tm-card__avatar" style="background:var(--champagne-hi)">L</div></div>
+        <div class="tm-card__frame"><img src="/images/pg/luba.webp" alt="Luba"></div>
         <div class="tm-card__wash"></div>
         <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
         <div class="tm-card__body">

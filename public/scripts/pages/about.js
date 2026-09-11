@@ -80,14 +80,14 @@ const TEAM = [
   },
   {
     name:'Hayk', nick:'The Story Shaper', role:'Video Editor &amp; Post-Production Specialist',
-    avatar:'H', avatarBg:'var(--cocoa)',
+    img:'/images/pg/hayk.webp',
     bio:"Hayk transforms raw footage into polished, engaging content through thoughtful editing and post production. He shapes the pacing, sound, color, and visual flow of each video while keeping the client's brand and message at the center.",
     tags:['Video Editing','Post-Production','Color &amp; Sound'],
     quote:'"Videos that feel natural, professional, and designed to connect."'
   },
   {
     name:'Luba', nick:'The Content Creator', role:'Content Designer &amp; Canva Specialist',
-    avatar:'L', avatarBg:'var(--champagne-hi)',
+    img:'/images/pg/luba.webp',
     bio:"Luba creates the branded visuals that bring each client's content strategy to life. As the studio's Canva lead, she designs social media graphics, carousels, stories, and marketing materials that feel cohesive and true to each brand.",
     tags:['Content Design','Canva','Social Graphics'],
     quote:'"Every piece of content should feel cohesive and true to the brand."'
