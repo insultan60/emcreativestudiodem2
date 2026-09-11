@@ -85,12 +85,22 @@ export const SITE_BODY_HTML = `
                    tube's outer edge sits further from the centreline than the
                    stroke reaches. At 115 that left 1.3% of the artwork behind
                    as white nicks along the outer bends, which stayed on screen
-                   until the clean copy settled. 142 covers 99.91%. -->
+                   until the clean copy settled. 142 covers 99.91%.
+                   The caps are BUTT, not round. A round cap paints a disc of
+                   half the stroke width even where the dash has zero length,
+                   and the dash sits at zero length on the path's last point
+                   for the whole draw - so a 71-unit disc of artwork was being
+                   revealed at 336,832, which lands on the tip of the left
+                   spike's tail. That showed as a loose droplet beside the
+                   mark from before the draw even started. Measured at the
+                   first frame: 14,414 stray pixels with round, 31 with butt,
+                   and butt covers more of the artwork at full draw, not
+                   less. -->
               <path class="crown-draw__rev" pathLength="1000"
                     transform="translate(-176.672,-253.044) scale(0.902614)"
                     d="M 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
                     fill="none" stroke="#fff" stroke-width="142"
-                    stroke-linecap="round" stroke-linejoin="round"/>
+                    stroke-linecap="butt" stroke-linejoin="round"/>
             </mask>
           </defs>
           <image class="crown-draw__ink" href="/images/crown.webp"
