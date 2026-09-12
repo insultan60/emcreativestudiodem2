@@ -290,7 +290,7 @@ export const SITE_BODY_HTML = `
           <p class="step__body">A 90-minute session with whoever actually owns the revenue. Then we pull the numbers: rankings, page speed, funnel drop-off, and what your three closest competitors are doing better than you.</p>
           <ul class="step__tags"><li>Discovery call</li><li>Technical audit</li><li>Competitor teardown</li></ul>
         </div>
-        <div class="step__art"><img src="/images/steps/listen.webp" alt="A team talking across a table, papers and coffee between them" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
+        <div class="step__art"><img src="/images/steps/listen.webp" alt="Five people gathered around a laptop in the studio, working through an audit together" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
       </article>
       <article class="step">
         <div class="step__no">02</div>
@@ -299,7 +299,7 @@ export const SITE_BODY_HTML = `
           <p class="step__body">One direction, presented properly, with the reasoning attached. You will see type, colour, motion and two key screens before a single line of production code exists.</p>
           <ul class="step__tags"><li>Art direction</li><li>Key screens</li><li>Copy platform</li></ul>
         </div>
-        <div class="step__art"><img src="/images/steps/direction.webp" alt="Blank stationery, a rubber stamp and a wooden ampersand laid out on stone" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
+        <div class="step__art"><img src="/images/steps/direction.webp" alt="A tablet showing the art direction beside a notebook, camera and printed moodboard cards" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
       </article>
       <article class="step">
         <div class="step__no">03</div>
@@ -308,7 +308,7 @@ export const SITE_BODY_HTML = `
           <p class="step__body">Accessible markup, real performance budgets, schema on every template, and a CMS your team can edit on a Tuesday afternoon without calling us.</p>
           <ul class="step__tags"><li>Design system</li><li>Build &amp; QA</li><li>Analytics</li></ul>
         </div>
-        <div class="step__art"><img src="/images/steps/build.webp" alt="A build desk: an HTML and CSS reference, a laptop and a ruled notepad" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
+        <div class="step__art"><img src="/images/steps/build.webp" alt="A build desk: an analytics dashboard on a laptop, a scoped-out build checklist and wireframes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
       </article>
       <article class="step">
         <div class="step__no">04</div>
