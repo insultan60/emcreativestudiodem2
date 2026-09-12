@@ -578,14 +578,43 @@ body.crown-docked .liquid__art{ opacity:.92; }
    closer together than the brush's own radius, and narrowing it far enough
    to miss the tip (102) bites visible nicks out of the finished mark. */
 .crown-draw__rev{ stroke-dasharray:1000; stroke-dashoffset:-1000; }
+/* The black half of the mask. It covers the first 60/1000 of the path - the
+   swoosh's tip, the one end no brush width can spare - and lets go of it in
+   step with the white front, so the tip appears because the line drew it and
+   not a beat before. The timing is not eyeballed: the front is at arc 60 when
+   the draw's own cubic-bezier(.42,0,.35,1) has run 75.30% of 2200ms, so the
+   patch waits out 1657ms and then retreats over the remaining 543ms along
+   that same curve, split at that point and renormalised. Matching curves is
+   the whole point - interpolate it linearly instead and the patch outruns the
+   front near the end, which is the bug all over again. */
+.crown-draw__tip{ stroke-dasharray:60 1000; stroke-dashoffset:0; }
+.crown-draw__tipcap{ opacity:1; }
 .crown-draw__full{ opacity:0; }
 body.crown-drawing .crown-draw__rev{
   animation:crownDraw 2200ms cubic-bezier(.42,0,.35,1) both;
+}
+body.crown-drawing .crown-draw__tip{
+  animation:crownTip 543ms cubic-bezier(.2793,.6299,.6072,1) 1657ms both;
+}
+/* 1963ms is the moment the front reaches arc 10, which is the first point
+   at which the tip measures as attached rather than loose (0 stray pixels
+   against 901 at arc 30). Lifting the cap there hands over ink the stroke
+   has already covered, so there is nothing to see - and it lands 17ms
+   before .crown-draw__full starts settling, which matters: a mask is
+   luminance, so while the clean copy is half-faded a hole in the ink layer
+   shows through as a dark tip on the swoosh. Holding the cap into that
+   window traded the loose droplet for a grey nub; this clears it first.
+   No fade, for the same reason - a half-faded black cap is a half-
+   transparent crown. */
+body.crown-drawing .crown-draw__tipcap{
+  animation:crownTipCap 1963ms linear both;
 }
 body.crown-drawing .crown-draw__full{
   animation:crownSettle 460ms linear 1980ms both;
 }
 @keyframes crownDraw{ to{ stroke-dashoffset:0; } }
+@keyframes crownTip{ to{ stroke-dasharray:0 1000; } }
+@keyframes crownTipCap{ 0%,99.9%{ opacity:1; } 100%{ opacity:0; } }
 @keyframes crownSettle{ to{ opacity:1; } }
 /* Travelling specular. A brightened duplicate of the form, revealed
    through a soft radial gradient mask that follows the pointer. The
@@ -1792,6 +1821,8 @@ body.hero-revealed .shot__frame{
   .liquid__stage{ transition:none !important; transform:none !important; }
   .liquid__art{ transition:none !important; opacity:.92 !important; }
   .crown-draw__rev{ stroke-dashoffset:0 !important; animation:none !important; }
+  .crown-draw__tip{ stroke-dasharray:0 1000 !important; animation:none !important; }
+  .crown-draw__tipcap{ opacity:0 !important; animation:none !important; }
   .crown-draw__full{ opacity:1 !important; animation:none !important; }
   .liquid__sheen{ display:none !important; }
   .trail-layer{ display:none !important; }

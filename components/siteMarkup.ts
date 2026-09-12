@@ -95,12 +95,48 @@ export const SITE_BODY_HTML = `
                    mark from before the draw even started. Measured at the
                    first frame: 14,414 stray pixels with round, 31 with butt,
                    and butt covers more of the artwork at full draw, not
-                   less. -->
+                   less.
+
+                   The black below it is the other half of the fix. Reversing
+                   the draw put the tail's tip at the START of the stroke,
+                   where it is attached from frame one - but it moved the same
+                   fault to the other end. The path's opening point is the
+                   swoosh's own tip, now the last thing drawn, and the swoosh's
+                   curl passes that tip's artwork at 29.5px on the way round
+                   while the brush reaches 64. So from about three quarters of
+                   the way through, a sliver of the tip sat loose below the
+                   mark until the line finally arrived: the droplet again, on
+                   the other side. No brush width fixes that one - it would
+                   have to drop under 56 to clear 29.5px, and at 56 it no
+                   longer covers the tube it is tracing. Measured both ends the
+                   same way: the tail's tip has 48.3px of clearance and the
+                   swoosh's has 29.5px, so direction alone can only ever
+                   rescue one of them.
+                   Hence the mask paints black back over the stretch the
+                   stroke has not reached yet, and retreats in step with it -
+                   88 wide, which covers that tube whole and stays well inside
+                   the 58.6px at which any other part of the path comes near
+                   it, so it cannot bite a neighbouring strand. The circle is
+                   its cap: the artwork's tip runs about 12px past where the
+                   path stops, and a butt cap paints nothing beyond the last
+                   point, so that overhang was the one piece still showing.
+                   r=24 covers it, and it lifts the moment the stroke has
+                   the tip attached. Measured over the whole draw, loose
+                   pixels go 901 -> 0. -->
               <path class="crown-draw__rev" pathLength="1000"
                     transform="translate(-176.672,-253.044) scale(0.902614)"
                     d="M 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
                     fill="none" stroke="#fff" stroke-width="142"
                     stroke-linecap="butt" stroke-linejoin="round"/>
+<path class="crown-draw__tip" pathLength="1000"
+                    transform="translate(-176.672,-253.044) scale(0.902614)"
+                    d="M 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
+                    fill="none" stroke="#000" stroke-width="88"
+                    stroke-linecap="butt" stroke-linejoin="round"/>
+              <!-- see above: the cap on the black, for the ink that
+                   overhangs the end of the path. It lifts over the last
+                   110ms, as the line lands on the tip it was holding. -->
+              <circle class="crown-draw__tipcap" cx="536.4" cy="584.6" r="24" fill="#000"/>
             </mask>
           </defs>
           <image class="crown-draw__ink" href="/images/crown.webp"
