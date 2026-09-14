@@ -353,7 +353,7 @@ export const SITE_BODY_HTML = `
           <p class="step__body">Launch is the start. Monthly content, technical SEO upkeep, paid creative and a plain-English report that tells you what moved and what we are doing about it.</p>
           <ul class="step__tags"><li>Monthly content</li><li>Search upkeep</li><li>Revenue report</li></ul>
         </div>
-        <div class="step__art"><img src="/images/steps/measure.webp" alt="A laptop showing a traffic graph and a visitor breakdown" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
+        <div class="step__art"><img src="/images/steps/measure.webp" alt="A laptop on a studio desk showing a month of rising website traffic, with visits, new users and conversions below the graph" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;"></div>
       </article>
     </div>
   </div>
