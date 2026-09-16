@@ -769,7 +769,7 @@ html.js-words [data-words].words-in{ visibility:visible; }
    tiers (see the .plan-set fallback below). */
 .seg{
   display:inline-flex; align-items:center; gap:4px;
-  padding:5px; margin:0 0 34px;
+  padding:5px; margin:clamp(28px,3vw,40px) 0 30px;
   background:rgba(36,26,12,.05);
   border:1px solid var(--hair);
   border-radius:999px;
@@ -858,75 +858,183 @@ html.js-words [data-words].words-in{ visibility:visible; }
   font-size:13px; font-weight:500; color:var(--ink-soft);
 }
 
-/* ---- grouped feature lists inside a pack card ------------------- */
-/* Each SEO tier carries its full scope, which is far more than the three or
-   four lines the /packages cards hold, so the list is grouped under small
-   headings instead of running as one column of bullets. */
-.pack__group{
-  margin:16px 0 7px;
-  font-size:10.5px; font-weight:700;
-  letter-spacing:.14em; text-transform:uppercase;
-  color:var(--cocoa); opacity:.72;
-}
-.pack__group:first-of-type{ margin-top:6px; }
-.pack__best{
-  margin:16px 0 0; padding-top:14px;
-  border-top:1px solid var(--hair);
-  font-size:13.5px; line-height:1.55; color:var(--ink-soft);
-}
-.pack__best strong{ color:var(--ink); font-weight:600; }
-
-/* ---- plans laid out flat, not as an accordion -------------------
+/* ---- the plan cards ----------------------------------------------
    /packages runs .packs as a fixed-height horizontal accordion: the row has
    min-height clamp(420px,56vh,560px), each .pack is overflow:hidden, and only
    the open one expands. That fits the five short bullets it was drawn for.
    These tiers carry their full scope - twenty-odd lines under six headings -
-   which that row would simply clip, taking the "Best for" line and the button
-   with it.
+   which that row would simply clip.
 
-   So on this route the same cards are laid out three-up and always open. The
-   visual language is unchanged; only the mechanism differs. Everything is on
-   screen, which is also what the page is for: showing the whole plan. */
+   So on this route the cards are laid out three-up and always open, and are
+   rebuilt around three blocks:
+
+     .pack__top     name, price, who it is for, and the button
+     .pack__stats   the four figures worth comparing across columns
+     .pack__detail  the full scope, for anyone who reads that far
+
+   The point of the split is that the decision-making parts sit at a fixed
+   height at the top of every card, so the buttons line up and the columns stay
+   comparable no matter how uneven the detail below runs. */
 .packs{
   display:grid;
   grid-template-columns:repeat(3, minmax(0,1fr));
-  gap:18px;
+  gap:16px;
   min-height:0;
+  /* Each card ends where its content ends. Stretching them to a common height
+     left a few hundred pixels of empty paper inside Starter's border, since
+     these tiers are genuinely different lengths. The parts that need to line
+     up - price, button, stats - are all at the top and line up anyway. */
   align-items:start;
 }
-@media (max-width:1024px){ .packs{ grid-template-columns:1fr; } }
+@media (max-width:1080px){ .packs{ grid-template-columns:1fr; max-width:560px; } }
 
 .pack{
-  flex:none;
-  overflow:visible;
-  cursor:default;
-  height:auto;
-}
-/* No accordion, so nothing should look clickable or shift on hover. */
-.pack[aria-expanded="true"]{ flex-grow:0; }
-.pack,
-.pack:nth-child(1),
-.pack:nth-child(2),
-.pack:nth-child(3){
+  flex:none; height:auto; overflow:visible; cursor:default;
+  display:flex; flex-direction:column;
+  padding:0;
+  border-radius:var(--r-lg);
+  border:1px solid var(--hair);
   background:var(--paper);
   color:var(--ink);
-  border-color:var(--hair);
+  transition:box-shadow .5s var(--ease-out), border-color .5s var(--ease-out);
 }
-/* The middle tier carries the weight, matching its "Most chosen" pill and the
-   lead card in the home page band. */
-.pack:nth-child(2){
-  background:var(--linen);
-  border-color:var(--champagne);
+.pack:hover{ box-shadow:0 2px 8px rgba(0,0,0,.04), 0 24px 56px -32px rgba(0,0,0,.18); }
+/* Neutralise the accordion's per-position fills and grow. */
+.pack[aria-expanded="true"]{ flex-grow:0; }
+.pack:nth-child(1),
+.pack:nth-child(2),
+.pack:nth-child(3){ background:var(--paper); color:var(--ink); border-color:var(--hair); }
+
+/* The middle tier is the one most people land on, so it carries the weight -
+   same trick as the lead card in the home page band. */
+.pack:nth-child(2){ border-color:var(--champagne); box-shadow:0 2px 8px rgba(0,0,0,.04), 0 18px 44px -30px rgba(0,0,0,.22); }
+.pack:nth-child(2) .pack__top{ background:var(--linen); }
+
+/* ---- top block: the part that has to line up across columns ---- */
+.pack__top{
+  padding:clamp(24px,2.2vw,32px);
+  border-bottom:1px solid var(--hair);
+  border-radius:var(--r-lg) var(--r-lg) 0 0;
+  display:flex; flex-direction:column;
+}
+/* column-reverse puts the tag (second in the DOM) above the name. Side by side
+   it wrapped at column width on the longer pairings - "Authority / Market
+   leader" - which changed the header's height and knocked that card's button
+   out of line with the other two. Stacked, every header is the same height. */
+.pack__head{
+  display:flex; flex-direction:column-reverse;
+  align-items:flex-start; gap:9px; margin-bottom:14px;
+}
+.pack__name{
+  margin:0;
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(1.35rem,1.9vw,1.75rem);
+  letter-spacing:-.028em; white-space:nowrap;
+}
+.pack__tag{
+  flex:none;
+  padding:5px 10px; border-radius:999px;
+  background:rgba(0,0,0,.05);
+  font-size:9.5px; font-weight:700;
+  letter-spacing:.13em; text-transform:uppercase;
+  color:var(--cocoa); opacity:1;
+}
+.pack:nth-child(2) .pack__tag{ background:rgba(0,0,0,.08); }
+
+.pack__price{
+  margin:0 0 14px;
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(2.1rem,3.4vw,2.9rem);
+  letter-spacing:-.04em; line-height:1;
+}
+.pack__price small{
+  font-family:var(--sans); font-size:13px; font-weight:500;
+  letter-spacing:0; opacity:.55;
 }
 
-/* Always revealed: no hidden state to animate out of. */
-.pack__reveal{
-  margin-top:0;
-  opacity:1;
-  transform:none;
-  transition:none;
+/* "Best for" moved up out of the footer: who a tier suits is the first thing
+   someone needs, not a line they reach after twenty bullets. Clamped to three
+   lines so one wordy tier cannot push its neighbour's button out of line. */
+.pack__best{
+  margin:0 0 20px;
+  font-size:13.5px; line-height:1.55; color:var(--ink-soft);
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical;
+  overflow:hidden;
+  min-height:calc(3 * 1.55 * 13.5px);
 }
-.pack__hint{ display:none; }
+.pack__best strong{ color:var(--ink); font-weight:600; }
 
-.pack__list{ margin:0 0 4px; }
-.pack__price{ margin-bottom:10px; }
+.pack__cta{ margin-top:auto; align-self:flex-start; }
+
+/* ---- stats strip: the figures worth comparing ------------------- */
+.pack__stats{
+  list-style:none; margin:0; padding:18px clamp(24px,2.2vw,32px);
+  display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px;
+  border-bottom:1px solid var(--hair);
+  background:rgba(0,0,0,.015);
+}
+.pack__stats li{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+.pack__stats b{
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(15px,1.5vw,19px); letter-spacing:-.03em; line-height:1.1;
+}
+.pack__stats span{
+  font-size:9.5px; font-weight:600;
+  letter-spacing:.09em; text-transform:uppercase;
+  color:var(--ink-soft); line-height:1.25;
+}
+
+/* ---- detail: the full scope ------------------------------------- */
+.pack__detail{ padding:clamp(22px,2.2vw,30px); }
+.pack__inherit{
+  margin:0 0 20px; padding:8px 12px;
+  border-radius:var(--r-sm);
+  background:rgba(0,0,0,.04);
+  font-size:11px; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--cocoa);
+}
+.pack__group{
+  margin:22px 0 8px;
+  font-size:9.5px; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink); opacity:.45;
+}
+.pack__group:first-child{ margin-top:0; }
+.pack__inherit + .pack__group{ margin-top:0; }
+
+.pack__list{
+  list-style:none; margin:0; padding:0;
+  font-size:13.5px; line-height:1.6;
+}
+.pack__list li{
+  display:grid; grid-template-columns:14px 1fr; gap:0;
+  margin-bottom:8px; color:var(--ink-soft);
+}
+/* A hairline rule reads quieter than an em dash at this density. */
+.pack__list li::before{
+  content:""; align-self:start;
+  width:7px; height:1px; margin-top:.62em;
+  background:var(--champagne-hi); opacity:.85;
+}
+
+@media (max-width:1080px){
+  .pack__best{ -webkit-line-clamp:none; min-height:0; }
+}
+@media (max-width:420px){
+  .pack__stats{ grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px 10px; }
+}
+
+
+/* ---- card buttons ------------------------------------------------
+   .btn--paper is a paper fill, which on a paper card is no fill at all - the
+   Starter and Authority CTAs were rendering as plain text beside Growth's
+   solid pill. Outlined here so all three read as buttons while the middle one
+   keeps the emphasis. */
+.pack__cta.btn--paper{
+  background:transparent;
+  border:1px solid rgba(0,0,0,.22);
+}
+.pack__cta.btn--paper:hover{
+  background:var(--ink); color:var(--paper); border-color:var(--ink);
+}

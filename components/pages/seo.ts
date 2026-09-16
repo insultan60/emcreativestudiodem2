@@ -89,7 +89,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
           Monthly SEO plans
         </span>
-        <h2 class="h2" data-rise>Two tracks, because a brokerage and a boutique are not the same search problem</h2>
+        <h2 class="h2" data-rise>Real estate, or everything else.</h2>
       </div>
       <p class="lede" data-rise>Real estate competes street by street, so those plans lean on neighborhood pages, listings and local citations. Everything else leans on service pages, industry content and commercial intent.</p>
     </div>
@@ -109,145 +109,171 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 
       <div class="packs" data-rise>
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$200 <small>/ month</small></p>
-
-            <p class="pack__group">Foundation</p>
-            <ul class="pack__list">
-              <li>Initial website SEO audit &mdash; broken links, page speed, indexing issues</li>
-              <li>Schema markup on the homepage &mdash; LocalBusiness or RealEstateListing</li>
-            </ul>
-
-            <p class="pack__group">Keywords &amp; on-page</p>
-            <ul class="pack__list">
-              <li>10 locally targeted keywords, e.g. &ldquo;homes for sale in [city]&rdquo;</li>
-              <li>On-page SEO for up to 3 pages &mdash; home, about, contact</li>
-              <li>Title tags, meta descriptions, H1/H2 structure, image alt text</li>
-            </ul>
-
-            <p class="pack__group">Local presence</p>
-            <ul class="pack__list">
-              <li>Google Business Profile setup and full optimization &mdash; categories, description, services, photos, hours, Q&amp;A</li>
-              <li>NAP consistency check across your site and top directories</li>
-              <li>20 local directory citations &mdash; Google, Yelp, Bing Places, Yellow Pages, Zillow, Realtor.com, Homes.com, Facebook, Apple Maps, Foursquare</li>
-            </ul>
-
-            <p class="pack__group">Content &amp; reviews</p>
-            <ul class="pack__list">
-              <li>1 blog post a month, 500&ndash;700 words &mdash; neighborhood spotlight, market update, or buyer/seller tips</li>
-              <li>Review generation &mdash; email and SMS templates to request Google reviews from past clients</li>
-            </ul>
-
-            <p class="pack__group">Reporting</p>
-            <ul class="pack__list">
-              <li>10 keywords tracked monthly</li>
-              <li>Monthly report &mdash; rankings, GBP views, website clicks, calls</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> solo agents, new local businesses, small towns and low-competition markets.</p>
-            <a class="btn btn--paper" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>10</b><span>keywords</span></li>
+              <li><b>3</b><span>pages</span></li>
+              <li><b>1</b><span>post / mo</span></li>
+              <li><b>20</b><span>citations</span></li>
+          </ul>
+
+          <div class="pack__detail">
+  <p class="pack__group">Foundation</p>
+              <ul class="pack__list">
+                <li>Initial website SEO audit &mdash; broken links, page speed, indexing issues</li>
+                <li>Schema markup on the homepage &mdash; LocalBusiness or RealEstateListing</li>
+              </ul>
+
+              <p class="pack__group">Keywords &amp; on-page</p>
+              <ul class="pack__list">
+                <li>10 locally targeted keywords, e.g. &ldquo;homes for sale in [city]&rdquo;</li>
+                <li>On-page SEO for up to 3 pages &mdash; home, about, contact</li>
+                <li>Title tags, meta descriptions, H1/H2 structure, image alt text</li>
+              </ul>
+
+              <p class="pack__group">Local presence</p>
+              <ul class="pack__list">
+                <li>Google Business Profile setup and full optimization &mdash; categories, description, services, photos, hours, Q&amp;A</li>
+                <li>NAP consistency check across your site and top directories</li>
+                <li>20 local directory citations &mdash; Google, Yelp, Bing Places, Yellow Pages, Zillow, Realtor.com, Homes.com, Facebook, Apple Maps, Foursquare</li>
+              </ul>
+
+              <p class="pack__group">Content &amp; reviews</p>
+              <ul class="pack__list">
+                <li>1 blog post a month, 500&ndash;700 words &mdash; neighborhood spotlight, market update, or buyer/seller tips</li>
+                <li>Review generation &mdash; email and SMS templates to request Google reviews from past clients</li>
+              </ul>
+
+              <p class="pack__group">Reporting</p>
+              <ul class="pack__list">
+                <li>10 keywords tracked monthly</li>
+                <li>Monthly report &mdash; rankings, GBP views, website clicks, calls</li>
+              </ul>
           </div>
         </article>
 
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$500 <small>/ month</small></p>
-            <p class="pack__group">Everything in Starter, plus</p>
-
-            <p class="pack__group">Keywords &amp; on-page</p>
-            <ul class="pack__list">
-              <li>25 locally targeted keywords, including neighborhood-level and long-tail buyer/seller intent terms</li>
-              <li>On-page SEO for up to 10 pages &mdash; service, area and listing pages</li>
-              <li>Full meta, header, internal linking and content optimization</li>
-              <li>Internal linking pass connecting posts to service pages to build topical authority</li>
-              <li>Schema markup extended &mdash; RealEstateListing, Person and Review across key pages</li>
-            </ul>
-
-            <p class="pack__group">Local presence</p>
-            <ul class="pack__list">
-              <li>Google Business Profile active management &mdash; 4 posts a week covering listings, solds, tips and community updates</li>
-              <li>Photo uploads, Q&amp;A management and offer posts</li>
-              <li>40&ndash;50 citations including Zillow, Trulia, Realtor.com, Movoto, Homesnap and HomeAdvisor, plus geo-targeted local directories</li>
-            </ul>
-
-            <p class="pack__group">Content &amp; authority</p>
-            <ul class="pack__list">
-              <li>2&ndash;3 blog posts a month, 700&ndash;1,000 words &mdash; hyperlocal guides, school district guides, market reports, first-time buyer content</li>
-              <li>Local link building &mdash; 2&ndash;3 earned backlinks a month from local news, neighborhood blogs, business associations and the chamber of commerce</li>
-            </ul>
-
-            <p class="pack__group">Competitors &amp; reputation</p>
-            <ul class="pack__list">
-              <li>Competitor gap analysis on 3 local competitors &mdash; their keywords, their backlinks, the content gaps you can take</li>
-              <li>Review management &mdash; weekly Google and Yelp monitoring with response templates for positive and negative reviews</li>
-            </ul>
-
-            <p class="pack__group">Reporting</p>
-            <ul class="pack__list">
-              <li>25 keywords tracked and reported monthly</li>
-              <li>Monthly report &mdash; organic traffic, GBP insights, keyword movement, citation health</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> growing teams, agents expanding into new neighborhoods, and suburban or mid-size city markets.</p>
-            <a class="btn btn--dark" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>25</b><span>keywords</span></li>
+              <li><b>10</b><span>pages</span></li>
+              <li><b>2&ndash;3</b><span>posts / mo</span></li>
+              <li><b>40&ndash;50</b><span>citations</span></li>
+          </ul>
+
+          <div class="pack__detail">
+            <p class="pack__inherit">Everything in Starter, plus</p>
+
+  <p class="pack__group">Keywords &amp; on-page</p>
+              <ul class="pack__list">
+                <li>25 locally targeted keywords, including neighborhood-level and long-tail buyer/seller intent terms</li>
+                <li>On-page SEO for up to 10 pages &mdash; service, area and listing pages</li>
+                <li>Full meta, header, internal linking and content optimization</li>
+                <li>Internal linking pass connecting posts to service pages to build topical authority</li>
+                <li>Schema markup extended &mdash; RealEstateListing, Person and Review across key pages</li>
+              </ul>
+
+              <p class="pack__group">Local presence</p>
+              <ul class="pack__list">
+                <li>Google Business Profile active management &mdash; 4 posts a week covering listings, solds, tips and community updates</li>
+                <li>Photo uploads, Q&amp;A management and offer posts</li>
+                <li>40&ndash;50 citations including Zillow, Trulia, Realtor.com, Movoto, Homesnap and HomeAdvisor, plus geo-targeted local directories</li>
+              </ul>
+
+              <p class="pack__group">Content &amp; authority</p>
+              <ul class="pack__list">
+                <li>2&ndash;3 blog posts a month, 700&ndash;1,000 words &mdash; hyperlocal guides, school district guides, market reports, first-time buyer content</li>
+                <li>Local link building &mdash; 2&ndash;3 earned backlinks a month from local news, neighborhood blogs, business associations and the chamber of commerce</li>
+              </ul>
+
+              <p class="pack__group">Competitors &amp; reputation</p>
+              <ul class="pack__list">
+                <li>Competitor gap analysis on 3 local competitors &mdash; their keywords, their backlinks, the content gaps you can take</li>
+                <li>Review management &mdash; weekly Google and Yelp monitoring with response templates for positive and negative reviews</li>
+              </ul>
+
+              <p class="pack__group">Reporting</p>
+              <ul class="pack__list">
+                <li>25 keywords tracked and reported monthly</li>
+                <li>Monthly report &mdash; organic traffic, GBP insights, keyword movement, citation health</li>
+              </ul>
           </div>
         </article>
 
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$800 <small>/ month</small></p>
-            <p class="pack__group">Everything in Growth, plus</p>
-
-            <p class="pack__group">Keywords &amp; technical</p>
-            <ul class="pack__list">
-              <li>50+ keywords &mdash; zip code level, neighborhood level, property type, and buyer/seller intent</li>
-              <li>Full technical SEO &mdash; Core Web Vitals (LCP, CLS, INP), site speed, mobile usability</li>
-              <li>Crawl error resolution, XML sitemap and robots.txt management, canonical tag setup</li>
-              <li>On-page SEO across the entire website &mdash; every service, listing, location and blog page</li>
-            </ul>
-
-            <p class="pack__group">Local presence</p>
-            <ul class="pack__list">
-              <li>Full Google Business Profile management &mdash; daily activity, AI Overview optimization, post scheduling, review campaigns, suspension risk monitoring</li>
-              <li>70+ citations across national, regional and real-estate platforms, with a quarterly audit and cleanup of duplicate or incorrect listings</li>
-            </ul>
-
-            <p class="pack__group">Content &amp; landing pages</p>
-            <ul class="pack__list">
-              <li>5&ndash;6 neighborhood and zip code landing pages built per quarter, each written, optimized and published</li>
-              <li>4&ndash;6 blog posts a month, 1,000&ndash;1,500 words &mdash; market reports, community guides, investment content, relocation guides</li>
-              <li>1 pillar page per quarter, 2,000&ndash;3,000 words &mdash; a guide like &ldquo;Complete Guide to Buying a Home in [City]&rdquo;</li>
-              <li>Active link building &mdash; 5&ndash;8 high-authority backlinks a month from local news outlets, real estate publications and community sites</li>
-            </ul>
-
-            <p class="pack__group">Reputation &amp; tracking</p>
-            <ul class="pack__list">
-              <li>Reputation management across Google, Yelp, Zillow and Realtor.com, with monthly review request campaigns and a negative review response strategy</li>
-              <li>Conversion tracking &mdash; Google Analytics 4, Search Console and call tracking configured to attribute leads back to specific SEO work</li>
-              <li>Competitor monitoring on 5 competitors each month, with counter-strategy recommendations</li>
-            </ul>
-
-            <p class="pack__group">Reporting &amp; access</p>
-            <ul class="pack__list">
-              <li>50+ keywords tracked and updated monthly</li>
-              <li>Full dashboard &mdash; organic traffic, lead sources, GBP performance, rankings, backlink growth, conversion data</li>
-              <li>Dedicated account manager &mdash; monthly strategy call, quarterly roadmap review, priority email and phone support</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> brokerages, multi-agent offices, property managers, and agents in competitive metro markets.</p>
-            <a class="btn btn--paper" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>50+</b><span>keywords</span></li>
+              <li><b>Full</b><span>site</span></li>
+              <li><b>4&ndash;6</b><span>posts / mo</span></li>
+              <li><b>70+</b><span>citations</span></li>
+          </ul>
+
+          <div class="pack__detail">
+            <p class="pack__inherit">Everything in Growth, plus</p>
+
+  <p class="pack__group">Keywords &amp; technical</p>
+              <ul class="pack__list">
+                <li>50+ keywords &mdash; zip code level, neighborhood level, property type, and buyer/seller intent</li>
+                <li>Full technical SEO &mdash; Core Web Vitals (LCP, CLS, INP), site speed, mobile usability</li>
+                <li>Crawl error resolution, XML sitemap and robots.txt management, canonical tag setup</li>
+                <li>On-page SEO across the entire website &mdash; every service, listing, location and blog page</li>
+              </ul>
+
+              <p class="pack__group">Local presence</p>
+              <ul class="pack__list">
+                <li>Full Google Business Profile management &mdash; daily activity, AI Overview optimization, post scheduling, review campaigns, suspension risk monitoring</li>
+                <li>70+ citations across national, regional and real-estate platforms, with a quarterly audit and cleanup of duplicate or incorrect listings</li>
+              </ul>
+
+              <p class="pack__group">Content &amp; landing pages</p>
+              <ul class="pack__list">
+                <li>5&ndash;6 neighborhood and zip code landing pages built per quarter, each written, optimized and published</li>
+                <li>4&ndash;6 blog posts a month, 1,000&ndash;1,500 words &mdash; market reports, community guides, investment content, relocation guides</li>
+                <li>1 pillar page per quarter, 2,000&ndash;3,000 words &mdash; a guide like &ldquo;Complete Guide to Buying a Home in [City]&rdquo;</li>
+                <li>Active link building &mdash; 5&ndash;8 high-authority backlinks a month from local news outlets, real estate publications and community sites</li>
+              </ul>
+
+              <p class="pack__group">Reputation &amp; tracking</p>
+              <ul class="pack__list">
+                <li>Reputation management across Google, Yelp, Zillow and Realtor.com, with monthly review request campaigns and a negative review response strategy</li>
+                <li>Conversion tracking &mdash; Google Analytics 4, Search Console and call tracking configured to attribute leads back to specific SEO work</li>
+                <li>Competitor monitoring on 5 competitors each month, with counter-strategy recommendations</li>
+              </ul>
+
+              <p class="pack__group">Reporting &amp; access</p>
+              <ul class="pack__list">
+                <li>50+ keywords tracked and updated monthly</li>
+                <li>Full dashboard &mdash; organic traffic, lead sources, GBP performance, rankings, backlink growth, conversion data</li>
+                <li>Dedicated account manager &mdash; monthly strategy call, quarterly roadmap review, priority email and phone support</li>
+              </ul>
           </div>
         </article>
       </div>
@@ -259,158 +285,184 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 
       <div class="packs" data-rise>
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$299 <small>/ month</small></p>
-
-            <p class="pack__group">Audit &amp; technical</p>
-            <ul class="pack__list">
-              <li>Initial SEO audit &mdash; technical health check, indexing review, broken links, mobile usability</li>
-              <li>Basic website performance analysis</li>
-              <li>XML sitemap and robots.txt review</li>
-              <li>Schema markup implementation and basic crawl issue fixes</li>
-            </ul>
-
-            <p class="pack__group">Keywords</p>
-            <ul class="pack__list">
-              <li>15 targeted keywords</li>
-              <li>Local and service-based search opportunities</li>
-              <li>Search intent analysis</li>
-            </ul>
-
-            <p class="pack__group">Website optimization</p>
-            <ul class="pack__list">
-              <li>Up to 5 key pages optimized</li>
-              <li>Title tags, meta descriptions, header structure, image alt text</li>
-              <li>Internal linking recommendations</li>
-            </ul>
-
-            <p class="pack__group">Local presence</p>
-            <ul class="pack__list">
-              <li>Google Business Profile optimization &mdash; category, description, services and products, photos and information</li>
-              <li>NAP consistency check</li>
-              <li>Business directory optimization and citation submissions</li>
-            </ul>
-
-            <p class="pack__group">Content</p>
-            <ul class="pack__list">
-              <li>1 SEO-optimized article a month, 800&ndash;1,000 words</li>
-              <li>Keyword-focused content strategy &mdash; industry guides, how-tos, customer education, service topics</li>
-            </ul>
-
-            <p class="pack__group">Reporting</p>
-            <ul class="pack__list">
-              <li>Monthly report &mdash; keyword rankings, organic traffic, search impressions, performance insights and recommendations</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> small businesses, startups, local service providers, and businesses entering organic search.</p>
-            <a class="btn btn--paper" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>15</b><span>keywords</span></li>
+              <li><b>5</b><span>pages</span></li>
+              <li><b>1</b><span>article / mo</span></li>
+              <li><b>Basic</b><span>profile</span></li>
+          </ul>
+
+          <div class="pack__detail">
+  <p class="pack__group">Audit &amp; technical</p>
+              <ul class="pack__list">
+                <li>Initial SEO audit &mdash; technical health check, indexing review, broken links, mobile usability</li>
+                <li>Basic website performance analysis</li>
+                <li>XML sitemap and robots.txt review</li>
+                <li>Schema markup implementation and basic crawl issue fixes</li>
+              </ul>
+
+              <p class="pack__group">Keywords</p>
+              <ul class="pack__list">
+                <li>15 targeted keywords</li>
+                <li>Local and service-based search opportunities</li>
+                <li>Search intent analysis</li>
+              </ul>
+
+              <p class="pack__group">Website optimization</p>
+              <ul class="pack__list">
+                <li>Up to 5 key pages optimized</li>
+                <li>Title tags, meta descriptions, header structure, image alt text</li>
+                <li>Internal linking recommendations</li>
+              </ul>
+
+              <p class="pack__group">Local presence</p>
+              <ul class="pack__list">
+                <li>Google Business Profile optimization &mdash; category, description, services and products, photos and information</li>
+                <li>NAP consistency check</li>
+                <li>Business directory optimization and citation submissions</li>
+              </ul>
+
+              <p class="pack__group">Content</p>
+              <ul class="pack__list">
+                <li>1 SEO-optimized article a month, 800&ndash;1,000 words</li>
+                <li>Keyword-focused content strategy &mdash; industry guides, how-tos, customer education, service topics</li>
+              </ul>
+
+              <p class="pack__group">Reporting</p>
+              <ul class="pack__list">
+                <li>Monthly report &mdash; keyword rankings, organic traffic, search impressions, performance insights and recommendations</li>
+              </ul>
           </div>
         </article>
 
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$699 <small>/ month</small></p>
-            <p class="pack__group">Everything in Starter, plus</p>
-
-            <p class="pack__group">Keywords</p>
-            <ul class="pack__list">
-              <li>40 targeted keywords</li>
-              <li>Commercial, long-tail and location-based terms</li>
-              <li>Competitor keyword opportunities</li>
-            </ul>
-
-            <p class="pack__group">Website optimization</p>
-            <ul class="pack__list">
-              <li>Up to 15 pages optimized</li>
-              <li>Content optimization and internal linking improvements</li>
-              <li>SEO-friendly heading structure</li>
-              <li>Conversion-focused and user experience recommendations</li>
-            </ul>
-
-            <p class="pack__group">Local presence</p>
-            <ul class="pack__list">
-              <li>Google Business Profile management, worked weekly &mdash; posts, photo updates, Q&amp;A management, review monitoring, profile improvements</li>
-            </ul>
-
-            <p class="pack__group">Competitors</p>
-            <ul class="pack__list">
-              <li>Monthly competitor analysis &mdash; the keywords they rank for, content gaps, backlink opportunities, strategy insights</li>
-            </ul>
-
-            <p class="pack__group">Content &amp; authority</p>
-            <ul class="pack__list">
-              <li>2 SEO articles a month with keyword targeting and search intent optimization</li>
-              <li>Local and industry link-building campaigns &mdash; directory opportunities, industry outreach, partnerships, digital PR</li>
-            </ul>
-
-            <p class="pack__group">Reporting</p>
-            <ul class="pack__list">
-              <li>Monthly report &mdash; keyword movement, traffic growth, Search Console insights, competitor changes</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> growing businesses looking to increase organic traffic, visibility and qualified leads.</p>
-            <a class="btn btn--dark" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>40</b><span>keywords</span></li>
+              <li><b>15</b><span>pages</span></li>
+              <li><b>2</b><span>articles / mo</span></li>
+              <li><b>Weekly</b><span>profile</span></li>
+          </ul>
+
+          <div class="pack__detail">
+            <p class="pack__inherit">Everything in Starter, plus</p>
+
+  <p class="pack__group">Keywords</p>
+              <ul class="pack__list">
+                <li>40 targeted keywords</li>
+                <li>Commercial, long-tail and location-based terms</li>
+                <li>Competitor keyword opportunities</li>
+              </ul>
+
+              <p class="pack__group">Website optimization</p>
+              <ul class="pack__list">
+                <li>Up to 15 pages optimized</li>
+                <li>Content optimization and internal linking improvements</li>
+                <li>SEO-friendly heading structure</li>
+                <li>Conversion-focused and user experience recommendations</li>
+              </ul>
+
+              <p class="pack__group">Local presence</p>
+              <ul class="pack__list">
+                <li>Google Business Profile management, worked weekly &mdash; posts, photo updates, Q&amp;A management, review monitoring, profile improvements</li>
+              </ul>
+
+              <p class="pack__group">Competitors</p>
+              <ul class="pack__list">
+                <li>Monthly competitor analysis &mdash; the keywords they rank for, content gaps, backlink opportunities, strategy insights</li>
+              </ul>
+
+              <p class="pack__group">Content &amp; authority</p>
+              <ul class="pack__list">
+                <li>2 SEO articles a month with keyword targeting and search intent optimization</li>
+                <li>Local and industry link-building campaigns &mdash; directory opportunities, industry outreach, partnerships, digital PR</li>
+              </ul>
+
+              <p class="pack__group">Reporting</p>
+              <ul class="pack__list">
+                <li>Monthly report &mdash; keyword movement, traffic growth, Search Console insights, competitor changes</li>
+              </ul>
           </div>
         </article>
 
         <article class="pack">
-          <div class="pack__head">
+          <div class="pack__top">
+            <div class="pack__head">
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-          <div class="pack__reveal">
             <p class="pack__price">$1,500 <small>/ month</small></p>
-            <p class="pack__group">Everything in Growth, plus</p>
-
-            <p class="pack__group">Advanced technical SEO</p>
-            <ul class="pack__list">
-              <li>Core Web Vitals improvements and site speed optimization</li>
-              <li>Crawl error resolution and indexation management</li>
-              <li>Canonical optimization and duplicate content fixes</li>
-              <li>Structured data implementation and ongoing technical monitoring</li>
-            </ul>
-
-            <p class="pack__group">Keywords</p>
-            <ul class="pack__list">
-              <li>75+ targeted keywords</li>
-              <li>High-competition and buyer-intent terms</li>
-              <li>Industry and location-based opportunities, plus competitor keyword gaps</li>
-            </ul>
-
-            <p class="pack__group">Content &amp; landing pages</p>
-            <ul class="pack__list">
-              <li>4 SEO articles a month &mdash; industry guides, comparison content, educational resources, product and service content</li>
-              <li>Landing page strategy &mdash; service pages, location pages, industry pages, conversion-focused pages built and optimized</li>
-            </ul>
-
-            <p class="pack__group">Digital PR &amp; link building</p>
-            <ul class="pack__list">
-              <li>Monthly authority campaigns &mdash; industry outreach, relevant backlink opportunities, guest contributions, brand mentions</li>
-            </ul>
-
-            <p class="pack__group">Tracking</p>
-            <ul class="pack__list">
-              <li>Google Analytics 4 and Search Console setup</li>
-              <li>Conversion, lead, form and call tracking where applicable</li>
-            </ul>
-
-            <p class="pack__group">Strategy management</p>
-            <ul class="pack__list">
-              <li>Monthly strategy meeting and a quarterly SEO roadmap</li>
-              <li>Ongoing competitor monitoring and growth recommendations</li>
-              <li>Priority support</li>
-            </ul>
-
             <p class="pack__best"><strong>Best for</strong> established companies, competitive industries, SaaS, ecommerce brands, and businesses targeting multiple markets.</p>
-            <a class="btn btn--paper" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+            <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+          </div>
+
+          <ul class="pack__stats">
+              <li><b>75+</b><span>keywords</span></li>
+              <li><b>Full</b><span>site</span></li>
+              <li><b>4</b><span>articles / mo</span></li>
+              <li><b>Advanced</b><span>profile</span></li>
+          </ul>
+
+          <div class="pack__detail">
+            <p class="pack__inherit">Everything in Growth, plus</p>
+
+  <p class="pack__group">Advanced technical SEO</p>
+              <ul class="pack__list">
+                <li>Core Web Vitals improvements and site speed optimization</li>
+                <li>Crawl error resolution and indexation management</li>
+                <li>Canonical optimization and duplicate content fixes</li>
+                <li>Structured data implementation and ongoing technical monitoring</li>
+              </ul>
+
+              <p class="pack__group">Keywords</p>
+              <ul class="pack__list">
+                <li>75+ targeted keywords</li>
+                <li>High-competition and buyer-intent terms</li>
+                <li>Industry and location-based opportunities, plus competitor keyword gaps</li>
+              </ul>
+
+              <p class="pack__group">Content &amp; landing pages</p>
+              <ul class="pack__list">
+                <li>4 SEO articles a month &mdash; industry guides, comparison content, educational resources, product and service content</li>
+                <li>Landing page strategy &mdash; service pages, location pages, industry pages, conversion-focused pages built and optimized</li>
+              </ul>
+
+              <p class="pack__group">Digital PR &amp; link building</p>
+              <ul class="pack__list">
+                <li>Monthly authority campaigns &mdash; industry outreach, relevant backlink opportunities, guest contributions, brand mentions</li>
+              </ul>
+
+              <p class="pack__group">Tracking</p>
+              <ul class="pack__list">
+                <li>Google Analytics 4 and Search Console setup</li>
+                <li>Conversion, lead, form and call tracking where applicable</li>
+              </ul>
+
+              <p class="pack__group">Strategy management</p>
+              <ul class="pack__list">
+                <li>Monthly strategy meeting and a quarterly SEO roadmap</li>
+                <li>Ongoing competitor monitoring and growth recommendations</li>
+                <li>Priority support</li>
+              </ul>
           </div>
         </article>
       </div>
