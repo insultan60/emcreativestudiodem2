@@ -984,8 +984,47 @@ html.js-words [data-words].words-in{ visibility:visible; }
   color:var(--ink-soft); line-height:1.25;
 }
 
-/* ---- detail: the full scope ------------------------------------- */
-.pack__detail{ padding:clamp(22px,2.2vw,30px); }
+/* ---- detail: the full scope, folded away ------------------------
+   The first pass printed all twelve to sixteen lines of a tier's scope straight
+   into the card. It is the right information and none of it has been cut, but
+   an open spec sheet is the wrong shape for a card whose job is helping someone
+   choose a tier - at that length nobody reads it, and it buries the price and
+   the button that actually matter. The four figures in .pack__stats carry the
+   comparison, the table further down carries the line-by-line, and the full
+   scope lives behind this disclosure for anyone who wants it.
+
+   <details> is native, so this needs no JS, stays keyboard-operable, and the
+   content is in the DOM for crawlers whether or not it is open. */
+.pack__detail{ padding:clamp(20px,2vw,26px); }
+
+.pack__more{ border-top:1px solid var(--hair); padding-top:4px; }
+.pack__detail > .pack__inherit + .pack__more{ margin-top:18px; }
+/* Starter inherits from nothing, so its chip is quieter than the two that
+   point back at a tier below them - it is there to keep the three cards the
+   same shape, not to claim the same thing. */
+.pack__inherit--base{ background:transparent; border:1px dashed var(--hair); color:var(--ink-soft); }
+
+.pack__more-sum{
+  display:flex; align-items:center; gap:10px;
+  padding:12px 2px; cursor:pointer;
+  list-style:none;
+  font-size:13px; font-weight:600; color:var(--ink);
+  transition:opacity .3s var(--ease-out);
+}
+.pack__more-sum::-webkit-details-marker{ display:none; }
+.pack__more-sum:hover{ opacity:.62; }
+.pack__more-sum:focus-visible{ outline:2px solid var(--cocoa); outline-offset:3px; border-radius:var(--r-sm); }
+.pack__more-sum small{
+  font-size:11px; font-weight:500; color:var(--ink-soft); letter-spacing:.01em;
+}
+.pack__more-chev{
+  margin-left:auto; flex:none;
+  transition:transform .34s var(--ease-out);
+}
+.pack__more[open] .pack__more-chev{ transform:rotate(45deg); }
+
+.pack__more-body{ padding:6px 0 10px; }
+.pack__more-body .pack__group:first-child{ margin-top:0; }
 .pack__inherit{
   margin:0 0 20px; padding:8px 12px;
   border-radius:var(--r-sm);
@@ -1038,3 +1077,4 @@ html.js-words [data-words].words-in{ visibility:visible; }
 .pack__cta.btn--paper:hover{
   background:var(--ink); color:var(--paper); border-color:var(--ink);
 }
+
