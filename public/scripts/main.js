@@ -956,25 +956,42 @@ document.querySelectorAll('canvas[data-art]').forEach(cv => {
   function attractLoop() {
     if (mouseX < 0) { raf = null; return; }
     const rect = section.getBoundingClientRect();
+    const maxDist = 280;
+
     bubbleEls.forEach(el => {
-      const elRect = el.getBoundingClientRect();
-      const cx = elRect.left - rect.left + elRect.width / 2;
-      const cy = elRect.top - rect.top + elRect.height / 2;
+      /* Measure from where the bubble RESTS, not from where it currently sits.
+         getBoundingClientRect() reports the position after this loop's own
+         transform, so measuring with it made every frame read back the previous
+         frame's result - a feedback loop. The resting centre comes from the
+         percentages the bubble was laid out with, which no transform touches.
+         (These are the homeX/homeY already stashed on the element above.) */
+      const size = el.offsetWidth;
+      const cx = (parseFloat(el.dataset.homeX) / 100) * rect.width + size / 2;
+      const cy = (parseFloat(el.dataset.homeY) / 100) * rect.height + size / 2;
       const dx = mouseX - cx;
       const dy = mouseY - cy;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = 280;
-      if (dist < maxDist) {
-        const strength = (1 - dist / maxDist) * 18;
-        const tx = (dx / dist) * strength;
-        const ty = (dy / dist) * strength;
-        el.style.transform = `translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px)`;
-        el.style.transition = 'opacity 800ms ease, transform 180ms ease-out, box-shadow 400ms ease, border-color 400ms ease';
-      } else {
-        el.style.transform = 'translate(0,0)';
-        el.style.transition = 'opacity 800ms ease, transform 600ms ease-out, box-shadow 400ms ease, border-color 400ms ease';
+      const dist = Math.hypot(dx, dy);
+
+      let tx = 0, ty = 0, near = false;
+      /* Under a pixel the direction vector is meaningless and dx/dist blows up
+         to NaN, which wipes the transform out entirely. */
+      if (dist > 1 && dist < maxDist) {
+        near = true;
+        /* Never travel more than part of the way to the cursor. At a flat 18px
+           a bubble the cursor had already reached would shoot straight past it,
+           flipping the sign of dx and getting yanked back on the next frame -
+           sixty times a second, which is what the vibrating was. */
+        const strength = Math.min((1 - dist / maxDist) * 18, dist * 0.6);
+        tx = (dx / dist) * strength;
+        ty = (dy / dist) * strength;
       }
+
+      el.style.transform = `translate(${tx.toFixed(1)}px,${ty.toFixed(1)}px)`;
+      el.style.transition = near
+        ? 'opacity 800ms ease, transform 180ms ease-out, box-shadow 400ms ease, border-color 400ms ease'
+        : 'opacity 800ms ease, transform 600ms ease-out, box-shadow 400ms ease, border-color 400ms ease';
     });
+
     raf = requestAnimationFrame(attractLoop);
   }
 
