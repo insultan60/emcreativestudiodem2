@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/workDetail";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Westside Realty Group Case Study &mdash; The EM Creative Studio",
+  title: "Westside Realty Group Case Study — The EM Creative Studio",
   description: "How a full site rebuild and local SEO foundation doubled listing engagement for Westside Realty Group in 90 days. A case study from The EM Creative Studio.",
   alternates: { canonical: "/work/westside-realty-group" },
 };

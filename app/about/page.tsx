@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/about";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "About &mdash; The EM Creative Studio",
+  title: "About — The EM Creative Studio",
   description: "Meet the six people behind The EM Creative Studio, a boutique real estate marketing agency in Los Angeles led by founder Seda Naumenko.",
   alternates: { canonical: "/about" },
 };

@@ -162,6 +162,19 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <a class="svc-row__link" href="/contact">Talk to us about Ads <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
         </div>
       </article>
+
+      <article class="svc-row" data-rise>
+        <div class="svc-row__panel">
+          <img class="svc-row__img" src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg" alt="Close-up of HTML source code listing a page&rsquo;s internal links" loading="lazy" decoding="async">
+        </div>
+        <div class="svc-row__content">
+          <span class="svc-row__no">07 / Search</span>
+          <h3 class="svc-row__ttl"><a href="/services/seo">SEO &amp; Local Search</a></h3>
+          <p class="svc-row__body">Keyword research, on-page and technical fixes, Google Business Profile, citations and content &mdash; sold as its own monthly plan from $200.</p>
+          <ul class="svc-row__tags"><li>Local SEO</li><li>Technical SEO</li><li>Content &amp; Links</li></ul>
+          <a class="svc-row__link" href="/services/seo">See the SEO plans <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+        </div>
+      </article>
     </div>
 
     <div style="text-align:center; margin-top:clamp(32px,4.4vh,48px)" data-rise>
@@ -256,6 +269,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <ul>
           <li><a href="/services">Services</a></li>
           <li><a href="/packages">Packages</a></li>
+          <li><a href="/services/seo">SEO Plans</a></li>
           <li><a href="/work">Work</a></li>
           <li><a href="/#process">Process</a></li>
         </ul>

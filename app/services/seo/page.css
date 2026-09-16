@@ -1,0 +1,932 @@
+/* Stylesheet for /services/seo.
+
+   Built on app/packages/page.css: the SEO plans reuse that page's pricing
+   language wholesale (.packs cards, the .cmp table, .addon-card grid, .faq),
+   so the two pricing pages read as one system. Duplicated rather than imported
+   because that is this site's convention - the comps define .hero, .btn and
+   .h2 differently from each other and from the home page, so each route loads
+   only the sheet it was drawn against. If a shared atom changes on /packages,
+   change it here too.
+
+   Everything below the ROUTE ADDITIONS banner at the end of this file is new
+   for this page: the audience toggle, the growth timeline, the flat plan grid,
+   and the price line on the add-on cards. */
+
+/* ==================================================================
+   EM CREATIVE STUDIO — design tokens (identical to homepage)
+   ================================================================== */
+:root{
+  --paper:        #F6F4F1;
+  --linen:        #EDE9E3;
+  --champagne:    #D6C6B4;
+  --champagne-lo: #E7DDD2;
+  --champagne-hi: #A89A8B;
+  --cocoa:        #4A443D;
+  --cta:          #000000;
+  --espresso:     #000000;
+  --sage:         #6E7865;
+  --sage-mist:    #E3E7DE;
+  --taupe:        #A89A8B;
+  --ink:          #000000;
+  --ink-soft:     rgba(0,0,0,.58);
+  --ink-faint:    rgba(0,0,0,.30);
+  --hair:         rgba(0,0,0,.16);
+
+  --display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-soft:   cubic-bezier(0.33, 1, 0.68, 1);
+
+  --crown-img: url("/images/pg/92108b3bf579f26f.webp");
+
+  --gut:  clamp(18px, 4vw, 72px);
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-sm: 12px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; }
+::selection{ background:var(--champagne); color:var(--espresso); }
+
+/* ---- shared atoms (identical to homepage) ------------------------ */
+.wrap{ width:min(1440px, 100% - var(--gut)*2); margin-inline:auto; }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:12px;
+  font-size:11px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--cocoa); opacity:.6;
+  white-space:nowrap;
+}
+.eyebrow::before,.eyebrow::after{
+  content:''; flex:0 0 28px; height:1.5px;
+  background:var(--cocoa); opacity:.4;
+}
+.eyebrow .crown{ display:none; }
+
+.btn{
+  display:inline-flex; align-items:center; gap:.9em;
+  padding:16px 24px;
+  border-radius:999px;
+  border:1px solid transparent;
+  font-family:var(--sans);
+  font-size:14px; font-weight:500; letter-spacing:-.01em;
+  text-decoration:none;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background-color 240ms ease, color 240ms ease,
+             border-color 240ms ease, transform 150ms var(--ease-out);
+}
+.btn svg{ transition:transform 260ms var(--ease-out); flex:none; }
+.btn:active{ transform:scale(.97); }
+.btn--dark{ background:var(--cta); color:var(--paper); }
+.btn--ghost{ background:transparent; color:var(--ink); border-color:var(--hair); }
+.btn--paper{ background:var(--paper); color:var(--cta); }
+@media (hover:hover) and (pointer:fine){
+  .btn--dark:hover { background:var(--cocoa); }
+  .btn--ghost:hover{ background:var(--cta); color:var(--paper); border-color:var(--cta); }
+  .btn--paper:hover{ background:var(--champagne); }
+  .btn:hover svg{ transform:translateX(5px); }
+}
+
+:focus-visible{ outline:2px solid var(--cocoa); outline-offset:3px; border-radius:6px; }
+
+[data-rise]{
+  opacity:0; transform:translateY(22px);
+  transition:opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+}
+[data-rise].in{ opacity:1; transform:none; }
+@keyframes navExpand{
+  0%  { transform:scaleX(.3) scaleY(.6); opacity:0; }
+  50% { opacity:1; }
+  100%{ transform:scaleX(1) scaleY(1); opacity:1; }
+}
+@media (prefers-reduced-motion:reduce){
+  .bub-float{ animation:none !important; }
+  .bub{ transition:none !important; }
+}
+
+/* ==================================================================
+   SECTION CHROME (identical to homepage)
+   ================================================================== */
+.sec{ position:relative; padding-block:clamp(80px,11vh,160px); }
+.sec--linen{ background:var(--linen); }
+.sec-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+.h2{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(1.95rem,4.8vw,4.1rem);
+  line-height:.96; letter-spacing:-.028em;
+  margin:.34em 0 0; max-width:16ch;
+}
+.h2 .tint{ color:var(--champagne-hi); }
+.lede{ font-size:clamp(15px,1.15vw,18px); line-height:1.5; color:var(--ink-soft); max-width:44ch; }
+
+/* ==================================================================
+   PACKAGES HERO
+   ================================================================== */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:clamp(120px,16vh,160px) var(--gut) clamp(56px,8vh,90px);
+  overflow:hidden;
+  text-align:center;
+}
+.hero__ground{
+  position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(120% 78% at 50% -14%, rgba(255,255,255,.72) 0%, rgba(255,255,255,0) 58%),
+    var(--champagne);
+}
+.hero__scrim{
+  position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(52% 34% at 50% 44%, rgba(231,221,210,.62) 0%, rgba(231,221,210,.24) 58%, rgba(231,221,210,0) 84%);
+}
+.hero__weave{
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  opacity:.30; mix-blend-mode:soft-light;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8 0.012' numOctaves='2' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:300px 300px;
+}
+.hero .eyebrow{ color:rgba(0,0,0,.66); border-color:rgba(0,0,0,.24); }
+.hero .btn--ghost{ color:var(--cta); border-color:rgba(0,0,0,.30); }
+.hero .btn--ghost:hover{ background:var(--cta); color:var(--champagne); border-color:var(--cta); }
+.hero__inner{ position:relative; z-index:5; width:100%; max-width:1180px; }
+
+.hero .eyebrow{
+  opacity:0; transform:translateY(-6px);
+  animation:riseIn 640ms var(--ease-out) 120ms forwards;
+}
+@keyframes riseIn{ to{ opacity:1; transform:none; } }
+
+.hero__hl{
+  margin:clamp(12px,2vh,20px) auto 0;
+  max-width:16ch;
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.05rem,5.15vw,4.6rem);
+  line-height:.96;
+  letter-spacing:-.032em;
+  color:var(--espresso);
+}
+.hero__hl .w{ display:inline-block; overflow:hidden; padding-block:.08em; margin-block:-.08em; vertical-align:bottom; }
+.hero__hl .w > i{ display:inline-block; font-style:normal; transform:translateY(105%); animation:wordUp 900ms var(--ease-out) forwards; }
+@keyframes wordUp{ to{ transform:translateY(0); } }
+.hero__hl .tint{ color:var(--cocoa); font-style:normal; }
+
+/* single crown accent, echoing the homepage's floating liquid crown */
+.pk-crown{
+  position:absolute; z-index:1; pointer-events:none;
+  width:min(15vw,190px); right:5%; top:9%;
+  aspect-ratio:900/625;
+  background:var(--crown-img) center / 100% 100% no-repeat;
+  opacity:0; filter:brightness(1);
+  animation:crownCast 1400ms var(--ease-soft) 200ms forwards, crownFloat 7s ease-in-out 1.6s infinite;
+}
+@keyframes crownCast{ 0%{ opacity:0; filter:blur(10px); transform:translateY(14px); } 100%{ opacity:1; filter:blur(0); transform:translateY(0); } }
+@keyframes crownFloat{ 0%,100%{ transform:translateY(0) rotate(-3deg); } 50%{ transform:translateY(-10px) rotate(2deg); } }
+@media (max-width:900px){ .pk-crown{ width:min(24vw,120px); right:2%; top:5%; } }
+
+/* speech-bubble price tags. On narrow/medium screens they sit as a calm inline
+   row between the lede and the CTAs; from 1100px up they lift out of the flow
+   and frame the hero copy, two per side, each with a gentle idle float and a
+   soft lift-on-hover micro-interaction. */
+.hero__bubs{
+  position:relative; z-index:6;
+  display:flex; align-items:center; justify-content:center;
+  gap:clamp(14px,2.4vw,28px); flex-wrap:wrap;
+  margin:clamp(24px,3.4vh,34px) auto 0;
+}
+.bub-float{ display:inline-flex; animation:bubFloat 4.6s ease-in-out infinite; }
+.bub-float--a{ animation-delay:1.9s; }
+.bub-float--c{ animation-delay:2s; animation-duration:5.1s; }
+.bub-float--b{ animation-delay:2.1s; animation-duration:4.3s; }
+.bub-float--d{ animation-delay:2.25s; animation-duration:4.9s; }
+@keyframes bubFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+
+.bub{
+  position:relative; z-index:6;
+  display:inline-flex; align-items:center;
+  padding:8px 15px 9px;
+  border-radius:999px;
+  font-family:var(--sans); font-weight:500; font-size:clamp(11px,1.05vw,14px);
+  letter-spacing:-.005em; white-space:nowrap;
+  opacity:0; transform:scale(.86) rotate(var(--br,0deg));
+  animation:bubIn 620ms var(--ease-out) forwards;
+  transition:transform 320ms var(--ease-out), box-shadow 320ms var(--ease-out);
+}
+.bub::after{
+  content:""; position:absolute; bottom:-5px; left:var(--tail,22px);
+  width:11px; height:11px; background:inherit;
+  border-radius:0 0 3px 0;
+  transform:rotate(45deg) skew(-6deg,-6deg);
+  transition:inherit;
+}
+@keyframes bubIn{ to{ opacity:1; transform:scale(1) rotate(var(--br,0deg)); } }
+.bub--a{ background:var(--espresso); color:var(--champagne); animation-delay:1.3s; }
+.bub--b{ background:var(--taupe);    color:var(--paper); animation-delay:1.5s; }
+.bub--c{ background:var(--paper);    color:var(--espresso); box-shadow:0 6px 18px -8px rgba(0,0,0,.4); animation-delay:1.4s; }
+.bub--d{ background:var(--cta); color:var(--champagne-lo); animation-delay:1.6s; }
+@media (hover:hover) and (pointer:fine){
+  .bub:hover{ transform:scale(1.07) translateY(-5px) rotate(0deg); box-shadow:0 16px 30px -12px rgba(0,0,0,.35); }
+}
+
+/* wide screens: lift the four tags out of flow and frame the hero copy */
+@media (min-width:1100px){
+  .hero__bubs{
+    position:absolute; inset:0; z-index:6;
+    display:block; margin:0; pointer-events:none;
+  }
+  .hero__bubs .bub-float{ position:absolute; pointer-events:auto; }
+  .bub-pos--l1{ left:5%;  top:34%; }
+  .bub-pos--l2{ left:9%;  top:57%; }
+  .bub-pos--r1{ right:6%; top:42%; }
+  .bub-pos--r2{ right:4%; top:64%; }
+}
+
+.hero__lede{
+  position:relative; z-index:5;
+  max-width:42ch; margin:clamp(18px,2.8vh,28px) auto 0;
+  font-size:clamp(14px,1.15vw,17px); line-height:1.5;
+  color:rgba(0,0,0,.62);
+  opacity:0; animation:riseIn 800ms var(--ease-out) 1100ms forwards;
+}
+.hero__lede strong{ color:var(--espresso); font-weight:500; }
+.hero__acts{
+  position:relative; z-index:5;
+  display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap;
+  margin-top:clamp(20px,2.8vh,26px);
+  opacity:0; animation:riseIn 800ms var(--ease-out) 1700ms forwards;
+}
+@media (max-width:720px){
+  .hero{ padding-top:clamp(112px,15vh,150px); }
+  .hero__hl{ font-size:clamp(1.9rem,8.6vw,3rem); max-width:14ch; letter-spacing:-.028em; }
+}
+
+/* ==================================================================
+   PACKAGES — expanding bars (identical component to homepage, richer content)
+   ================================================================== */
+.packs{ display:flex; gap:12px; margin-top:clamp(34px,5vh,60px); min-height:clamp(420px,56vh,560px); }
+.pack{
+  position:relative; flex:1 1 0; min-width:0;
+  border-radius:var(--r-lg); overflow:hidden;
+  border:1px solid var(--hair);
+  padding:clamp(22px,2.4vw,36px);
+  display:flex; flex-direction:column;
+  text-align:left; font:inherit; color:inherit;
+  background:var(--paper); cursor:pointer;
+  transition:flex-grow 620ms var(--ease-out), background-color 460ms ease,
+             color 460ms ease, border-color 460ms ease;
+}
+.pack[aria-expanded="true"]{ flex-grow:3.1; }
+.pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
+.pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sage); color:var(--paper); border-color:var(--sage); }
+.pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+.pack__name{
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(1.2rem,2vw,1.8rem); letter-spacing:-.024em; margin:0;
+  white-space:nowrap;
+}
+.pack__tag{ font-size:10px; letter-spacing:.14em; text-transform:uppercase; opacity:.6; }
+.pack__hint{
+  margin-top:auto; font-size:13px; opacity:.5;
+  transition:opacity 300ms ease;
+}
+.pack[aria-expanded="true"] .pack__hint{ display:none; }
+.pack__reveal{
+  margin-top:auto;
+  opacity:0; transform:translateY(14px);
+  transition:opacity 460ms ease 120ms, transform 520ms var(--ease-out) 120ms;
+}
+.pack[aria-expanded="true"] .pack__reveal{ opacity:1; transform:none; }
+.pack__price{
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(1.4rem,2.3vw,2.05rem); letter-spacing:-.024em; margin:0 0 4px;
+}
+.pack__price small{ font-family:var(--sans); font-size:12px; font-weight:400; opacity:.6; letter-spacing:.04em; }
+.pack__list{ list-style:none; padding:0; margin:16px 0 22px; font-size:14px; line-height:1.75; opacity:.82; }
+.pack__list li{ display:flex; gap:10px; }
+.pack__list li::before{ content:"\2014"; opacity:.5; }
+@media (max-width:820px){
+  .packs{ flex-direction:column; min-height:0; }
+  .pack[aria-expanded="true"]{ flex-grow:1; }
+  .pack__reveal{ display:block; opacity:1; transform:none; position:relative; margin-top:16px; }
+  .pack__hint{ display:none; }
+}
+
+/* ==================================================================
+   COMPARISON TABLE
+   ================================================================== */
+.cmp{ margin-top:clamp(40px,5.4vh,60px); overflow-x:auto; border-radius:var(--r-lg); border:1px solid var(--hair); }
+.cmp table{ width:100%; border-collapse:collapse; min-width:640px; background:var(--paper); }
+.cmp th,.cmp td{ padding:16px 20px; text-align:left; font-size:14px; border-bottom:1px solid var(--hair); }
+.cmp thead th{
+  font-family:var(--display); font-weight:700; font-size:13px;
+  letter-spacing:-.01em; vertical-align:bottom; padding-top:22px;
+}
+.cmp thead th:first-child{ color:var(--ink-soft); font-weight:600; font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+.cmp thead .tier-pill{
+  display:inline-block; padding:4px 12px; border-radius:999px;
+  font-size:10px; letter-spacing:.1em; text-transform:uppercase; margin-bottom:8px;
+}
+.cmp thead th:nth-child(2) .tier-pill{ background:rgba(0,0,0,.08); color:var(--espresso); }
+.cmp thead th:nth-child(3) .tier-pill{ background:var(--champagne); color:var(--espresso); }
+.cmp thead th:nth-child(4) .tier-pill{ background:var(--sage); color:var(--paper); }
+.cmp tbody th{ font-weight:500; color:var(--ink-soft); white-space:nowrap; }
+.cmp td{ color:var(--ink); opacity:.85; }
+.cmp td.yes{ color:var(--cta); font-weight:600; }
+.cmp td.no{ opacity:.3; }
+.cmp tbody tr:last-child th, .cmp tbody tr:last-child td{ border-bottom:none; }
+.cmp tbody tr:hover{ background:var(--linen); }
+
+/* ==================================================================
+   ADD-ONS
+   ================================================================== */
+.addons__grid{
+  margin-top:clamp(36px,5vh,56px);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+}
+.addon-card{
+  background:var(--paper);
+  border:1px solid var(--hair);
+  border-radius:var(--r-md);
+  padding:clamp(24px,2.4vw,30px);
+  display:flex; flex-direction:column; gap:14px;
+  transition:transform 320ms var(--ease-soft), box-shadow 320ms var(--ease-soft), border-color 320ms ease;
+}
+.addon-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 22px 44px -22px rgba(0,0,0,.28);
+  border-color:transparent;
+}
+.addon-card__icon{
+  width:44px; height:44px; border-radius:50%;
+  background:rgba(214,198,180,.28);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--cta); flex:none;
+  transition:background 260ms ease, transform 260ms var(--ease-out), color 260ms ease;
+}
+.addon-card:hover .addon-card__icon{ background:var(--cta); color:var(--paper); transform:scale(1.08); }
+.addon-card h4{ font-family:var(--display); font-weight:700; font-size:16px; margin:0; letter-spacing:-.01em; }
+.addon-card p{ font-size:14px; line-height:1.6; color:var(--ink-soft); margin:0; }
+@media (max-width:1000px){ .addons__grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:600px){ .addons__grid{ grid-template-columns:1fr; } }
+
+/* ==================================================================
+   FAQ
+   ================================================================== */
+.faq{ max-width:820px; margin:clamp(36px,5vh,56px) auto 0; display:flex; flex-direction:column; gap:12px; }
+.faq-item{
+  border:1px solid var(--hair); border-radius:var(--r-md);
+  background:var(--paper); overflow:hidden;
+}
+.faq-item__q{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:20px 24px; background:none; border:none; cursor:pointer;
+  font-family:var(--display); font-weight:700; font-size:15px; letter-spacing:-.01em;
+  color:var(--ink); text-align:left;
+}
+.faq-item__chev{ flex:none; transition:transform 380ms var(--ease-out); color:var(--cta); }
+.faq-item[data-open="true"] .faq-item__chev{ transform:rotate(135deg); }
+.faq-item__a-wrap{
+  display:grid; grid-template-rows:0fr;
+  transition:grid-template-rows 420ms var(--ease-out);
+}
+.faq-item[data-open="true"] .faq-item__a-wrap{ grid-template-rows:1fr; }
+.faq-item__a-inner{ overflow:hidden; }
+.faq-item__a{ padding:0 24px 22px; font-size:14px; line-height:1.7; color:var(--ink-soft); margin:0; max-width:66ch; }
+.faq-item:hover{ border-color:var(--champagne-hi); }
+
+/* ==================================================================
+   CTA (identical pattern to homepage)
+   ================================================================== */
+.cta-end{ padding-block:clamp(80px,13vh,160px); }
+.cta-end .h2{ max-width:16ch; }
+.cta-end .row{ display:flex; align-items:flex-end; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+
+/* ==================================================================
+   FOOTER (identical to homepage)
+   ================================================================== */
+.foot{
+  padding:clamp(56px,8vh,100px) var(--gut) clamp(28px,4vh,48px);
+  position:relative;
+  background:#D6C6B4;
+  color:var(--ink);
+  overflow:hidden;
+}
+.foot::after{
+  content:''; position:absolute; left:50%; bottom:-8%;
+  width:clamp(500px,50vw,800px); aspect-ratio:900/625;
+  background:var(--crown-img) center / contain no-repeat;
+  opacity:.03; pointer-events:none;
+  transform:translateX(-50%);
+}
+.foot__inner{ max-width:1280px; margin:0 auto; position:relative; z-index:1; }
+.foot__header{
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:16px;
+  padding-bottom:clamp(28px,3.5vh,44px);
+  border-bottom:1px solid rgba(0,0,0,.12);
+  margin-bottom:clamp(36px,4.5vh,56px);
+}
+
+/* The footer mark ships in white ink, drawn for the black footer this design
+   used to have. On Crown Cream it has to read as EM Black, so the artwork is
+   flattened rather than shipping a second file. */
+.foot__header img{ filter:brightness(0); opacity:.86; }
+.foot__header .brand{ color:var(--ink); }
+.foot__tagline{
+  font-size:clamp(14px,1.2vw,16px); color:var(--champagne);
+  opacity:.5; font-style:italic; max-width:36ch; text-align:right;
+}
+.foot__body{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.5fr;
+  gap:clamp(32px,4vw,64px);
+  align-items:start;
+  padding-bottom:clamp(36px,4.5vh,56px);
+  border-bottom:1px solid rgba(0,0,0,.12);
+  margin-bottom:clamp(28px,3.5vh,44px);
+}
+.foot__label{
+  font-size:12px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--champagne);
+  margin-bottom:18px; opacity:.6;
+}
+.foot__body ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+.foot__body li a{
+  font-size:15px; color:rgba(0,0,0,.62); text-decoration:none;
+  display:inline-block; position:relative;
+  transition:color 240ms ease, transform 220ms var(--ease-out);
+}
+.foot__body li a::after{
+  content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px;
+  background:var(--ink);
+  transition:width 300ms var(--ease-out);
+}
+.foot__body li a:hover{ color:var(--ink); transform:translateX(3px); }
+.foot__body li a:hover::after{ width:100%; }
+.foot__contact li{ display:flex; align-items:center; gap:12px; }
+.foot__contact-icon{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid rgba(0,0,0,.14);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--champagne); flex:none;
+  transition:all 280ms var(--ease-out);
+}
+.foot__contact li:hover .foot__contact-icon{
+  background:var(--ink); color:var(--paper);
+  border-color:var(--champagne);
+  transform:scale(1.1) rotate(-4deg);
+  box-shadow:0 0 20px rgba(214,198,180,.2);
+}
+.foot__contact li a, .foot__contact li span{ font-size:14px; color:rgba(0,0,0,.62); }
+.foot__social-row{
+  display:flex; gap:10px; margin-top:clamp(16px,2vh,24px);
+  padding-top:clamp(16px,2vh,24px);
+  border-top:1px solid rgba(0,0,0,.06);
+}
+.foot__social-row a{
+  width:42px; height:42px; border-radius:50%;
+  border:1px solid rgba(0,0,0,.12);
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(0,0,0,.4); text-decoration:none;
+  transition:all 280ms var(--ease-out);
+}
+.foot__social-row a:hover{
+  color:var(--espresso); background:var(--ink);
+  border-color:var(--champagne);
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 8px 24px -6px rgba(214,198,180,.3);
+}
+.foot__legal{
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px; color:rgba(0,0,0,.5);
+  flex-wrap:wrap; gap:12px;
+  position:relative; z-index:1;
+}
+.foot__legal-links{ display:flex; gap:clamp(16px,2.5vw,36px); }
+.foot__legal-links a{ text-decoration:none; color:rgba(0,0,0,.5); transition:color 200ms ease; }
+.foot__legal-links a:hover{ color:var(--ink); }
+@media (max-width:860px){
+  .foot__header{ flex-direction:column; align-items:flex-start; }
+  .foot__tagline{ text-align:left; }
+  .foot__body{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:560px){
+  .foot__body{ grid-template-columns:1fr; }
+}
+
+:root{
+  --nav-bg:       #D6C6B4;
+  --nav-glass:    rgba(214,198,180,.55);
+  --nav-ink:      #000000;
+  --nav-ease-dur: 900ms;
+}
+
+/* ==================================================================
+   NAV — floating pill
+   ================================================================== */
+.nav{
+  position:fixed; z-index:60;
+  top:18px; left:50%;
+  transform:translateX(-50%);
+  display:flex; align-items:center;
+  width:calc(100% - var(--gut) * 2);
+  max-width:1280px;
+  justify-content:center;
+  pointer-events:none;
+}
+.nav > *{ pointer-events:auto; }
+
+.nav-pill{
+  position:relative;
+  display:flex; align-items:center; gap:clamp(10px,1.4vw,22px);
+  padding:6px 6px 6px 6px;
+  /* frosted sand: the bar is the hero's own tone dropped to part opacity so
+     whatever scrolls under it blurs through. The badge and the CTA stay fully
+     opaque on top, so only this panel reads as glass. The hairline and the
+     inset top highlight are what sell it as a pane rather than a flat tint. */
+  background:var(--nav-glass);
+  /* unprefixed only: the build's CSS minifier collapses a
+     backdrop-filter/-webkit-backdrop-filter pair down to whichever comes
+     last, so shipping both silently left only the prefixed one — which
+     Chromium does not support, killing the blur outright. */
+  backdrop-filter:blur(18px) saturate(155%);
+  border:1px solid rgba(255,255,255,.38);
+  border-radius:999px;
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.42),
+             inset 0 1px 0 rgba(255,255,255,.5);
+  transition:box-shadow 520ms var(--ease-out),
+             gap var(--nav-ease-dur) var(--ease-out);
+  animation:navDrop 1000ms var(--ease-out) 120ms both;
+}
+@keyframes navDrop{
+  from{ opacity:0; transform:translateY(-18px) scale(.68); }
+  to  { opacity:1; transform:none; }
+}
+body.scrolled .nav-pill{
+  box-shadow:0 16px 40px -16px rgba(0,0,0,.38),
+             inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+/* a slow breath on the badge so it never sits perfectly still while it waits */
+body.nav-boot .nav .brand{ animation:navBreathe 3200ms ease-in-out 1100ms infinite; }
+
+/* Once the pill has collapsed to the badge it is a small mark floating over
+   whatever is scrolling past, so it sits back until it is wanted. */
+.nav .brand{ transition:opacity 420ms var(--ease-out); }
+body.nav-tucked:not(.nav-open) .nav .brand{ opacity:.45; }
+body.nav-tucked:not(.nav-open) .nav .brand:hover,
+body.nav-tucked:not(.nav-open) .nav .brand:focus-visible{ opacity:1; }
+@media (hover:none){
+  /* no hover to bring it back on touch, so do not fade it as far */
+  body.nav-tucked:not(.nav-open) .brand{ opacity:.6; }
+}
+@keyframes navBreathe{
+  0%,100%{ transform:scale(1); }
+  50%    { transform:scale(1.05); }
+}
+
+.nav .brand{
+  display:inline-flex; align-items:center; justify-content:center;
+  flex:none;
+  width:64px; height:64px;
+  border-radius:50%;
+  background:var(--nav-ink);
+  overflow:hidden;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform 520ms var(--ease-out);
+}
+/* The mark ships in champagne ink, flattened to white so it reads on black.
+   Its 200x200 canvas is mostly padding — the ink is only 140x125 and sits
+   off-centre (margins L45/R15, T28/B47) — so the box is oversized to bring the
+   ink up to size, then nudged by the difference between the ink's centre and
+   the canvas's. The offsets are percentages of the image's own box, so they
+   stay correct at any height. */
+.nav .brand img{
+  height:54px !important; width:auto !important;
+  filter:brightness(0) invert(1);
+  transform:translate(-7.5%, 4.75%);
+}
+@media (hover:hover) and (pointer:fine){
+  body.nav-tucked:not(.nav-open) .brand:hover{ transform:scale(1.06); }
+}
+.nav .brand .crown{ width:22px; color:var(--champagne-hi); }
+.nav .brand em{ font-style:normal; }
+
+/* The collapsible halves ride a 1fr -> 0fr grid track: the animated value is
+   tied to the content's real width, so there's no dead zone or snap at either
+   end. Opening lets the width lead and the content fade in behind it; closing
+   fades first, then draws the track shut. */
+.nav-collapse{
+  display:grid; grid-template-columns:1fr; min-width:0;
+  transition:grid-template-columns var(--nav-ease-dur) var(--ease-out),
+             opacity 460ms var(--ease-out) 300ms;
+}
+.nav-collapse > *{ min-width:0; overflow:hidden; }
+
+.nav-links{
+  display:flex; align-items:center; gap:clamp(18px,2.8vw,36px); justify-content:center;
+}
+.nav-links a{
+  position:relative;
+  font-size:14px; font-weight:500;
+  text-decoration:none; color:var(--nav-ink);
+  padding-block:4px;
+  white-space:nowrap;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:currentColor; transform:scaleX(0); transform-origin:0 50%;
+  transition:transform 260ms var(--ease-out);
+}
+@media (hover:hover) and (pointer:fine){ .nav-links a:hover::after{ transform:scaleX(1); } }
+
+.nav .btn{
+  padding:12px 22px; font-size:13px; flex:none; white-space:nowrap;
+  transition:background-color 240ms ease, color 240ms ease,
+             padding var(--nav-ease-dur) var(--ease-out),
+             border-width var(--nav-ease-dur) var(--ease-out);
+}
+.nav .btn--dark{
+  background:var(--nav-ink); color:var(--paper);
+  border-radius:999px;
+}
+@media (hover:hover) and (pointer:fine){
+  .nav .btn--dark:hover{ background:var(--espresso); }
+}
+
+/* ---- closed: nothing but the logo, in a true circle --------------------
+   Both halves collapse to a zero-width track, the flex gap closes, and the
+   button sheds its own padding — without that last part its 22px sides
+   survive the collapse and the pill stays a stadium instead of a circle.
+   What's left is the 64px badge inside 6px of padding: a 76px round. */
+body.nav-boot .nav-collapse,
+body.nav-tucked:not(.nav-open) .nav-collapse{
+  grid-template-columns:0fr; opacity:0; pointer-events:none;
+  transition:grid-template-columns var(--nav-ease-dur) var(--ease-out) 160ms,
+             opacity 300ms var(--ease-out);
+}
+body.nav-boot .nav-pill,
+body.nav-tucked:not(.nav-open) .nav-pill{ gap:0; }
+body.nav-boot .nav .btn,
+body.nav-tucked:not(.nav-open) .nav .btn{
+  padding-left:0; padding-right:0; border-width:0;
+}
+
+/* Below 860 the links used to be display:none with nothing in their place,
+   which left the site with no navigation at all on a phone — only the CTA.
+   They now drop out of the pill and into a panel the brand button opens,
+   reusing the .nav-open state the scroll-collapse already toggles. */
+@media (max-width:860px){
+  .nav-links{
+    position:absolute; left:0; right:0; top:calc(100% + 10px);
+    flex-direction:column; align-items:stretch; gap:2px;
+    padding:10px;
+    border-radius:var(--r-lg);
+    /* Near-opaque rather than the pill's glass tint. A dropdown sits over
+       whatever the page happens to have there — at 55% the headline read
+       straight through it, and backdrop-filter cannot be relied on to
+       rescue that (it is unsupported or disabled often enough to matter). */
+    background:#EFEAE4;
+    backdrop-filter:blur(18px) saturate(155%);
+    border:1px solid rgba(255,255,255,.6);
+    box-shadow:0 18px 40px -22px rgba(0,0,0,.5);
+    /* collapsed by default; no display:none, so it can animate */
+    opacity:0; visibility:hidden; transform:translateY(-8px);
+    transition:opacity 260ms var(--ease-out), transform 260ms var(--ease-out),
+               visibility 0s linear 260ms;
+  }
+  body.nav-open .nav-links{
+    opacity:1; visibility:visible; transform:none;
+    transition-delay:0s, 0s, 0s;
+  }
+  .nav-links a{
+    display:block; padding:13px 16px; border-radius:calc(var(--r-lg) - 6px);
+    font-size:1rem;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ background:rgba(255,255,255,.45); }
+  /* the pill has to stop clipping the panel, and the brand becomes a control */
+  .nav-pill{ position:relative; overflow:visible; }
+  .brand{ cursor:pointer; }
+}
+@media (prefers-reduced-motion:reduce){
+  .nav-pill, .nav-collapse, .nav .btn, .brand{ transition:none !important; }
+  .nav-pill, .brand, .nav-pill::after{ animation:none !important; }
+}
+
+/* the routes carry aria-current; the homepage never had a page to
+   mark, so this is the one rule the transplanted block does not bring. */
+.nav-links a[aria-current="page"]::after{ transform:scaleX(1); }
+
+/* The nav's .brand above is its own badge. The footer logo shares the
+   class, so it keeps the plain treatment the page shipped with - the
+   colour still comes from this sheet's own .foot__header .brand rule. */
+.foot__header .brand{ display:inline-flex; align-items:center; gap:9px;
+  text-decoration:none; font-family:var(--display);
+  font-size:19px; font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1; }
+.foot__header .brand img{ height:40px; width:auto; display:block; }
+
+/* The headline ships as plain text - it has to, so it is there for a crawler
+   and for a browser with no JS. The script then splits it into words to
+   animate them, and until it has, the whole finished line was painted on
+   screen: the flash of text before the animation. It is held back until the
+   split adds .words-in.
+
+   The html.js-words gate is set by an inline script in the layout, so with
+   scripting off nothing here applies and the headline just shows. That script
+   also clears the gate after two seconds, in case the split ever throws. */
+html.js-words [data-words]{ visibility:hidden; }
+html.js-words [data-words].words-in{ visibility:visible; }
+
+
+/* ==================================================================
+   ROUTE ADDITIONS — /services/seo only
+   ================================================================== */
+
+/* ---- audience toggle -------------------------------------------- */
+/* Two plan sets share this page. The segmented control swaps which one is
+   visible; both stay in the DOM so crawlers and no-JS visitors get all six
+   tiers (see the .plan-set fallback below). */
+.seg{
+  display:inline-flex; align-items:center; gap:4px;
+  padding:5px; margin:0 0 34px;
+  background:rgba(36,26,12,.05);
+  border:1px solid var(--hair);
+  border-radius:999px;
+}
+.seg__btn{
+  appearance:none; border:0; cursor:pointer;
+  font-family:var(--sans); font-size:13px; font-weight:600;
+  letter-spacing:.01em;
+  padding:10px 22px; border-radius:999px;
+  background:transparent; color:var(--ink-soft);
+  transition:background .34s var(--ease-out), color .34s var(--ease-out);
+}
+.seg__btn:hover{ color:var(--ink); }
+.seg__btn[aria-selected="true"]{
+  background:var(--paper); color:var(--ink);
+  box-shadow:0 1px 2px rgba(36,26,12,.10), 0 6px 18px rgba(36,26,12,.06);
+}
+.seg__btn:focus-visible{ outline:2px solid var(--cocoa); outline-offset:2px; }
+
+/* A set is only hidden once the script confirms it can do the swapping. Without
+   that gate a JS failure would leave the page with no pricing at all. */
+.plan-set[hidden]{ display:none; }
+.js-seg .plan-set--off{ display:none; }
+.plan-set__note{
+  margin:0 0 22px;
+  font-size:14px; line-height:1.6; color:var(--ink-soft);
+  max-width:64ch;
+}
+
+/* ---- growth timeline -------------------------------------------- */
+.tl{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  counter-reset:tl;
+}
+@media (max-width:900px){ .tl{ grid-template-columns:1fr; } }
+
+.tl__step{
+  position:relative;
+  padding:30px 28px 28px;
+  background:var(--paper);
+  border:1px solid var(--hair);
+  border-radius:var(--r-md);
+}
+.tl__step::before{
+  counter-increment:tl;
+  content:counter(tl);
+  position:absolute; top:-14px; left:28px;
+  width:28px; height:28px; border-radius:50%;
+  display:grid; place-items:center;
+  font-size:12px; font-weight:700;
+  background:var(--espresso); color:var(--paper);
+}
+.tl__when{
+  margin:0 0 6px;
+  font-size:11px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--cocoa); opacity:.6;
+}
+.tl__what{
+  margin:0 0 14px;
+  font-family:var(--display);
+  font-size:clamp(19px,2vw,23px); font-weight:600;
+  letter-spacing:-.015em; line-height:1.2;
+}
+.tl__list{ margin:0; padding:0; list-style:none; }
+.tl__list li{
+  position:relative; padding-left:18px; margin-bottom:7px;
+  font-size:14.5px; line-height:1.55; color:var(--ink-soft);
+}
+.tl__list li::before{
+  content:""; position:absolute; left:0; top:.6em;
+  width:6px; height:1px; background:var(--champagne-hi);
+}
+
+/* ---- add-on price line ------------------------------------------ */
+/* The /packages add-on cards are unpriced; these are quoted, so each card
+   carries its number. */
+.addon-card__price{
+  margin:14px 0 0;
+  font-family:var(--display);
+  font-size:17px; font-weight:600; letter-spacing:-.01em;
+  color:var(--ink);
+}
+.addon-card__price small{
+  font-size:13px; font-weight:500; color:var(--ink-soft);
+}
+
+/* ---- grouped feature lists inside a pack card ------------------- */
+/* Each SEO tier carries its full scope, which is far more than the three or
+   four lines the /packages cards hold, so the list is grouped under small
+   headings instead of running as one column of bullets. */
+.pack__group{
+  margin:16px 0 7px;
+  font-size:10.5px; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--cocoa); opacity:.72;
+}
+.pack__group:first-of-type{ margin-top:6px; }
+.pack__best{
+  margin:16px 0 0; padding-top:14px;
+  border-top:1px solid var(--hair);
+  font-size:13.5px; line-height:1.55; color:var(--ink-soft);
+}
+.pack__best strong{ color:var(--ink); font-weight:600; }
+
+/* ---- plans laid out flat, not as an accordion -------------------
+   /packages runs .packs as a fixed-height horizontal accordion: the row has
+   min-height clamp(420px,56vh,560px), each .pack is overflow:hidden, and only
+   the open one expands. That fits the five short bullets it was drawn for.
+   These tiers carry their full scope - twenty-odd lines under six headings -
+   which that row would simply clip, taking the "Best for" line and the button
+   with it.
+
+   So on this route the same cards are laid out three-up and always open. The
+   visual language is unchanged; only the mechanism differs. Everything is on
+   screen, which is also what the page is for: showing the whole plan. */
+.packs{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+  min-height:0;
+  align-items:start;
+}
+@media (max-width:1024px){ .packs{ grid-template-columns:1fr; } }
+
+.pack{
+  flex:none;
+  overflow:visible;
+  cursor:default;
+  height:auto;
+}
+/* No accordion, so nothing should look clickable or shift on hover. */
+.pack[aria-expanded="true"]{ flex-grow:0; }
+.pack,
+.pack:nth-child(1),
+.pack:nth-child(2),
+.pack:nth-child(3){
+  background:var(--paper);
+  color:var(--ink);
+  border-color:var(--hair);
+}
+/* The middle tier carries the weight, matching its "Most chosen" pill and the
+   lead card in the home page band. */
+.pack:nth-child(2){
+  background:var(--linen);
+  border-color:var(--champagne);
+}
+
+/* Always revealed: no hidden state to animate out of. */
+.pack__reveal{
+  margin-top:0;
+  opacity:1;
+  transform:none;
+  transition:none;
+}
+.pack__hint{ display:none; }
+
+.pack__list{ margin:0 0 4px; }
+.pack__price{ margin-bottom:10px; }

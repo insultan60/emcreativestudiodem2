@@ -337,6 +337,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <ul>
           <li><a href="/services">Services</a></li>
           <li><a href="/packages">Packages</a></li>
+          <li><a href="/services/seo">SEO Plans</a></li>
           <li><a href="/work">Work</a></li>
           <li><a href="/#process">Process</a></li>
         </ul>

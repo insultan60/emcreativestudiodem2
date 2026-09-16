@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/privacy";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy &mdash; The EM Creative Studio",
+  title: "Privacy Policy — The EM Creative Studio",
   description: "What The EM Creative Studio collects, why, and how to control it. Plain-language privacy policy, last updated September 2026.",
   alternates: { canonical: "/privacy" },
 };

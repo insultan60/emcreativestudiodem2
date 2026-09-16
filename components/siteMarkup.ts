@@ -559,6 +559,80 @@ export const SITE_BODY_HTML = `
   </div>
 </section>
 
+<!-- ============================ SEO PLANS ====================== -->
+<!-- Teaser for /services/seo. Deliberately NOT built on .pack: main.js claims
+     every .pack on the page for its one-open-at-a-time accordion, so a second
+     group of them would make these cards fight the retainer cards above. These
+     are flat, always-open cards instead, and need no script. -->
+<section class="sec" id="seo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-rise>
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          Search &middot; SEO plans
+        </span>
+        <h2 class="h2" data-rise>Getting found is its own job</h2>
+      </div>
+      <p class="lede" data-rise>Separate monthly plans for organic search, priced on their own. These are the real estate tiers &mdash; there is a matching track for every other kind of business.</p>
+    </div>
+
+    <div class="seo-band" data-rise>
+      <a class="seo-card" href="/services/seo" data-hot>
+        <div class="seo-card__top">
+          <h3 class="seo-card__name">Starter</h3>
+          <span class="seo-card__tag">Getting found</span>
+        </div>
+        <p class="seo-card__price">$200 <small>/ month</small></p>
+        <ul class="seo-card__list">
+          <li>10 local keywords</li>
+          <li>Google Business Profile, fully set up</li>
+          <li>20 directory citations</li>
+          <li>1 blog post a month</li>
+        </ul>
+        <span class="seo-card__more">See what is included <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+      </a>
+
+      <a class="seo-card seo-card--lead" href="/services/seo" data-hot>
+        <div class="seo-card__top">
+          <h3 class="seo-card__name">Growth</h3>
+          <span class="seo-card__tag">Most chosen</span>
+        </div>
+        <p class="seo-card__price">$500 <small>/ month</small></p>
+        <ul class="seo-card__list">
+          <li>25 keywords, neighborhood level</li>
+          <li>4 profile posts a week</li>
+          <li>40&ndash;50 citations &amp; 2&ndash;3 local links a month</li>
+          <li>2&ndash;3 blog posts a month</li>
+        </ul>
+        <span class="seo-card__more">See what is included <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+      </a>
+
+      <a class="seo-card" href="/services/seo" data-hot>
+        <div class="seo-card__top">
+          <h3 class="seo-card__name">Authority</h3>
+          <span class="seo-card__tag">Market leader</span>
+        </div>
+        <p class="seo-card__price">$800 <small>/ month</small></p>
+        <ul class="seo-card__list">
+          <li>50+ keywords, zip code level</li>
+          <li>Full technical SEO &amp; Core Web Vitals</li>
+          <li>5&ndash;6 neighborhood pages a quarter</li>
+          <li>Dedicated account manager</li>
+        </ul>
+        <span class="seo-card__more">See what is included <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+      </a>
+    </div>
+
+    <div class="seo-band__foot" data-rise>
+      <p>Not in real estate? There is a second track, from $299 a month.</p>
+      <a class="btn btn--dark" href="/services/seo" data-hot>
+        See all SEO plans <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ========================= TESTIMONIAL ======================= -->
 <section class="quote" id="testimonials">
   <!-- background quote mark -->
@@ -621,6 +695,7 @@ export const SITE_BODY_HTML = `
         <ul>
           <li><a href="/services" data-hot>Services</a></li>
           <li><a href="/packages" data-hot>Packages</a></li>
+          <li><a href="/services/seo" data-hot>SEO Plans</a></li>
           <li><a href="#quiz" data-hot>Assessment</a></li>
           <li><a href="#process" data-hot>Process</a></li>
         </ul>

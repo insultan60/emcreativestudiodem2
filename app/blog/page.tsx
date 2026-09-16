@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/blog";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Journal &mdash; The EM Creative Studio",
+  title: "Journal — The EM Creative Studio",
   description: "Strategy, craft and the occasional hot take on real estate marketing, written by the team that runs the campaigns. Notes from The EM Creative Studio.",
   alternates: { canonical: "/blog" },
 };

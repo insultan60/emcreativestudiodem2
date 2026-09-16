@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/contact";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Contact &mdash; The EM Creative Studio",
+  title: "Contact — The EM Creative Studio",
   description: "Tell us about your listings, your market, and what is not working yet. The EM Creative Studio replies within one business day, real person, no bot.",
   alternates: { canonical: "/contact" },
 };

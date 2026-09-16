@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/serviceDetail";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Social Media Management &mdash; The EM Creative Studio",
+  title: "Social Media Management — The EM Creative Studio",
   description: "Content planning, posting, captions, hashtag strategy, and community management for real estate brands, run by one senior team. Los Angeles boutique agency.",
   alternates: { canonical: "/services/social-media-management" },
 };

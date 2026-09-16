@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/blogDetail";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "The Listing Photo Mistake &mdash; The EM Creative Studio",
+  title: "The Listing Photo Mistake — The EM Creative Studio",
   description: "Buyers decide whether to click into a listing in under three seconds. We reviewed forty top-performing listings to find the one framing choice separating the scrolls-past from the saves.",
   alternates: { canonical: "/blog/the-listing-photo-mistake" },
 };

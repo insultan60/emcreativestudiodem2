@@ -1883,3 +1883,99 @@ body.hero-revealed .shot__frame{
    also clears the gate after two seconds, in case the split ever throws. */
 html.js-words [data-words]{ visibility:hidden; }
 html.js-words [data-words].words-in{ visibility:visible; }
+
+/* ==================================================================
+   SEO PLANS BAND — home page teaser for /services/seo
+   ==================================================================
+   Flat, always-open cards rather than .pack ones: main.js claims every .pack
+   on the page for a single one-open-at-a-time accordion, so a second group of
+   them would make these fight the retainer cards in #packages. These are links
+   straight through to the full page and need no script. */
+.seo-band{
+  display:grid; gap:18px;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+}
+@media (max-width:980px){ .seo-band{ grid-template-columns:1fr; } }
+
+.seo-card{
+  display:flex; flex-direction:column;
+  padding:30px 28px 26px;
+  background:var(--paper);
+  border:1px solid var(--hair);
+  border-radius:var(--r-md);
+  text-decoration:none; color:inherit;
+  transition:transform .44s var(--ease-out),
+             box-shadow .44s var(--ease-out),
+             border-color .44s var(--ease-out);
+}
+.seo-card:hover{
+  transform:translateY(-4px);
+  border-color:var(--champagne-hi);
+  box-shadow:0 2px 6px rgba(36,26,12,.05), 0 18px 44px rgba(36,26,12,.09);
+}
+.seo-card:focus-visible{ outline:2px solid var(--cocoa); outline-offset:3px; }
+
+/* The middle card carries the weight, matching the "Most chosen" pill. */
+.seo-card--lead{
+  background:var(--linen);
+  border-color:var(--champagne);
+}
+
+.seo-card__top{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; margin-bottom:16px;
+}
+.seo-card__name{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(20px,2vw,24px); font-weight:600;
+  letter-spacing:-.02em;
+}
+.seo-card__tag{
+  flex:none;
+  padding:5px 11px; border-radius:999px;
+  background:rgba(36,26,12,.06);
+  font-size:10px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase;
+  color:var(--cocoa);
+}
+.seo-card--lead .seo-card__tag{ background:rgba(36,26,12,.09); }
+
+.seo-card__price{
+  margin:0 0 18px; padding-bottom:18px;
+  border-bottom:1px solid var(--hair);
+  font-family:var(--display);
+  font-size:clamp(28px,3.2vw,36px); font-weight:600;
+  letter-spacing:-.03em; line-height:1;
+}
+.seo-card__price small{
+  font-size:14px; font-weight:500; letter-spacing:0;
+  color:var(--ink-soft);
+}
+
+.seo-card__list{ margin:0 0 22px; padding:0; list-style:none; flex:1; }
+.seo-card__list li{
+  position:relative; padding-left:18px; margin-bottom:9px;
+  font-size:14.5px; line-height:1.55; color:var(--ink-soft);
+}
+.seo-card__list li::before{
+  content:""; position:absolute; left:0; top:.62em;
+  width:7px; height:1px; background:var(--champagne-hi);
+}
+
+.seo-card__more{
+  display:inline-flex; align-items:center; gap:9px;
+  font-size:13px; font-weight:600; color:var(--ink);
+}
+.seo-card__more svg{ transition:transform .4s var(--ease-out); }
+.seo-card:hover .seo-card__more svg{ transform:translateX(4px); }
+
+.seo-band__foot{
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:18px;
+  margin-top:30px; padding-top:26px;
+  border-top:1px solid var(--hair);
+}
+.seo-band__foot p{
+  margin:0; font-size:15px; color:var(--ink-soft);
+}

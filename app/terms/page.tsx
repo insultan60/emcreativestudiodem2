@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/terms";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Terms &amp; Conditions &mdash; The EM Creative Studio",
+  title: "Terms & Conditions — The EM Creative Studio",
   description: "What you're agreeing to when you use this site or work with The EM Creative Studio. Plain-language terms, last updated September 2026.",
   alternates: { canonical: "/terms" },
 };

@@ -4,7 +4,7 @@ import { HTML } from "@/components/pages/services";
 import "./page.css";
 
 export const metadata: Metadata = {
-  title: "Services &mdash; The EM Creative Studio",
+  title: "Services — The EM Creative Studio",
   description: "Six marketing disciplines under one senior team: social, branding, content, email, print and digital advertising for real estate brands. Los Angeles boutique agency.",
   alternates: { canonical: "/services" },
 };
