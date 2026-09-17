@@ -12,7 +12,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en">
+    // suppressHydrationWarning is for the js-words class below and nothing
+    // else. The script adds it during parse, so the DOM React hydrates against
+    // already carries a class React never rendered, which it reports as a
+    // mismatch on <html>. Rendering the class server-side instead would defeat
+    // the point of it: with JS off, nothing would ever remove it and
+    // html.js-words [data-words]{visibility:hidden} would hide every headline
+    // on the site for good. The flag reaches this element's own attributes
+    // only, not its children, so a real mismatch anywhere below still reports.
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Set during parse, before the body paints, so the headline can be
             held back until its word-split has run - see the html.js-words rule
@@ -40,7 +48,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           it was designed against instead, so the pages cannot restyle each
           other. nav-boot goes with it: it holds the nav closed for the crown
           intro, which only the home page plays. */}
-      <body>{children}</body>
+      {/* Same reason as <html> above: SiteBody adds nav-boot here from an
+          inline script during parse, so the DOM React hydrates against carries
+          a class React never rendered. It cannot be rendered here instead -
+          that is the very thing the note above rules out. One level deep, so
+          nothing inside the body is excused from hydration checking. */}
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

@@ -806,3 +806,240 @@ body.nav-tucked:not(.nav-open) .nav .btn{
    also clears the gate after two seconds, in case the split ever throws. */
 html.js-words [data-words]{ visibility:hidden; }
 html.js-words [data-words].words-in{ visibility:visible; }
+
+/* ==================================================================
+   SITE-WIDE CORRECTIONS — written to outrank the page stylesheets
+   ==================================================================
+   This file is the home page's stylesheet, not a base for the others. Every
+   other route imports its own page.css and that sheet is the only one on the
+   page - see the note at the top of app/about/page.css for why. So a rule
+   written here reaches "/" and nothing else, which is how the footer
+   tap-target fix above came to work on one route out of fourteen.
+   The block below is repeated verbatim at the foot of all fourteen sheets.
+   Change it in one, change it in all of them, or the site drifts apart.
+   ================================================================== */
+
+/* Studio Sage, the fifth colour in the palette and the one the site barely
+   uses. The rules either side of every section eyebrow were Cocoa held at 40%
+   opacity - a brown so faint it read as a printing artefact. Sage at full
+   strength instead: still quiet at 28x1.5px, but a colour rather than a
+   ghost, and it turns up on nearly every section of every page.
+   Specificity is deliberate. One step above the page copies of
+   .eyebrow::before, one step below .news .eyebrow::before, which lightens
+   these for the dark newsletter band and has to keep doing so. */
+body .eyebrow::before,
+body .eyebrow::after{ background:var(--sage); opacity:1; }
+
+/* The badge no longer dims when the nav tucks. It was dropping to .45, and on
+   a phone it is the only route back to the top of the site - at that weight,
+   over Crown Cream, the lockup inside it washed out far enough to read as a
+   placeholder rather than a logo. The hover and focus rules that used to
+   bring it back are now the resting state. */
+body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
+@media (hover:none){
+  body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
+}
+
+@media (max-width:860px){
+  /* Footer links were 23px-tall boxes: the list's 12px gaps were doing the
+     spacing while the tappable target stayed the height of the text. Moving
+     that spacing inside the link grows the target to 43px and leaves the
+     footer's rhythm where it was. */
+  .foot .foot__body ul{ gap:0; }
+  .foot .foot__body li a{ display:inline-block; padding-block:11px; }
+
+  /* Same shape of problem in the legal row, and worse: three 20px-tall links
+     sitting side by side. */
+  .foot .foot__legal-links a{ display:inline-block; padding-block:12px; }
+}
+
+/* ...and again in the hero. The accent half of every hero headline - "their
+   crown", "behind the crown", "isn't working yet" - was Cocoa, a brown a
+   shade off the black beside it, so the two-tone split barely read as one.
+   Green makes it a deliberate second colour and ties the hero to the green
+   step card further down.
+
+   A deeper tone than --sage, and the reason is contrast, not taste. Studio
+   Sage on Paper is 4.2:1, fine, but several heroes sit on Crown Cream and
+   there it drops to 2.8:1 - under the 3:1 bar even for display type. This
+   tone holds 5.4:1 on Paper and 3.6:1 on Crown Cream, so the same rule works
+   on every hero the site has. Sage itself stays where it reads: the eyebrow
+   rules, the step card, the packages pill. */
+:root{ --sage-ink:#5E6656; }
+.hero__hl .tint{ color:var(--sage-ink); }
+
+/* ==================================================================
+   FOOTER — the home page's, verbatim
+   ==================================================================
+   The thirteen inner sheets each had their own footer rules, drifted away
+   from this one: smaller labels, a different grey, no crown watermark, no
+   social row. The markup is now one shared component (components/footer.ts),
+   so the styling has to match it or the shared markup lands in the wrong
+   dress. This block is a copy of the FOOTER section of app/globals.css and
+   sits last in the file so it wins over whatever the sheet said earlier.
+   Change it in globals.css and copy it out again - the two must not drift.
+   ================================================================== */
+/* ---- FOOTER ---- */
+.foot{
+  padding:clamp(56px,8vh,100px) var(--gut) clamp(28px,4vh,48px);
+  position:relative;
+  background:#D6C6B4;
+  color:var(--espresso);
+  overflow:hidden;
+}
+/* The crown in the footer used to be a ::after at 3% opacity - a watermark you
+   had to look for. It is a real element now, at the same weight the hero gives
+   its crowns, parked clear of the text columns and drifting on its own slow
+   loop. It reads the same artwork as everything else via --crown-img. */
+.foot__crown{
+  position:absolute;
+  width:min(24vw, 300px);
+  aspect-ratio:900 / 625;
+  right:3%;
+  bottom:6%;
+  background:var(--crown-img) center / 100% 100% no-repeat;
+  transform:rotate(-8deg);
+  opacity:.32;
+  pointer-events:none;
+  z-index:0;
+  animation:footCrownFloat 16s ease-in-out infinite;
+  transform-origin:50% 50%;
+}
+@keyframes footCrownFloat{
+  0%   { transform:translate3d(0px, 0px, 0)     rotate(-8deg)   scale(1); }
+  22%  { transform:translate3d(9px, -7px, 0)    rotate(-6.6deg) scale(1.015); }
+  46%  { transform:translate3d(-6px, 8px, 0)    rotate(-9.2deg) scale(0.99); }
+  70%  { transform:translate3d(7px, 5px, 0)     rotate(-7.4deg) scale(1.01); }
+  100% { transform:translate3d(0px, 0px, 0)     rotate(-8deg)   scale(1); }
+}
+@media (max-width:900px){
+  .foot__crown{ width:min(38vw, 220px); right:-2%; bottom:2%; opacity:.28; }
+}
+@media (max-width:600px){
+  .foot__crown{ display:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  .foot__crown{ animation:none; }
+}
+
+.foot__inner{ max-width:1280px; margin:0 auto; position:relative; z-index:1; }
+
+/* top row: logo + tagline */
+.foot__header{
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:16px;
+  padding-bottom:clamp(28px,3.5vh,44px);
+  border-bottom:1px solid rgba(0,0,0,.1);
+  margin-bottom:clamp(36px,4.5vh,56px);
+}
+
+/* Same file as the nav badge, which is drawn light for a dark ground. Crown
+   Cream needs it to read as EM Black instead, and the set it came in has no
+   dark-on-light lockup - its light version puts champagne ink on a background
+   that is very nearly champagne - so this one is still flattened. Height is
+   the box, not the ink, which is 0.525 of it: 108px leaves the lockup 57px
+   tall, the size the raster drew at. */
+.foot__header img{
+  height:108px; width:auto; display:block;
+  filter:brightness(0); opacity:.9;
+}
+.foot__header .brand{ color:var(--espresso); }
+.foot__header .crown{ color:var(--cocoa); }
+.foot__tagline{
+  font-size:clamp(14px,1.2vw,16px); color:var(--cocoa);
+  opacity:.6; font-style:italic; max-width:36ch; text-align:right;
+}
+
+/* main columns */
+.foot__body{
+  display:grid;
+  grid-template-columns:1fr 1fr 1.5fr;
+  gap:clamp(32px,4vw,64px);
+  align-items:start;
+  padding-bottom:clamp(36px,4.5vh,56px);
+  border-bottom:1px solid rgba(0,0,0,.1);
+  margin-bottom:clamp(28px,3.5vh,44px);
+}
+.foot__label{
+  font-size:12px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--espresso);
+  margin-bottom:18px; opacity:.6;
+}
+.foot__body ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
+.foot__body li a{
+  font-size:15px; color:var(--cocoa); opacity:.6; text-decoration:none;
+  display:inline-block; position:relative;
+  transition:color 240ms ease, opacity 240ms ease, transform 220ms var(--ease-out);
+}
+/* animated underline on hover */
+.foot__body li a::after{
+  content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px;
+  background:var(--cocoa);
+  transition:width 300ms var(--ease-out);
+}
+.foot__body li a:hover{ color:var(--espresso); opacity:1; transform:translateX(3px); }
+.foot__body li a:hover::after{ width:100%; }
+
+/* contact with icons */
+.foot__contact li{ display:flex; align-items:center; gap:12px; }
+.foot__contact-icon{
+  width:38px; height:38px; border-radius:50%;
+  border:1px solid rgba(0,0,0,.15);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--cta); flex:none;
+  transition:all 280ms var(--ease-out);
+}
+.foot__contact li:hover .foot__contact-icon{
+  background:var(--cta); color:var(--paper);
+  border-color:var(--cta);
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px -6px rgba(0,0,0,.35);
+}
+.foot__contact li a,
+.foot__contact li span{
+  font-size:14px; color:var(--cocoa); opacity:.6;
+}
+
+/* social row below contact */
+.foot__social-row{
+  display:flex; gap:10px; margin-top:clamp(16px,2vh,24px);
+  padding-top:clamp(16px,2vh,24px);
+  border-top:1px solid rgba(0,0,0,.08);
+}
+.foot__social-row a{
+  width:42px; height:42px; border-radius:50%;
+  border:1px solid rgba(0,0,0,.12);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--cocoa); opacity:.45; text-decoration:none;
+  transition:all 280ms var(--ease-out);
+}
+.foot__social-row a:hover{
+  color:var(--paper); background:var(--cta);
+  border-color:var(--cta); opacity:1;
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px -6px rgba(0,0,0,.35);
+}
+
+/* legal */
+.foot__legal{
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:13px; color:var(--cocoa);
+  flex-wrap:wrap; gap:12px;
+  position:relative; z-index:1;
+}
+.foot__legal-links{ display:flex; gap:clamp(16px,2.5vw,36px); }
+.foot__legal-links a{
+  text-decoration:none; color:var(--cocoa); opacity:.7;
+  transition:color 200ms ease, opacity 200ms ease;
+}
+.foot__legal-links a:hover{ color:var(--espresso); opacity:1; }
+
+@media (max-width:860px){
+  .foot__header{ flex-direction:column; align-items:flex-start; }
+  .foot__tagline{ text-align:left; }
+  .foot__body{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:560px){
+  .foot__body{ grid-template-columns:1fr; }
+  .foot__legal{ flex-direction:column; text-align:center; }
+}

@@ -70,7 +70,7 @@
   --nav-ease-dur: 900ms;
   /* how present the big 3D crown is once it has cast — it sits behind the
      headline, so it wants to read as a watermark, not a second subject */
-  --crown-op:     .52;
+  --crown-op:     .34;   /* sheen highlight; kept under the art's own weight */
   --ink:          #000000;
   --ink-soft:     rgba(0,0,0,.58);
   --ink-faint:    rgba(0,0,0,.30);
@@ -245,16 +245,17 @@ body.nav-tucked:not(.nav-open) .brand:focus-visible{ opacity:1; }
   cursor:pointer;
   transition:transform 520ms var(--ease-out);
 }
-/* The mark ships in champagne ink, flattened to white so it reads on black.
-   Its 200x200 canvas is mostly padding — the ink is only 140x125 and sits
-   off-centre (margins L45/R15, T28/B47) — so the box is oversized to bring the
-   ink up to size, then nudged by the difference between the ink's centre and
-   the canvas's. The offsets are percentages of the image's own box, so they
-   stay correct at any height. */
+/* The mark ships in EM Soft White, the colourway drawn for a dark ground, so
+   nothing is flattened here any more - it reads on the black badge as it was
+   drawn. Its square canvas still carries padding, the ink being 0.675 x 0.525
+   of the box, so the box is oversized to bring the ink up to size; 58px puts
+   the lockup at 39x30, close to the raster it replaced. The ink sits a hair
+   right of centre and a hair high, and the nudge below is that difference as a
+   percentage of the image's own box, so it holds at any height. */
 .brand img{
-  height:54px !important; width:auto !important;
-  filter:brightness(0) invert(1);
-  transform:translate(-7.5%, 4.75%);
+  height:58px !important; width:auto !important;
+  display:block;
+  transform:translate(-2.1%, 0.9%);
 }
 @media (hover:hover) and (pointer:fine){
   body.nav-tucked:not(.nav-open) .brand:hover{ transform:scale(1.06); }
@@ -553,13 +554,42 @@ body.hero-revealed .atmos__clouds{ opacity:1; }
   transition:transform 1050ms var(--ease-out);
   will-change:transform;
 }
-.liquid__art{ display:block; transition:opacity 900ms linear; }
-/* Full strength while it is the only thing on screen, then back a little.
-   Not all the way back to --crown-op: that weight was chosen for a form
-   drifting behind the copy in the corner, and the mark now sits under the
-   headline as part of the lockup, where a ghost just reads as a mistake.
-   The sheen still uses --crown-op, since that is a highlight either way. */
-body.crown-docked .liquid__art{ opacity:.92; }
+.liquid__art{ display:block; transition:opacity 900ms linear; position:relative; }
+/* A wash of Studio Sage through the lower sweep of the form, so the mark is
+   not gold end to end and picks up the green the hero headline now carries.
+   The crown asset is 74% transparent, so masking this layer with the same
+   artwork shapes it to the form exactly - no second cutout to keep in sync.
+   The blend is `color`, which is the one that works here. soft-light was the
+   first choice and it did nothing: the form is near-white cream, and
+   soft-light barely moves light tones - five strengths of it were
+   indistinguishable side by side. `color` takes the hue and saturation from
+   this layer and keeps the luminance underneath, so every highlight, bend and
+   cast shadow in the 3D form survives intact and only the colour cools.
+   It stays inside .liquid__inner's isolate, so it blends with the crown only.
+   No filter here on purpose - see the note above about live filters on a
+   transforming layer. A mask and a blend are painted once and then ride the
+   transform like the rest of the layer. */
+.liquid__art::after{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(203deg,
+              transparent 34%,
+              color-mix(in srgb, var(--sage) 70%, transparent) 70%,
+              var(--sage) 100%);
+  opacity:.55;
+  -webkit-mask-image:var(--crown-img); mask-image:var(--crown-img);
+  -webkit-mask-size:100% 100%;        mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;      mask-repeat:no-repeat;
+  -webkit-mask-position:center;       mask-position:center;
+  mix-blend-mode:color;
+}
+/* Full strength while it is the only thing on screen, then well back.
+   .92 was right when the mark came to rest UNDER the headline: part of the
+   lockup, sitting on its own paper, where a ghost read as a mistake. It now
+   rests BEHIND the headline, so it is backdrop rather than subject, and at
+   that weight it competed with the type it sits under - the words crossing
+   the tube were the hardest part of the line to read. This is the one knob
+   for it; it rides the 900ms transition on .liquid__art above. */
+body.crown-docked .liquid__art{ opacity:.40; }
 /* ---- crown entrance: the mark draws itself on ---------------------
    One continuous stroke, animated as a dash offset and used as a mask over
    the artwork, so the 3D form arrives along the line instead of fading up.
@@ -596,21 +626,42 @@ body.crown-drawing .crown-draw__rev{
 body.crown-drawing .crown-draw__tip{
   animation:crownTip 543ms cubic-bezier(.2793,.6299,.6072,1) 1657ms both;
 }
-/* 1963ms is the moment the front reaches arc 10, which is the first point
-   at which the tip measures as attached rather than loose (0 stray pixels
-   against 901 at arc 30). Lifting the cap there hands over ink the stroke
-   has already covered, so there is nothing to see - and it lands 17ms
-   before .crown-draw__full starts settling, which matters: a mask is
-   luminance, so while the clean copy is half-faded a hole in the ink layer
-   shows through as a dark tip on the swoosh. Holding the cap into that
-   window traded the loose droplet for a grey nub; this clears it first.
+/* 2150ms is the moment the stroke actually has the tip attached rather than
+   loose. This number belongs to the ARTWORK, not to the path: it is where
+   the brush finally covers the ink that overhangs the end of the path, and
+   that overhang moved when the crown was re-rendered from the brand file at
+   2700x1875. The original 1963ms was measured against the old 900x625 crop,
+   where arc 10 was enough; on the current art the tip is still detached
+   there, so for 187ms a 378px sliver floated beside the mark - the loose
+   droplet this cap exists to prevent, arriving by the back door.
+   Measured by freezing the mask one frame at a time and counting ink not
+   connected to the body of the mark: 378px loose from 1963ms, 0 from
+   2145ms. Held to 2170 rather than 2145 for the seam: the cap's own edge
+   leaves a hairline of ink the stroke has not closed yet, 15px at 2150 and
+   3px at 2160, reaching its floor of 1px by 2170.
+   It still lands before .crown-draw__full starts settling at 2200ms, which
+   matters: a mask is luminance, so while the clean copy is half-faded a
+   hole in the ink layer shows through as a dark tip on the swoosh. Holding
+   the cap into that window would trade the loose droplet for a grey nub.
    No fade, for the same reason - a half-faded black cap is a half-
-   transparent crown. */
+   transparent crown.
+   If the artwork is replaced again, this is the number to re-measure. */
 body.crown-drawing .crown-draw__tipcap{
-  animation:crownTipCap 1963ms linear both;
+  animation:crownTipCap 2170ms linear both;
 }
+/* Held until the line has actually finished, at 2200ms. It used to start at
+   1980ms, which overlapped the last 220ms of the draw: at that moment 8.6 of
+   the path's 1000 units are still undrawn - and those units are the swoosh's
+   tip, the one piece the reversed draw leaves for last. So the clean copy was
+   fading that tip up underneath the stroke before the stroke got there,
+   reaching about 48% by the time the line landed. It read as the tip arriving
+   on its own instead of being drawn, which is exactly the fault the black
+   patch above exists to prevent - reintroduced at the other end of the
+   timeline. Starting at 2200ms means the tip is only ever revealed by the
+   line, and the copy does what it is for: catching the slivers on the outer
+   bends that a fat round stroke cannot, once the drawing is over. */
 body.crown-drawing .crown-draw__full{
-  animation:crownSettle 460ms linear 1980ms both;
+  animation:crownSettle 460ms linear 2200ms both;
 }
 @keyframes crownDraw{ to{ stroke-dashoffset:0; } }
 @keyframes crownTip{ to{ stroke-dasharray:0 1000; } }
@@ -1500,10 +1551,16 @@ body.hero-revealed .shot__frame{
   margin-bottom:clamp(36px,4.5vh,56px);
 }
 
-/* The footer mark ships in white ink, drawn for the black footer this design
-   used to have. On Crown Cream it has to read as EM Black, so the artwork is
-   flattened rather than shipping a second file. */
-.foot__header img{ filter:brightness(0); opacity:.86; }
+/* Same file as the nav badge, which is drawn light for a dark ground. Crown
+   Cream needs it to read as EM Black instead, and the set it came in has no
+   dark-on-light lockup - its light version puts champagne ink on a background
+   that is very nearly champagne - so this one is still flattened. Height is
+   the box, not the ink, which is 0.525 of it: 108px leaves the lockup 57px
+   tall, the size the raster drew at. */
+.foot__header img{
+  height:108px; width:auto; display:block;
+  filter:brightness(0); opacity:.9;
+}
 .foot__header .brand{ color:var(--espresso); }
 .foot__header .crown{ color:var(--cocoa); }
 .foot__tagline{
@@ -1819,7 +1876,7 @@ body.hero-revealed .shot__frame{
   /* skips the cast animation but must still land on the same resting
      opacity, or reduced-motion users get a full-strength crown */
   .liquid__stage{ transition:none !important; transform:none !important; }
-  .liquid__art{ transition:none !important; opacity:.92 !important; }
+  .liquid__art{ transition:none !important; opacity:.40 !important; }
   .crown-draw__rev{ stroke-dashoffset:0 !important; animation:none !important; }
   .crown-draw__tip{ stroke-dasharray:0 1000 !important; animation:none !important; }
   .crown-draw__tipcap{ opacity:0 !important; animation:none !important; }
@@ -1979,3 +2036,64 @@ html.js-words [data-words].words-in{ visibility:visible; }
 .seo-band__foot p{
   margin:0; font-size:15px; color:var(--ink-soft);
 }
+
+/* ==================================================================
+   SITE-WIDE CORRECTIONS — written to outrank the page stylesheets
+   ==================================================================
+   This file is the home page's stylesheet, not a base for the others. Every
+   other route imports its own page.css and that sheet is the only one on the
+   page - see the note at the top of app/about/page.css for why. So a rule
+   written here reaches "/" and nothing else, which is how the footer
+   tap-target fix above came to work on one route out of fourteen.
+   The block below is repeated verbatim at the foot of all fourteen sheets.
+   Change it in one, change it in all of them, or the site drifts apart.
+   ================================================================== */
+
+/* Studio Sage, the fifth colour in the palette and the one the site barely
+   uses. The rules either side of every section eyebrow were Cocoa held at 40%
+   opacity - a brown so faint it read as a printing artefact. Sage at full
+   strength instead: still quiet at 28x1.5px, but a colour rather than a
+   ghost, and it turns up on nearly every section of every page.
+   Specificity is deliberate. One step above the page copies of
+   .eyebrow::before, one step below .news .eyebrow::before, which lightens
+   these for the dark newsletter band and has to keep doing so. */
+body .eyebrow::before,
+body .eyebrow::after{ background:var(--sage); opacity:1; }
+
+/* The badge no longer dims when the nav tucks. It was dropping to .45, and on
+   a phone it is the only route back to the top of the site - at that weight,
+   over Crown Cream, the lockup inside it washed out far enough to read as a
+   placeholder rather than a logo. The hover and focus rules that used to
+   bring it back are now the resting state. */
+body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
+@media (hover:none){
+  body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
+}
+
+@media (max-width:860px){
+  /* Footer links were 23px-tall boxes: the list's 12px gaps were doing the
+     spacing while the tappable target stayed the height of the text. Moving
+     that spacing inside the link grows the target to 43px and leaves the
+     footer's rhythm where it was. */
+  .foot .foot__body ul{ gap:0; }
+  .foot .foot__body li a{ display:inline-block; padding-block:11px; }
+
+  /* Same shape of problem in the legal row, and worse: three 20px-tall links
+     sitting side by side. */
+  .foot .foot__legal-links a{ display:inline-block; padding-block:12px; }
+}
+
+/* ...and again in the hero. The accent half of every hero headline - "their
+   crown", "behind the crown", "isn't working yet" - was Cocoa, a brown a
+   shade off the black beside it, so the two-tone split barely read as one.
+   Green makes it a deliberate second colour and ties the hero to the green
+   step card further down.
+
+   A deeper tone than --sage, and the reason is contrast, not taste. Studio
+   Sage on Paper is 4.2:1, fine, but several heroes sit on Crown Cream and
+   there it drops to 2.8:1 - under the 3:1 bar even for display type. This
+   tone holds 5.4:1 on Paper and 3.6:1 on Crown Cream, so the same rule works
+   on every hero the site has. Sage itself stays where it reads: the eyebrow
+   rules, the step card, the packages pill. */
+:root{ --sage-ink:#5E6656; }
+.hero__hl .tint{ color:var(--sage-ink); }

@@ -1,3 +1,5 @@
+import { FOOTER_HTML } from "../footer";
+
 // Body markup for /contact, lifted from em-creative-studio-contact_1.html.
 // Rendered as-is: the stylesheet in app/contact/page.css and the behaviour in
 // public/scripts/pages/contact.js are both written against this exact structure.
@@ -106,21 +108,77 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         </div>
 
         <div class="field">
-          <label>What do you need help with?</label>
-          <div class="chips" role="group" aria-label="Project type" id="projectChips">
-            <button class="chip" type="button" data-value="Branding" aria-pressed="false">Branding</button>
-            <button class="chip" type="button" data-value="Web Design" aria-pressed="false">Web Design</button>
-            <button class="chip" type="button" data-value="Social Media" aria-pressed="false">Social Media</button>
-            <button class="chip" type="button" data-value="SEO" aria-pressed="false">SEO</button>
-            <button class="chip" type="button" data-value="Full Rebrand" aria-pressed="false">Full Rebrand</button>
-            <button class="chip" type="button" data-value="Not Sure Yet" aria-pressed="false">Not Sure Yet</button>
-          </div>
+          <label id="svcLabel">What do you need help with? <span class="field__hint">Pick as many as apply.</span></label>
+          <!-- A dropdown rather than a row of chips: these are the studio's
+               actual services, and seven of them plus their real names do not
+               fit a chip row without wrapping into a block that dwarfs the
+               rest of the form. <details> gives the open/close for free and
+               keeps working with scripting off, where a div-and-JS dropdown
+               would leave the options unreachable. -->
+          <details class="svcpick" id="servicePicker">
+            <summary class="svcpick__toggle" role="button" aria-describedby="svcLabel">
+              <span class="svcpick__value" id="svcSummary">Select services</span>
+              <svg class="svcpick__chev" width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </summary>
+            <div class="svcpick__panel" role="group" aria-label="Services">
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Social Media Management">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Social Media Management</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Branding & Strategy">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Branding &amp; Strategy</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Content Creation">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Content Creation</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Email Marketing">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Email Marketing</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Print & Digital Marketing">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Print &amp; Digital Marketing</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Digital Advertising">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Digital Advertising</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="SEO & Local Search">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">SEO &amp; Local Search</span>
+              </label>
+              <label class="svcpick__opt">
+                <input type="checkbox" name="services" value="Not sure yet">
+                <span class="svcpick__box" aria-hidden="true"></span>
+                <span class="svcpick__name">Not sure yet</span>
+              </label>
+            </div>
+          </details>
         </div>
 
         <div class="field">
           <label for="cf-message">Tell us about the project</label>
           <textarea id="cf-message" name="message" placeholder="What's the market, what's not working, what would a win look like in 90 days?" required></textarea>
         </div>
+
+        <!-- Honeypot. Off-screen rather than display:none, which some bots
+             check for, and aria-hidden + tabindex so it is never read out or
+             tabbed into. Anything in it means the sender is not a person. -->
+        <div class="cform__hp" aria-hidden="true">
+          <label for="cf-website">Website</label>
+          <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <p class="cform__error" id="cformError" role="alert" hidden></p>
 
         <div class="cform__submit">
           <button class="btn btn--dark" type="submit" id="cformSubmit">
@@ -318,65 +376,4 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 </section>
 
 <!-- =========================== FOOTER ========================== -->
-<footer class="foot" id="contact">
-  <div class="foot__inner">
-    <div class="foot__header">
-      <a class="brand" href="/"><img src="/images/pg/3adf3352098a4060.webp" alt="The EM Creative Studio"></a>
-      <p class="foot__tagline">Boutique real estate marketing that earns your crown.</p>
-    </div>
-
-    <div class="foot__body">
-      <div>
-        <p class="foot__label">Studio</p>
-        <ul>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/packages">Packages</a></li>
-          <li><a href="/services/seo">SEO Plans</a></li>
-          <li><a href="/work">Work</a></li>
-          <li><a href="/#process">Process</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="foot__label">Company</p>
-        <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/testimonials">Testimonials</a></li>
-          <li><a href="/contact" aria-current="page">Contact</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="foot__label">Contact</p>
-        <ul class="foot__contact">
-          <li>
-            <span class="foot__contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></span>
-            <a href="mailto:hello@theemcreative.studio">hello@theemcreative.studio</a>
-          </li>
-          <li>
-            <span class="foot__contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-            <a href="tel:+13105551234">(310) 555-1234</a>
-          </li>
-          <li>
-            <span class="foot__contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-            <span style="font-size:14px;color:rgba(246,244,241,.5);">Los Angeles, CA</span>
-          </li>
-        </ul>
-        <div class="foot__social-row">
-          <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="foot__legal">
-      <span>&copy; 2026 The EM Creative Studio. All rights reserved.</span>
-      <div class="foot__legal-links">
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-      </div>
-    </div>
-  </div>
-</footer>`;
+${FOOTER_HTML}`;

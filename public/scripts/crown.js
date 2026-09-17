@@ -3,9 +3,9 @@
  * The mark is the same artwork the hero already carried in its corner, so the
  * intro and the resting mark are one element: it starts big and centred with
  * nothing drawn, the stroke traces it in (see .crown-draw in the stylesheet),
- * and then a single transform carries it home - which is the space under the
- * headline's last word, not the top corner. Nothing is swapped or cross-faded
- * at the end, because there is only ever one crown.
+ * and then a single transform carries it home - which is behind the headline,
+ * not the top corner. Nothing is swapped or cross-faded at the end, because
+ * there is only ever one crown.
  *
  * This owns exactly one property on .liquid__art - its transform. The float
  * loop in main.js owns .liquid__inner and the scroll-grow owns .liquid, so the
@@ -16,10 +16,23 @@
   var art   = document.querySelector('.liquid--a .liquid__art');
   var hero  = document.getElementById('top');
   var body = document.body;
-  /* The headline is split into per-word spans by main.js; this id survives
-     that (the splitter clones elements and rebuilds their text inside), so it
-     stays a reliable handle on the one word the mark has to sit under. */
-  var word  = document.getElementById('crownWord');
+  /* The mark rests behind the headline, so the headline is what it measures.
+     Deliberately re-queried on every measurement rather than held in a
+     variable: main.js splits the headline by emptying the <h1> and appending
+     CLONES of its children, so any element captured from inside it before that
+     runs is left detached, and a detached node measures 0x0. That was the
+     "crown jumps to the right" bug - a zero rect makes restTransform() give up
+     and return '', the transform never gets written, and an untransformed
+     stage sits where the stylesheet parks it, which is the hero's top-right
+     corner. The <h1> itself is only ever emptied, never replaced, so looking
+     it up fresh each time is always a live node. */
+  function headlineRect() {
+    var hl = document.querySelector('.hero__hl');
+    if (!hl) return null;
+    var r = hl.getBoundingClientRect();
+    /* mid-split the <h1> is empty and collapses; wait for the next measure */
+    return (r.width && r.height) ? r : null;
+  }
 
   /* Everything the page shows after the hero is gated on this class, so it has
      to be set on every path out of here - including the ones where the intro
@@ -33,8 +46,6 @@
 
   if (!stage || !art || !hero) { reveal(); return; }
 
-  var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (RM) { settle(); return; }
 
   /* ---- where the intro parks it ----------------------------------------
      Sat a little below the hero's middle so it clears the nav pill, then made
@@ -104,39 +115,59 @@
   }
 
   /* ---- where it comes to rest -------------------------------------------
-     Centred under the word it belongs to, filling the gap between the foot of
-     the headline and the foot of the hero. The hero clips, so that gap is the
-     entire budget; the mark is capped against the word's own width too, so the
-     two read as one lockup rather than a mark with a caption above it. */
-  /* Negative on purpose: the measured box is the word's INLINE box, which
-     hangs well below the glyphs, so a zero gap already reads as a wide one.
-     Pulling up into that slack is what buys the mark its size, because the
-     hero's foot is the hard limit and every pixel above is one it can use. */
-  var REST_GAP = -0.16;  /* of the word's height, between word and mark */
-  var REST_W   = 1.55;   /* widest the tilted mark may get, against the word */
+     Behind the headline, centred on it, so the type reads over the mark and
+     the two sit as one lockup. */
+  var REST_W   = 0.78;   /* widest the tilted mark may get, against the headline */
   /* Clearance at the hero's foot. It has to cover the ambient float as well as
      the mark itself - the loop in main.js keeps nudging and breathing the form
      by a few pixels after it lands, and the hero clips. */
   var REST_FIT = 0.93;
-  var REST_MIN = 0.55;   /* never shrink below this much of the word */
+  var REST_MIN = 0.68;   /* share of the hero's height the mark may fill */
 
+  /* Centred on the headline and sitting behind it, rather than tucked under the
+     last word. .hero__inner is z-index 5 and .liquid is 1, so the type already
+     paints over the mark - this only has to put the two in the same place.
+
+     Both axes are the headline's own centre, so the mark cannot drift off to
+     one side: there is no separate word to measure and nothing that can wrap
+     out from under it. Capped against the hero's height as well as the
+     headline's width, because the hero clips and the float loop in main.js
+     keeps nudging the mark a few pixels after it lands. */
   function restTransform() {
     var s = stageBox();
     var h = hero.getBoundingClientRect();
-    var w = word && word.getBoundingClientRect();
-    /* nothing to hang it on (copy changed, or main.js never split the
-       headline): leave the mark wherever the stylesheet puts it */
-    if (!s.width || !h.width || !w || !w.width) return '';
+    if (!s.width || !h.width) return '';
 
-    var top = w.bottom + w.height * REST_GAP;
-    /* A hero short enough to leave no room under the headline would otherwise
-       send the mark back to the corner the stylesheet parks it in, which reads
-       as a bug rather than a fallback. Floor the room instead and let the hero
-       clip a few pixels: still under the word, just tight. */
-    var room = Math.max((h.bottom - top) * REST_FIT, w.width * REST_MIN * SPAN_Y);
+    /* If the headline cannot be measured this instant - mid-split, or the font
+       still swapping - fall back to the hero's own centre instead of returning
+       nothing. Returning nothing leaves the transform unwritten, and an
+       untransformed stage sits where the stylesheet parks it, out at
+       right:2%; top:4%. Centred on the hero is off by a few pixels and
+       corrects itself on the next measure; parked in the corner is off by half
+       a page and stays there. The mark must never be the thing that looks
+       broken. */
+    var hl = headlineRect() || {
+      left: h.left, width: h.width,
+      top:  h.top + h.height * 0.30, height: h.height * 0.30
+    };
 
-    var wUp = Math.min(w.width * REST_W / SPAN_X, room / SPAN_Y);
-    return place(s, w.left + w.width / 2, top + wUp * SPAN_Y / 2, wUp / s.width);
+    var wUp = Math.min(hl.width * REST_W / SPAN_X,
+                       h.height * REST_FIT * REST_MIN / SPAN_Y);
+    return place(s, hl.left + hl.width / 2, hl.top + hl.height / 2, wUp / s.width);
+  }
+
+  /* Reduced motion skips the draw and goes straight to the resting placement.
+     This check sat at the top of the file, above the constants - and settle()
+     measures with SPAN_X, REST_W, REST_FIT and REST_MIN. `var` hoists the
+     declaration but not the assignment, so up there all four were still
+     undefined: the scale came out NaN, the browser threw the whole transform
+     away, and an untransformed stage sits where the stylesheet parks it, out
+     at right:2%. Every visitor with reduce-motion turned on got the mark stuck
+     in the top-right corner. It has to run after the numbers it depends on
+     exist, and before any of the intro work below. */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    settle();
+    return;
   }
 
   var t = introTransform();
@@ -167,9 +198,9 @@
   }
   addEventListener('resize', replace, { passive: true });
   addEventListener('orientationchange', function () { setTimeout(replace, 300); });
-  /* The word is measured in whatever font has loaded so far. Plus Jakarta Sans
-     arriving later rewraps the headline and moves it, which is the difference
-     between the mark sitting under the word and sitting beside it. */
+  /* The headline is measured in whatever font has loaded so far. Plus Jakarta
+     Sans arriving later rewraps it and changes both its width and its centre,
+     so the mark has to be placed again once the real font is in. */
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(replace).catch(function () {});
   }
@@ -180,12 +211,12 @@
 
   body.classList.add('crown-drawing');
 
-  /* restTransform() returns '' when the word cannot be measured - the headline
-     mid-rewrap, or main.js's splitter holding the span in pieces. Assigning
-     that CLEARS the transform, and an untransformed stage sits where the
-     stylesheet parks it: the hero's top-right corner. That is the mark
-     "jumping to the side" instead of centring under the word. So never write
-     an empty transform - keep what is on screen and measure again shortly. */
+  /* restTransform() returns '' when the headline cannot be measured - empty
+     for an instant while main.js's splitter rebuilds it. Assigning that CLEARS
+     the transform, and an untransformed stage sits where the stylesheet parks
+     it: the hero's top-right corner. That is the mark "jumping to the side".
+     So never write an empty transform - keep what is on screen and measure
+     again shortly. */
   function applyRest() {
     var t = restTransform();
     if (t) stage.style.transform = t;
@@ -193,9 +224,20 @@
   }
 
   function settle() {
-    if (!applyRest()) setTimeout(applyRest, 220);
     body.classList.add('crown-docked');
     reveal();
+    if (applyRest()) return;
+    /* One retry was not enough. Whatever stops the first measurement - the
+       headline mid-split, the webfont still landing, a hero that has not
+       settled its height - can easily outlast a single 220ms wait, and when it
+       did the mark stayed in the corner for the rest of the visit. Keep
+       measuring on a short interval, then give up quietly: by then the resize,
+       fonts.ready and ResizeObserver hooks below are all still watching. */
+    var tries = 0;
+    (function retry() {
+      if (applyRest() || ++tries > 40) return;
+      setTimeout(retry, 100);
+    })();
   }
 
   function dock() {
