@@ -554,34 +554,7 @@ body.hero-revealed .atmos__clouds{ opacity:1; }
   transition:transform 1050ms var(--ease-out);
   will-change:transform;
 }
-.liquid__art{ display:block; transition:opacity 900ms linear; position:relative; }
-/* A wash of Studio Sage through the lower sweep of the form, so the mark is
-   not gold end to end and picks up the green the hero headline now carries.
-   The crown asset is 74% transparent, so masking this layer with the same
-   artwork shapes it to the form exactly - no second cutout to keep in sync.
-   The blend is `color`, which is the one that works here. soft-light was the
-   first choice and it did nothing: the form is near-white cream, and
-   soft-light barely moves light tones - five strengths of it were
-   indistinguishable side by side. `color` takes the hue and saturation from
-   this layer and keeps the luminance underneath, so every highlight, bend and
-   cast shadow in the 3D form survives intact and only the colour cools.
-   It stays inside .liquid__inner's isolate, so it blends with the crown only.
-   No filter here on purpose - see the note above about live filters on a
-   transforming layer. A mask and a blend are painted once and then ride the
-   transform like the rest of the layer. */
-.liquid__art::after{
-  content:''; position:absolute; inset:0; pointer-events:none;
-  background:linear-gradient(203deg,
-              transparent 34%,
-              color-mix(in srgb, var(--sage) 70%, transparent) 70%,
-              var(--sage) 100%);
-  opacity:.55;
-  -webkit-mask-image:var(--crown-img); mask-image:var(--crown-img);
-  -webkit-mask-size:100% 100%;        mask-size:100% 100%;
-  -webkit-mask-repeat:no-repeat;      mask-repeat:no-repeat;
-  -webkit-mask-position:center;       mask-position:center;
-  mix-blend-mode:color;
-}
+.liquid__art{ display:block; transition:opacity 900ms linear; }
 /* Full strength while it is the only thing on screen, then well back.
    .92 was right when the mark came to rest UNDER the headline: part of the
    lockup, sitting on its own paper, where a ghost read as a mistake. It now
