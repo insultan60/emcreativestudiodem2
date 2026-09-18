@@ -61,6 +61,11 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
+  /* Client pick. It is a light, warm colour, so the cards that take it carry
+     dark ink like Champagne and Paper do - Paper text on it is 2.2:1, which
+     is below the bar and worse than the 4.2:1 it had on Sage. Black on it is
+     8.7:1. Sage stays on the eyebrow rules and the process crown. */
+  --ember:        #EC905B;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   /* nav: a bar in Crown Cream carrying EM Black for the badge, links and CTA */
@@ -682,7 +687,7 @@ body.crown-docked .hero.lit .liquid__sheen{ opacity:var(--crown-op); }
 /* ---- headline: word-by-word reveal ------------------------------- */
 .hero__hl{
   margin:clamp(12px,2vh,20px) auto 0;
-  max-width:15ch;
+  max-width:17ch;
   font-family:var(--display);
   font-weight:800;
   font-size:clamp(2.05rem,5.15vw,4.95rem);
@@ -706,6 +711,32 @@ body.hero-revealed .hero__hl .w > i{
 }
 @keyframes wordUp{ to{ transform:translateY(0); } }
 .hero__hl .tint{ color:var(--cocoa); }
+
+/* The line breaks after "earn", so the accent half owns the second line:
+   "Brands that earn" / "their crown". Done as a block-level accent rather
+   than a <br> because main.js rebuilds this headline node by node to split
+   it into words - it clones elements shallowly and keeps them, so a display
+   change rides through the split intact. */
+.hero__hl .tint{ display:block; }
+
+/* The location line sat low and small enough to read as a caption. Bigger,
+   and given room of its own: .hero__inner is centred, so the margin lifts
+   the eyebrow about as much as it pushes the headline down. */
+.hero .eyebrow{
+  font-size:13px;
+  margin-bottom:clamp(16px,2.8vh,30px);
+}
+.hero .eyebrow::before,
+.hero .eyebrow::after{ flex-basis:34px; }
+
+/* At 320px the line measures 284px inside 305px of content - it fits, but it
+   is nowrap inside an overflow:hidden hero, so a slightly wider font render
+   would clip the text with no warning. The rules give the headroom back
+   rather than the type, which is the part that was asked to grow. */
+@media (max-width:400px){
+  .hero .eyebrow::before,
+  .hero .eyebrow::after{ flex-basis:16px; }
+}
 
 /* ---- hide the hero copy (not the nav - that stays usable) until the
    crown intro docks ------------------------------------------------- */
@@ -1018,7 +1049,7 @@ body.hero-revealed .shot__frame{
   /* The gutter is tiny on a phone, so less has to be given back for the
      same-sized peek — and the headline needs the height. */
   .hero{ padding-top:clamp(92px,13vh,130px); min-height:76svh; min-height:76vh; }
-  .hero__hl{ font-size:clamp(1.85rem,8.6vw,3.1rem); max-width:14ch; letter-spacing:-.028em; }
+  .hero__hl{ font-size:clamp(1.85rem,8.6vw,3.1rem); max-width:16ch; letter-spacing:-.028em; }
   .fan{ height:150px; }
   .fan-card{ width:96px; margin-left:-48px; }
   .bub{ font-size:10px; padding:5px 11px 6px; }
@@ -1121,7 +1152,7 @@ body.hero-revealed .shot__frame{
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
 .card:nth-child(3){ background:var(--paper); color:var(--ink); }
-.card:nth-child(4){ background:var(--sage); color:var(--paper); border-color:var(--sage); }
+.card:nth-child(4){ background:var(--ember); color:var(--espresso); border-color:var(--ember); }
 .card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
 .card:nth-child(6){ background:var(--paper); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
@@ -1190,7 +1221,7 @@ body.hero-revealed .shot__frame{
   box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--sage);  color:var(--paper); }
+.step:nth-child(1){ top:100px; background:var(--ember); color:var(--espresso); }
 .step:nth-child(2){ top:118px; background:var(--taupe); color:var(--paper); }
 .step:nth-child(3){ top:136px; background:var(--champagne); color:var(--espresso); border-color:rgba(0,0,0,.08); }
 .step:nth-child(4){ top:154px; background:var(--paper); color:var(--espresso); border-color:rgba(0,0,0,.10); }
@@ -1299,7 +1330,7 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sage); color:var(--paper); border-color:var(--sage); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--ember); color:var(--espresso); border-color:var(--ember); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
@@ -2056,17 +2087,3 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .foot .foot__legal-links a{ display:inline-block; padding-block:12px; }
 }
 
-/* ...and again in the hero. The accent half of every hero headline - "their
-   crown", "behind the crown", "isn't working yet" - was Cocoa, a brown a
-   shade off the black beside it, so the two-tone split barely read as one.
-   Green makes it a deliberate second colour and ties the hero to the green
-   step card further down.
-
-   A deeper tone than --sage, and the reason is contrast, not taste. Studio
-   Sage on Paper is 4.2:1, fine, but several heroes sit on Crown Cream and
-   there it drops to 2.8:1 - under the 3:1 bar even for display type. This
-   tone holds 5.4:1 on Paper and 3.6:1 on Crown Cream, so the same rule works
-   on every hero the site has. Sage itself stays where it reads: the eyebrow
-   rules, the step card, the packages pill. */
-:root{ --sage-ink:#5E6656; }
-.hero__hl .tint{ color:var(--sage-ink); }

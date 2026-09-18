@@ -155,7 +155,7 @@ export const SITE_BODY_HTML = `
   <div class="hero__scrim" aria-hidden="true"></div>
 
   <div class="hero__inner">
-    <span class="eyebrow">Los Angeles</span>
+    <span class="eyebrow">Based in Los Angeles</span>
 
     <h1 class="hero__hl" data-words>Brands that earn <em class="tint">their <span id="crownWord">crown</span></em></h1>
   </div>

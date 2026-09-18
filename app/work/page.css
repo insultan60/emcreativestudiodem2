@@ -931,20 +931,6 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .foot .foot__legal-links a{ display:inline-block; padding-block:12px; }
 }
 
-/* ...and again in the hero. The accent half of every hero headline - "their
-   crown", "behind the crown", "isn't working yet" - was Cocoa, a brown a
-   shade off the black beside it, so the two-tone split barely read as one.
-   Green makes it a deliberate second colour and ties the hero to the green
-   step card further down.
-
-   A deeper tone than --sage, and the reason is contrast, not taste. Studio
-   Sage on Paper is 4.2:1, fine, but several heroes sit on Crown Cream and
-   there it drops to 2.8:1 - under the 3:1 bar even for display type. This
-   tone holds 5.4:1 on Paper and 3.6:1 on Crown Cream, so the same rule works
-   on every hero the site has. Sage itself stays where it reads: the eyebrow
-   rules, the step card, the packages pill. */
-:root{ --sage-ink:#5E6656; }
-.hero__hl .tint{ color:var(--sage-ink); }
 
 /* ==================================================================
    FOOTER — the home page's, verbatim
