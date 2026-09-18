@@ -174,7 +174,7 @@ a{ color:inherit; }
 .btn:active{ transform:scale(.97); }
 .btn--dark{ background:var(--cta); color:var(--paper); }
 .btn--ghost{ background:transparent; color:var(--ink); border-color:var(--hair); }
-.btn--paper{ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); }
+.btn--paper{ --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); }
 @media (hover:hover) and (pointer:fine){
   .btn--dark:hover { background:var(--cocoa); }
   .btn--ghost:hover{ background:var(--cta); color:var(--paper); border-color:var(--cta); }
@@ -1032,7 +1032,7 @@ body.hero-revealed .shot__frame{
 }
 @media (hover:hover) and (pointer:fine){
   .shot .btn--ghost:hover{
-    background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); border-color:var(--paper);
+    --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); border-color:var(--paper);
   }
 }
 
@@ -1167,10 +1167,10 @@ body.hero-revealed .shot__frame{
 .deck.armed .card{ --rot:0deg; --dx:0px; --sc:.86; opacity:0; }
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
-.card:nth-child(3){ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); }
-.card:nth-child(4){ background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
-.card:nth-child(5){ background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
-.card:nth-child(6){ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); }
+.card:nth-child(3){ --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); }
+.card:nth-child(4){ --card-tint:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
+.card:nth-child(5){ --card-tint:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
+.card:nth-child(6){ --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
 .card__ttl{
   font-family:var(--display); font-weight:800;
@@ -1243,13 +1243,34 @@ body.hero-revealed .shot__frame{
      cards, so thinning them RAISES contrast - it is the point where the
      four tints still read as separate cards. Worst pairing, with the dim
      wash on top, is 5.91:1. */
-  border:1px solid rgba(255,255,255,.45);
+  border:1px solid rgba(255,255,255,.55);
+  border-top-color:rgba(255,255,255,.78);
   background-clip:padding-box;
-  -webkit-backdrop-filter:blur(18px) saturate(1.18);
-          backdrop-filter:blur(18px) saturate(1.18);
+  -webkit-backdrop-filter:blur(22px) saturate(1.22);
+          backdrop-filter:blur(22px) saturate(1.22);
+
+  /* The tint is a variable so a sheen can sit above it. Blur alone only
+     reads as glass where there is something behind to blur, and for most
+     of this stack the backdrop is a flat wash - the cards only overlap
+     mid-scroll. The sheen is what says "glass" when the backdrop is
+     plain: a light raking across the top-left, falling off by halfway,
+     plus a faint return on the opposite corner. */
+  background-color:var(--card-tint);
+  background-image:
+    linear-gradient(118deg,
+      rgba(255,255,255,.52) 0%,
+      rgba(255,255,255,.20) 26%,
+      rgba(255,255,255,.04) 52%,
+      rgba(255,255,255,0)   68%),
+    linear-gradient(302deg,
+      rgba(255,255,255,.20) 0%,
+      rgba(255,255,255,0)   34%);
+
   box-shadow:
     0 -20px 50px -34px rgba(56,48,42,.55),
-    inset 0 1px 0 rgba(255,255,255,.55);
+    0 18px 44px -30px rgba(56,48,42,.45),
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 0 0 1px rgba(255,255,255,.10);
   transition:transform 200ms linear;
 }
 /* The scroll dim, which used to be filter:brightness() in main.js. Absolutely
@@ -1260,10 +1281,10 @@ body.hero-revealed .shot__frame{
   pointer-events:none;
 }
 .step > *{ position:relative; }
-.step:nth-child(1){ top:100px; background:color-mix(in srgb, var(--ember-soft) 62%, transparent); color:var(--espresso); }
-.step:nth-child(2){ top:118px; background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); }
-.step:nth-child(3){ top:136px; background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); border-color:rgba(0,0,0,.08); }
-.step:nth-child(4){ top:154px; background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); border-color:rgba(0,0,0,.10); }
+.step:nth-child(1){ top:100px; --card-tint:color-mix(in srgb, var(--ember-soft) 62%, transparent); color:var(--espresso); }
+.step:nth-child(2){ top:118px; --card-tint:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); }
+.step:nth-child(3){ top:136px; --card-tint:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
+.step:nth-child(4){ top:154px; --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); }
 .step__no{
   font-family:var(--display); font-weight:800;
   font-size:clamp(2.6rem,7vw,6.4rem); line-height:.82;
@@ -1369,7 +1390,7 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
+.pack:nth-child(3)[aria-expanded="true"]{ --card-tint:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
