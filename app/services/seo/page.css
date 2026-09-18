@@ -27,12 +27,15 @@
   --sage:         #6E7865;
   --ember:        #EC905B;
   --sand:         #DFC8B1;
-  /* Ember at full chroma is right for a rule, a pill or a 34px mark. Across a
-     whole step card it shouts, which is what the client saw. This is the same
-     colour with the volume down for large surfaces. 75% and no softer: card 02
-     is Sand at luminance .602, and below about 65% the two cards stop reading
-     as separate blocks. Resolves to #EFA981, black on it 10.7:1. */
-  --ember-soft:   color-mix(in srgb, var(--ember) 75%, var(--paper));
+  /* Ember at full chroma is right for a rule, a pill or a 34px mark; across a
+     whole card it shouts. The first attempt mixed it with Paper, which made it
+     quieter but also pale and candy-bright - fuller in the wrong direction.
+     This holds the lightness and drops the chroma instead: Ember desaturated
+     32% toward its own luminance grey. Saturation 61% -> 46%, luminance .483
+     -> .375, so it reads deeper AND calmer than the wash it replaces. A clay
+     rather than a peach. Ink on it is 5.23:1, and it still separates from the
+     Sand card below at 1.53:1. */
+  --ember-soft:   #D59773;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #38302A;
