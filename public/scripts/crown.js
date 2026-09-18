@@ -246,11 +246,21 @@
     settle();                           /* the transition carries it there */
   }
 
-  /* The stroke finishing is the honest signal, and it stays honest in a
-     backgrounded tab where a timer would not. Kept in step with the
-     stylesheet by hand: the draw runs 2600ms and the clean copy settles
-     from 2600ms over 460ms, so the fallback sits just past the end of both. */
-  var rev = art.querySelector('.crown-draw__rev');
-  if (rev) rev.addEventListener('animationend', dock);
-  setTimeout(dock, 3150);
+  /* An animation finishing is the honest signal, and it stays honest in a
+     backgrounded tab where a timer would not. Which animation matters.
+
+     This listened on .crown-draw__rev, the stroke - which ends at 2600ms,
+     the exact moment .crown-draw__full BEGINS fading in. So docking started
+     on the frame the last piece of the mark started arriving, and that piece
+     then completed underneath a 1050ms stage transform and a 900ms drop to
+     .40 opacity. The ending looked cut because it was: the swoosh's tip, the
+     one part the reversed draw saves for last, was never once on screen
+     whole, still and at full strength.
+
+     The clean copy landing is the real end of the intro, so wait for that.
+     Kept in step with the stylesheet by hand: the draw runs 2600ms, the copy
+     settles from 2600ms over 800ms, and the fallback sits just past 3400. */
+  var full = art.querySelector('.crown-draw__full');
+  if (full) full.addEventListener('animationend', dock);
+  setTimeout(dock, 3600);
 })();

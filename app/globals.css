@@ -655,7 +655,7 @@ body.crown-drawing .crown-draw__tip{
 body.crown-drawing .crown-draw__tipcap{
   animation:crownTipCap 2565ms linear both;
 }
-/* Held until the line has actually finished, at 2200ms. It used to start at
+/* Held until the line has actually finished, at 2600ms. It used to start at
    1980ms, which overlapped the last 220ms of the draw: at that moment 8.6 of
    the path's 1000 units are still undrawn - and those units are the swoosh's
    tip, the one piece the reversed draw leaves for last. So the clean copy was
@@ -663,11 +663,31 @@ body.crown-drawing .crown-draw__tipcap{
    reaching about 48% by the time the line landed. It read as the tip arriving
    on its own instead of being drawn, which is exactly the fault the black
    patch above exists to prevent - reintroduced at the other end of the
-   timeline. Starting at 2200ms means the tip is only ever revealed by the
-   line, and the copy does what it is for: catching the slivers on the outer
-   bends that a fat round stroke cannot, once the drawing is over. */
+   timeline. Starting after the draw means the tip is only ever revealed by
+   the line, and the copy does what it is for: catching the slivers on the
+   outer bends that a fat round stroke cannot, once the drawing is over.
+
+   460ms LINEAR was the wrong shape for the one fade the eye is waiting on.
+   Linear opacity opens at full velocity - 11% inside the first 50ms - so the
+   copy announced itself with a step rather than arriving, and 460ms of it was
+   over before it registered as movement. The curve below is a symmetric
+   sigmoid with zero velocity at BOTH ends: nothing perceptible starts, and
+   nothing perceptible stops. Deliberately not --ease-in-out-soft (.77,0,.175,
+   1), which holds near zero and then crosses the middle at better than twice
+   average speed - on a transform that reads as weight, on an opacity fade it
+   reads as the pop this is meant to remove.
+
+   800ms, and the dock now waits on THIS animation ending rather than the
+   draw's. Those two facts are one fix: while the dock fired at 2600ms, all
+   460ms of this fade happened during the flight home, underneath a stage
+   transforming for 1050ms and an artwork dropping to .40 opacity over 900ms.
+   The last piece of the mark was revealed while the mark was already dimming
+   and moving away - which is why the ending read as cut. It now completes at
+   full strength, standing still, before anything else moves. crown.js listens
+   on .crown-draw__full for exactly this reason; 2600 + 800 is the number its
+   fallback timer sits past. */
 body.crown-drawing .crown-draw__full{
-  animation:crownSettle 460ms linear 2600ms both;
+  animation:crownSettle 800ms cubic-bezier(.45,0,.55,1) 2600ms both;
 }
 @keyframes crownDraw{ to{ stroke-dashoffset:0; } }
 @keyframes crownTip{ to{ stroke-dasharray:0 1000; } }
