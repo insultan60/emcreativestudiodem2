@@ -66,6 +66,12 @@
      is below the bar and worse than the 4.2:1 it had on Sage. Black on it is
      8.7:1. Sage stays on the eyebrow rules and the process crown. */
   --ember:        #EC905B;
+  /* The same colour dropped back to a wash, for the section the step cards
+     sit on. 18% is not a guess: it puts the tint at luminance .785 against
+     the .788 of the Sage mist it replaces, so every piece of type on that
+     section keeps the contrast it already had - black reads 16.7:1, the 62%
+     black eyebrow 5.2:1. Resolves to #F4E2D6. */
+  --ember-mist:   color-mix(in srgb, var(--ember) 18%, var(--paper));
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   /* nav: a bar in Crown Cream carrying EM Black for the badge, links and CTA */
@@ -1152,7 +1158,7 @@ body.hero-revealed .shot__frame{
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
 .card:nth-child(3){ background:var(--paper); color:var(--ink); }
-.card:nth-child(4){ background:var(--ember); color:var(--espresso); border-color:var(--ember); }
+.card:nth-child(4){ background:var(--sage); color:var(--paper); border-color:var(--sage); }
 .card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
 .card:nth-child(6){ background:var(--paper); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
@@ -1197,9 +1203,11 @@ body.hero-revealed .shot__frame{
    ================================================================== */
 .process{
   /* Was a full-bleed black band. The 2026 board keeps black for type and small
-     accents and asks the big surfaces to stay light, so the section sits on the
-     Studio Sage tint and the step cards carry the depth instead. */
-  --sec-bg:var(--sage-mist);
+     accents and asks the big surfaces to stay light, so the section sits on a
+     tint and the step cards carry the depth instead. That tint is now the
+     client Ember rather than Studio Sage - the colour reads as a wash behind
+     the cards instead of as a card, which is where it was asked to go. */
+  --sec-bg:var(--ember-mist);
   --grid-ink:rgba(0,0,0,.12);
   color:var(--ink); padding-block:clamp(70px,9vh,120px);
 }
@@ -1221,7 +1229,7 @@ body.hero-revealed .shot__frame{
   box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--ember); color:var(--espresso); }
+.step:nth-child(1){ top:100px; background:var(--sage);  color:var(--paper); }
 .step:nth-child(2){ top:118px; background:var(--taupe); color:var(--paper); }
 .step:nth-child(3){ top:136px; background:var(--champagne); color:var(--espresso); border-color:rgba(0,0,0,.08); }
 .step:nth-child(4){ top:154px; background:var(--paper); color:var(--espresso); border-color:rgba(0,0,0,.10); }
@@ -1330,7 +1338,7 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--ember); color:var(--espresso); border-color:var(--ember); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sage); color:var(--paper); border-color:var(--sage); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;

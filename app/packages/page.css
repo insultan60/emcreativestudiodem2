@@ -16,7 +16,6 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
-  --ember:        #EC905B;   /* client pick - light, so it takes dark ink */
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #000000;
@@ -287,7 +286,7 @@ a{ color:inherit; }
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--ember); color:var(--espresso); border-color:var(--ember); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sage); color:var(--paper); border-color:var(--sage); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
@@ -338,7 +337,7 @@ a{ color:inherit; }
 }
 .cmp thead th:nth-child(2) .tier-pill{ background:rgba(0,0,0,.08); color:var(--espresso); }
 .cmp thead th:nth-child(3) .tier-pill{ background:var(--champagne); color:var(--espresso); }
-.cmp thead th:nth-child(4) .tier-pill{ background:var(--ember); color:var(--espresso); }
+.cmp thead th:nth-child(4) .tier-pill{ background:var(--sage); color:var(--paper); }
 .cmp tbody th{ font-weight:500; color:var(--ink-soft); white-space:nowrap; }
 .cmp td{ color:var(--ink); opacity:.85; }
 .cmp td.yes{ color:var(--cta); font-weight:600; }

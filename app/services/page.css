@@ -16,7 +16,6 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
-  --ember:        #EC905B;   /* client pick - light, so it takes dark ink */
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #000000;
@@ -352,7 +351,7 @@ a{ color:inherit; }
   box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--ember); color:var(--espresso); }
+.step:nth-child(1){ top:100px; background:var(--sage);  color:var(--paper); }
 .step:nth-child(2){ top:118px; background:var(--taupe); color:var(--paper); }
 .step:nth-child(3){ top:136px; background:var(--champagne); color:var(--espresso); border-color:rgba(0,0,0,.10); }
 .step:nth-child(4){ top:154px; background:var(--paper); color:var(--ink); border-color:transparent; }
