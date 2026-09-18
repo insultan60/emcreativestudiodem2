@@ -26,9 +26,9 @@
   --color-champagne-lo: #E7DDD2;
   --color-champagne-hi: #A89A8B;
   --color-cocoa:        #4A443D;
-  --color-cta:          #38302A;
-  --color-espresso:     #38302A;
-  --color-ink:          #38302A;
+  --color-cta:          #1E1509;
+  --color-espresso:     #1E1509;
+  --color-ink:          #1E1509;
   --color-sage:         #6E7865;
   --color-sage-mist:    #E3E7DE;
   --color-taupe:        #A89A8B;
@@ -44,7 +44,7 @@
    EM CREATIVE STUDIO — design tokens
    2026 brand board palette:
      EM Soft White    #F6F4F1  40%  --paper / --linen
-     EM Ink           #38302A  30%  --ink / --cta / --espresso
+     EM Ink           #1E1509  30%  --ink / --cta / --espresso
      EM Crown Cream   #D6C6B4  17%  --champagne / --nav-bg
      EM Mushroom Taupe#A89A8B   8%  --taupe / --champagne-hi
      EM Studio Sage   #6E7865   5%  --sage (accents, selective CTAs)
@@ -58,8 +58,8 @@
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
   --cocoa:        #4A443D;
-  --cta:          #38302A;
-  --espresso:     #38302A;
+  --cta:          #1E1509;
+  --espresso:     #1E1509;
   --sage:         #6E7865;
   --sand:         #DFC8B1;
   /* Ember at full chroma is right for a rule, a pill or a 34px mark; across a
@@ -68,34 +68,43 @@
      This holds the lightness and drops the chroma instead: Ember desaturated
      32% toward its own luminance grey. Saturation 61% -> 46%, luminance .483
      -> .375, so it reads deeper AND calmer than the wash it replaces. A clay
-     rather than a peach. Ink on it is 5.23:1, and it still separates from the
+     rather than a peach. Ink on it is 7.33:1, and it still separates from the
      Sand card below at 1.53:1. */
   --ember-soft:   #D59773;
   /* Client pick. It is a light, warm colour, so the cards that take it carry
      dark ink like Champagne and Paper do - Paper text on it is 2.2:1, which
-     is below the bar and worse than the 4.2:1 it had on Sage. Black on it is
-     8.7:1. Sage stays on the eyebrow rules and the process crown. */
+     is below the bar and worse than the 4.2:1 it had on Sage. Ink on it is
+     7.50:1. Sage stays on the eyebrow rules and the process crown. */
   --ember:        #EC905B;
   /* The same colour dropped back to a wash, for the section the step cards
      sit on. 18% is not a guess: it puts the tint at luminance .785 against
      the .788 of the Sage mist it replaces, so every piece of type on that
-     section keeps the contrast it already had - black reads 16.7:1, the 62%
-     black eyebrow 5.2:1. Resolves to #F4E2D6. */
+     section keeps the contrast it already had - Ink reads 14.36:1, the 62%
+     ink eyebrow 4.9:1. Resolves to #F4E2D6. */
   --ember-mist:   color-mix(in srgb, var(--ember) 18%, var(--paper));
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
-  /* nav: a bar in Crown Cream carrying EM Black for the badge, links and CTA */
+  /* nav: a bar in Crown Cream carrying EM Ink for the badge, links and CTA */
   --nav-bg:       #D6C6B4;
   --nav-glass:    rgba(214,198,180,.55);
-  --nav-ink:      #38302A;
+  --nav-ink:      #1E1509;
   --nav-ease-dur: 900ms;
   /* how present the big 3D crown is once it has cast — it sits behind the
      headline, so it wants to read as a watermark, not a second subject */
   --crown-op:     .34;   /* sheen highlight; kept under the art's own weight */
-  --ink:          #38302A;
-  --ink-soft:     rgba(56,48,42,.80);
-  --ink-faint:    rgba(56,48,42,.38);
-  --hair:         rgba(56,48,42,.20);
+  /* Sampled by the client off their own mark - the dark field the cream logo
+     is drawn to sit on. hsl(34, 54%, 8%): unmistakably brown at the chroma,
+     but only .0083 luminance, so it is the deepest value on the board. It
+     replaces #38302A wholesale, type and surfaces alike. Everything using it
+     as foreground gained contrast, not lost it: on Paper 11.76 -> 16.41:1,
+     on Ember-soft 5.23 -> 7.33:1, on Sand 11.18:1. The watch item is the
+     other direction - the filled surfaces that carry it (.btn--dark, the nav
+     badge, card 01, .bub--a, the footer CTA) now sit close enough to black
+     to read as black in a large block. */
+  --ink:          #1E1509;
+  --ink-soft:     rgba(30,21,9,.80);
+  --ink-faint:    rgba(30,21,9,.38);
+  --hair:         rgba(30,21,9,.20);
 
   /* One family across the whole site. Display and body used to be two
      (Plus Jakarta Sans over Manrope), but the two are close enough in
@@ -1270,8 +1279,8 @@ body.hero-revealed .shot__frame{
       rgba(255,255,255,0)   34%);
 
   box-shadow:
-    0 -20px 50px -34px rgba(56,48,42,.55),
-    0 18px 44px -30px rgba(56,48,42,.45),
+    0 -20px 50px -34px rgba(30,21,9,.55),
+    0 18px 44px -30px rgba(30,21,9,.45),
     inset 0 1px 0 rgba(255,255,255,.72),
     inset 0 0 0 1px rgba(255,255,255,.10);
   transition:transform 200ms linear;
@@ -1280,7 +1289,7 @@ body.hero-revealed .shot__frame{
    positioned, so it stays out of flow and never becomes a grid track. */
 .step::before{
   content:''; position:absolute; inset:0; border-radius:inherit;
-  background:rgba(56,48,42, calc(var(--dim, 0) * .10));
+  background:rgba(30,21,9, calc(var(--dim, 0) * .10));
   pointer-events:none;
 }
 .step > *{ position:relative; }
