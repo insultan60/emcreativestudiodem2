@@ -174,7 +174,7 @@ a{ color:inherit; }
 .btn:active{ transform:scale(.97); }
 .btn--dark{ background:var(--cta); color:var(--paper); }
 .btn--ghost{ background:transparent; color:var(--ink); border-color:var(--hair); }
-.btn--paper{ background:var(--paper); color:var(--cta); }
+.btn--paper{ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); }
 @media (hover:hover) and (pointer:fine){
   .btn--dark:hover { background:var(--cocoa); }
   .btn--ghost:hover{ background:var(--cta); color:var(--paper); border-color:var(--cta); }
@@ -1032,7 +1032,7 @@ body.hero-revealed .shot__frame{
 }
 @media (hover:hover) and (pointer:fine){
   .shot .btn--ghost:hover{
-    background:var(--paper); color:var(--cta); border-color:var(--paper);
+    background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); border-color:var(--paper);
   }
 }
 
@@ -1167,10 +1167,10 @@ body.hero-revealed .shot__frame{
 .deck.armed .card{ --rot:0deg; --dx:0px; --sc:.86; opacity:0; }
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
-.card:nth-child(3){ background:var(--paper); color:var(--ink); }
-.card:nth-child(4){ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
-.card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
-.card:nth-child(6){ background:var(--paper); color:var(--espresso); }
+.card:nth-child(3){ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); }
+.card:nth-child(4){ background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
+.card:nth-child(5){ background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
+.card:nth-child(6){ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
 .card__ttl{
   font-family:var(--display); font-weight:800;
@@ -1235,14 +1235,35 @@ body.hero-revealed .shot__frame{
   display:grid; grid-template-columns:auto 1fr .78fr; gap:clamp(18px,3.2vw,52px);
   align-items:start;
   margin-bottom:22px;
-  border:1px solid rgba(0,0,0,.15);
-  box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
+  /* ---- glass ----------------------------------------------------
+     The fills below are struck back to 62% and the card samples what is
+     behind it. In this stack that is either the section wash or the card
+     it is sliding over, so the blur has something real to work with.
+     62% is not a contrast floor - every backdrop here is lighter than the
+     cards, so thinning them RAISES contrast - it is the point where the
+     four tints still read as separate cards. Worst pairing, with the dim
+     wash on top, is 5.91:1. */
+  border:1px solid rgba(255,255,255,.45);
+  background-clip:padding-box;
+  -webkit-backdrop-filter:blur(18px) saturate(1.18);
+          backdrop-filter:blur(18px) saturate(1.18);
+  box-shadow:
+    0 -20px 50px -34px rgba(56,48,42,.55),
+    inset 0 1px 0 rgba(255,255,255,.55);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--ember-soft); color:var(--espresso); }
-.step:nth-child(2){ top:118px; background:var(--sand); color:var(--espresso); }
-.step:nth-child(3){ top:136px; background:var(--champagne-lo); color:var(--espresso); border-color:rgba(0,0,0,.08); }
-.step:nth-child(4){ top:154px; background:var(--paper); color:var(--espresso); border-color:rgba(0,0,0,.10); }
+/* The scroll dim, which used to be filter:brightness() in main.js. Absolutely
+   positioned, so it stays out of flow and never becomes a grid track. */
+.step::before{
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background:rgba(56,48,42, calc(var(--dim, 0) * .10));
+  pointer-events:none;
+}
+.step > *{ position:relative; }
+.step:nth-child(1){ top:100px; background:color-mix(in srgb, var(--ember-soft) 62%, transparent); color:var(--espresso); }
+.step:nth-child(2){ top:118px; background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); }
+.step:nth-child(3){ top:136px; background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); border-color:rgba(0,0,0,.08); }
+.step:nth-child(4){ top:154px; background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); border-color:rgba(0,0,0,.10); }
 .step__no{
   font-family:var(--display); font-weight:800;
   font-size:clamp(2.6rem,7vw,6.4rem); line-height:.82;
@@ -1348,7 +1369,7 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;

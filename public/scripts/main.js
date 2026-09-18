@@ -439,7 +439,11 @@ function onScroll(){
       const d = top - s.getBoundingClientRect().top;
       const k = Math.max(0, Math.min(d / 620, 1));
       s.style.transform = `scale(${(1 - k*.055).toFixed(4)}) translateY(${(-k*10).toFixed(2)}px)`;
-      s.style.filter = `brightness(${(1 - k*.10).toFixed(3)})`;
+      /* was filter: brightness(). A filter makes the element a backdrop root,
+         which left the cards backdrop-filter with nothing to sample and the
+         glass rendered flat. The dim is a pseudo-element wash now: same look,
+         and the backdrop stays reachable. */
+      s.style.setProperty('--dim', k.toFixed(3));
     });
   }
   queued = false;

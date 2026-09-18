@@ -97,7 +97,7 @@ a{ color:inherit; }
 .btn:active{ transform:scale(.97); }
 .btn--dark{ background:var(--cta); color:var(--paper); }
 .btn--ghost{ background:transparent; color:var(--ink); border-color:var(--hair); }
-.btn--paper{ background:var(--paper); color:var(--cta); }
+.btn--paper{ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--cta); }
 @media (hover:hover) and (pointer:fine){
   .btn--dark:hover { background:var(--cocoa); }
   .btn--ghost:hover{ background:var(--cta); color:var(--paper); border-color:var(--cta); }
@@ -303,9 +303,9 @@ a{ color:inherit; }
 @media (hover:hover) and (pointer:fine){ .svc-row:hover .svc-row__img{ transform:scale(1.045); } }
 .svc-row:nth-of-type(6n+1) .svc-row__panel{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .svc-row:nth-of-type(6n+2) .svc-row__panel{ background:var(--champagne); color:var(--espresso); }
-.svc-row:nth-of-type(6n+3) .svc-row__panel{ background:var(--paper); color:var(--ink); }
-.svc-row:nth-of-type(6n+4) .svc-row__panel{ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
-.svc-row:nth-of-type(6n+5) .svc-row__panel{ background:var(--champagne-lo); color:var(--espresso); }
+.svc-row:nth-of-type(6n+3) .svc-row__panel{ background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); }
+.svc-row:nth-of-type(6n+4) .svc-row__panel{ background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
+.svc-row:nth-of-type(6n+5) .svc-row__panel{ background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
 .svc-row:nth-of-type(6n+6) .svc-row__panel{ background:var(--champagne-hi); color:var(--espresso); }
 
 .svc-row__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--cocoa); opacity:.6; }
@@ -358,14 +358,27 @@ a{ color:inherit; }
   display:grid; grid-template-columns:auto 1fr; gap:clamp(18px,3.2vw,52px);
   align-items:start;
   margin-bottom:22px;
-  border:1px solid rgba(0,0,0,.12);
-  box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
+  /* ---- glass: see the note in globals.css. Same treatment, and the same
+     62% fills, so the stack reads identically on both pages. */
+  border:1px solid rgba(255,255,255,.45);
+  background-clip:padding-box;
+  -webkit-backdrop-filter:blur(18px) saturate(1.18);
+          backdrop-filter:blur(18px) saturate(1.18);
+  box-shadow:
+    0 -20px 50px -34px rgba(56,48,42,.55),
+    inset 0 1px 0 rgba(255,255,255,.55);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--ember-soft); color:var(--espresso); }
-.step:nth-child(2){ top:118px; background:var(--sand); color:var(--espresso); }
-.step:nth-child(3){ top:136px; background:var(--champagne-lo); color:var(--espresso); border-color:rgba(0,0,0,.10); }
-.step:nth-child(4){ top:154px; background:var(--paper); color:var(--ink); border-color:transparent; }
+.step::before{
+  content:''; position:absolute; inset:0; border-radius:inherit;
+  background:rgba(56,48,42, calc(var(--dim, 0) * .10));
+  pointer-events:none;
+}
+.step > *{ position:relative; }
+.step:nth-child(1){ top:100px; background:color-mix(in srgb, var(--ember-soft) 62%, transparent); color:var(--espresso); }
+.step:nth-child(2){ top:118px; background:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); }
+.step:nth-child(3){ top:136px; background:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); border-color:rgba(0,0,0,.10); }
+.step:nth-child(4){ top:154px; background:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); border-color:transparent; }
 .step__no{
   font-family:var(--display); font-weight:800;
   font-size:clamp(2.6rem,7vw,6.4rem); line-height:.82;
