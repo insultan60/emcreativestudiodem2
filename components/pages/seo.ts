@@ -68,7 +68,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </p>
 
   <div class="hero__bubs">
-    <span class="bub-float bub-float--a bub-pos--l1"><span class="bub bub--a" style="--br:-4deg; --tail:18px;">From $200/mo</span></span>
+    <span class="bub-float bub-float--a bub-pos--l1"><span class="bub bub--a" style="--br:-4deg; --tail:18px;">Monthly plans</span></span>
     <span class="bub-float bub-float--c bub-pos--l2"><span class="bub bub--c" style="--br:-3deg; --tail:24px;">10&ndash;75+ keywords</span></span>
     <span class="bub-float bub-float--b bub-pos--r1"><span class="bub bub--b" style="--br:4deg; --tail:24px;">1&ndash;6 articles/mo</span></span>
     <span class="bub-float bub-float--d bub-pos--r2"><span class="bub bub--d" style="--br:5deg; --tail:20px;">Six tiers</span></span>
@@ -116,7 +116,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-            <p class="pack__price">$200 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> solo agents, new local businesses, small towns and low-competition markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -179,7 +179,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-            <p class="pack__price">$500 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> growing teams, agents expanding into new neighborhoods, and suburban or mid-size city markets.</p>
             <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -244,7 +244,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-            <p class="pack__price">$800 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> brokerages, multi-agent offices, property managers, and agents in competitive metro markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -318,7 +318,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-            <p class="pack__price">$299 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> small businesses, startups, local service providers, and businesses entering organic search.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -389,7 +389,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-            <p class="pack__price">$699 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> growing businesses looking to increase organic traffic, visibility and qualified leads.</p>
             <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -456,7 +456,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-            <p class="pack__price">$1,500 <small>/ month</small></p>
+            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> established companies, competitive industries, SaaS, ecommerce brands, and businesses targeting multiple markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -541,9 +541,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <thead>
             <tr>
               <th></th>
-              <th><span class="tier-pill">Getting found</span><br>Starter &middot; $200</th>
-              <th><span class="tier-pill">Most chosen</span><br>Growth &middot; $500</th>
-              <th><span class="tier-pill">Market leader</span><br>Authority &middot; $800</th>
+              <th><span class="tier-pill">Getting found</span><br>Starter</th>
+              <th><span class="tier-pill">Most chosen</span><br>Growth</th>
+              <th><span class="tier-pill">Market leader</span><br>Authority</th>
             </tr>
           </thead>
           <tbody>
@@ -574,9 +574,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <thead>
             <tr>
               <th></th>
-              <th><span class="tier-pill">Getting found</span><br>Starter &middot; $299</th>
-              <th><span class="tier-pill">Most chosen</span><br>Growth &middot; $699</th>
-              <th><span class="tier-pill">Market leader</span><br>Authority &middot; $1,500</th>
+              <th><span class="tier-pill">Getting found</span><br>Starter</th>
+              <th><span class="tier-pill">Most chosen</span><br>Growth</th>
+              <th><span class="tier-pill">Market leader</span><br>Authority</th>
             </tr>
           </thead>
           <tbody>
@@ -659,31 +659,31 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <span class="addon-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-doc"/></svg></span>
         <h4>Additional SEO Content</h4>
         <p>An extra keyword-targeted article beyond your plan&rsquo;s monthly count.</p>
-        <p class="addon-card__price">$150 <small>per article</small></p>
+        <p class="addon-card__price">On request</p>
       </div>
       <div class="addon-card" data-rise>
         <span class="addon-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-page"/></svg></span>
         <h4>Additional Page Optimization</h4>
         <p>A full on-page pass on a page outside your plan&rsquo;s allowance.</p>
-        <p class="addon-card__price">$75 <small>per page</small></p>
+        <p class="addon-card__price">On request</p>
       </div>
       <div class="addon-card" data-rise>
         <span class="addon-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-pin"/></svg></span>
         <h4>Google Business Profile Management</h4>
         <p>Active profile management added to a plan that does not already include it.</p>
-        <p class="addon-card__price">+$200 <small>/ month</small></p>
+        <p class="addon-card__price">On request</p>
       </div>
       <div class="addon-card" data-rise>
         <span class="addon-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-scope"/></svg></span>
         <h4>SEO Competitor Research</h4>
         <p>A one-time deep read on who is beating you and on which terms.</p>
-        <p class="addon-card__price">+$300 <small>one-time</small></p>
+        <p class="addon-card__price">On request</p>
       </div>
       <div class="addon-card" data-rise>
         <span class="addon-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><use href="#ic-gauge"/></svg></span>
         <h4>Technical SEO Audit</h4>
         <p>A standalone full technical audit, whether or not you are on a plan.</p>
-        <p class="addon-card__price">+$500 <small>one-time</small></p>
+        <p class="addon-card__price">On request</p>
       </div>
     </div>
   </div>
@@ -736,7 +736,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <svg class="faq-item__chev" width="16" height="16" viewBox="0 0 24 24"><use href="#ic-plus"/></svg>
         </button>
         <div class="faq-item__a-wrap"><div class="faq-item__a-inner">
-          <p class="faq-item__a">Yes. Extra articles are $150 each and extra page optimization is $75 per page, both on any plan. Google Business Profile management can be added for $200 a month, and competitor research and a full technical audit are available as one-time pieces at $300 and $500. Adding what you need for one month is usually cheaper than moving up a tier for all of them.</p>
+          <p class="faq-item__a">Yes. Extra articles, extra page optimization, Google Business Profile management, competitor research and a standalone technical audit can all be added to any plan. Taking what you need for a single month is usually lighter than moving up a tier for all of it &mdash; we will scope and price it with you.</p>
         </div></div>
       </div>
 

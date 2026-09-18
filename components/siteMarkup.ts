@@ -508,9 +508,9 @@ export const SITE_BODY_HTML = `
           <h3 class="pack__name">Essentials</h3>
           <span class="pack__tag">Getting found</span>
         </div>
-        <p class="pack__hint">From $2,400 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">$2,400 <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Technical SEO and local listings</li>
             <li>Two content pieces a month</li>
@@ -526,9 +526,9 @@ export const SITE_BODY_HTML = `
           <h3 class="pack__name">Signature</h3>
           <span class="pack__tag">Most chosen</span>
         </div>
-        <p class="pack__hint">From $5,800 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">$5,800 <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Everything in Essentials</li>
             <li>Paid social and search, managed</li>
@@ -545,9 +545,9 @@ export const SITE_BODY_HTML = `
           <h3 class="pack__name">Bespoke</h3>
           <span class="pack__tag">Full studio</span>
         </div>
-        <p class="pack__hint">From $12,000 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">From $12k <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Full rebrand and site build</li>
             <li>Multi-market campaign work</li>
@@ -576,7 +576,7 @@ export const SITE_BODY_HTML = `
         </span>
         <h2 class="h2" data-rise>Getting found is its own job</h2>
       </div>
-      <p class="lede" data-rise>Separate monthly plans for organic search, priced on their own. These are the real estate tiers &mdash; there is a matching track for every other kind of business.</p>
+      <p class="lede" data-rise>Separate monthly plans for organic search, scoped on their own. These are the real estate tiers &mdash; there is a matching track for every other kind of business.</p>
     </div>
 
     <div class="seo-band" data-rise>
@@ -585,7 +585,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Starter</h3>
           <span class="seo-card__tag">Getting found</span>
         </div>
-        <p class="seo-card__price">$200 <small>/ month</small></p>
+        <p class="seo-card__price">Let&rsquo;s talk</p>
         <ul class="seo-card__list">
           <li>10 local keywords</li>
           <li>Google Business Profile, fully set up</li>
@@ -600,7 +600,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Growth</h3>
           <span class="seo-card__tag">Most chosen</span>
         </div>
-        <p class="seo-card__price">$500 <small>/ month</small></p>
+        <p class="seo-card__price">Let&rsquo;s talk</p>
         <ul class="seo-card__list">
           <li>25 keywords, neighborhood level</li>
           <li>4 profile posts a week</li>
@@ -615,7 +615,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Authority</h3>
           <span class="seo-card__tag">Market leader</span>
         </div>
-        <p class="seo-card__price">$800 <small>/ month</small></p>
+        <p class="seo-card__price">Let&rsquo;s talk</p>
         <ul class="seo-card__list">
           <li>50+ keywords, zip code level</li>
           <li>Full technical SEO &amp; Core Web Vitals</li>
@@ -627,7 +627,7 @@ export const SITE_BODY_HTML = `
     </div>
 
     <div class="seo-band__foot" data-rise>
-      <p>Not in real estate? There is a second track, from $299 a month.</p>
+      <p>Not in real estate? There is a second track for every other kind of business.</p>
       <a class="btn btn--dark" href="/services/seo" data-hot>
         See all SEO plans <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
       </a>

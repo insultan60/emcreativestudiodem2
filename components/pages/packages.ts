@@ -62,9 +62,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </p>
 
   <div class="hero__bubs">
-    <span class="bub-float bub-float--a bub-pos--l1"><span class="bub bub--a" style="--br:-4deg; --tail:18px;">$2,400/mo</span></span>
-    <span class="bub-float bub-float--c bub-pos--l2"><span class="bub bub--c" style="--br:-3deg; --tail:24px;">$5,800/mo</span></span>
-    <span class="bub-float bub-float--b bub-pos--r1"><span class="bub bub--b" style="--br:4deg; --tail:24px;">$12k/mo</span></span>
+    <span class="bub-float bub-float--a bub-pos--l1"><span class="bub bub--a" style="--br:-4deg; --tail:18px;">Senior team</span></span>
+    <span class="bub-float bub-float--c bub-pos--l2"><span class="bub bub--c" style="--br:-3deg; --tail:24px;">Monthly reporting</span></span>
+    <span class="bub-float bub-float--b bub-pos--r1"><span class="bub bub--b" style="--br:4deg; --tail:24px;">Three tiers</span></span>
     <span class="bub-float bub-float--d bub-pos--r2"><span class="bub bub--d" style="--br:5deg; --tail:20px;">Month to month</span></span>
   </div>
 
@@ -96,9 +96,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <h3 class="pack__name">Essentials</h3>
           <span class="pack__tag">Getting found</span>
         </div>
-        <p class="pack__hint">From $2,400 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">$2,400 <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Technical SEO and local listings</li>
             <li>Two content pieces a month</li>
@@ -115,9 +115,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <h3 class="pack__name">Signature</h3>
           <span class="pack__tag">Most chosen</span>
         </div>
-        <p class="pack__hint">From $5,800 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">$5,800 <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Everything in Essentials</li>
             <li>Paid social and search, managed</li>
@@ -135,9 +135,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <h3 class="pack__name">Bespoke</h3>
           <span class="pack__tag">Full studio</span>
         </div>
-        <p class="pack__hint">From $12,000 / month</p>
+        <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">From $12k <small>/ month</small></p>
+          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
           <ul class="pack__list">
             <li>Full rebrand and site build</li>
             <li>Multi-market campaign work</li>
@@ -279,7 +279,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 
       <div class="faq-item" data-open="false">
         <button class="faq-item__q" type="button">
-          Does the price include ad spend?
+          Does the retainer include ad spend?
           <svg class="faq-item__chev" width="16" height="16" viewBox="0 0 24 24"><use href="#ic-plus"/></svg>
         </button>
         <div class="faq-item__a-wrap"><div class="faq-item__a-inner">

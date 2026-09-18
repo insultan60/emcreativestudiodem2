@@ -172,7 +172,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <div class="svc-row__content">
           <span class="svc-row__no">07 / Search</span>
           <h3 class="svc-row__ttl"><a href="/services/seo">SEO &amp; Local Search</a></h3>
-          <p class="svc-row__body">Keyword research, on-page and technical fixes, Google Business Profile, citations and content &mdash; sold as its own monthly plan from $200.</p>
+          <p class="svc-row__body">Keyword research, on-page and technical fixes, Google Business Profile, citations and content &mdash; sold as its own monthly plan.</p>
           <ul class="svc-row__tags"><li>Local SEO</li><li>Technical SEO</li><li>Content &amp; Links</li></ul>
           <a class="svc-row__link" href="/services/seo">See the SEO plans <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
         </div>

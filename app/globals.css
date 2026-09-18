@@ -2095,3 +2095,53 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .foot .foot__legal-links a{ display:inline-block; padding-block:12px; }
 }
 
+
+/* ==================================================================
+   VERY LARGE SCREENS
+   The shell caps at 1440px. That holds up well to about 1800px and
+   then starts to strand the page: at 2560px the content owns 56% of
+   the screen and the rest is empty paper, with the step cards' body
+   copy stopping at its 46-character measure and leaving a dead zone
+   inside the card.
+
+   The ceiling lifts in two steps rather than going fluid, because an
+   uncapped measure runs body copy past a readable line length. The
+   gutters grow with it so the edges keep their air, and the type
+   ceilings come up too - a headline that stops growing at 1440px
+   reads as small once the surface around it doubles.
+   ================================================================== */
+@media (min-width:1800px){
+  :root{ --gut:88px; }
+  .wrap{ width:min(1660px, 100% - var(--gut)*2); }
+  .nav{ max-width:1660px; }
+  .hero__inner{ max-width:1360px; }
+  .stats__wrap, .foot__inner, .team__ceo, .team__cta{ max-width:1480px; }
+
+  .hero__hl{ font-size:clamp(2.05rem,5.15vw,5.6rem); }
+  .h2{ font-size:clamp(1.95rem,4.8vw,4.6rem); }
+  .lede{ font-size:clamp(15px,1.15vw,20px); }
+  .step__ttl{ font-size:clamp(1.55rem,3.2vw,3rem); }
+  .step__body{ font-size:clamp(14px,1.05vw,18px); max-width:54ch; }
+
+  /* The art is a 4:3 photo in a .78fr column, so every pixel the card gains
+     in width it also gains in height - at 2560 that left 436px of empty
+     card under a text column only 213px tall. Capping the ratio keeps the
+     card in proportion; the image is object-fit:cover, so it crops rather
+     than distorts. align-self has to leave stretch or the row height wins. */
+  .step__art{ align-self:start; aspect-ratio:16/9; }
+}
+
+@media (min-width:2400px){
+  :root{ --gut:112px; }
+  .wrap{ width:min(2000px, 100% - var(--gut)*2); }
+  .nav{ max-width:2000px; }
+  .hero__inner{ max-width:1620px; }
+  .stats__wrap, .foot__inner, .team__ceo, .team__cta{ max-width:1780px; }
+
+  .hero__hl{ font-size:6.4rem; }
+  .h2{ font-size:5.2rem; }
+  .lede{ font-size:22px; }
+  .step__ttl{ font-size:3.4rem; }
+  .step__body{ font-size:19px; max-width:60ch; }
+  .step__art{ aspect-ratio:2/1; }
+}

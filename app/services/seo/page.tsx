@@ -6,7 +6,7 @@ import "./page.css";
 export const metadata: Metadata = {
   title: "SEO Plans — The EM Creative Studio",
   description:
-    "Monthly SEO plans from $200. Six tiers across two tracks - one for real estate agents, teams and brokerages, one for every other business. Keyword research, Google Business Profile, technical SEO and content, reported monthly.",
+    "Monthly SEO plans across six tiers and two tracks - one for real estate agents, teams and brokerages, one for every other business. Keyword research, Google Business Profile, technical SEO and content, reported monthly.",
   alternates: { canonical: "/services/seo" },
 };
 
