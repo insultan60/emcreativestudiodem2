@@ -16,6 +16,8 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
+  --ember:        #EC905B;
+  --sand:         #DFC8B1;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #000000;
@@ -349,11 +351,11 @@ a{ color:inherit; }
   font-size:11px; font-weight:700; letter-spacing:.03em;
 }
 .love-card:nth-of-type(6n+1) .love-card__mark{ background:var(--espresso); }
-.love-card:nth-of-type(6n+2) .love-card__mark{ background:var(--sage); }
+.love-card:nth-of-type(6n+2) .love-card__mark{ background:var(--ember); color:var(--espresso); }
 .love-card:nth-of-type(6n+3) .love-card__mark{ background:var(--cta); }
 .love-card:nth-of-type(6n+4) .love-card__mark{ background:var(--champagne-hi); color:var(--espresso); }
 .love-card:nth-of-type(6n+5) .love-card__mark{ background:var(--espresso); }
-.love-card:nth-of-type(6n+6) .love-card__mark{ background:var(--sage); }
+.love-card:nth-of-type(6n+6) .love-card__mark{ background:var(--ember); color:var(--espresso); }
 .love-card:nth-of-type(6n+1) .love-card__cat{ background:var(--linen); color:var(--cocoa); }
 .love-card:nth-of-type(6n+2) .love-card__cat{ background:var(--champagne-lo); color:var(--cocoa); }
 .love-card:nth-of-type(6n+3) .love-card__cat{ background:var(--linen); color:var(--cta); }
@@ -375,10 +377,10 @@ a{ color:inherit; }
   border:2px solid transparent;
 }
 .love-card__avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
-.love-card:nth-of-type(6n+1) .love-card__avatar{ background:var(--sage); border-color:var(--espresso); }
+.love-card:nth-of-type(6n+1) .love-card__avatar{ background:var(--ember); color:var(--espresso); border-color:var(--espresso); }
 .love-card:nth-of-type(6n+2) .love-card__avatar{ background:var(--espresso); border-color:var(--cocoa); }
 .love-card:nth-of-type(6n+3) .love-card__avatar{ background:var(--cta); border-color:var(--champagne-hi); }
-.love-card:nth-of-type(6n+4) .love-card__avatar{ background:var(--sage); border-color:var(--champagne-hi); }
+.love-card:nth-of-type(6n+4) .love-card__avatar{ background:var(--ember); color:var(--espresso); border-color:var(--champagne-hi); }
 .love-card:nth-of-type(6n+5) .love-card__avatar{ background:var(--espresso); border-color:var(--cta); }
 .love-card:nth-of-type(6n+6) .love-card__avatar{ background:var(--cta); border-color:var(--cocoa); }
 .love-card__name{ font-size:13.5px; font-weight:700; color:var(--ink); line-height:1.3; }
@@ -927,7 +929,7 @@ html.js-words [data-words].words-in{ visibility:visible; }
    .eyebrow::before, one step below .news .eyebrow::before, which lightens
    these for the dark newsletter band and has to keep doing so. */
 body .eyebrow::before,
-body .eyebrow::after{ background:var(--sage); opacity:1; }
+body .eyebrow::after{ background:var(--ember); opacity:1; }
 
 /* The badge no longer dims when the nav tucks. It was dropping to .45, and on
    a phone it is the only route back to the top of the site - at that weight,

@@ -16,6 +16,8 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
+  --ember:        #EC905B;
+  --sand:         #DFC8B1;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #000000;
@@ -321,7 +323,7 @@ a{ color:inherit; }
 .feat__avatar{
   width:28px; height:28px; border-radius:50%; flex:none;
   overflow:hidden;
-  background:var(--sage); color:var(--paper);
+  background:var(--ember); color:var(--espresso);
   font-family:var(--display); font-weight:700; font-size:11px;
   border:1px solid rgba(0,0,0,.08);
 }
@@ -399,7 +401,7 @@ a{ color:inherit; }
 }
 .post-card:nth-of-type(6n+1) .post-card__cat{ background:var(--espresso); color:var(--champagne); }
 .post-card:nth-of-type(6n+2) .post-card__cat{ background:var(--paper); color:var(--espresso); }
-.post-card:nth-of-type(6n+3) .post-card__cat{ background:var(--sage); color:var(--paper); }
+.post-card:nth-of-type(6n+3) .post-card__cat{ background:var(--ember); color:var(--espresso); }
 .post-card:nth-of-type(6n+4) .post-card__cat{ background:var(--champagne-hi); color:var(--espresso); }
 .post-card:nth-of-type(6n+5) .post-card__cat{ background:var(--cta); color:var(--champagne-lo); }
 .post-card:nth-of-type(6n+6) .post-card__cat{ background:var(--champagne); color:var(--espresso); }
@@ -828,7 +830,7 @@ html.js-words [data-words].words-in{ visibility:visible; }
    .eyebrow::before, one step below .news .eyebrow::before, which lightens
    these for the dark newsletter band and has to keep doing so. */
 body .eyebrow::before,
-body .eyebrow::after{ background:var(--sage); opacity:1; }
+body .eyebrow::after{ background:var(--ember); opacity:1; }
 
 /* The badge no longer dims when the nav tucks. It was dropping to .45, and on
    a phone it is the only route back to the top of the site - at that weight,

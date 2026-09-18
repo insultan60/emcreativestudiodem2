@@ -61,6 +61,7 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
+  --sand:         #DFC8B1;
   /* Client pick. It is a light, warm colour, so the cards that take it carry
      dark ink like Champagne and Paper do - Paper text on it is 2.2:1, which
      is below the bar and worse than the 4.2:1 it had on Sage. Black on it is
@@ -1158,7 +1159,7 @@ body.hero-revealed .shot__frame{
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
 .card:nth-child(3){ background:var(--paper); color:var(--ink); }
-.card:nth-child(4){ background:var(--sage); color:var(--paper); border-color:var(--sage); }
+.card:nth-child(4){ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
 .card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
 .card:nth-child(6){ background:var(--paper); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
@@ -1214,7 +1215,7 @@ body.hero-revealed .shot__frame{
 .process .h2{ color:var(--ink); }
 .process .lede{ color:var(--ink-soft); }
 .process .eyebrow{ color:rgba(0,0,0,.62); border-color:rgba(0,0,0,.18); }
-.process .eyebrow .crown{ color:var(--sage); }
+.process .eyebrow .crown{ color:var(--ember); }
 
 .stack{ margin-top:clamp(40px,7vh,90px); }
 .step{
@@ -1229,9 +1230,9 @@ body.hero-revealed .shot__frame{
   box-shadow:0 -20px 50px -34px rgba(0,0,0,.9);
   transition:transform 200ms linear;
 }
-.step:nth-child(1){ top:100px; background:var(--sage);  color:var(--paper); }
-.step:nth-child(2){ top:118px; background:var(--taupe); color:var(--paper); }
-.step:nth-child(3){ top:136px; background:var(--champagne); color:var(--espresso); border-color:rgba(0,0,0,.08); }
+.step:nth-child(1){ top:100px; background:var(--ember); color:var(--espresso); }
+.step:nth-child(2){ top:118px; background:var(--sand); color:var(--espresso); }
+.step:nth-child(3){ top:136px; background:var(--champagne-lo); color:var(--espresso); border-color:rgba(0,0,0,.08); }
 .step:nth-child(4){ top:154px; background:var(--paper); color:var(--espresso); border-color:rgba(0,0,0,.10); }
 .step__no{
   font-family:var(--display); font-weight:800;
@@ -1338,7 +1339,7 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sage); color:var(--paper); border-color:var(--sage); }
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
@@ -2070,7 +2071,7 @@ html.js-words [data-words].words-in{ visibility:visible; }
    .eyebrow::before, one step below .news .eyebrow::before, which lightens
    these for the dark newsletter band and has to keep doing so. */
 body .eyebrow::before,
-body .eyebrow::after{ background:var(--sage); opacity:1; }
+body .eyebrow::after{ background:var(--ember); opacity:1; }
 
 /* The badge no longer dims when the nav tucks. It was dropping to .45, and on
    a phone it is the only route back to the top of the site - at that weight,

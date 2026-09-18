@@ -16,6 +16,8 @@
   --cta:          #000000;
   --espresso:     #000000;
   --sage:         #6E7865;
+  --ember:        #EC905B;
+  --sand:         #DFC8B1;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
   --ink:          #000000;
@@ -297,7 +299,7 @@ a{ color:inherit; }
   color:var(--paper); margin-bottom:16px;
 }
 .tldr-card:nth-child(4n+1) .tldr-card__ic{ background:var(--espresso); }
-.tldr-card:nth-child(4n+2) .tldr-card__ic{ background:var(--sage); }
+.tldr-card:nth-child(4n+2) .tldr-card__ic{ background:var(--ember); color:var(--espresso); }
 .tldr-card:nth-child(4n+3) .tldr-card__ic{ background:var(--cta); }
 .tldr-card:nth-child(4n+4) .tldr-card__ic{ background:var(--champagne-hi); color:var(--espresso); }
 .tldr-card__ttl{ font-family:var(--display); font-weight:800; font-size:1rem; letter-spacing:-.015em; margin:0 0 8px; }
@@ -915,7 +917,7 @@ html.js-words [data-words].words-in{ visibility:visible; }
    .eyebrow::before, one step below .news .eyebrow::before, which lightens
    these for the dark newsletter band and has to keep doing so. */
 body .eyebrow::before,
-body .eyebrow::after{ background:var(--sage); opacity:1; }
+body .eyebrow::after{ background:var(--ember); opacity:1; }
 
 /* The badge no longer dims when the nav tucks. It was dropping to .45, and on
    a phone it is the only route back to the top of the site - at that weight,
