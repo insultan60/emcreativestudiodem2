@@ -13,8 +13,8 @@
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
   --cocoa:        #4A443D;
-  --cta:          #000000;
-  --espresso:     #000000;
+  --cta:          #38302A;
+  --espresso:     #38302A;
   --sage:         #6E7865;
   --ember:        #EC905B;
   --sand:         #DFC8B1;
@@ -26,10 +26,10 @@
   --ember-soft:   color-mix(in srgb, var(--ember) 75%, var(--paper));
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
-  --ink:          #000000;
-  --ink-soft:     rgba(0,0,0,.58);
-  --ink-faint:    rgba(0,0,0,.30);
-  --hair:         rgba(0,0,0,.16);
+  --ink:          #38302A;
+  --ink-soft:     rgba(56,48,42,.80);
+  --ink-faint:    rgba(56,48,42,.38);
+  --hair:         rgba(56,48,42,.20);
 
   --display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -670,7 +670,7 @@ a.work-card__link::after{ content:''; position:absolute; inset:0; border-radius:
 :root{
   --nav-bg:       #D6C6B4;
   --nav-glass:    rgba(214,198,180,.55);
-  --nav-ink:      #000000;
+  --nav-ink:      #38302A;
   --nav-ease-dur: 900ms;
 }
 
