@@ -248,9 +248,9 @@
 
   /* The stroke finishing is the honest signal, and it stays honest in a
      backgrounded tab where a timer would not. Kept in step with the
-     stylesheet by hand: the draw runs 2200ms and the clean copy settles from
-     1980ms, so the fallback sits just past the end of both. */
+     stylesheet by hand: the draw runs 2600ms and the clean copy settles
+     from 2600ms over 460ms, so the fallback sits just past the end of both. */
   var rev = art.querySelector('.crown-draw__rev');
   if (rev) rev.addEventListener('animationend', dock);
-  setTimeout(dock, 2600);
+  setTimeout(dock, 3150);
 })();

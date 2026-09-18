@@ -601,7 +601,10 @@ body.crown-docked .liquid__art{ opacity:.40; }
    first frame. No width fixes this - the swoosh's curl and that tip sit
    closer together than the brush's own radius, and narrowing it far enough
    to miss the tip (102) bites visible nicks out of the finished mark. */
-.crown-draw__rev{ stroke-dasharray:1000; stroke-dashoffset:-1000; }
+.crown-draw__rev{ stroke-dasharray:1000; stroke-dashoffset:-1000;
+  /* dashoffset is painted, not composited, so every frame repaints the
+     masked artwork. Naming it lets the compositor prepare for that. */
+  will-change:stroke-dashoffset; }
 /* The black half of the mask. It covers the first 60/1000 of the path - the
    swoosh's tip, the one end no brush width can spare - and lets go of it in
    step with the white front, so the tip appears because the line drew it and
@@ -615,10 +618,10 @@ body.crown-docked .liquid__art{ opacity:.40; }
 .crown-draw__tipcap{ opacity:1; }
 .crown-draw__full{ opacity:0; }
 body.crown-drawing .crown-draw__rev{
-  animation:crownDraw 2200ms cubic-bezier(.42,0,.35,1) both;
+  animation:crownDraw 2600ms cubic-bezier(.42,0,.35,1) both;
 }
 body.crown-drawing .crown-draw__tip{
-  animation:crownTip 543ms cubic-bezier(.2793,.6299,.6072,1) 1657ms both;
+  animation:crownTip 642ms cubic-bezier(.2793,.6299,.6072,1) 1958ms both;
 }
 /* 2150ms is the moment the stroke actually has the tip attached rather than
    loose. This number belongs to the ARTWORK, not to the path: it is where
@@ -641,7 +644,7 @@ body.crown-drawing .crown-draw__tip{
    transparent crown.
    If the artwork is replaced again, this is the number to re-measure. */
 body.crown-drawing .crown-draw__tipcap{
-  animation:crownTipCap 2170ms linear both;
+  animation:crownTipCap 2565ms linear both;
 }
 /* Held until the line has actually finished, at 2200ms. It used to start at
    1980ms, which overlapped the last 220ms of the draw: at that moment 8.6 of
@@ -655,7 +658,7 @@ body.crown-drawing .crown-draw__tipcap{
    line, and the copy does what it is for: catching the slivers on the outer
    bends that a fat round stroke cannot, once the drawing is over. */
 body.crown-drawing .crown-draw__full{
-  animation:crownSettle 460ms linear 2200ms both;
+  animation:crownSettle 460ms linear 2600ms both;
 }
 @keyframes crownDraw{ to{ stroke-dashoffset:0; } }
 @keyframes crownTip{ to{ stroke-dasharray:0 1000; } }
