@@ -60,6 +60,21 @@
   var CENTRE_Y = 0.54;  /* of the hero's height, from its top */
   var INTRO_W  = 0.46;  /* widest the tilted mark may get, as a fraction of the hero */
   var FIT      = 0.94;  /* never let the spikes touch the edge */
+  /* What the float loop in main.js adds to the mark's reach, in the stage's
+     own units. That loop owns .liquid__inner and keeps nudging the mark
+     INSIDE the box this file places, so its travel is invisible to a
+     measurement of .liquid__stage - and it only ever travels DOWN: introY
+     starts the mark 20px low and rises it, and the ambient wy adds up to 11
+     more. Sampled every 80ms across the whole intro at five viewports, the
+     artwork reached 29-32px below the stage's layout box and never one pixel
+     above it.
+     The hero clips, so as far as fitting goes that reach is part of the
+     mark's height and has to come out of the room before the mark is sized.
+     Left out - which it was - the mark overran the hero's foot by 36px at
+     1920x1080, 31px at 1600x900 and 24-28px at 1366x768 and 1280x720, and
+     the artwork is cropped tight to its own alpha, so every one of those
+     pixels was a flat cut across the bottom of the crown. */
+  var FLOAT    = 34;
   var AR = 900 / 625;
   var LIQ  = document.querySelector('.liquid--a');
   var TILT = (parseFloat(getComputedStyle(LIQ).getPropertyValue('--r0')) || 0)
@@ -104,13 +119,31 @@
     if (!s.width || !h.width) return null;
 
     var cx = h.left + h.width / 2;
-    var cy = h.top  + h.height * CENTRE_Y;
-
-    var room = 2 * Math.min(cy - h.top, h.bottom - cy) * FIT;
     /* narrow screens have height to spare and no width, so the mark is
        allowed to take much more of it */
     var wFrac = h.width < 720 ? 0.78 : INTRO_W;
-    var k = Math.min(h.width * wFrac / SPAN_X, room / SPAN_Y) / s.width;
+
+    /* Sized against the hero's WHOLE height, not the distance from CENTRE_Y
+       down to the nearer edge. Those are the same number only while the mark
+       can actually sit at CENTRE_Y; on a 16:9 hero it cannot, and measuring
+       to the nearer edge threw away all the room on the other side - which
+       is the room this needs. */
+    var kW = h.width * wFrac / SPAN_X / s.width;
+    var kH = h.height * FIT / (s.width * SPAN_Y + FLOAT);
+    var k  = Math.min(kW, kH);
+
+    /* Then place it. CENTRE_Y is where it WANTS to sit; it rides up from
+       there by however much the float's reach would otherwise hang past the
+       hero's foot, and no further than its own top edge allows. On a 16:9
+       hero that lifts it about 65px and it passes behind the nav pill, which
+       it already did at 1600x900 and below. The size is what matters here -
+       it is the same on every screen as it was. */
+    var half = k * s.width * SPAN_Y / 2;
+    var pad  = h.height * (1 - FIT) / 2;
+    var cy   = h.top + h.height * CENTRE_Y;
+    cy = Math.min(cy, h.bottom - pad - half - k * FLOAT);
+    cy = Math.max(cy, h.top + pad + half);
+
     return place(s, cx, cy, k);
   }
 
@@ -151,9 +184,25 @@
       top:  h.top + h.height * 0.30, height: h.height * 0.30
     };
 
-    var wUp = Math.min(hl.width * REST_W / SPAN_X,
-                       h.height * REST_FIT * REST_MIN / SPAN_Y);
-    return place(s, hl.left + hl.width / 2, hl.top + hl.height / 2, wUp / s.width);
+    var cx = hl.left + hl.width / 2;
+    var cy = hl.top  + hl.height / 2;
+
+    /* Three caps, tightest wins. The first two are the old pair - the
+       headline's own width, and a share of the hero's height. The third is
+       the one that was missing: the real distance from the headline's centre
+       down to the hero's foot, with the float's reach taken off it.
+       REST_FIT was meant to be that ("it has to cover the ambient float as
+       well as the mark itself") but it is a flat 7% of a height cap, not a
+       measurement of the gap that actually has to hold the mark, so it did
+       not cover it - the resting mark overran the foot by 6-8px on every
+       16:9 viewport and sat there cut for the rest of the visit. Unlike the
+       intro this one cannot ride up to make room: it belongs behind the
+       headline, so the only thing left to give is size. */
+    var kHl   = hl.width * REST_W / SPAN_X / s.width;
+    var kMin  = h.height * REST_FIT * REST_MIN / SPAN_Y / s.width;
+    var kFoot = 2 * (h.bottom - cy) * REST_FIT / (s.width * SPAN_Y + 2 * FLOAT);
+
+    return place(s, cx, cy, Math.min(kHl, kMin, kFoot));
   }
 
   /* Reduced motion skips the draw and goes straight to the resting placement.

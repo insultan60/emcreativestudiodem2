@@ -118,27 +118,58 @@ export const SITE_BODY_HTML = `
                    stroke has not reached yet, and retreats in step with it -
                    88 wide, which covers that tube whole and stays well inside
                    the 58.6px at which any other part of the path comes near
-                   it, so it cannot bite a neighbouring strand. The circle is
-                   its cap: the artwork's tip runs about 12px past where the
-                   path stops, and a butt cap paints nothing beyond the last
-                   point, so that overhang was the one piece still showing.
-                   r=24 covers it, and it lifts the moment the stroke has
-                   the tip attached. Measured over the whole draw, loose
-                   pixels go 901 -> 0. -->
+                   it, so it cannot bite a neighbouring strand.
+
+                   "M 813.33 922.40 L 790 928" is a 24-unit lead-in along the
+                   start tangent, and it replaces a black disc that used to
+                   sit at the path's end. The artwork's tip does not stop
+                   where the path stopped: walking the alpha out from the end
+                   point, ink runs a further 21 units, and a butt cap paints
+                   nothing past the final point, so the stroke could never
+                   reach it. The disc hid that ink until the last moment.
+                   That disc was the ending fault. It could not lift early -
+                   the ink under it only joins the body of the mark at 2550ms
+                   of 2600 - and it could not fade, because a half-faded
+                   black cap is a half-transparent crown. So it stepped off
+                   whole: 811px, 45x25 units, 5% of the crown's width, in a
+                   single frame, after 160ms in which the fat brush and the
+                   ease-out between them revealed 10 new pixels. The draw
+                   stopped, and then the tip was simply there.
+                   The lead-in removes the cause instead of covering it. The
+                   stroke sweeps the overhang like any other part of the
+                   mark, so the tip is drawn on rather than uncovered, and
+                   nothing has to be held back for it. Measured over the
+                   whole draw: 0 loose pixels at every frame, 0 pixels lost
+                   against the old mask, the same 143273 covered at the end,
+                   and a last second that tapers +842, +498, +220, +38
+                   instead of stalling and then dumping.
+                   24 is the number to re-measure if the artwork changes. It
+                   is bounded on both sides: shorter and the far end of the
+                   overhang is still loose (141px at 12 units), longer and
+                   the lead-in leaves the tube. -->
               <path class="crown-draw__rev" pathLength="1000"
                     transform="translate(-176.672,-253.044) scale(0.902614)"
-                    d="M 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
+                    d="M 813.33 922.40 L 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
                     fill="none" stroke="#fff" stroke-width="142"
                     stroke-linecap="butt" stroke-linejoin="round"/>
 <path class="crown-draw__tip" pathLength="1000"
                     transform="translate(-176.672,-253.044) scale(0.902614)"
-                    d="M 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
+                    d="M 813.33 922.40 L 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
                     fill="none" stroke="#000" stroke-width="88"
                     stroke-linecap="butt" stroke-linejoin="round"/>
-              <!-- see above: the cap on the black, for the ink that
-                   overhangs the end of the path. It lifts over the last
-                   110ms, as the line lands on the tip it was holding. -->
-              <circle class="crown-draw__tipcap" cx="536.4" cy="584.6" r="24" fill="#000"/>
+              <!-- The lead-in's own patch. 44, not 88: the clearance from the
+                   path to the curl above is 43 units at the tip and tightens
+                   along the lead-in, and 88 (half-width 39.7) bites a notch
+                   out of the curl the whole way through the draw. 44 covers
+                   this stretch of tube - half-width 19.9 against the tube's
+                   17.5 - and cannot reach the curl. It hands over to the 88
+                   above at the old path start, and retreats over the last
+                   225ms as the line sweeps the tip. -->
+              <path class="crown-draw__tipin" pathLength="1000"
+                    transform="translate(-176.672,-253.044) scale(0.902614)"
+                    d="M 813.33 922.40 L 790 928 C 690 952, 500 962, 420 895 C 372 855, 392 792, 470 776 C 570 756, 720 820, 812 866 C 852 887, 878 912, 898 936 L 1141 546 C 1090 620, 985 645, 940 620 C 908 602, 898 569, 898 528 C 880 570, 820 630, 795 648 C 775 600, 770 450, 772 320 C 745 400, 700 560, 655 620 C 640 642, 618 652, 600 645 C 560 630, 500 560, 452 458 C 425 512, 390 552, 335 604 C 300 552, 250 480, 215 432 C 240 530, 300 720, 336 832"
+                    fill="none" stroke="#000" stroke-width="44"
+                    stroke-linecap="butt" stroke-linejoin="round"/>
             </mask>
           </defs>
           <image class="crown-draw__ink" href="/images/crown.webp"

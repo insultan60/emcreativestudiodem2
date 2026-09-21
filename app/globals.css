@@ -614,46 +614,40 @@ body.crown-docked .liquid__art{ opacity:.40; }
   /* dashoffset is painted, not composited, so every frame repaints the
      masked artwork. Naming it lets the compositor prepare for that. */
   will-change:stroke-dashoffset; }
-/* The black half of the mask. It covers the first 60/1000 of the path - the
-   swoosh's tip, the one end no brush width can spare - and lets go of it in
-   step with the white front, so the tip appears because the line drew it and
-   not a beat before. The timing is not eyeballed: the front is at arc 60 when
-   the draw's own cubic-bezier(.42,0,.35,1) has run 75.30% of 2200ms, so the
-   patch waits out 1657ms and then retreats over the remaining 543ms along
-   that same curve, split at that point and renormalised. Matching curves is
-   the whole point - interpolate it linearly instead and the patch outruns the
-   front near the end, which is the bug all over again. */
-.crown-draw__tip{ stroke-dasharray:60 1000; stroke-dashoffset:0; }
-.crown-draw__tipcap{ opacity:1; }
+/* The black half of the mask, in two pieces. Together they cover the first
+   66/1000 of the path - the swoosh's tip, the one end no brush width can
+   spare - and let go of it in step with the white front, so the tip appears
+   because the line drew it and not a beat before.
+   Two pieces because one width cannot do the whole stretch. The path carries
+   a 24-unit lead-in past its old start (see siteMarkup), and the clearance
+   from the path to the curl overhead is only 43 units there and tightens
+   along the lead-in, while 88 reaches 39.7. Ride the lead-in at 88 and it
+   bites a notch out of the curl - present from the first frame of the draw
+   to the last, measured at 208px. So: 88 over the tube, from 6.35/1000
+   onward, and 44 over the lead-in below it, which covers that stretch of
+   tube (half-width 19.9 against the tube's 17.5) and cannot reach the curl.
+   The two fronts are one front - each piece is timed to the moment the white
+   front arrives at its end, so the handover is invisible.
+   The timings are not eyeballed. The front is at arc 66 when the draw's own
+   cubic-bezier(.42,0,.35,1) has run 74.27% of 2600ms, and at arc 6.35 when
+   it has run 91.35%, so the wide patch retreats across 1931-2375ms and the
+   narrow one across 2375-2600ms, each along that same curve, split at those
+   points and renormalised. Matching curves is the whole point - interpolate
+   linearly instead and a patch outruns the front near the end, which is the
+   bug all over again. */
+.crown-draw__tip{ stroke-dasharray:59.62 1000; stroke-dashoffset:-6.35; }
+.crown-draw__tipin{ stroke-dasharray:6.35 1000; stroke-dashoffset:0; }
 .crown-draw__full{ opacity:0; }
 body.crown-drawing .crown-draw__rev{
   animation:crownDraw 2600ms cubic-bezier(.42,0,.35,1) both;
 }
 body.crown-drawing .crown-draw__tip{
-  animation:crownTip 642ms cubic-bezier(.2793,.6299,.6072,1) 1958ms both;
+  animation:crownTip 444ms cubic-bezier(.2926,.4874,.6228,.8356) 1931ms both;
 }
-/* 2150ms is the moment the stroke actually has the tip attached rather than
-   loose. This number belongs to the ARTWORK, not to the path: it is where
-   the brush finally covers the ink that overhangs the end of the path, and
-   that overhang moved when the crown was re-rendered from the brand file at
-   2700x1875. The original 1963ms was measured against the old 900x625 crop,
-   where arc 10 was enough; on the current art the tip is still detached
-   there, so for 187ms a 378px sliver floated beside the mark - the loose
-   droplet this cap exists to prevent, arriving by the back door.
-   Measured by freezing the mask one frame at a time and counting ink not
-   connected to the body of the mark: 378px loose from 1963ms, 0 from
-   2145ms. Held to 2170 rather than 2145 for the seam: the cap's own edge
-   leaves a hairline of ink the stroke has not closed yet, 15px at 2150 and
-   3px at 2160, reaching its floor of 1px by 2170.
-   It still lands before .crown-draw__full starts settling at 2200ms, which
-   matters: a mask is luminance, so while the clean copy is half-faded a
-   hole in the ink layer shows through as a dark tip on the swoosh. Holding
-   the cap into that window would trade the loose droplet for a grey nub.
-   No fade, for the same reason - a half-faded black cap is a half-
-   transparent crown.
-   If the artwork is replaced again, this is the number to re-measure. */
-body.crown-drawing .crown-draw__tipcap{
-  animation:crownTipCap 2565ms linear both;
+/* Shares crownTip - both patches end on a zero-length dash - but takes its
+   own slice of the curve, starting where the wide one hands over. */
+body.crown-drawing .crown-draw__tipin{
+  animation:crownTip 225ms cubic-bezier(.3161,.6559,.6490,1) 2375ms both;
 }
 /* Held until the line has actually finished, at 2600ms. It used to start at
    1980ms, which overlapped the last 220ms of the draw: at that moment 8.6 of
@@ -691,7 +685,6 @@ body.crown-drawing .crown-draw__full{
 }
 @keyframes crownDraw{ to{ stroke-dashoffset:0; } }
 @keyframes crownTip{ to{ stroke-dasharray:0 1000; } }
-@keyframes crownTipCap{ 0%,99.9%{ opacity:1; } 100%{ opacity:0; } }
 @keyframes crownSettle{ to{ opacity:1; } }
 /* Travelling specular. A brightened duplicate of the form, revealed
    through a soft radial gradient mask that follows the pointer. The
@@ -1975,7 +1968,7 @@ body.hero-revealed .shot__frame{
   .liquid__art{ transition:none !important; opacity:.40 !important; }
   .crown-draw__rev{ stroke-dashoffset:0 !important; animation:none !important; }
   .crown-draw__tip{ stroke-dasharray:0 1000 !important; animation:none !important; }
-  .crown-draw__tipcap{ opacity:0 !important; animation:none !important; }
+  .crown-draw__tipin{ stroke-dasharray:0 1000 !important; animation:none !important; }
   .crown-draw__full{ opacity:1 !important; animation:none !important; }
   .liquid__sheen{ display:none !important; }
   .trail-layer{ display:none !important; }
