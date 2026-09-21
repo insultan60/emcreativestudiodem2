@@ -752,16 +752,20 @@ body.nav-tucked:not(.nav-open) .nav .brand:focus-visible{ opacity:1; }
   cursor:pointer;
   transition:transform 520ms var(--ease-out);
 }
-/* The mark ships in champagne ink, flattened to white so it reads on black.
-   Its 200x200 canvas is mostly padding — the ink is only 140x125 and sits
-   off-centre (margins L45/R15, T28/B47) — so the box is oversized to bring the
-   ink up to size, then nudged by the difference between the ink's centre and
-   the canvas's. The offsets are percentages of the image's own box, so they
-   stay correct at any height. */
+/* Same mark, same numbers as app/globals.css - this is the site nav and it
+   has to read identically on every route. It ships in EM Soft White, the
+   colourway drawn for a dark ground, so nothing is flattened: these pages used
+   to load a 200x200 champagne raster and force it white with
+   filter:brightness(0) invert(1), at 54px and a different nudge, which is why
+   the badge sat slightly smaller and flatter here than on the home page.
+   The square canvas still carries padding, the ink being 0.675 x 0.525 of the
+   box, so the box is oversized to bring the ink up to size; 58px puts the
+   lockup at 39x30. The nudge is the ink's offset from the canvas centre as a
+   percentage of the image's own box, so it holds at any height. */
 .nav .brand img{
-  height:54px !important; width:auto !important;
-  filter:brightness(0) invert(1);
-  transform:translate(-7.5%, 4.75%);
+  height:58px !important; width:auto !important;
+  display:block;
+  transform:translate(-2.1%, 0.9%);
 }
 @media (hover:hover) and (pointer:fine){
   body.nav-tucked:not(.nav-open) .brand:hover{ transform:scale(1.06); }

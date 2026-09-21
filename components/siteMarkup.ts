@@ -541,14 +541,14 @@ export const SITE_BODY_HTML = `
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Technical SEO and local listings</li>
-            <li>Two content pieces a month</li>
-            <li>Quarterly design refresh</li>
-            <li>Monthly revenue report</li>
-          </ul>
-          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Technical SEO and local listings</li>
+              <li>Two content pieces a month</li>
+              <li>Quarterly design refresh</li>
+              <li>Monthly revenue report</li>
+            </ul>          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
 
@@ -559,15 +559,15 @@ export const SITE_BODY_HTML = `
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Everything in Essentials</li>
-            <li>Paid social and search, managed</li>
-            <li>Monthly content shoot</li>
-            <li>Landing pages on request</li>
-            <li>A strategist on standing call</li>
-          </ul>
-          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Everything in Essentials</li>
+              <li>Paid social and search, managed</li>
+              <li>Monthly content shoot</li>
+              <li>Landing pages on request</li>
+              <li>A strategist on standing call</li>
+            </ul>          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
 
@@ -578,16 +578,21 @@ export const SITE_BODY_HTML = `
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Full rebrand and site build</li>
-            <li>Multi-market campaign work</li>
-            <li>Dedicated studio team</li>
-            <li>Weekly working sessions</li>
-          </ul>
-          <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Full rebrand and site build</li>
+              <li>Multi-market campaign work</li>
+              <li>Dedicated studio team</li>
+              <li>Weekly working sessions</li>
+            </ul>          <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
+    </div>
+
+    <div class="packs-cta" data-rise>
+      <p class="packs-cta__txt">Not sure which tier fits? We&rsquo;ll look at your site first &mdash; free, no pitch.</p>
+      <a class="btn btn--dark packs-cta__btn" href="/contact">Get a free evaluation <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
     </div>
   </div>
 </section>

@@ -25,7 +25,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 <!-- ============================== NAV ========================== -->
 <header class="nav">
   <div class="nav-pill">
-    <a class="brand" href="/"><img src="/images/pg/901081dfa7b252f8.webp" alt="The EM Creative Studio"></a>
+    <a class="brand" href="/"><img src="/images/logo-em.svg" alt="The EM Creative Studio" width="2000" height="2000"></a>
     <div class="nav-collapse">
       <nav class="nav-links" aria-label="Primary">
         <a href="/services">Services</a>
@@ -98,15 +98,16 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Technical SEO and local listings</li>
-            <li>Two content pieces a month</li>
-            <li>Quarterly design refresh</li>
-            <li>Monthly revenue report</li>
-            <li>Best for a single agent or a small team building a foundation</li>
-          </ul>
-          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Technical SEO and local listings</li>
+              <li>Two content pieces a month</li>
+              <li>Quarterly design refresh</li>
+              <li>Monthly revenue report</li>
+            </ul>
+            <p class="pack__best"><strong>Best for</strong> a single agent or a small team building a foundation</p>
+            <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
 
@@ -117,16 +118,17 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Everything in Essentials</li>
-            <li>Paid social and search, managed</li>
-            <li>Monthly content shoot</li>
-            <li>Landing pages on request</li>
-            <li>A strategist on standing call</li>
-            <li>Best for a growing team ready to run paid alongside organic</li>
-          </ul>
-          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Everything in Essentials</li>
+              <li>Paid social and search, managed</li>
+              <li>Monthly content shoot</li>
+              <li>Landing pages on request</li>
+              <li>A strategist on standing call</li>
+            </ul>
+            <p class="pack__best"><strong>Best for</strong> a growing team ready to run paid alongside organic</p>
+            <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
 
@@ -137,17 +139,23 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         </div>
         <p class="pack__hint">Pricing on request</p>
         <div class="pack__reveal">
-          <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
-          <ul class="pack__list">
-            <li>Full rebrand and site build</li>
-            <li>Multi-market campaign work</li>
-            <li>Dedicated studio team</li>
-            <li>Weekly working sessions</li>
-            <li>Best for a brokerage or multi-market team that needs a marketing department, not a vendor</li>
-          </ul>
-          <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          <div class="pack__revealIn">
+            <ul class="pack__list">
+              <li>Full rebrand and site build</li>
+              <li>Multi-market campaign work</li>
+              <li>Dedicated studio team</li>
+              <li>Weekly working sessions</li>
+            </ul>
+            <p class="pack__best"><strong>Best for</strong> a brokerage or multi-market team that needs a marketing department, not a vendor</p>
+            <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+          </div>
         </div>
       </button>
+    </div>
+
+    <div class="packs-cta" data-rise>
+      <p class="packs-cta__txt">Not sure which tier fits? We&rsquo;ll look at your site first &mdash; free, no pitch.</p>
+      <a class="btn btn--dark packs-cta__btn" href="/contact">Get a free evaluation <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
     </div>
   </div>
 </section>

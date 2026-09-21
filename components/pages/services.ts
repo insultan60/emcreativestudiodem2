@@ -18,7 +18,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 <!-- ============================== NAV ========================== -->
 <header class="nav">
   <div class="nav-pill">
-    <a class="brand" href="/"><img src="/images/pg/901081dfa7b252f8.webp" alt="The EM Creative Studio"></a>
+    <a class="brand" href="/"><img src="/images/logo-em.svg" alt="The EM Creative Studio" width="2000" height="2000"></a>
     <div class="nav-collapse">
       <nav class="nav-links" aria-label="Primary">
         <a href="/services" aria-current="page">Services</a>

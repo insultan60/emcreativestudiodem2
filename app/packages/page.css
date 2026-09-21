@@ -282,7 +282,13 @@ a{ color:inherit; }
 /* ==================================================================
    PACKAGES — expanding bars (identical component to homepage, richer content)
    ================================================================== */
-.packs{ display:flex; gap:12px; margin-top:clamp(34px,5vh,60px); min-height:clamp(420px,56vh,560px); }
+/* min-height is a floor, not the row's size. It used to be 420-560px, which
+   is what made the section feel empty: it was tall enough that the open tier
+   never reached it, so every card carried the difference as dead space. The
+   row is content-driven now - the open tier's reveal animates its own height,
+   so the row grows and shrinks with it rather than sitting at a fixed tall
+   number. Measured need per tier: 323-422px depending on how the copy wraps. */
+.packs{ display:flex; gap:12px; margin-top:clamp(34px,5vh,60px); min-height:clamp(240px,28vh,300px); }
 .pack{
   position:relative; flex:1 1 0; min-width:0;
   border-radius:var(--r-lg); overflow:hidden;
@@ -310,26 +316,63 @@ a{ color:inherit; }
   transition:opacity 300ms ease;
 }
 .pack[aria-expanded="true"] .pack__hint{ display:none; }
+/* The reveal used to sit in flow at all times, pinned to the foot of the card
+   with margin-top:auto. Both halves of that were the empty space: the open
+   card pushed its list to the bottom and left a dead gap under the title,
+   and a CLOSED card still reserved the full height of content nobody could
+   see, which is why the two closed cards were mostly nothing and why their
+   "Pricing on request" floated in the middle instead of sitting at the foot.
+   A 0fr/1fr grid row collapses to nothing when closed and still animates, so
+   the row is now only as tall as the open card actually needs, the list
+   starts right under the title, and .pack__hint's margin-top:auto finally
+   reaches the bottom of a closed card. The padding lives on the inner box so
+   it is clipped away with everything else when the row is closed. */
 .pack__reveal{
-  margin-top:auto;
-  opacity:0; transform:translateY(14px);
-  transition:opacity 460ms ease 120ms, transform 520ms var(--ease-out) 120ms;
+  display:grid; grid-template-rows:0fr;
+  opacity:0;
+  transition:grid-template-rows 620ms var(--ease-out), opacity 240ms ease;
 }
-.pack[aria-expanded="true"] .pack__reveal{ opacity:1; transform:none; }
-.pack__price{
-  font-family:var(--display); font-weight:700;
-  font-size:clamp(1.4rem,2.3vw,2.05rem); letter-spacing:-.024em; margin:0 0 4px;
+/* No padding on this box: padding is outside the content box, so it survives
+   min-height:0 and keeps the closed row 18px tall instead of nothing. The gap
+   above the list is a margin on the open state below, where it animates in
+   with everything else and leaves no trace when closed. */
+.pack__revealIn{ overflow:hidden; min-height:0; }
+.pack[aria-expanded="true"] .pack__reveal{
+  grid-template-rows:1fr; opacity:1;
+  margin-top:clamp(18px,2vh,26px);
+  transition:grid-template-rows 620ms var(--ease-out), margin-top 620ms var(--ease-out),
+             opacity 420ms ease 140ms;
 }
-.pack__price small{ font-family:var(--sans); font-size:12px; font-weight:400; opacity:.6; letter-spacing:.04em; }
-.pack__list{ list-style:none; padding:0; margin:16px 0 22px; font-size:14px; line-height:1.75; opacity:.82; }
+.pack__list{ list-style:none; padding:0; margin:0 0 16px; font-size:14px; line-height:1.72; opacity:.86; }
 .pack__list li{ display:flex; gap:10px; }
 .pack__list li::before{ content:"\2014"; opacity:.5; }
+/* Was the last bullet in the list, where it read as one more deliverable and
+   ran two lines wider than the rest. It is a qualifier, not an item. */
+.pack__best{ margin:0 0 18px; font-size:13px; line-height:1.55; opacity:.6; max-width:48ch; }
+.pack__best strong{ font-weight:600; opacity:.85; }
 @media (max-width:820px){
   .packs{ flex-direction:column; min-height:0; }
   .pack[aria-expanded="true"]{ flex-grow:1; }
-  .pack__reveal{ display:block; opacity:1; transform:none; position:relative; margin-top:16px; }
   .pack__hint{ display:none; }
 }
+
+/* The tiers all say "pricing on request", so the section needs somewhere for
+   an undecided reader to go that is not a third guess at which tier they are.
+   Outside the cards on purpose: .pack is a <button> that toggles the tier, and
+   a link cannot live inside one. */
+.packs-cta{
+  margin-top:clamp(16px,2.2vh,26px);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; flex-wrap:wrap;
+  padding:clamp(16px,1.9vw,22px) clamp(18px,2.3vw,28px);
+  border:1px solid var(--hair); border-radius:var(--r-lg);
+}
+.packs-cta__txt{ margin:0; font-size:14px; line-height:1.5; opacity:.7; max-width:56ch; }
+.packs-cta__btn{ flex:0 0 auto; }
+@media (max-width:640px){
+  .packs-cta{ flex-direction:column; align-items:flex-start; }
+}
+
 
 /* ==================================================================
    COMPARISON TABLE
@@ -616,16 +659,20 @@ body.nav-tucked:not(.nav-open) .nav .brand:focus-visible{ opacity:1; }
   cursor:pointer;
   transition:transform 520ms var(--ease-out);
 }
-/* The mark ships in champagne ink, flattened to white so it reads on black.
-   Its 200x200 canvas is mostly padding — the ink is only 140x125 and sits
-   off-centre (margins L45/R15, T28/B47) — so the box is oversized to bring the
-   ink up to size, then nudged by the difference between the ink's centre and
-   the canvas's. The offsets are percentages of the image's own box, so they
-   stay correct at any height. */
+/* Same mark, same numbers as app/globals.css - this is the site nav and it
+   has to read identically on every route. It ships in EM Soft White, the
+   colourway drawn for a dark ground, so nothing is flattened: these pages used
+   to load a 200x200 champagne raster and force it white with
+   filter:brightness(0) invert(1), at 54px and a different nudge, which is why
+   the badge sat slightly smaller and flatter here than on the home page.
+   The square canvas still carries padding, the ink being 0.675 x 0.525 of the
+   box, so the box is oversized to bring the ink up to size; 58px puts the
+   lockup at 39x30. The nudge is the ink's offset from the canvas centre as a
+   percentage of the image's own box, so it holds at any height. */
 .nav .brand img{
-  height:54px !important; width:auto !important;
-  filter:brightness(0) invert(1);
-  transform:translate(-7.5%, 4.75%);
+  height:58px !important; width:auto !important;
+  display:block;
+  transform:translate(-2.1%, 0.9%);
 }
 @media (hover:hover) and (pointer:fine){
   body.nav-tucked:not(.nav-open) .brand:hover{ transform:scale(1.06); }

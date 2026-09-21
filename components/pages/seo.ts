@@ -31,7 +31,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
 <!-- ============================== NAV ========================== -->
 <header class="nav">
   <div class="nav-pill">
-    <a class="brand" href="/"><img src="/images/pg/901081dfa7b252f8.webp" alt="The EM Creative Studio"></a>
+    <a class="brand" href="/"><img src="/images/logo-em.svg" alt="The EM Creative Studio" width="2000" height="2000"></a>
     <div class="nav-collapse">
       <nav class="nav-links" aria-label="Primary">
         <a href="/services" aria-current="page">Services</a>
@@ -116,7 +116,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> solo agents, new local businesses, small towns and low-competition markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -179,7 +178,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> growing teams, agents expanding into new neighborhoods, and suburban or mid-size city markets.</p>
             <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -244,7 +242,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> brokerages, multi-agent offices, property managers, and agents in competitive metro markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -318,7 +315,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Starter</h3>
             <span class="pack__tag">Getting found</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> small businesses, startups, local service providers, and businesses entering organic search.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -389,7 +385,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Growth</h3>
             <span class="pack__tag">Most chosen</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> growing businesses looking to increase organic traffic, visibility and qualified leads.</p>
             <a class="btn btn--dark pack__cta" href="/contact">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
@@ -456,7 +451,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
             <h3 class="pack__name">Authority</h3>
             <span class="pack__tag">Market leader</span>
           </div>
-            <p class="pack__price">Let&rsquo;s talk <small>about scope</small></p>
             <p class="pack__best"><strong>Best for</strong> established companies, competitive industries, SaaS, ecommerce brands, and businesses targeting multiple markets.</p>
             <a class="btn btn--paper pack__cta" href="/contact">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
           </div>
