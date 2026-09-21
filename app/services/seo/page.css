@@ -50,7 +50,7 @@
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-soft:   cubic-bezier(0.33, 1, 0.68, 1);
 
-  --crown-img: url("/images/pg/92108b3bf579f26f.webp");
+  --crown-img: url("/images/crown.webp");
 
   --gut:  clamp(18px, 4vw, 72px);
   --r-lg: 26px;
