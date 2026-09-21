@@ -13,8 +13,8 @@
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
   --cocoa:        #4A443D;
-  --cta:          #1E1509;
-  --espresso:     #1E1509;
+  --cta:          #3B2912;
+  --espresso:     #3B2912;
   --sage:         #6E7865;
   --ember:        #EC905B;
   --sand:         #DFC8B1;
@@ -29,10 +29,10 @@
   --ember-soft:   #D59773;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
-  --ink:          #1E1509;
-  --ink-soft:     rgba(30,21,9,.80);
-  --ink-faint:    rgba(30,21,9,.38);
-  --hair:         rgba(30,21,9,.20);
+  --ink:          #3B2912;
+  --ink-soft:     rgba(59,41,18,.80);
+  --ink-faint:    rgba(59,41,18,.38);
+  --hair:         rgba(59,41,18,.20);
 
   --display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -684,7 +684,7 @@ a{ color:inherit; }
 :root{
   --nav-bg:       #D6C6B4;
   --nav-glass:    rgba(214,198,180,.55);
-  --nav-ink:      #1E1509;
+  --nav-ink:      #3B2912;
   --nav-ease-dur: 900ms;
 }
 
@@ -1177,7 +1177,7 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   border:1px solid var(--hair, rgba(0,0,0,.12));
   border-radius:var(--r-sm, 10px);
   background:var(--linen, #EDE9E3);
-  font-size:15px; color:var(--ink, #1E1509);
+  font-size:15px; color:var(--ink, #3B2912);
   cursor:pointer; list-style:none;
   transition:border-color 200ms ease, background 200ms ease;
 }
@@ -1226,8 +1226,8 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
 }
 .svcpick__box::after{
   content:''; width:9px; height:5px;
-  border-left:2px solid var(--espresso, #1E1509);
-  border-bottom:2px solid var(--espresso, #1E1509);
+  border-left:2px solid var(--espresso, #3B2912);
+  border-bottom:2px solid var(--espresso, #3B2912);
   transform:rotate(-45deg) scale(.5); opacity:0;
   transition:opacity 140ms ease, transform 140ms var(--ease-out);
   margin-top:-2px;

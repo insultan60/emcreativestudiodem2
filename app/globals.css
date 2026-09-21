@@ -26,9 +26,9 @@
   --color-champagne-lo: #E7DDD2;
   --color-champagne-hi: #A89A8B;
   --color-cocoa:        #4A443D;
-  --color-cta:          #1E1509;
-  --color-espresso:     #1E1509;
-  --color-ink:          #1E1509;
+  --color-cta:          #3B2912;
+  --color-espresso:     #3B2912;
+  --color-ink:          #3B2912;
   --color-sage:         #6E7865;
   --color-sage-mist:    #E3E7DE;
   --color-taupe:        #A89A8B;
@@ -44,7 +44,7 @@
    EM CREATIVE STUDIO — design tokens
    2026 brand board palette:
      EM Soft White    #F6F4F1  40%  --paper / --linen
-     EM Ink           #1E1509  30%  --ink / --cta / --espresso
+     EM Ink           #3B2912  30%  --ink / --cta / --espresso
      EM Crown Cream   #D6C6B4  17%  --champagne / --nav-bg
      EM Mushroom Taupe#A89A8B   8%  --taupe / --champagne-hi
      EM Studio Sage   #6E7865   5%  --sage (accents, selective CTAs)
@@ -58,8 +58,8 @@
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
   --cocoa:        #4A443D;
-  --cta:          #1E1509;
-  --espresso:     #1E1509;
+  --cta:          #3B2912;
+  --espresso:     #3B2912;
   --sage:         #6E7865;
   --sand:         #DFC8B1;
   /* Ember at full chroma is right for a rule, a pill or a 34px mark; across a
@@ -87,24 +87,32 @@
   /* nav: a bar in Crown Cream carrying EM Ink for the badge, links and CTA */
   --nav-bg:       #D6C6B4;
   --nav-glass:    rgba(214,198,180,.55);
-  --nav-ink:      #1E1509;
+  --nav-ink:      #3B2912;
   --nav-ease-dur: 900ms;
   /* how present the big 3D crown is once it has cast — it sits behind the
      headline, so it wants to read as a watermark, not a second subject */
   --crown-op:     .34;   /* sheen highlight; kept under the art's own weight */
   /* Sampled by the client off their own mark - the dark field the cream logo
-     is drawn to sit on. hsl(34, 54%, 8%): unmistakably brown at the chroma,
-     but only .0083 luminance, so it is the deepest value on the board. It
-     replaces #38302A wholesale, type and surfaces alike. Everything using it
-     as foreground gained contrast, not lost it: on Paper 11.76 -> 16.41:1,
-     on Ember-soft 5.23 -> 7.33:1, on Sand 11.18:1. The watch item is the
-     other direction - the filled surfaces that carry it (.btn--dark, the nav
-     badge, card 01, .bub--a, the footer CTA) now sit close enough to black
-     to read as black in a large block. */
-  --ink:          #1E1509;
-  --ink-soft:     rgba(30,21,9,.80);
-  --ink-faint:    rgba(30,21,9,.38);
-  --hair:         rgba(30,21,9,.20);
+     is drawn to sit on. It replaces #38302A wholesale, type and surfaces
+     alike.
+     Now hsl(34, 54%, 15%), not the 8% it was first set at. 8% carried the
+     brand's chroma but only .0083 luminance, which is the deepest value on
+     the board and, on the filled surfaces that carry it (.btn--dark, the nav
+     badge, card 01, .bub--a, the footer CTA), read as flat black - the note
+     here used to flag exactly that as the watch item, and the client called
+     it: "the brown seems black". 15% lifts the luminance to .0256, 3.1x, far
+     enough to read brown in a large block while keeping the same hue and
+     chroma so nothing else on the board shifts.
+     Nothing drops below its bar. Paper type on those surfaces is 12.65:1
+     (was 16.40), body ink on Paper the same, --ink-soft 6.89:1 (was 9.03).
+     --ink-faint lands at 2.17:1, but it was 2.39:1 before and is decorative
+     by design, not body copy. If it still reads too dark, this one line is
+     the knob - the whole site reads it, and the rgba() forms below carry the
+     same rgb. */
+  --ink:          #3B2912;
+  --ink-soft:     rgba(59,41,18,.80);
+  --ink-faint:    rgba(59,41,18,.38);
+  --hair:         rgba(59,41,18,.20);
 
   /* One family across the whole site. Display and body used to be two
      (Plus Jakarta Sans over Manrope), but the two are close enough in
@@ -1297,8 +1305,8 @@ body.hero-revealed .shot__frame{
       rgba(255,255,255,0)   34%);
 
   box-shadow:
-    0 -20px 50px -34px rgba(30,21,9,.55),
-    0 18px 44px -30px rgba(30,21,9,.45),
+    0 -20px 50px -34px rgba(59,41,18,.55),
+    0 18px 44px -30px rgba(59,41,18,.45),
     inset 0 1px 0 rgba(255,255,255,.72),
     inset 0 0 0 1px rgba(255,255,255,.10);
   transition:transform 200ms linear;
@@ -1307,7 +1315,7 @@ body.hero-revealed .shot__frame{
    positioned, so it stays out of flow and never becomes a grid track. */
 .step::before{
   content:''; position:absolute; inset:0; border-radius:inherit;
-  background:rgba(30,21,9, calc(var(--dim, 0) * .10));
+  background:rgba(59,41,18, calc(var(--dim, 0) * .10));
   pointer-events:none;
 }
 .step > *{ position:relative; }

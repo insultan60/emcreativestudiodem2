@@ -229,7 +229,7 @@ export const SITE_BODY_HTML = `
             <span class="w" style="--i:6">for</span> <span class="w" style="--i:7">companies</span> <span class="w" style="--i:8">that</span> <span class="w" style="--i:9">refuse</span> <span class="w" style="--i:10">to</span> <span class="w" style="--i:11">blend</span> <span class="w" style="--i:12">in.</span>
           </p>
           <div class="shot__acts">
-            <a class="btn btn--paper" href="/contact" data-hot>
+            <a class="btn btn--paper" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer" data-hot>
               Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
             </a>
             <a class="btn btn--ghost" href="/work" data-hot>See the work</a>
@@ -709,7 +709,7 @@ export const SITE_BODY_HTML = `
       <h2 class="h2" data-rise>You are supposed to be great at your business. Not at ads.</h2>
     </div>
     <div data-rise>
-      <a class="btn btn--dark" href="mailto:hello@theemcreative.studio" data-hot>
+      <a class="btn btn--dark" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer" data-hot>
         Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
       </a>
     </div>

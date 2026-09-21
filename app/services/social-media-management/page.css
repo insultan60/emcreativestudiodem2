@@ -13,8 +13,8 @@
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
   --cocoa:        #4A443D;
-  --cta:          #1E1509;
-  --espresso:     #1E1509;
+  --cta:          #3B2912;
+  --espresso:     #3B2912;
   --sage:         #6E7865;
   --ember:        #EC905B;
   --sand:         #DFC8B1;
@@ -29,11 +29,11 @@
   --ember-soft:   #D59773;
   --sage-mist:    #E3E7DE;
   --taupe:        #A89A8B;
-  --ink:          #1E1509;
-  --ink-soft:     rgba(30,21,9,.80);
-  --ink-faint:    rgba(30,21,9,.38);
-  --hair:         rgba(30,21,9,.20);
-  --ink2:          #1E1509;
+  --ink:          #3B2912;
+  --ink-soft:     rgba(59,41,18,.80);
+  --ink-faint:    rgba(59,41,18,.38);
+  --hair:         rgba(59,41,18,.20);
+  --ink2:          #3B2912;
 
   --display: "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --sans:    "Plus Jakarta Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -539,7 +539,7 @@ a{ color:inherit; }
 :root{
   --nav-bg:       #D6C6B4;
   --nav-glass:    rgba(214,198,180,.55);
-  --nav-ink:      #1E1509;
+  --nav-ink:      #3B2912;
   --nav-ease-dur: 900ms;
 }
 

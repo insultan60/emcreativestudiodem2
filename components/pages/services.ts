@@ -62,7 +62,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </div>
 
   <div class="hero__acts">
-    <a class="btn btn--dark" href="/contact">
+    <a class="btn btn--dark" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">
       Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
     </a>
     <a class="btn btn--ghost" href="#list">See every discipline</a>
@@ -249,7 +249,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <h2 class="h2" data-rise>Pick a discipline, <span class="tint">or take all six.</span></h2>
       </div>
       <div data-rise>
-        <a class="btn btn--dark" href="mailto:hello@theemcreative.studio">
+        <a class="btn btn--dark" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">
           Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
         </a>
       </div>
