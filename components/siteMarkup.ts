@@ -211,7 +211,7 @@ export const SITE_BODY_HTML = `
           srcset="/images/hero-shot-sm.webp 800w, /images/hero-shot.webp 1360w"
           sizes="100vw"
           width="1360" height="907"
-          alt="A boardroom with a long walnut table, black chairs and a wall-mounted screen"
+          alt="A bright office lobby with veined marble walls, a polished stone floor and a glass wall onto the courtyard"
           decoding="async">
         <!-- second fluid field, over the photograph rather than the paper.
              Sits before the veil so the veil still darkens everything under

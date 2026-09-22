@@ -1005,11 +1005,21 @@ body.hero-revealed .shot__frame{
 .shot__veil{
   position:absolute; inset:0;
   pointer-events:none;
+  /* Deeper through the middle than it was (.34 -> .46 on the --se term, and
+     the other two stops with it). The plate used to hold a dark boardroom, so
+     a light veil was enough for white type. The lobby that replaced it is a
+     bright room: measured across the band the headline occupies, mean
+     relative luminance is .2473 with blown highlights at the window. At the
+     old .34 that put white on 4.51:1 - the large-text floor, with nothing
+     spare - and far less wherever a word crossed the glass. .46 takes the
+     mean to 5.7:1 while still reading as a veil over a photograph rather
+     than a dark panel. If the photograph is replaced again, re-measure that
+     band before trusting these numbers. */
   background:linear-gradient(
     180deg,
-    rgba(0,0,0,calc(.18 * var(--se) + .22 * var(--sp))) 0%,
-    rgba(0,0,0,calc(.34 * var(--se) + .26 * var(--sp))) 50%,
-    rgba(0,0,0,calc(.48 * var(--se) + .22 * var(--sp))) 100%);
+    rgba(0,0,0,calc(.26 * var(--se) + .22 * var(--sp))) 0%,
+    rgba(0,0,0,calc(.46 * var(--se) + .26 * var(--sp))) 50%,
+    rgba(0,0,0,calc(.56 * var(--se) + .22 * var(--sp))) 100%);
 }
 .shot__copy{
   /* Centred in the plate rather than sitting at its foot: the line is the
@@ -1032,7 +1042,9 @@ body.hero-revealed .shot__frame{
   line-height:1.12;
   letter-spacing:-.018em;
   color:var(--paper);
-  text-shadow:0 2px 30px rgba(0,0,0,.5);
+  /* Two layers: a tight halo that holds the letterforms where a word crosses
+     the window's blown highlight, and the original soft glow behind it. */
+  text-shadow:0 1px 4px rgba(0,0,0,.42), 0 2px 30px rgba(0,0,0,.5);
 }
 /* The line arrives a word at a time as the plate opens. Each word's ramp is its
    own index pushed along the progress track, so the wipe reads left to right.
