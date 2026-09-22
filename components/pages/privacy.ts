@@ -209,7 +209,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <h2><span class="policy__no">10</span> Contact Us</h2>
           <p>Questions about this policy, or want to exercise any of the rights below? Reach us directly:</p>
           <ul>
-            <li><strong>Email</strong> &mdash; <a href="mailto:hello@theemcreative.studio" style="color:var(--cta); font-weight:600;">hello@theemcreative.studio</a></li>
+            <li><strong>Email</strong> &mdash; <a href="mailto:info@theemcreativestudio.com" style="color:var(--cta); font-weight:600;">info@theemcreativestudio.com</a></li>
             <li><strong>Phone</strong> &mdash; (310) 555-1234</li>
             <li><strong>Mail</strong> &mdash; The EM Creative Studio, Los Angeles, CA</li>
           </ul>
@@ -313,7 +313,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <svg class="faq-item__chev" width="16" height="16" viewBox="0 0 24 24"><use href="#ic-plus"/></svg>
         </button>
         <div class="faq-item__a-wrap"><div class="faq-item__a-inner">
-          <p class="faq-item__a">Email hello@theemcreative.studio with &ldquo;delete my data&rdquo; in the subject line. We&rsquo;ll confirm your identity, remove your information from our systems, and let you know once it&rsquo;s done, usually within a few business days.</p>
+          <p class="faq-item__a">Email info@theemcreativestudio.com with &ldquo;delete my data&rdquo; in the subject line. We&rsquo;ll confirm your identity, remove your information from our systems, and let you know once it&rsquo;s done, usually within a few business days.</p>
         </div></div>
       </div>
       <div class="faq-item" data-open="false">

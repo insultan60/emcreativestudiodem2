@@ -68,7 +68,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
     <a class="btn btn--dark" href="#form">
       Start the form <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
     </a>
-    <a class="btn btn--ghost" href="mailto:hello@theemcreative.studio">Prefer email?</a>
+    <a class="btn btn--ghost" href="mailto:info@theemcreativestudio.com">Prefer email?</a>
   </div>
 </section>
 
@@ -196,7 +196,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <ul class="cside__list">
           <li>
             <span class="cside__ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg></span>
-            <div><span class="cside__lbl">Email</span><a href="mailto:hello@theemcreative.studio">hello@theemcreative.studio</a></div>
+            <div><span class="cside__lbl">Email</span><a href="mailto:info@theemcreativestudio.com">info@theemcreativestudio.com</a></div>
           </li>
           <li>
             <span class="cside__ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>

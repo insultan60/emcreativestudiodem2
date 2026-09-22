@@ -221,7 +221,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <h2><span class="policy__no">11</span> Contact Us</h2>
           <p>Questions about these terms, or about a specific agreement? Reach us directly:</p>
           <ul>
-            <li><strong>Email</strong> &mdash; <a href="mailto:hello@theemcreative.studio" style="color:var(--cta); font-weight:600;">hello@theemcreative.studio</a></li>
+            <li><strong>Email</strong> &mdash; <a href="mailto:info@theemcreativestudio.com" style="color:var(--cta); font-weight:600;">info@theemcreativestudio.com</a></li>
             <li><strong>Phone</strong> &mdash; (310) 555-1234</li>
             <li><strong>Mail</strong> &mdash; The EM Creative Studio, Los Angeles, CA</li>
           </ul>
