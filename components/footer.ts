@@ -18,7 +18,7 @@ export const FOOTER_HTML = `
   <div class="foot__inner">
     <!-- header: logo + tagline -->
     <div class="foot__header">
-      <a href="/#top" data-hot><img src="/images/logo-em.svg" alt="EM Creative Studio" width="2000" height="2000"></a>
+      <a href="/#top" data-hot><img src="/images/logo-em-ink.svg" alt="EM Creative Studio" width="2000" height="2000"></a>
       <p class="foot__tagline">Boutique real estate marketing that earns your crown.</p>
     </div>
 

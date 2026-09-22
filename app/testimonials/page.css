@@ -502,7 +502,7 @@ a{ color:inherit; }
 /* The footer mark ships in white ink, drawn for the black footer this design
    used to have. On Crown Cream it has to read as EM Black, so the artwork is
    flattened rather than shipping a second file. */
-.foot__header img{ filter:brightness(0); opacity:.86; }
+.foot__header img{ opacity:1; }
 .foot__header .brand{ color:var(--ink); }
 .foot__tagline{ font-size:15px; font-style:italic; color:rgba(0,0,0,.62); max-width:32ch; text-align:right; margin:0; }
 .foot__body{
@@ -1032,15 +1032,16 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   margin-bottom:clamp(36px,4.5vh,56px);
 }
 
-/* Same file as the nav badge, which is drawn light for a dark ground. Crown
-   Cream needs it to read as EM Black instead, and the set it came in has no
-   dark-on-light lockup - its light version puts champagne ink on a background
-   that is very nearly champagne - so this one is still flattened. Height is
-   the box, not the ink, which is 0.525 of it: 108px leaves the lockup 57px
-   tall, the size the raster drew at. */
+/* Its own file now, not the nav badge's. The nav mark is drawn in EM Soft
+   White for a dark ground; the footer is Crown Cream, so this used to force
+   it dark with filter:brightness(0) - which is pure black, not the brand's
+   brown, and read as exactly that. logo-em-ink.svg is the same vector with
+   its 26 fills set to EM Ink, so the footer lockup is the brand colour
+   rather than an approximation of it, and it matches the nav badge. Height
+   is the box, not the ink, which is 0.525 of it: 108px leaves the lockup
+   57px tall, the size the raster drew at. */
 .foot__header img{
   height:108px; width:auto; display:block;
-  filter:brightness(0); opacity:.9;
 }
 .foot__header .brand{ color:var(--espresso); }
 .foot__header .crown{ color:var(--cocoa); }

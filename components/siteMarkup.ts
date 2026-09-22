@@ -420,7 +420,7 @@ export const SITE_BODY_HTML = `
   <div class="stats__wrap">
     <div class="stats__top">
       <div>
-        <div class="stats__eyebrow" data-rise>Six Years, Counted</div>
+        <div class="stats__eyebrow" data-rise>Seven Years, Counted</div>
         <h2 class="stats__heading" data-rise>Numbers that speak <span>for themselves.</span></h2>
       </div>
     </div>
@@ -434,8 +434,12 @@ export const SITE_BODY_HTML = `
         <span class="stats__label">Avg. traffic lift</span>
       </div>
       <div class="stats__card" data-rise>
-        <span class="stats__num">$18<small>M</small></span>
-        <span class="stats__label">Revenue tracked</span>
+        <span class="stats__num">10<small>+</small></span>
+        <span class="stats__label">Clients</span>
+      </div>
+      <div class="stats__card" data-rise>
+        <span class="stats__num">300<small>+</small></span>
+        <span class="stats__label">Video shoots</span>
       </div>
       <div class="stats__card" data-rise>
         <span class="stats__num">98<small>%</small></span>

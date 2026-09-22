@@ -1399,7 +1399,7 @@ body.hero-revealed .shot__frame{
 
 .stats__row{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:repeat(5,1fr);
   gap:clamp(12px,1.4vw,20px);
 }
 .stats__card{
@@ -1428,7 +1428,12 @@ body.hero-revealed .shot__frame{
   margin-top:12px; display:block;
 }
 
-@media (max-width:860px){ .stats__row{ grid-template-columns:1fr 1fr; } }
+/* Five cards into two columns leaves a fifth on its own. Spanning it keeps
+   the block rectangular instead of trailing an orphan in the left column. */
+@media (max-width:860px){
+  .stats__row{ grid-template-columns:1fr 1fr; }
+  .stats__card:last-child{ grid-column:1 / -1; }
+}
 @media (max-width:480px){ .stats__row{ grid-template-columns:1fr 1fr; } .stats__top{ flex-direction:column; align-items:flex-start; } }
 
 /* ==================================================================
@@ -1455,7 +1460,12 @@ body.hero-revealed .shot__frame{
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
 .pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-.pack:nth-child(3)[aria-expanded="true"]{ --card-tint:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
+/* background, not --card-tint: that variable is only read by .step{}, so
+   Bespoke opened with no colour at all while Essentials and Signature took
+   theirs. app/packages/page.css has always had the solid background; this is
+   the same rule. (Third time this variable has been set on something that
+   never reads it - see .btn--paper and .card:nth-child(3).) */
+.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
@@ -1502,6 +1512,39 @@ body.hero-revealed .shot__frame{
    ran two lines wider than the rest. It is a qualifier, not an item. */
 .pack__best{ margin:0 0 18px; font-size:13px; line-height:1.55; opacity:.6; max-width:48ch; }
 .pack__best strong{ font-weight:600; opacity:.85; }
+
+/* ---- opening: the contents unpack, rather than arriving as one block ----
+   The row already animates its height, but everything inside it used to
+   appear together at the end of that, which read as a state swap. Each line
+   now comes up a beat after the one above it.
+   Animations, not transitions, for two reasons: the closed state needs no
+   reverse cascade (the whole reveal fades on close, so the items go with it),
+   and an animation does not clobber the transition already on .btn - which a
+   `transition` shorthand here would, taking its hover and :active states with
+   it. The button therefore gets an opacity-only keyframe: translating it
+   would leave transform:none stuck on it under fill-mode:both and kill the
+   press. Delays run 80ms to 340ms against the row's own 620ms, so the last
+   line lands just as the card finishes widening. */
+@keyframes packItemIn{ from{ opacity:0; transform:translateY(9px); } to{ opacity:1; transform:none; } }
+@keyframes packFadeIn{ from{ opacity:0; } to{ opacity:1; } }
+.pack[aria-expanded="true"] .pack__list li,
+.pack[aria-expanded="true"] .pack__best{
+  animation:packItemIn 380ms var(--ease-out) both;
+}
+.pack[aria-expanded="true"] .pack__list li:nth-child(1){ animation-delay:80ms; }
+.pack[aria-expanded="true"] .pack__list li:nth-child(2){ animation-delay:118ms; }
+.pack[aria-expanded="true"] .pack__list li:nth-child(3){ animation-delay:156ms; }
+.pack[aria-expanded="true"] .pack__list li:nth-child(4){ animation-delay:194ms; }
+.pack[aria-expanded="true"] .pack__list li:nth-child(5){ animation-delay:232ms; }
+.pack[aria-expanded="true"] .pack__list li:nth-child(6){ animation-delay:270ms; }
+.pack[aria-expanded="true"] .pack__best{ animation-delay:300ms; }
+.pack[aria-expanded="true"] .pack__revealIn .btn{ animation:packFadeIn 360ms ease 340ms both; }
+@media (prefers-reduced-motion:reduce){
+  .pack[aria-expanded="true"] .pack__list li,
+  .pack[aria-expanded="true"] .pack__best,
+  .pack[aria-expanded="true"] .pack__revealIn .btn{ animation:none !important; }
+}
+
 @media (max-width:820px){
   .packs{ flex-direction:column; min-height:0; }
   /* .pack is flex:1 1 0 for the desktop row. Stacked, a zero basis with no
@@ -1716,15 +1759,16 @@ body.hero-revealed .shot__frame{
   margin-bottom:clamp(36px,4.5vh,56px);
 }
 
-/* Same file as the nav badge, which is drawn light for a dark ground. Crown
-   Cream needs it to read as EM Black instead, and the set it came in has no
-   dark-on-light lockup - its light version puts champagne ink on a background
-   that is very nearly champagne - so this one is still flattened. Height is
-   the box, not the ink, which is 0.525 of it: 108px leaves the lockup 57px
-   tall, the size the raster drew at. */
+/* Its own file now, not the nav badge's. The nav mark is drawn in EM Soft
+   White for a dark ground; the footer is Crown Cream, so this used to force
+   it dark with filter:brightness(0) - which is pure black, not the brand's
+   brown, and read as exactly that. logo-em-ink.svg is the same vector with
+   its 26 fills set to EM Ink, so the footer lockup is the brand colour
+   rather than an approximation of it, and it matches the nav badge. Height
+   is the box, not the ink, which is 0.525 of it: 108px leaves the lockup
+   57px tall, the size the raster drew at. */
 .foot__header img{
   height:108px; width:auto; display:block;
-  filter:brightness(0); opacity:.9;
 }
 .foot__header .brand{ color:var(--espresso); }
 .foot__header .crown{ color:var(--cocoa); }
