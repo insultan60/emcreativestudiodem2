@@ -1293,3 +1293,28 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .step__body{ font-size:19px; max-width:60ch; }
   .step__art{ aspect-ratio:2/1; }
 }
+
+/* ==================================================================
+   BOOK — the Calendly scheduler, embedded
+   ================================================================== */
+/* Height is set per breakpoint rather than left to the iframe. An iframe has
+   no intrinsic height and cannot be sized by its own content across origins,
+   so without this it collapses to 150px and the scheduler is a slot. 760px
+   clears Calendly's own 700px floor for the desktop month view; below 820px it
+   stacks the calendar over the time list and needs roughly half as much again.
+   The frame carries the page's own border and radius so it reads as part of
+   the section rather than a window cut into it. */
+.book{ margin-top:clamp(28px,4vh,44px); }
+.book__frame{
+  display:block; width:100%; height:760px;
+  border:1px solid var(--hair); border-radius:var(--r-lg);
+  background:var(--paper);
+  color-scheme:light;   /* the frame is a light UI; don't let a dark OS flip it */
+}
+.book__fallback{
+  margin:14px 0 0; font-size:13px; opacity:.6; text-align:center;
+}
+.book__fallback a{ color:inherit; text-underline-offset:3px; }
+@media (max-width:820px){
+  .book__frame{ height:1120px; }
+}

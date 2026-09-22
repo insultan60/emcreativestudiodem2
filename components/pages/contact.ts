@@ -222,6 +222,42 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </div>
 </section>
 
+<!-- ============================== BOOK ============================== -->
+<!-- The scheduler itself, rather than a link off to it. A plain iframe on
+     purpose: Calendly's own inline widget pulls a third-party script that
+     wants to size the frame by postMessage, and the only thing it buys over
+     this is auto-height - which a fixed height per breakpoint gives without
+     handing another script the page. The fallback link below matters for the
+     same reason: if an extension or a corporate policy blocks the frame, the
+     section still has a way through instead of a blank box. -->
+<section class="sec" id="book">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-rise>
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          Pick a time
+        </span>
+        <h2 class="h2" data-rise>Or just <span class="tint">book the call.</span></h2>
+      </div>
+      <p class="lede" data-rise>Thirty minutes, no pitch deck. Take whichever slot suits you and we&rsquo;ll come prepared.</p>
+    </div>
+
+    <div class="book" data-rise>
+      <iframe
+        class="book__frame"
+        src="https://calendly.com/theemcreativestudio-info/30min?hide_gdpr_banner=1&background_color=F6F4F1&text_color=3B2912&primary_color=EC905B"
+        title="Book a 30-minute call with The EM Creative Studio"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="book__fallback">
+        Scheduler not loading?
+        <a href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================== NEXT STEPS ========================= -->
 <section class="sec sec--linen">
   <div class="wrap">

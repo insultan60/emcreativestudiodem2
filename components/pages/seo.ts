@@ -75,7 +75,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </div>
 
   <div class="hero__acts">
-    <a class="btn btn--dark" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">
+    <a class="btn btn--dark" href="/contact#book">
       Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
     </a>
     <a class="btn btn--ghost" href="#compare">Compare plans</a>
@@ -765,7 +765,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       <h2 class="h2" data-rise>Let&rsquo;s look at what you already rank for.</h2>
     </div>
     <div data-rise>
-      <a class="btn btn--dark" href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">
+      <a class="btn btn--dark" href="/contact#book">
         Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
       </a>
     </div>
