@@ -577,12 +577,11 @@ a{ color:inherit; }
   background:#D6C6B4; color:rgba(0,0,0,.72);
   padding:clamp(56px,8vh,80px) 0 clamp(24px,3vh,32px);
 }
-.foot::after{
-  content:''; position:absolute; left:0; right:0; bottom:-6%;
-  height:70%;
-  background:var(--crown-img) center bottom / 340px auto no-repeat;
-  opacity:.06; pointer-events:none;
-}
+/* No .foot::after here. It used to paint a second crown - 340px, centred on
+   the foot, at .06 - underneath the drifting .foot__crown below, so these
+   pages carried two watermarks while the home page carried one. The home
+   page's sheet dropped it when .foot__crown was introduced; these did not.
+   One crown per footer, and it is the one below. */
 .foot__inner{ max-width:1280px; margin:0 auto; position:relative; z-index:1; padding-inline:var(--gut); }
 .foot__header{
   display:flex; align-items:center; justify-content:space-between; gap:24px;

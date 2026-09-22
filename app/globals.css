@@ -1205,10 +1205,19 @@ body.hero-revealed .shot__frame{
 .deck.armed .card{ --rot:0deg; --dx:0px; --sc:.86; opacity:0; }
 .card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
-.card:nth-child(3){ --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--ink); }
-.card:nth-child(4){ --card-tint:color-mix(in srgb, var(--sand) 62%, transparent); color:var(--espresso); border-color:var(--sand); }
-.card:nth-child(5){ --card-tint:color-mix(in srgb, var(--champagne-lo) 62%, transparent); color:var(--espresso); }
-.card:nth-child(6){ --card-tint:color-mix(in srgb, var(--paper) 62%, transparent); color:var(--espresso); }
+/* Solid backgrounds, not --card-tint. These four used to set that variable
+   and nothing else, but --card-tint is only ever read by .step{} - .card
+   never consumes it - so cards 3 to 6 rendered with no background at all.
+   In a deck where six cards sit stacked on one another that meant four
+   transparent sheets, and every title read through every card in front of
+   it. (Same fault as .btn--paper, which set the variable and painted
+   nothing.) Opaque on purpose rather than the 62% mix the variable named:
+   at 62% the card behind still shows through, which is fine for a glass
+   panel over a flat wash and wrong for a stack. */
+.card:nth-child(3){ background:var(--paper); color:var(--ink); }
+.card:nth-child(4){ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
+.card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
+.card:nth-child(6){ background:var(--paper); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
 .card__ttl{
   font-family:var(--display); font-weight:800;
