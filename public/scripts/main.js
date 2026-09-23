@@ -894,7 +894,7 @@ document.querySelectorAll('canvas[data-art]').forEach(cv => {
             setTimeout(()=>{
               label.textContent='Complete'; pctEl.textContent='100%'; bar.style.width='100%';
               title.textContent='We have your perfect match.';
-              grid.innerHTML='<p style="opacity:.7;margin:0 0 18px;grid-column:1/-1;">Based on your answers, we\'ll prepare a tailored recommendation. Book a call to walk through it together.</p><a href="#" class="btn btn--dark" style="display:inline-flex;align-items:center;gap:8px;grid-column:1/-1;" data-hot>Book a 30-minute call <span>&rarr;</span></a>';
+              grid.innerHTML='<p style="opacity:.7;margin:0 0 18px;grid-column:1/-1;">Based on your answers, we\'ll prepare a tailored recommendation. Book a call to walk through it together.</p><a href="/contact#book" class="btn btn--dark" data-book style="display:inline-flex;align-items:center;gap:8px;grid-column:1/-1;" data-hot>Book a 30-minute call <span>&rarr;</span></a>';
               card.style.opacity='1'; card.style.transform='translateY(0)';
             },220);
           }

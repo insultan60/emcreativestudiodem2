@@ -50,10 +50,24 @@ export const SITE_BODY_HTML = `
      sit on the wrapper and both sections ride on top of them. -->
 <div class="atmos">
   <div class="atmos__ground"></div>
+  <!-- The film is the ground the rest of the weather sits on: it is the first
+       layer after the white plate, so the clouds, the fluid field and the grain
+       all run over it in the order they always did. Ships with no source -
+       heroVideo.js attaches it once the crown has docked, and skips it entirely
+       on phones, on metered connections and under reduced motion, where the
+       white ground below is what shows. -->
+  <video class="atmos__film" id="atmosFilm" aria-hidden="true"
+         muted loop playsinline preload="none"
+         data-src="/video/em-website.mp4"></video>
   <div class="atmos__clouds" aria-hidden="true"></div>
   <div class="atmos__sky" aria-hidden="true">
     <canvas class="atmos__fluid" id="heroFluid"></canvas>
   </div>
+  <!-- Dark veil over the whole atmosphere: the film, the clouds and the fluid
+       field all sit under it, so the hero darkens as one thing rather than the
+       film darkening against pale weather. Above these, below .hero (z-index:1),
+       so the copy stays clear of it. -->
+  <div class="atmos__veil" aria-hidden="true"></div>
   <div class="atmos__weave" aria-hidden="true"></div>
 
 <section class="hero" id="top">
@@ -207,11 +221,11 @@ export const SITE_BODY_HTML = `
       <figure class="shot__frame">
         <img
           class="shot__img"
-          src="/images/hero-shot.webp"
-          srcset="/images/hero-shot-sm.webp 800w, /images/hero-shot.webp 1360w"
+          src="/images/shot-still.webp"
+          srcset="/images/shot-still-sm.webp 800w, /images/shot-still.webp 1360w"
           sizes="100vw"
           width="1360" height="907"
-          alt="A bright office lobby with veined marble walls, a polished stone floor and a glass wall onto the courtyard"
+          alt="A sunlit studio meeting room: a long oak table under rattan pendants, velvet chairs, large plants and a wall of windows onto the hills"
           decoding="async">
         <!-- second fluid field, over the photograph rather than the paper.
              Sits before the veil so the veil still darkens everything under
@@ -719,6 +733,31 @@ export const SITE_BODY_HTML = `
     </div>
   </div>
 </section>
+
+<!-- ====================== BOOKING MODAL ======================= -->
+<!-- Opened by anything carrying data-book (the matcher's result CTA). The
+     iframe ships with no src so Calendly is never fetched on a page view that
+     does not ask for it; booking.js fills it on first open. Everything that
+     opens this is a real link to /contact#book underneath, so without JS, on
+     middle-click and for crawlers the page is still the answer. -->
+<div class="bookm" id="bookModal" hidden>
+  <div class="bookm__scrim" data-book-close></div>
+  <div class="bookm__panel" role="dialog" aria-modal="true" aria-labelledby="bookModalTitle">
+    <div class="bookm__bar">
+      <h2 class="bookm__ttl" id="bookModalTitle">Book a 30-minute call</h2>
+      <button class="bookm__x" type="button" data-book-close aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <iframe class="bookm__frame" id="bookModalFrame"
+            title="Book a 30-minute call with The EM Creative Studio"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p class="bookm__fallback">
+      Scheduler not loading?
+      <a href="https://calendly.com/theemcreativestudio-info/30min" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
+    </p>
+  </div>
+</div>
 
 <!-- =========================== FOOTER ========================== -->
 ${FOOTER_HTML}

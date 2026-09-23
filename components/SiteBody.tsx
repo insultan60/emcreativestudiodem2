@@ -30,6 +30,12 @@ export default function SiteBody() {
       <Script src="/scripts/fluid.js" strategy="afterInteractive" />
       <Script src="/scripts/grid.js" strategy="afterInteractive" />
       <Script src="/scripts/shot.js" strategy="afterInteractive" />
+      {/* Delegated from document, so it does not care that the matcher injects
+          its CTA long after this runs. */}
+      <Script src="/scripts/booking.js" strategy="afterInteractive" />
+      {/* Last: it waits on hero-revealed anyway, and it is the only script here
+          that can pull a large file, so nothing else should queue behind it. */}
+      <Script src="/scripts/heroVideo.js" strategy="afterInteractive" />
     </>
   );
 }

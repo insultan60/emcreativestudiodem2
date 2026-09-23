@@ -450,6 +450,65 @@ body.nav-tucked:not(.nav-open) .nav .btn{
   position:absolute; inset:0; z-index:0;
   background:#FFFFFF;
 }
+/* The film, sitting on the white ground and under everything else in here.
+   Bounded to the same 168vh as the clouds and the sky for the same reason:
+   the wrapper is nearly three viewports tall because of the shot's pinned
+   track, and past that band the opened plate covers the screen anyway.
+   Carries the clouds' fade-out so the bottom edge is never a line. */
+.atmos__film{
+  position:absolute; left:0; right:0; top:0; z-index:0;
+  width:100%; height:168vh;
+  object-fit:cover; object-position:center 38%;
+  pointer-events:none;
+  /* Opacity alone turns the film's dark end - glass, the shadow under the
+     canopy - into grey smudges on the cream, which reads as dirt rather than
+     as weather. Pulling contrast down lifts those blacks toward the midtone
+     and the brightness makes up the loss, so the plate stays as present as it
+     was without ever going sooty. Same trick the crown's sheen uses. */
+  filter:saturate(.92) contrast(1.02);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);
+  opacity:0;
+  transition:opacity 1600ms var(--ease-out);
+}
+/* Full strength now: .atmos__veil above darkens the whole atmosphere and the
+   hero type is cream, so the film no longer has to stay pale to keep a brown
+   headline legible. The veil's depth is the knob, not this. */
+.atmos__film.is-live{ opacity:1; }
+/* Never show, never fetch. heroVideo.js checks the same query before it
+   assigns a source; this covers a preference changed mid-session. */
+@media (prefers-reduced-motion:reduce){
+  .atmos__film{ display:none; }
+}
+/* Darkens film, clouds and fluid together so the hero reads as one image
+   rather than a photo behind pale weather. Bounded and faded out on the same
+   168vh as the layers it covers, so it never puts a line across the page. */
+.atmos__veil{
+  position:absolute; left:0; right:0; top:0; z-index:0;
+  height:168vh;
+  pointer-events:none;
+  background:linear-gradient(180deg,
+    rgba(28,19,8,.46) 0%,
+    rgba(28,19,8,.56) 42%,
+    rgba(28,19,8,.60) 68%,
+    rgba(28,19,8,.34) 100%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0%,#000 74%,transparent 100%);
+  opacity:0;
+  transition:opacity 1600ms var(--ease-out);
+}
+/* Keyed to the film, not to hero-revealed. Where the film is skipped - phones,
+   save-data, slow links, reduced motion - there is nothing to darken, and a
+   veil over the white ground would just make a flat brown panel and drag the
+   cream type down to about 3.2:1. heroVideo.js sets .film-on when a frame has
+   actually painted, so the dark hero and the cream type arrive together or
+   not at all. */
+body.film-on .atmos__veil{ opacity:1; }
+/* No film means nothing to darken - the hero is back on white paper, where
+   the cream type below would be invisible. Both flip together. */
+@media (prefers-reduced-motion:reduce){
+  .atmos__veil{ display:none; }
+}
 /* Both sections make their own stacking context so their internal z-index
    stacks stay local and simply sit above the sky. */
 .hero, .shot{ z-index:1; }
@@ -540,10 +599,18 @@ body.hero-revealed .atmos__clouds{ opacity:1; }
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8 0.012' numOctaves='2' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size:300px 300px;
 }
+/* Hero type on paper. The cream reversal below only applies once the film is
+   live, so every path that skips the film keeps the original ink-on-paper
+   hero rather than cream on nothing. */
 .hero .eyebrow{ color:rgba(0,0,0,.66); border-color:rgba(0,0,0,.24); }
 .hero .eyebrow .crown{ color:var(--espresso); }
 .hero .btn--ghost{ color:var(--cta); border-color:rgba(0,0,0,.30); }
 .hero .btn--ghost:hover{ background:var(--cta); color:var(--champagne); border-color:var(--cta); }
+/* ---- reversed, for when the film is behind it ---- */
+body.film-on .hero .eyebrow{ color:rgba(246,244,241,.82); border-color:rgba(246,244,241,.34); }
+body.film-on .hero .eyebrow .crown{ color:var(--champagne); }
+body.film-on .hero .btn--ghost{ color:var(--paper); border-color:rgba(246,244,241,.42); }
+body.film-on .hero .btn--ghost:hover{ background:var(--paper); color:var(--espresso); border-color:var(--paper); }
 
 .hero__inner{ position:relative; z-index:5; width:100%; max-width:1180px; }
 
@@ -604,8 +671,11 @@ body.hero-revealed .atmos__clouds{ opacity:1; }
    rests BEHIND the headline, so it is backdrop rather than subject, and at
    that weight it competed with the type it sits under - the words crossing
    the tube were the hardest part of the line to read. This is the one knob
-   for it; it rides the 900ms transition on .liquid__art above. */
-body.crown-docked .liquid__art{ opacity:.40; }
+   for it; it rides the 900ms transition on .liquid__art above.
+   .40 was set against plain white paper; with the film behind it the mark
+   washed out altogether, so it is up to .60 - readable as a form again while
+   still sitting behind the type rather than competing with it. */
+body.crown-docked .liquid__art{ opacity:.60; }
 /* ---- crown entrance: the mark draws itself on ---------------------
    One continuous stroke, animated as a dash offset and used as a mask over
    the artwork, so the 3D form arrives along the line instead of fading up.
@@ -749,6 +819,7 @@ body.crown-docked .hero.lit .liquid__sheen{ opacity:var(--crown-op); }
   letter-spacing:-.032em;
   color:var(--espresso);
 }
+body.film-on .hero__hl{ color:var(--paper); }
 .hero__hl .w{
   display:inline-block; overflow:hidden;
   padding-block:.08em; margin-block:-.08em;
@@ -765,6 +836,7 @@ body.hero-revealed .hero__hl .w > i{
 }
 @keyframes wordUp{ to{ transform:translateY(0); } }
 .hero__hl .tint{ color:var(--cocoa); }
+body.film-on .hero__hl .tint{ color:var(--champagne); }
 
 /* The line breaks after "earn", so the accent half owns the second line:
    "Brands that earn" / "their crown". Done as a block-level accent rather
@@ -2080,10 +2152,14 @@ body.hero-revealed .shot__frame{
   .hero .eyebrow,.bub{ opacity:1 !important; transform:none !important; animation:none !important; }
   .hero__hl .w > i{ transform:none !important; animation:none !important; }
   .fan.armed .fan-card{ opacity:1 !important; }
+  /* No type overrides needed: .film-on is never set without a film, so the
+     hero is already ink-on-paper in here. */
   .liquid{ transform:none !important; }
   .liquid__inner{ animation:none !important; transform:none !important; }
-  /* skips the cast animation but must still land on the same resting
-     opacity, or reduced-motion users get a full-strength crown */
+  /* Skips the cast animation but must still land on a resting opacity, or
+     reduced-motion users get a full-strength crown. Deliberately .40 and not
+     the .60 above: the film is display:none in here, so the mark rests on
+     plain white paper - which is the case .40 was measured against. */
   .liquid__stage{ transition:none !important; transform:none !important; }
   .liquid__art{ transition:none !important; opacity:.40 !important; }
   .crown-draw__rev{ stroke-dashoffset:0 !important; animation:none !important; }
@@ -2341,4 +2417,82 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .step__ttl{ font-size:3.4rem; }
   .step__body{ font-size:19px; max-width:60ch; }
   .step__art{ aspect-ratio:2/1; }
+}
+
+/* ==================================================================
+   BOOKING MODAL
+   Opened from the matcher's result CTA (anything with data-book). The
+   trigger stays a real link to /contact#book, so this is an enhancement
+   over a page that already works.
+   ================================================================== */
+.bookm{
+  position:fixed; inset:0; z-index:200;
+  display:flex; align-items:center; justify-content:center;
+  padding:clamp(12px,3vw,32px);
+}
+.bookm[hidden]{ display:none; }
+.bookm__scrim{
+  position:absolute; inset:0;
+  background:rgba(35,24,10,.58);
+  backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+  opacity:0; transition:opacity 260ms var(--ease-out);
+}
+.bookm.is-open .bookm__scrim{ opacity:1; }
+.bookm__panel{
+  position:relative;
+  /* A definite height, not just a max: the iframe is flex:1 and an <iframe>
+     has no intrinsic height to grow from, so with only a max-height the panel
+     sized to its content and the scheduler collapsed to a ~150px slot with its
+     own scrollbar. Calendly wants ~700px to show a month without scrolling. */
+  width:min(1100px,100%);
+  height:min(94vh,940px); max-height:94vh;
+  display:flex; flex-direction:column;
+  background:var(--paper);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(35,24,10,.32);
+  opacity:0; transform:translateY(14px) scale(.985);
+  transition:opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+}
+.bookm.is-open .bookm__panel{ opacity:1; transform:none; }
+.bookm__bar{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:18px clamp(18px,3vw,26px);
+  border-bottom:1px solid rgba(59,41,18,.12);
+  flex:none;
+}
+.bookm__ttl{
+  margin:0; font-size:clamp(16px,2.2vw,19px); font-weight:600;
+  letter-spacing:-.01em; color:var(--ink);
+}
+.bookm__x{
+  flex:none; width:36px; height:36px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid rgba(59,41,18,.18); background:transparent;
+  color:var(--ink); cursor:pointer;
+  transition:background 200ms ease, border-color 200ms ease;
+}
+.bookm__x:hover{ background:rgba(59,41,18,.07); border-color:rgba(59,41,18,.34); }
+/* flex:1 with min-height:0 so the iframe takes the slack instead of forcing
+   the panel past max-height and pushing the fallback line off the bottom */
+.bookm__frame{
+  flex:1 1 auto; min-height:0;
+  width:100%; border:0; display:block;
+}
+.bookm__fallback{
+  flex:none; margin:0;
+  padding:12px clamp(18px,3vw,26px) 16px;
+  font-size:13px; color:rgba(59,41,18,.62);
+  border-top:1px solid rgba(59,41,18,.10);
+}
+.bookm__fallback a{ color:inherit; text-underline-offset:3px; }
+/* The panel is nearly full-screen on a phone, so the scheduler still gets a
+   usable height rather than being squeezed under the bar. */
+@media (max-width:640px){
+  .bookm{ padding:0; }
+  .bookm__panel{ width:100%; max-height:100svh; height:100svh; border-radius:0; }
+}
+@media (prefers-reduced-motion:reduce){
+  .bookm__scrim,.bookm__panel{ transition:none; }
+  .bookm__panel{ transform:none; }
 }
