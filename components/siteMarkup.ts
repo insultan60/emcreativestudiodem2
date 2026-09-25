@@ -52,10 +52,13 @@ export const SITE_BODY_HTML = `
   <div class="atmos__ground"></div>
   <!-- The film is the ground the rest of the weather sits on: it is the first
        layer after the white plate, so the clouds, the fluid field and the grain
-       all run over it in the order they always did. Ships with no source -
-       heroVideo.js attaches it once the crown has docked, and skips it entirely
-       on phones, on metered connections and under reduced motion, where the
-       white ground below is what shows. -->
+       all run over it in the order they always did.
+
+       Currently dormant: it ships with no source and preload="none", and the
+       one script that would attach data-src - heroVideo.js - is commented out
+       in components/SiteBody.tsx at the studio's request, so this element
+       fetches nothing and the white ground below is what shows. The element
+       stays so turning the film back on is a one-line change there. -->
   <video class="atmos__film" id="atmosFilm" aria-hidden="true"
          muted loop playsinline preload="none"
          data-src="/video/em-website.mp4"></video>
@@ -552,7 +555,7 @@ export const SITE_BODY_HTML = `
     </div>
 
     <div class="packs" id="packs" data-rise>
-      <button class="pack" type="button" aria-expanded="true" data-hot>
+      <button class="pack" type="button" aria-expanded="false" data-hot>
         <div class="pack__head">
           <h3 class="pack__name">Essentials</h3>
           <span class="pack__tag">Getting found</span>
@@ -565,12 +568,12 @@ export const SITE_BODY_HTML = `
               <li>Two content pieces a month</li>
               <li>Quarterly design refresh</li>
               <li>Monthly revenue report</li>
-            </ul>          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            </ul>          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
 
-      <button class="pack" type="button" aria-expanded="false" data-hot>
+      <button class="pack" type="button" aria-expanded="true" data-hot>
         <div class="pack__head">
           <h3 class="pack__name">Signature</h3>
           <span class="pack__tag">Most chosen</span>
@@ -584,7 +587,7 @@ export const SITE_BODY_HTML = `
               <li>Monthly content shoot</li>
               <li>Landing pages on request</li>
               <li>A strategist on standing call</li>
-            </ul>          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            </ul>          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
@@ -602,7 +605,7 @@ export const SITE_BODY_HTML = `
               <li>Multi-market campaign work</li>
               <li>Dedicated studio team</li>
               <li>Weekly working sessions</li>
-            </ul>          <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            </ul>          <span class="btn btn--dark">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
@@ -639,7 +642,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Starter</h3>
           <span class="seo-card__tag">Getting found</span>
         </div>
-        <p class="seo-card__price">Let&rsquo;s talk</p>
+        <p class="seo-card__for">For a single agent building a local footprint<small>Pricing on request</small></p>
         <ul class="seo-card__list">
           <li>10 local keywords</li>
           <li>Google Business Profile, fully set up</li>
@@ -654,7 +657,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Growth</h3>
           <span class="seo-card__tag">Most chosen</span>
         </div>
-        <p class="seo-card__price">Let&rsquo;s talk</p>
+        <p class="seo-card__for">For a team ready to own its neighborhoods<small>Pricing on request</small></p>
         <ul class="seo-card__list">
           <li>25 keywords, neighborhood level</li>
           <li>4 profile posts a week</li>
@@ -669,7 +672,7 @@ export const SITE_BODY_HTML = `
           <h3 class="seo-card__name">Authority</h3>
           <span class="seo-card__tag">Market leader</span>
         </div>
-        <p class="seo-card__price">Let&rsquo;s talk</p>
+        <p class="seo-card__for">For a brokerage competing across the market<small>Pricing on request</small></p>
         <ul class="seo-card__list">
           <li>50+ keywords, zip code level</li>
           <li>Full technical SEO &amp; Core Web Vitals</li>

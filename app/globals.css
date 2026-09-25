@@ -607,7 +607,8 @@ body.hero-revealed .atmos__clouds{ opacity:1; }
 .hero .btn--ghost{ color:var(--cta); border-color:rgba(0,0,0,.30); }
 .hero .btn--ghost:hover{ background:var(--cta); color:var(--champagne); border-color:var(--cta); }
 /* ---- reversed, for when the film is behind it ---- */
-body.film-on .hero .eyebrow{ color:rgba(246,244,241,.82); border-color:rgba(246,244,241,.34); }
+body.film-on .hero .eyebrow{ color:rgba(246,244,241,.82); border-color:rgba(246,244,241,.34);
+  text-shadow:0 1px 3px rgba(18,12,4,.5); }
 body.film-on .hero .eyebrow .crown{ color:var(--champagne); }
 body.film-on .hero .btn--ghost{ color:var(--paper); border-color:rgba(246,244,241,.42); }
 body.film-on .hero .btn--ghost:hover{ background:var(--paper); color:var(--espresso); border-color:var(--paper); }
@@ -676,6 +677,11 @@ body.film-on .hero .btn--ghost:hover{ background:var(--paper); color:var(--espre
    washed out altogether, so it is up to .60 - readable as a form again while
    still sitting behind the type rather than competing with it. */
 body.crown-docked .liquid__art{ opacity:.60; }
+/* Over the film the mark is cream on a mid-dark ground, so it reads at far
+   less weight than it needed on white - and at .60 it was tangling with the
+   words it sits under. No drop-shadow to lift it: see the note above, a live
+   filter on these transforming layers costs half the frame budget. */
+body.film-on.crown-docked .liquid__art{ opacity:.46; }
 /* ---- crown entrance: the mark draws itself on ---------------------
    One continuous stroke, animated as a dash offset and used as a mask over
    the artwork, so the 3D form arrives along the line instead of fading up.
@@ -819,17 +825,29 @@ body.crown-docked .hero.lit .liquid__sheen{ opacity:var(--crown-op); }
   letter-spacing:-.032em;
   color:var(--espresso);
 }
-body.film-on .hero__hl{ color:var(--paper); }
+body.film-on .hero__hl{
+  color:var(--paper);
+  /* Same two-layer idiom as .shot__lede: a tight halo that holds the
+     letterforms where a word crosses a bright part of the film, and a wide
+     soft glow behind it that separates the whole line from the wall. Only
+     over the film - on paper it would just look like dirt under the type. */
+  text-shadow:0 1px 3px rgba(18,12,4,.46), 0 2px 26px rgba(18,12,4,.54);
+}
+/* The mask is what clips descenders: line-height is .96, so the content box
+   is shorter than the font's own line and the tails of g/y/j hang outside it.
+   .08em of bleed was not enough room for them. The translate rises with the
+   bleed - the word has to clear the taller box, or a sliver of its top shows
+   above the mask before the reveal runs. */
 .hero__hl .w{
   display:inline-block; overflow:hidden;
-  padding-block:.08em; margin-block:-.08em;
+  padding-block:.22em; margin-block:-.22em;
   vertical-align:bottom;
 }
 /* words sit masked below the line until the reveal — the animation used to
    run on load, so it had already played to the end behind the hidden hero */
 .hero__hl .w > i{
   display:inline-block; font-style:normal;
-  transform:translateY(105%);
+  transform:translateY(135%);
 }
 body.hero-revealed .hero__hl .w > i{
   animation:wordUp 900ms var(--ease-out) forwards;
@@ -1235,6 +1253,8 @@ body.hero-revealed .shot__frame{
   font-size:clamp(1.95rem,4.8vw,4.1rem);
   line-height:.96; letter-spacing:-.028em;
   margin:.34em 0 0; max-width:16ch;
+  /* keeps 'its own job' off a line of its own */
+  text-wrap:balance;
 }
 .h2 .tint{ color:var(--champagne-hi); }
 .lede{ font-size:clamp(15px,1.15vw,18px); line-height:1.5; color:var(--ink-soft); max-width:44ch; }
@@ -1530,14 +1550,16 @@ body.hero-revealed .shot__frame{
              color 460ms ease, border-color 460ms ease;
 }
 .pack[aria-expanded="true"]{ flex-grow:3.1; }
-.pack:nth-child(1)[aria-expanded="true"]{ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
-.pack:nth-child(2)[aria-expanded="true"]{ background:var(--champagne); color:var(--espresso); border-color:var(--champagne); }
-/* background, not --card-tint: that variable is only read by .step{}, so
-   Bespoke opened with no colour at all while Essentials and Signature took
-   theirs. app/packages/page.css has always had the solid background; this is
-   the same rule. (Third time this variable has been set on something that
-   never reads it - see .btn--paper and .card:nth-child(3).) */
-.pack:nth-child(3)[aria-expanded="true"]{ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
+/* Tier colour belongs to the tier, not to whichever card happens to be open.
+   While it hung off [aria-expanded] the two closed cards were both bare
+   --paper - which is why they read as the same card printed twice - and the
+   dark moved around the row as you clicked. Signature holds the dark now,
+   because it is the "Most chosen" tier and it sits in the middle, so the
+   weight of the row lands in its centre. Open state is carried by width and
+   by the revealed list instead. */
+.pack:nth-child(1){ background:var(--linen); border-color:var(--champagne-lo); }
+.pack:nth-child(2){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
+.pack:nth-child(3){ background:var(--sand); border-color:var(--champagne); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
   font-family:var(--display); font-weight:700;
@@ -1846,7 +1868,7 @@ body.hero-revealed .shot__frame{
 .foot__header .crown{ color:var(--cocoa); }
 .foot__tagline{
   font-size:clamp(14px,1.2vw,16px); color:var(--cocoa);
-  opacity:.6; font-style:italic; max-width:36ch; text-align:right;
+  opacity:.92; font-style:italic; max-width:36ch; text-align:right;
 }
 
 /* main columns */
@@ -1862,11 +1884,11 @@ body.hero-revealed .shot__frame{
 .foot__label{
   font-size:12px; font-weight:700; letter-spacing:.14em;
   text-transform:uppercase; color:var(--espresso);
-  margin-bottom:18px; opacity:.6;
+  margin-bottom:18px; opacity:.75;
 }
 .foot__body ul{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px; }
 .foot__body li a{
-  font-size:15px; color:var(--cocoa); opacity:.6; text-decoration:none;
+  font-size:15px; color:var(--cocoa); opacity:.92; text-decoration:none;
   display:inline-block; position:relative;
   transition:color 240ms ease, opacity 240ms ease, transform 220ms var(--ease-out);
 }
@@ -1896,7 +1918,7 @@ body.hero-revealed .shot__frame{
 }
 .foot__contact li a,
 .foot__contact li span{
-  font-size:14px; color:var(--cocoa); opacity:.6;
+  font-size:14px; color:var(--cocoa); opacity:.92;
 }
 
 /* social row below contact */
@@ -2233,9 +2255,15 @@ html.js-words [data-words].words-in{ visibility:visible; }
    on the page for a single one-open-at-a-time accordion, so a second group of
    them would make these fight the retainer cards in #packages. These are links
    straight through to the full page and need no script. */
+/* The band had no top margin, so it sat straight under .sec-head. .h2 runs at
+   line-height:.96 - shorter than the font's own line - so descenders hang
+   outside the heading's box, and "is its own job" dropped its j onto the top
+   edge of the Starter card. This is the same rhythm .packs already uses
+   between a section head and its row of cards. */
 .seo-band{
   display:grid; gap:18px;
   grid-template-columns:repeat(3, minmax(0,1fr));
+  margin-top:clamp(34px,5vh,60px);
 }
 @media (max-width:980px){ .seo-band{ grid-template-columns:1fr; } }
 
@@ -2257,11 +2285,25 @@ html.js-words [data-words].words-in{ visibility:visible; }
 }
 .seo-card:focus-visible{ outline:2px solid var(--cocoa); outline-offset:3px; }
 
-/* The middle card carries the weight, matching the "Most chosen" pill. */
+/* One colour per tier, same logic as the retainer cards in #packages: Starter
+   and Authority were both bare --paper, so the row read as one card printed
+   three times. Growth takes the dark because it is the "Most chosen" tier and
+   it sits in the middle, which is where the weight of the row belongs. */
+.seo-card:nth-child(1){ background:var(--linen); border-color:var(--champagne-lo); }
+.seo-card:nth-child(3){ background:var(--sand); border-color:var(--champagne); }
 .seo-card--lead{
-  background:var(--linen);
-  border-color:var(--champagne);
+  background:var(--espresso);
+  color:var(--paper);
+  border-color:var(--espresso);
 }
+/* Everything inside the lead card that was tuned for ink on paper. */
+.seo-card--lead:hover{ border-color:var(--cocoa); }
+.seo-card--lead .seo-card__tag{ background:rgba(246,244,241,.16); color:var(--paper); }
+.seo-card--lead .seo-card__for{ border-bottom-color:rgba(246,244,241,.22); }
+.seo-card--lead .seo-card__for small,
+.seo-card--lead .seo-card__list li{ color:rgba(246,244,241,.78); }
+.seo-card--lead .seo-card__list li::before{ background:rgba(246,244,241,.5); }
+.seo-card--lead .seo-card__more{ color:var(--paper); }
 
 .seo-card__top{
   display:flex; align-items:center; justify-content:space-between;
@@ -2283,15 +2325,22 @@ html.js-words [data-words].words-in{ visibility:visible; }
 }
 .seo-card--lead .seo-card__tag{ background:rgba(36,26,12,.09); }
 
-.seo-card__price{
+/* This slot used to be .seo-card__price, set at 36px and reading "Let's talk"
+   in all three cards - the loudest line on each card, printed three times,
+   saying nothing and telling you nothing about which tier you were looking
+   at. It now carries who the tier is for, which is what actually separates
+   them while pricing stays on request; the price note keeps the small line
+   the old rule already had waiting for it. */
+.seo-card__for{
   margin:0 0 18px; padding-bottom:18px;
   border-bottom:1px solid var(--hair);
   font-family:var(--display);
-  font-size:clamp(28px,3.2vw,36px); font-weight:600;
-  letter-spacing:-.03em; line-height:1;
+  font-size:17px; font-weight:600;
+  letter-spacing:-.012em; line-height:1.32;
 }
-.seo-card__price small{
-  font-size:14px; font-weight:500; letter-spacing:0;
+.seo-card__for small{
+  display:block; margin-top:8px;
+  font-size:13px; font-weight:500; letter-spacing:0;
   color:var(--ink-soft);
 }
 

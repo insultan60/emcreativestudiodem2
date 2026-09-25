@@ -33,9 +33,21 @@ export default function SiteBody() {
       {/* Delegated from document, so it does not care that the matcher injects
           its CTA long after this runs. */}
       <Script src="/scripts/booking.js" strategy="afterInteractive" />
-      {/* Last: it waits on hero-revealed anyway, and it is the only script here
-          that can pull a large file, so nothing else should queue behind it. */}
-      <Script src="/scripts/heroVideo.js" strategy="afterInteractive" />
+      {/* The atmosphere film is off for now, at the studio's request.
+          heroVideo.js is the only thing that attaches the video's source and
+          the only thing that sets body.film-on, and the film was always
+          additive - it sits on the white .atmos__ground, and every path that
+          skipped it (phones, metered connections, reduced motion) already fell
+          back to the paper hero. So not loading the script is the whole
+          removal: the <video> in siteMarkup.ts still ships with no source and
+          preload="none", so it fetches nothing, and the hero is ink on paper
+          with the clouds, the fluid field and the grain, exactly as it read
+          before the film existed. Restoring it is this one line.
+
+          Last in the list because it waits on hero-revealed anyway, and it is
+          the only script here that can pull a large file, so nothing else
+          should queue behind it. */}
+      {/* <Script src="/scripts/heroVideo.js" strategy="afterInteractive" /> */}
     </>
   );
 }

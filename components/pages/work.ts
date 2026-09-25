@@ -55,9 +55,14 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </p>
 
   <div class="hero__bubs">
+    <!-- The four pills are the home page's stats block (#stats): 240+ sites
+         shipped, 3.4x avg. traffic lift, 300+ video shoots, 98% client
+         retention. The fourth used to read "$18M tracked", a figure that
+         appears nowhere else on the site and that no stat backs. Keep these
+         in step with the stats row rather than inventing a new number. -->
     <span class="bub-float bub-float--a bub-pos--l1"><span class="bub bub--a" style="--br:-4deg; --tail:18px;">240+ sites shipped</span></span>
     <span class="bub-float bub-float--c bub-pos--l2"><span class="bub bub--c" style="--br:-3deg; --tail:24px;">3.4x traffic lift</span></span>
-    <span class="bub-float bub-float--b bub-pos--r1"><span class="bub bub--b" style="--br:4deg; --tail:24px;">$18M tracked</span></span>
+    <span class="bub-float bub-float--b bub-pos--r1"><span class="bub bub--b" style="--br:4deg; --tail:24px;">300+ video shoots</span></span>
     <span class="bub-float bub-float--d bub-pos--r2"><span class="bub bub--d" style="--br:5deg; --tail:20px;">98% retention</span></span>
   </div>
 
@@ -66,6 +71,45 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       Book a 30-minute call <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
     </a>
     <a class="btn btn--ghost" href="#portfolio">See the full slate</a>
+  </div>
+</section>
+
+<!-- ============================== REEL ============================ -->
+<!-- The film used to run muted and looping behind the home hero. It is a
+     60-second cut with an audio track, so as wallpaper it threw away both the
+     sound and the narrative, and spent 25 MB on texture. Here it is content:
+     the cover is a real button, and the <video> carries preload="none", so
+     nothing is fetched until somebody asks for it. That is also why none of
+     heroVideo.js's gating (skip on phones, on metered connections, under
+     reduced motion) is needed any more - an unplayed reel costs nothing. -->
+<section class="sec" id="reel">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-rise>
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          The Reel
+        </span>
+        <h2 class="h2" data-rise>Sixty seconds of the studio at work.</h2>
+      </div>
+      <p class="lede" data-rise>Shoots, builds and campaigns from the past year, cut together. It has sound.</p>
+    </div>
+
+    <div class="reel" data-rise>
+      <video class="reel__video" id="reelVideo"
+             preload="none" playsinline controls
+             src="/video/em-website.mp4"></video>
+      <button class="reel__cover" type="button" id="reelPlay">
+        <span class="reel__mark" aria-hidden="true">
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+        </span>
+        <span class="reel__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </span>
+        <span class="reel__label">Watch the reel</span>
+        <span class="reel__meta">60 seconds &middot; sound on</span>
+      </button>
+    </div>
   </div>
 </section>
 

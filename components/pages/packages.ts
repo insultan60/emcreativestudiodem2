@@ -91,7 +91,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
     </div>
 
     <div class="packs" id="packs" data-rise>
-      <button class="pack" type="button" aria-expanded="true">
+      <button class="pack" type="button" aria-expanded="false">
         <div class="pack__head">
           <h3 class="pack__name">Essentials</h3>
           <span class="pack__tag">Getting found</span>
@@ -106,12 +106,12 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
               <li>Monthly revenue report</li>
             </ul>
             <p class="pack__best"><strong>Best for</strong> a single agent or a small team building a foundation</p>
-            <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
 
-      <button class="pack" type="button" aria-expanded="false">
+      <button class="pack" type="button" aria-expanded="true">
         <div class="pack__head">
           <h3 class="pack__name">Signature</h3>
           <span class="pack__tag">Most chosen</span>
@@ -127,7 +127,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
               <li>A strategist on standing call</li>
             </ul>
             <p class="pack__best"><strong>Best for</strong> a growing team ready to run paid alongside organic</p>
-            <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
@@ -147,7 +147,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
               <li>Weekly working sessions</li>
             </ul>
             <p class="pack__best"><strong>Best for</strong> a brokerage or multi-market team that needs a marketing department, not a vendor</p>
-            <span class="btn btn--paper">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            <span class="btn btn--dark">Talk to us <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>

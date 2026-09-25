@@ -325,3 +325,29 @@ filterPills.forEach(pill => {
 })();
 
 })();
+
+/* ==================================================================
+   REEL - click to play
+   The <video> ships with preload="none", so the 25 MB file is not touched
+   until this runs. The cover is faded out and then removed from the flow:
+   left in place it would sit over the native controls and eat every click.
+   ================================================================== */
+(function () {
+  var video = document.getElementById('reelVideo');
+  var cover = document.getElementById('reelPlay');
+  if (!video || !cover) return;
+
+  cover.addEventListener('click', function () {
+    cover.classList.add('is-going');
+    // Match the CSS fade, then take it out of the flow for good.
+    window.setTimeout(function () { cover.hidden = true; }, 420);
+
+    var p = video.play();
+    // Autoplay policy allows this - it is a direct response to a click - but a
+    // refusal is still survivable: the controls are already there to play from.
+    if (p && typeof p.catch === 'function') {
+      p.catch(function () { cover.hidden = true; });
+    }
+    video.focus({ preventScroll: true });
+  });
+})();
