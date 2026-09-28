@@ -15,14 +15,9 @@
   var sec = document.getElementById('shot');
   if (!sec) return;
 
-  /* The CSS already presents a static, fully legible plate in these cases -
-     the same media query list guards the block that does it. Phones are in
-     there because the pinned run repaints a full-viewport rounded clip every
-     frame; without this bail the loop below would still run and still write
-     --sp on every scroll, for values the !important rules now override. */
+  // The CSS already presents a static, fully legible plate in this case.
   var mq = window.matchMedia;
   if (mq && mq('(prefers-reduced-motion: reduce)').matches) return;
-  if (mq && mq('(max-width: 720px)').matches) return;
 
   var track = sec.querySelector('.shot__track');
   if (!track) return;
@@ -42,6 +37,23 @@
      they still cannot drift apart. */
   var CATCH = 0.18;          // of the remaining gap, per 60fps frame
   var SETTLED = 0.0004;      // close enough to snap and stop the loop
+
+  /* How much these have to move before it is worth a style recalc.
+     Animating clip-path is not compositor-accelerated, so every write here
+     repaints the plate and everything in it - on a phone that is a
+     full-viewport repaint, and it was the largest cost left on the page.
+
+     The size of a "worthwhile" step is set by how far anything actually
+     travels. On a 390px phone --shot-gut clamps to 14px and --r-lg is 26px,
+     so across the WHOLE open-out the inset moves 14px and the corner 26px.
+     At 0.02 that is a 0.28px step on the inset and 0.52px on the radius -
+     under a pixel, i.e. invisible - while cutting the number of repaints by
+     more than an order of magnitude against the old 0.0015.
+
+     Desktop keeps the fine value: it has the headroom, and there the gutter
+     is up to 56px, where 0.02 would be a visible 1.1px jump. */
+  var STEP = (window.matchMedia && window.matchMedia('(max-width: 720px)').matches)
+    ? 0.02 : 0.0015;
 
   var tp = 0, te = 0;        // where the scroll says we are
   var sp = 0, se = 0;        // what is actually on screen
@@ -70,11 +82,11 @@
 
   function paint() {
     // sub-pixel churn isn't worth a style recalc
-    if (Math.abs(sp - lastP) > 0.0015) {
+    if (Math.abs(sp - lastP) > STEP) {
       lastP = sp;
       sec.style.setProperty('--sp', sp.toFixed(4));
     }
-    if (Math.abs(se - lastE) > 0.0015) {
+    if (Math.abs(se - lastE) > STEP) {
       lastE = se;
       sec.style.setProperty('--se', se.toFixed(4));
     }

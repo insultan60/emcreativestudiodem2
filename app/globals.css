@@ -1176,20 +1176,29 @@ body.hero-revealed .shot__frame{
   }
 }
 
-/* No pin, no growth - just the plate, with the buttons already on it.
-   Phones get this too, not only reduced motion. The pin drives a rounded
-   clip-path over a full-viewport element on every scroll frame, and a clip
-   is paint, not compositing: measured on an emulated mid-range Android
-   (390x844, dpr 2, 4x CPU), freezing that one clip took the scroll through
-   this section from 40.7 to 47.7 fps, p95 from 50ms to 33ms, and time in
-   frames over 50ms from 5.8% to 1.6%. It was the largest remaining cost on
-   the page after the fluid fields were gated off.
+@media (max-width:720px){
+  /* A full-length pin is a long thumb-scroll on a phone for one gesture, so
+     the whole run is shorter — ~62vh opening, ~38vh held. */
+  .shot__track{ height:200vh; }
+  /* This button sits INSIDE the plate, and the plate repaints on every frame
+     of the open-out because clip-path is not compositor-accelerated. A
+     backdrop-filter has to read back and blur what is behind it each time
+     that happens, which is the one thing you do not want in a per-frame
+     repaint. Dropped here and the tint deepened to carry the cream label on
+     its own - the glass only ever read as a hint at this size anyway. */
+  .shot .btn--ghost{
+    /* unprefixed only - see .nav-pill: the minifier collapses a
+       prefixed/unprefixed pair to whichever comes last, and shipping both
+       here left only -webkit-backdrop-filter, which Chromium ignores, so the
+       blur survived this rule entirely. */
+    backdrop-filter:none;
+    background:rgba(28,19,8,.42);
+    border-color:rgba(246,244,241,.58);
+  }
+}
 
-   The trade is that phones no longer get the open-out - but the note that
-   used to sit on .shot__track already said a full-length pin is a long
-   thumb-scroll for one gesture, and this also gives a phone back ~200vh of
-   scrolling. Desktop is untouched. */
-@media (prefers-reduced-motion:reduce), (max-width:720px){
+/* No pin, no growth — just the plate, with the buttons already on it. */
+@media (prefers-reduced-motion:reduce){
   .shot{ --sp:0 !important; --se:1 !important; }
   .shot__track{ height:auto; }
   .shot__stage{ position:static; height:auto; padding:var(--shot-gut); }
