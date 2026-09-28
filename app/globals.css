@@ -2545,3 +2545,33 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   .bookm__scrim,.bookm__panel{ transition:none; }
   .bookm__panel{ transform:none; }
 }
+
+/* ==================================================================
+   OFFSCREEN SECTIONS
+   The load profile on an emulated mid-range phone is dominated by
+   browser work - layout, paint, raster - not by script: JS self-time
+   totals under 500ms while `(program)` runs to several seconds. This
+   is the lever for that. content-visibility:auto lets the browser skip
+   layout and paint entirely for a section while it is off screen, and
+   contain-intrinsic-size gives it a stand-in height so the scrollbar
+   and in-page anchors do not jump as sections are skipped.
+
+   Deliberately NOT applied to .atmos, .hero, .shot or .process: the
+   first three hold the shot plate's sticky stage and the last holds the
+   sticky step stack, and the containment this establishes is exactly
+   what breaks position:sticky.
+   ================================================================== */
+.strip,
+#services,
+#quiz,
+.sec.stats,
+.sec.team,
+#packages,
+#seo,
+#testimonials,
+.cta-end{
+  content-visibility:auto;
+  /* `auto` remembers the real height once painted, so the placeholder is
+     only used before a section has ever been on screen. */
+  contain-intrinsic-size:auto 900px;
+}

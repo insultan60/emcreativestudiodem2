@@ -30,6 +30,27 @@
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  /* No fine pointer, no field.
+
+     This is a pointer-driven effect: every interesting thing it does comes
+     from pointermove splatting velocity into the grid. A touch device cannot
+     hover, so on a phone the whole interactive half is unreachable and what
+     remains is ambient drift - and that drift is not cheap. Measured on an
+     emulated mid-range Android (390x844, dpr 2, 4x CPU throttle), the two
+     fields cost the page 20fps, a 50ms median frame and 66% of scroll time
+     spent in frames over 50ms. Without them the same scroll holds ~60fps.
+
+     The solver is O(cells) x (5 advections + the pressure iterations) per
+     field per frame, and the hero's grid is 168vh tall, so a phone still
+     allocates ~13k cells for it and ~8k for the plate. On top of that sits
+     the CSS blur these canvases depend on, which the note by `resize` records
+     as the single most expensive thing on the page.
+
+     Nothing is lost visually: the canvas only ever fades in via .is-live, so
+     never starting leaves it at opacity 0, and the painted cloud plate and
+     the grain - both GPU-cheap - still carry the weather. */
+  if (!window.matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+
   /* One solver per surface.
 
      Everything below this point used to be the body of a single IIFE bound to
