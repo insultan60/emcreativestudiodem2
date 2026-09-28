@@ -15,8 +15,14 @@
   var sec = document.getElementById('shot');
   if (!sec) return;
 
-  // The CSS already presents a static, fully legible plate in this case.
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* The CSS already presents a static, fully legible plate in these cases -
+     the same media query list guards the block that does it. Phones are in
+     there because the pinned run repaints a full-viewport rounded clip every
+     frame; without this bail the loop below would still run and still write
+     --sp on every scroll, for values the !important rules now override. */
+  var mq = window.matchMedia;
+  if (mq && mq('(prefers-reduced-motion: reduce)').matches) return;
+  if (mq && mq('(max-width: 720px)').matches) return;
 
   var track = sec.querySelector('.shot__track');
   if (!track) return;
