@@ -2642,30 +2642,38 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
    this block just reads that class differently, clipping the panel open from
    its centre while it settles. No second observer, no scroll listener.
    ================================================================== */
+/* The open-out, driven by scroll rather than by a one-shot reveal.
+   scripts/shot.js pins the stage and writes --sp (0 closed, 1 full bleed) on
+   the section; the clip below is a function of it, exactly as the hero plate
+   is. A clip rather than width/height on purpose: animating the box would
+   re-lay out the video on every scroll frame, where a clip is paint only -
+   and it reads better, the film being revealed rather than stretched.
+
+   100vh of the track is the stage. Of the remaining 120, the frame spends
+   roughly 75vh opening and 45vh held wide open, so the full-bleed state is
+   actually on screen for a beat instead of arriving as the section leaves. */
+.showreel__track{ height:220vh; }
+.showreel__stage{
+  position:sticky; top:0;
+  height:100svh; height:100vh;
+  display:block;
+}
 .showreel__frame{
   position:relative;
-  margin-top:clamp(34px,5vh,60px);
-  border-radius:var(--r-lg);
+  margin:0;
+  width:100%; height:100%;
   overflow:hidden;
   background:var(--espresso);
-  aspect-ratio:16/9;
-
-  /* Closed: pinched in from the sides and sitting a little low. The base
-     [data-rise] rule supplies the starting opacity; the transition is
-     restated here because that rule's shorthand lists only opacity and
-     transform, and the clip needs to be animated too. */
-  clip-path:inset(4% 14% round var(--r-lg));
-  transform:translateY(22px) scale(.975);
-  transition:
-    opacity   900ms var(--ease-out),
-    transform 1100ms var(--ease-out),
-    clip-path 1100ms var(--ease-out);
-}
-.showreel__frame.in{
-  clip-path:inset(0 0 round var(--r-lg));
-  transform:none;
+  clip-path:inset(
+    calc(var(--showreel-gut) * (1 - var(--sp)))
+    round calc(var(--r-lg) * (1 - var(--sp))));
 }
 
+.showreel{
+  --sp:0;   /* open progress, 0 closed -> 1 full bleed */
+  --se:0;   /* entry progress; written by the same script, unused here */
+  --showreel-gut: clamp(14px, 3.2vw, 56px);
+}
 .showreel__video{
   display:block; width:100%; height:100%;
   object-fit:cover; background:var(--espresso);
@@ -2689,19 +2697,54 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
 .showreel__cover.is-going{ opacity:0; pointer-events:none; }
 .showreel__cover:focus-visible{ outline:2px solid var(--champagne); outline-offset:-6px; }
 
-/* The cover's contents arrive after the panel has finished opening, so the
-   sequence reads as one move: the frame opens, then what is inside it settles. */
-.showreel__mark,
-.showreel__play,
-.showreel__label,
-.showreel__meta{
-  opacity:0; transform:translateY(10px);
-  transition:opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+/* The cover's contents resolve as the frame opens, the same way the hero lede
+   does: one ramp per item drives opacity, blur and lift together, so they
+   cannot drift apart, and the whole thing is a function of --sp - scrubbing
+   the scroll backwards puts it away again.
+
+   --i is the item's place in the order, set inline in the markup. The ramp
+   starts at .18 and each item is .07 behind the one before, so the last of
+   the four has resolved by --sp .59 - well before the frame reaches full
+   bleed at 1, leaving the finished state to hold on its own.
+
+   The button underneath is NOT part of this. It keeps its background and its
+   hit area from the start, so the cover is clickable and focusable for the
+   whole open-out even while the wording is still arriving. */
+.showreel__cover > *{
+  --w:clamp(0, calc((var(--sp) - .18 - var(--i) * .07) * 5), 1);
+  filter:blur(calc((1 - var(--w)) * 10px));
+  transform:translateY(calc((1 - var(--w)) * 14px));
 }
-.showreel__frame.in .showreel__mark { opacity:.5; transform:none; transition-delay:520ms; }
-.showreel__frame.in .showreel__play { opacity:1;  transform:none; transition-delay:620ms; }
-.showreel__frame.in .showreel__label{ opacity:1;  transform:none; transition-delay:700ms; }
-.showreel__frame.in .showreel__meta { opacity:.62; transform:none; transition-delay:760ms; }
+/* Each keeps its own resting opacity - the mark and the meta line sit back
+   from the label on purpose - so the ramp scales it rather than setting it. */
+.showreel__mark { opacity:calc(var(--w) * .5); }
+.showreel__play { opacity:var(--w); }
+/* The sound chip. Hidden until playback actually starts - offering to unmute
+   a film that has not begun is noise - and it sits above the frame's own
+   stacking so the native controls do not cover it. */
+.showreel__sound{
+  position:absolute; right:16px; bottom:16px; z-index:3;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:9px 15px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.34);
+  background:rgba(26,18,8,.52); color:var(--paper);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  font:inherit; font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase;
+  cursor:pointer;
+  transition:background-color 260ms ease, border-color 260ms ease, color 260ms ease;
+}
+.showreel__sound[hidden]{ display:none; }
+.showreel__sound:hover{ background:rgba(26,18,8,.74); border-color:rgba(255,255,255,.6); }
+.showreel__sound:focus-visible{ outline:2px solid var(--champagne); outline-offset:3px; }
+.showreel__sound.is-on{ background:var(--champagne); border-color:var(--champagne); color:var(--espresso); }
+@media (max-width:620px){
+  .showreel__sound{ right:12px; bottom:12px; padding:8px 12px; }
+  .showreel__sound span{ display:none; }
+}
+
+.showreel__label{ opacity:var(--w); }
+.showreel__meta { opacity:calc(var(--w) * .62); }
 
 .showreel__mark{ width:60px; }
 .showreel__mark .crown{ width:100%; height:auto; color:var(--champagne); }
@@ -2711,9 +2754,13 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   width:66px; height:66px; border-radius:50%;
   background:var(--paper); color:var(--espresso);
 }
+/* Hover keeps the ramp's lift and adds the scale on top - writing a bare
+   scale() here would drop the translateY and make the button jump whenever
+   the pointer crossed it mid-open. */
 .showreel__cover:hover .showreel__play{
-  transform:scale(1.07); background:var(--champagne);
-  transition:transform 420ms var(--ease-out), background-color 300ms ease;
+  transform:translateY(calc((1 - var(--w)) * 14px)) scale(1.07);
+  background:var(--champagne);
+  transition:background-color 300ms ease;
 }
 
 .showreel__label{
@@ -2723,27 +2770,34 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
 .showreel__meta{
   font-size:11px; font-weight:600;
   letter-spacing:.16em; text-transform:uppercase;
+  opacity:.62;
 }
 
 @media (max-width:620px){
-  .showreel__frame{ aspect-ratio:4/3; }
+  /* No aspect-ratio here any more: the frame fills the pinned stage, so its
+     shape comes from the viewport. A shorter track too - 220vh of scroll to
+     open one panel is a lot of thumb on a phone. */
+  .showreel__track{ height:180vh; }
   .showreel__mark{ width:44px; }
   .showreel__play{ width:56px; height:56px; }
 }
 
 /* Reduced motion gets the section, not the performance: the panel is simply
    there, already open, with nothing sliding or clipping. */
+/* shot.js returns early under reduced motion, so --sp never leaves 0 and the
+   frame would sit permanently pinched. Open it here, drop the pin, and give
+   the section its ordinary height back. */
 @media (prefers-reduced-motion:reduce){
+  .showreel__track{ height:auto; }
+  .showreel__stage{ position:static; height:auto; }
   .showreel__frame{
-    clip-path:inset(0 0 round var(--r-lg));
-    transform:none;
-    transition:opacity 200ms linear;
+    clip-path:none;
+    border-radius:var(--r-lg);
+    aspect-ratio:16/9; height:auto;
+    margin-top:clamp(34px,5vh,60px);
   }
-  .showreel__mark, .showreel__play,
-  .showreel__label, .showreel__meta{
-    opacity:1; transform:none; transition:none !important;
-  }
-  .showreel__mark{ opacity:.5; }
-  .showreel__meta{ opacity:.62; }
+  /* --sp never leaves 0 here, so the ramp would hold the cover at nothing.
+     Present it resolved instead. */
+  .showreel__cover > *{ --w:1; filter:none; transform:none; }
   .showreel__cover, .showreel__cover:hover .showreel__play{ transition:none !important; transform:none; }
 }

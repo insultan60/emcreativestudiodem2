@@ -1,4 +1,10 @@
-/* Hero shot — writes the open/closed progress of the plate under the hero.
+/* Scroll-driven open-out — writes the open/closed progress of a pinned plate.
+ *
+ * Mounted on every [data-scroll-open] section: the hero shot under the hero,
+ * and the showreel between the services index and the process timeline. Both
+ * want the identical behaviour, and the numbers below (HOLD, CATCH, STEP) took
+ * tuning, so they are shared rather than copied - a second copy would drift
+ * from this one the first time either was touched.
  *
  * The stage is sticky inside a track two-and-a-bit viewports tall, so while
  * the track passes the top of the screen the plate is pinned and the only
@@ -11,15 +17,12 @@
  * finishes opening exactly as it leaves and the payoff is never actually on
  * screen; the track is sized so the held part is roughly half a viewport.
  */
-(function () {
-  var sec = document.getElementById('shot');
-  if (!sec) return;
-
+function mountScrollOpen(sec) {
   // The CSS already presents a static, fully legible plate in this case.
   var mq = window.matchMedia;
   if (mq && mq('(prefers-reduced-motion: reduce)').matches) return;
 
-  var track = sec.querySelector('.shot__track');
+  var track = sec.querySelector('[data-scroll-track]');
   if (!track) return;
 
   // Fraction of the pinned run spent opening; the rest is the held beat.
@@ -127,4 +130,9 @@
   addEventListener('resize', snap, { passive: true });
   addEventListener('orientationchange', function () { setTimeout(snap, 300); });
   snap();   // first paint is exact, not eased in from zero
-})();
+}
+
+/* Each section keeps its own progress and its own rAF loop. Two of them is
+   cheap: the loop only runs while that section's numbers are still chasing
+   the scroll, and settles itself the moment they arrive. */
+document.querySelectorAll('[data-scroll-open]').forEach(mountScrollOpen);

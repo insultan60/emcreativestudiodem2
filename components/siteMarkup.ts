@@ -218,8 +218,8 @@ export const SITE_BODY_HTML = `
      up over it. The stage is sticky inside a tall track, so the scroll
      distance drives the growth instead of moving the plate down the page.
      ======================================================= -->
-<section class="shot" id="shot">
-  <div class="shot__track">
+<section class="shot" id="shot" data-scroll-open>
+  <div class="shot__track" data-scroll-track>
     <div class="shot__stage">
       <figure class="shot__frame">
         <img
@@ -348,7 +348,7 @@ export const SITE_BODY_HTML = `
         <li><button type="button" data-go="4" data-hot><span class="n">05</span> Print &amp; Digital Marketing <span class="bar"></span></button></li>
         <li><button type="button" data-go="5" data-hot><span class="n">06</span> Digital Advertising <span class="bar"></span></button></li>
       </ol>
-      <a href="#" class="btn btn--ghost" style="margin-top:clamp(18px,2.4vh,28px);display:inline-flex" data-hot>View all services <span>&rarr;</span></a>
+      <a href="/services" class="btn btn--ghost" style="margin-top:clamp(18px,2.4vh,28px);display:inline-flex" data-hot>View all services <span>&rarr;</span></a>
     </div>
 
   </div>
@@ -368,7 +368,7 @@ export const SITE_BODY_HTML = `
      The frame opens rather than fades. It rides the same [data-rise] observer
      as the rest of the page, so there is no second IntersectionObserver here;
      the class arrives the same way, and the stylesheet reads it differently. -->
-<section class="sec showreel" id="showreel">
+<section class="sec showreel" id="showreel" data-scroll-open>
   <div class="wrap">
     <div class="sec-head">
       <div>
@@ -381,20 +381,43 @@ export const SITE_BODY_HTML = `
       <p class="lede" data-rise>A minute of the studio at work &mdash; shoots, builds and campaigns from the past year, cut together. It has sound.</p>
     </div>
 
-    <div class="showreel__frame" id="showreelFrame" data-rise>
-      <video class="showreel__video" id="showreelVideo"
-             preload="none" playsinline controls
-             src="/video/em-website.mp4"></video>
-      <button class="showreel__cover" type="button" id="showreelPlay">
-        <span class="showreel__mark" aria-hidden="true">
-          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
-        </span>
-        <span class="showreel__play" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-        </span>
-        <span class="showreel__label">Watch the reel</span>
-        <span class="showreel__meta">Sound on</span>
-      </button>
+  </div>
+
+  <!-- Same pinned open-out as the hero plate: the stage is sticky inside a
+       track taller than the viewport, so the scroll distance is what widens
+       the frame while the frame itself never moves. scripts/shot.js writes
+       --sp here; every visual below is a function of it. -->
+  <div class="showreel__track" data-scroll-track>
+    <div class="showreel__stage">
+      <div class="showreel__frame" id="showreelFrame">
+        <!-- muted + loop because autoplay is only permitted muted; the sound
+             is offered back by the chip below. No autoplay attribute: that
+             would start the 26 MB fetch on page load and undo preload="none".
+             showreel.js calls play() when the section is actually on screen. -->
+        <video class="showreel__video" id="showreelVideo"
+               preload="none" playsinline controls muted loop
+               src="/video/em-website.mp4"></video>
+        <button class="showreel__sound" type="button" id="showreelSound" hidden>
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"
+               fill="none" stroke="currentColor" stroke-width="1.8"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 5 6 9H2v6h4l5 4z"/><path d="M23 9l-6 6M17 9l6 6"/>
+          </svg>
+          <span>Sound off</span>
+        </button>
+        <button class="showreel__cover" type="button" id="showreelPlay">
+          <!-- --i is each item's place in the stagger; the ramp that reads it
+               lives in globals.css, the same shape the hero lede uses. -->
+          <span class="showreel__mark" style="--i:0" aria-hidden="true">
+            <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          </span>
+          <span class="showreel__play" style="--i:1" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          </span>
+          <span class="showreel__label" style="--i:2">Watch the reel</span>
+          <span class="showreel__meta" style="--i:3">Sound on</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -564,7 +587,7 @@ export const SITE_BODY_HTML = `
     </div>
 
     <div class="team__cta" data-rise>
-      <a href="#" class="btn btn--dark" data-hot>Meet the Team <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
+      <a href="/about#team" class="btn btn--dark" data-hot>Meet the Team <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></a>
     </div>
   </div>
 </section>
