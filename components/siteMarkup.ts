@@ -354,6 +354,51 @@ export const SITE_BODY_HTML = `
   </div>
 </section>
 
+<!-- ============================== SHOWREEL ============================ -->
+<!-- Sits between the services index and the process timeline: the reader has
+     just been told what the studio does, so this is where they get to see it
+     rather than read on.
+
+     The film is the same 26 MB cut the work page uses, and it carries
+     preload="none" for the same reason - the cover is a real <button>, and
+     nothing is fetched until somebody asks for it. So the section costs a few
+     kilobytes of markup until it is wanted, which is what lets it sit this
+     high on the home page at all.
+
+     The frame opens rather than fades. It rides the same [data-rise] observer
+     as the rest of the page, so there is no second IntersectionObserver here;
+     the class arrives the same way, and the stylesheet reads it differently. -->
+<section class="sec showreel" id="showreel">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-rise>
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          The reel
+        </span>
+        <h2 class="h2" data-rise>See how it <span class="tint">feels</span>.</h2>
+      </div>
+      <p class="lede" data-rise>A minute of the studio at work &mdash; shoots, builds and campaigns from the past year, cut together. It has sound.</p>
+    </div>
+
+    <div class="showreel__frame" id="showreelFrame" data-rise>
+      <video class="showreel__video" id="showreelVideo"
+             preload="none" playsinline controls
+             src="/video/em-website.mp4"></video>
+      <button class="showreel__cover" type="button" id="showreelPlay">
+        <span class="showreel__mark" aria-hidden="true">
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+        </span>
+        <span class="showreel__play" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="24" height="24"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </span>
+        <span class="showreel__label">Watch the reel</span>
+        <span class="showreel__meta">Sound on</span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- =========================== PROCESS ========================= -->
 <section class="sec process" id="process">
   <div class="wrap">

@@ -25,7 +25,7 @@
   --color-champagne:    #D6C6B4;
   --color-champagne-lo: #E7DDD2;
   --color-champagne-hi: #A89A8B;
-  --color-cocoa:        #4A443D;
+  --color-cocoa:        #5A4632;
   --color-cta:          #3B2912;
   --color-espresso:     #3B2912;
   --color-ink:          #3B2912;
@@ -57,7 +57,14 @@
   --champagne:    #D6C6B4;
   --champagne-lo: #E7DDD2;
   --champagne-hi: #A89A8B;
-  --cocoa:        #4A443D;
+  /* Was #4A443D, which sat at R-B +13 - near neutral, so against a palette
+     of espresso, sand, champagne and ember it read as grey rather than as
+     a warm dark. #5A4632 is the same job at R-B +40: still quiet, still
+     8.12 on paper, but unmistakably in the family. Secondary ink for the
+     whole site - eyebrows, footer copy, links, focus rings - and every
+     route sheet carries its own copy of this token block, so all 14 were
+     changed together. */
+  --cocoa:        #5A4632;
   --cta:          #3B2912;
   --espresso:     #3B2912;
   --sage:         #6E7865;
@@ -1317,33 +1324,64 @@ body.hero-revealed .shot__frame{
   filter:blur(var(--bl,0px));
   transition:transform 620ms var(--ease-out), box-shadow 620ms var(--ease-out),
              opacity 420ms ease, filter 480ms ease;
-  box-shadow:0 26px 60px -30px rgba(0,0,0,.5);
   cursor:pointer;
-  border:1px solid rgba(0,0,0,.10);
+
+  /* ---- glass, borrowed from .step ---------------------------------
+     Same shell as the process cards: a bright hairline that is brighter
+     still along the top, the two raking sheens, and the inset highlights.
+     Blur alone only reads as glass where there is something behind it to
+     blur, and here the backdrop is the flat linen wash for the front card
+     and a fanned card for the ones behind - so the sheen is what carries
+     the effect, exactly as it does in the stack below.
+
+     What is NOT borrowed is .step's 62% tint. This deck fans up to five
+     cards at once (main.js lays them out at depth 0-2, the rest at
+     opacity 0), and the front card sits directly over the others. At 62%
+     every title behind would read through the one in front - the fault
+     the note under these tints already records. The tints below sit at
+     90% instead: enough that the blur turns whatever is behind into an
+     unreadable smear, little enough that the card still has depth. */
+  border:1px solid rgba(255,255,255,.55);
+  border-top-color:rgba(255,255,255,.80);
+  background-clip:padding-box;
+  -webkit-backdrop-filter:blur(22px) saturate(1.22);
+          backdrop-filter:blur(22px) saturate(1.22);
+  background-image:
+    linear-gradient(118deg,
+      rgba(255,255,255,.52) 0%,
+      rgba(255,255,255,.20) 26%,
+      rgba(255,255,255,.04) 52%,
+      rgba(255,255,255,0)   68%),
+    linear-gradient(302deg,
+      rgba(255,255,255,.20) 0%,
+      rgba(255,255,255,0)   34%);
+  box-shadow:
+    0 26px 60px -30px rgba(0,0,0,.5),
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 0 0 1px rgba(255,255,255,.10);
 }
 .deck.armed .card{ --rot:0deg; --dx:0px; --sc:.86; opacity:0; }
-.card:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
-.card:nth-child(2){ background:var(--champagne); color:var(--espresso); }
-/* Solid backgrounds, not --card-tint. These four used to set that variable
-   and nothing else, but --card-tint is only ever read by .step{} - .card
-   never consumes it - so cards 3 to 6 rendered with no background at all.
-   In a deck where six cards sit stacked on one another that meant four
-   transparent sheets, and every title read through every card in front of
-   it. (Same fault as .btn--paper, which set the variable and painted
-   nothing.) Opaque on purpose rather than the 62% mix the variable named:
-   at 62% the card behind still shows through, which is fine for a glass
-   panel over a flat wash and wrong for a stack. */
-.card:nth-child(3){ background:var(--paper); color:var(--ink); }
-.card:nth-child(4){ background:var(--sand); color:var(--espresso); border-color:var(--sand); }
-.card:nth-child(5){ background:var(--champagne-lo); color:var(--espresso); }
-.card:nth-child(6){ background:var(--paper); color:var(--espresso); }
+/* The four tints the process cards use, cycled across six. They are set at
+   90% rather than .step's 62% for the stacking reason given above, and every
+   card now carries espresso ink instead of card 1 alone reversing out to
+   paper - the palette is light throughout, so reversed text would be the odd
+   one out. Titles clear AA on all four (6.05 on the peachiest, 12.54 on the
+   lightest); .card__body is lifted to .86 below to clear it too. */
+.card:nth-child(1){ background-color:color-mix(in srgb, var(--ember-soft)   90%, transparent); color:var(--espresso); }
+.card:nth-child(2){ background-color:color-mix(in srgb, var(--sand)         90%, transparent); color:var(--espresso); }
+.card:nth-child(3){ background-color:color-mix(in srgb, var(--champagne-lo) 90%, transparent); color:var(--espresso); }
+.card:nth-child(4){ background-color:color-mix(in srgb, var(--paper)        90%, transparent); color:var(--espresso); }
+.card:nth-child(5){ background-color:color-mix(in srgb, var(--ember-soft)   90%, transparent); color:var(--espresso); }
+.card:nth-child(6){ background-color:color-mix(in srgb, var(--sand)         90%, transparent); color:var(--espresso); }
 .card__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; opacity:.6; }
 .card__ttl{
   font-family:var(--display); font-weight:800;
   font-size:clamp(1.35rem,2.2vw,1.95rem);
   line-height:1; letter-spacing:-.024em; margin:.5em 0 0;
 }
-.card__body{ font-size:14px; line-height:1.45; opacity:.78; margin:14px 0 0; }
+/* .86, not .78: on the ember-soft cards .78 measures 3.98 against the tint,
+   under the 4.5 AA floor for copy this size. .86 reads 4.63. */
+.card__body{ font-size:14px; line-height:1.45; opacity:.86; margin:14px 0 0; }
 .card__top{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; }
 .card__mark{
   width:28px; aspect-ratio:900/625; flex:none;
@@ -2589,4 +2627,123 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   /* `auto` remembers the real height once painted, so the placeholder is
      only used before a section has ever been on screen. */
   contain-intrinsic-size:auto 900px;
+}
+
+/* ==================================================================
+   SHOWREEL  (home, between the services index and the process timeline)
+   ==================================================================
+   Named apart from the work page's .reel on purpose. That sheet is the work
+   route's own, this one is the home route's, and the two never load together
+   - but they are two different treatments now, and sharing a class name would
+   invite one to be "tidied" into the other later.
+
+   The frame opens instead of fading. It carries [data-rise] like everything
+   else on the page, so main.js's single reveal observer is what adds .in;
+   this block just reads that class differently, clipping the panel open from
+   its centre while it settles. No second observer, no scroll listener.
+   ================================================================== */
+.showreel__frame{
+  position:relative;
+  margin-top:clamp(34px,5vh,60px);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  background:var(--espresso);
+  aspect-ratio:16/9;
+
+  /* Closed: pinched in from the sides and sitting a little low. The base
+     [data-rise] rule supplies the starting opacity; the transition is
+     restated here because that rule's shorthand lists only opacity and
+     transform, and the clip needs to be animated too. */
+  clip-path:inset(4% 14% round var(--r-lg));
+  transform:translateY(22px) scale(.975);
+  transition:
+    opacity   900ms var(--ease-out),
+    transform 1100ms var(--ease-out),
+    clip-path 1100ms var(--ease-out);
+}
+.showreel__frame.in{
+  clip-path:inset(0 0 round var(--r-lg));
+  transform:none;
+}
+
+.showreel__video{
+  display:block; width:100%; height:100%;
+  object-fit:cover; background:var(--espresso);
+}
+
+/* A real <button>, not a decorated div, so it is focusable and works from the
+   keyboard with no aria plumbing. It leaves the flow entirely once play
+   starts - left in place it would swallow every click meant for the native
+   controls underneath. */
+.showreel__cover{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:14px;
+  border:0; margin:0; padding:24px;
+  font:inherit; color:var(--paper);
+  background:var(--espresso);
+  cursor:pointer;
+  transition:opacity 420ms var(--ease-out);
+}
+.showreel__cover[hidden]{ display:none; }
+.showreel__cover.is-going{ opacity:0; pointer-events:none; }
+.showreel__cover:focus-visible{ outline:2px solid var(--champagne); outline-offset:-6px; }
+
+/* The cover's contents arrive after the panel has finished opening, so the
+   sequence reads as one move: the frame opens, then what is inside it settles. */
+.showreel__mark,
+.showreel__play,
+.showreel__label,
+.showreel__meta{
+  opacity:0; transform:translateY(10px);
+  transition:opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+}
+.showreel__frame.in .showreel__mark { opacity:.5; transform:none; transition-delay:520ms; }
+.showreel__frame.in .showreel__play { opacity:1;  transform:none; transition-delay:620ms; }
+.showreel__frame.in .showreel__label{ opacity:1;  transform:none; transition-delay:700ms; }
+.showreel__frame.in .showreel__meta { opacity:.62; transform:none; transition-delay:760ms; }
+
+.showreel__mark{ width:60px; }
+.showreel__mark .crown{ width:100%; height:auto; color:var(--champagne); }
+
+.showreel__play{
+  display:grid; place-items:center;
+  width:66px; height:66px; border-radius:50%;
+  background:var(--paper); color:var(--espresso);
+}
+.showreel__cover:hover .showreel__play{
+  transform:scale(1.07); background:var(--champagne);
+  transition:transform 420ms var(--ease-out), background-color 300ms ease;
+}
+
+.showreel__label{
+  font-family:var(--display); font-weight:700;
+  font-size:clamp(19px,2.2vw,26px); letter-spacing:-.02em;
+}
+.showreel__meta{
+  font-size:11px; font-weight:600;
+  letter-spacing:.16em; text-transform:uppercase;
+}
+
+@media (max-width:620px){
+  .showreel__frame{ aspect-ratio:4/3; }
+  .showreel__mark{ width:44px; }
+  .showreel__play{ width:56px; height:56px; }
+}
+
+/* Reduced motion gets the section, not the performance: the panel is simply
+   there, already open, with nothing sliding or clipping. */
+@media (prefers-reduced-motion:reduce){
+  .showreel__frame{
+    clip-path:inset(0 0 round var(--r-lg));
+    transform:none;
+    transition:opacity 200ms linear;
+  }
+  .showreel__mark, .showreel__play,
+  .showreel__label, .showreel__meta{
+    opacity:1; transform:none; transition:none !important;
+  }
+  .showreel__mark{ opacity:.5; }
+  .showreel__meta{ opacity:.62; }
+  .showreel__cover, .showreel__cover:hover .showreel__play{ transition:none !important; transform:none; }
 }

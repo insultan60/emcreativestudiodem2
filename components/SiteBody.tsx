@@ -30,6 +30,10 @@ export default function SiteBody() {
       <Script src="/scripts/fluid.js" strategy="afterInteractive" />
       <Script src="/scripts/grid.js" strategy="afterInteractive" />
       <Script src="/scripts/shot.js" strategy="afterInteractive" />
+      {/* Click-to-play for the home reel. The opening animation is not in
+          here - the frame rides main.js's reveal observer like everything
+          else; this only attaches the play handler. */}
+      <Script src="/scripts/showreel.js" strategy="afterInteractive" />
       {/* Delegated from document, so it does not care that the matcher injects
           its CTA long after this runs. */}
       <Script src="/scripts/booking.js" strategy="afterInteractive" />
