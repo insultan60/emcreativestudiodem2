@@ -39,6 +39,11 @@
      never runs at all. */
   function reveal() {
     body.classList.add('hero-revealed');
+    /* The page was held still for the intro; it is over on every path that
+       reaches here, so this is where scrolling comes back. An inline script
+       in SiteBody.tsx also drops it on a timer, in case this file never
+       loads - a page that will not scroll has to fail open. */
+    document.documentElement.classList.remove('intro-lock');
     /* the nav has been sitting closed as a bare logo through the intro -
        let it open now that the page itself has arrived */
     body.classList.remove('nav-boot');

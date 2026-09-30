@@ -1565,6 +1565,35 @@ body.hero-revealed .shot__frame{
   color:var(--ink);
   display:block;
 }
+/* ---- odometer roll -------------------------------------------------
+   Built by scripts/odometer.js, which replaces the figure's text node with
+   one column per digit. The columns are inline-flex so they sit on the same
+   baseline as the <small> suffix, and each is exactly 1em tall with the strip
+   clipped to it - the height is what makes only one digit visible at a time,
+   so it must not be allowed to grow with line-height.
+
+   tabular-nums keeps the column width from twitching as different digits pass
+   through it; without it a 1 rolling past a 0 visibly narrows the number. */
+.odo{ display:inline-flex; align-items:flex-end; font-variant-numeric:tabular-nums; }
+.odo__d{
+  display:block; overflow:hidden;
+  height:1em; line-height:1;
+}
+.odo__s{
+  display:block;
+  transform:translateY(0);
+  transition:transform 1500ms cubic-bezier(.16, 1, .3, 1);
+  will-change:transform;
+}
+.odo__s b{ display:block; height:1em; line-height:1; font-weight:inherit; }
+.odo__sep{ display:block; line-height:1; }
+
+/* The roll is decoration; the figure is the content. Under reduced motion the
+   script lands every strip immediately, and this makes sure nothing eases. */
+@media (prefers-reduced-motion:reduce){
+  .odo__s{ transition:none !important; }
+}
+
 .stats__num small{
   font-size:.5em; font-weight:600; opacity:.35;
 }
@@ -2627,6 +2656,32 @@ body.nav-tucked:not(.nav-open) .nav a.brand{ opacity:1; }
   /* `auto` remembers the real height once painted, so the placeholder is
      only used before a section has ever been on screen. */
   contain-intrinsic-size:auto 900px;
+}
+
+/* ==================================================================
+   INTRO SCROLL LOCK
+   ==================================================================
+   The crown draws itself on over a still page. Set inline in SiteBody.tsx so
+   it is on before first paint, and lifted by crown.js's reveal() - which runs
+   on every path out of the intro, including reduced motion and the ones where
+   the intro never starts.
+
+   overflow:hidden goes on <html> rather than <body>: on body alone the
+   document still scrolls in most browsers. --sbw is the width of the
+   scrollbar this removes, measured inline and paid back as padding, so the
+   page does not jump sideways when the lock lifts.
+
+   There is deliberately no fallback to "just hide the scrollbar" here. If
+   anything about this fails, it has to fail OPEN - hence the timer in
+   SiteBody.tsx as well as the release in crown.js. */
+html.intro-lock{
+  overflow:hidden;
+  padding-right:var(--sbw, 0px);
+  overscroll-behavior:none;
+}
+html.intro-lock body{
+  overflow:hidden;
+  touch-action:none;
 }
 
 /* ==================================================================

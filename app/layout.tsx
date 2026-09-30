@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   title: "The EM Creative Studio — Brands that earn their crown",
   description:
     "SEO, web design and brand systems for companies that refuse to blend in. A boutique creative studio in Los Angeles.",
+  // TEMPORARY: keeps the whole site out of search results until launch. Every
+  // route inherits this from the root layout. Remove it to allow indexing.
+  // Do not also block the site in robots.txt - Google has to be able to crawl
+  // a page to see its noindex.
+  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

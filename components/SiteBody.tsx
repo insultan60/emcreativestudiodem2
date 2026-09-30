@@ -21,7 +21,24 @@ export default function SiteBody() {
           first paint already has it. */}
       <script
         dangerouslySetInnerHTML={{
-          __html: "document.body.classList.add('nav-boot')",
+          __html: [
+            "document.body.classList.add('nav-boot');",
+            // The crown intro owns the screen, so the page is held still
+            // while it plays. crown.js's reveal() lifts this on every path
+            // out of the intro, including the ones where it never runs.
+            "var d=document.documentElement;",
+            "d.classList.add('intro-lock');",
+            // Compensate for the scrollbar the lock removes, or the whole
+            // page shifts sideways when it goes and comes back.
+            "var sbw=window.innerWidth-d.clientWidth;",
+            "if(sbw>0)d.style.setProperty('--sbw',sbw+'px');",
+            // Failsafe. This is the one class that can strand a visitor - a
+            // page that will not scroll is broken, not merely unstyled - so
+            // its release does not depend on any external script loading.
+            // main.js has its own 9s net for nav-boot; this is deliberately
+            // shorter, because the cost of holding it is higher.
+            "setTimeout(function(){d.classList.remove('intro-lock');},5000);",
+          ].join(""),
         }}
       />
       <div dangerouslySetInnerHTML={{ __html: SITE_BODY_HTML }} />
@@ -30,6 +47,9 @@ export default function SiteBody() {
       <Script src="/scripts/fluid.js" strategy="afterInteractive" />
       <Script src="/scripts/grid.js" strategy="afterInteractive" />
       <Script src="/scripts/shot.js" strategy="afterInteractive" />
+      {/* Rolls the stat figures into place. Replaces their text with
+          digit columns, so it has to run after the markup is in. */}
+      <Script src="/scripts/odometer.js" strategy="afterInteractive" />
       {/* Click-to-play for the home reel. The opening animation is not in
           here - the frame rides main.js's reveal observer like everything
           else; this only attaches the play handler. */}
