@@ -315,7 +315,8 @@ a{ color:inherit; }
    because it is the "Most chosen" tier and it sits in the middle, so the
    weight of the row lands in its centre. Open state is carried by width and
    by the revealed list instead. */
-.pack:nth-child(1){ background:var(--linen); border-color:var(--champagne-lo); }
+/* Ember Soft, matching the home page: on linen, a linen card had no edge. */
+.pack:nth-child(1){ background:var(--ember-soft); color:var(--espresso); border-color:var(--ember-soft); }
 .pack:nth-child(2){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(3){ background:var(--sand); border-color:var(--champagne); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }

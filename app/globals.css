@@ -1638,8 +1638,15 @@ body.hero-revealed .shot__frame{
    dark moved around the row as you clicked. Signature holds the dark now,
    because it is the "Most chosen" tier and it sits in the middle, so the
    weight of the row lands in its centre. Open state is carried by width and
-   by the revealed list instead. */
-.pack:nth-child(1){ background:var(--linen); border-color:var(--champagne-lo); }
+   by the revealed list instead.
+
+   Essentials was --linen, the same colour as the sec--linen section it sits
+   in, so the first card had no edge but its hairline and read as a gap in
+   the row rather than a tier. It wears Ember Soft now, the clay the first
+   service card and first process step already use, so the three tiers run
+   clay / espresso / sand. Ink on it is 7.33:1, and Signature still sits
+   between it and Sand, so the two lighter tints never touch. */
+.pack:nth-child(1){ background:var(--ember-soft); color:var(--espresso); border-color:var(--ember-soft); }
 .pack:nth-child(2){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
 .pack:nth-child(3){ background:var(--sand); border-color:var(--champagne); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
