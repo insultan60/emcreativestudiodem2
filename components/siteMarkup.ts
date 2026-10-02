@@ -263,20 +263,20 @@ export const SITE_BODY_HTML = `
 <section class="strip" aria-label="What we do">
   <div class="strip__track">
     <div class="strip__set">
-      <span>SEO &amp; Local Search</span><i>&#8212;</i>
-      <span>Web Design</span><i>&#8212;</i>
-      <span>Brand Identity</span><i>&#8212;</i>
-      <span>Paid Social</span><i>&#8212;</i>
-      <span>Content Studio</span><i>&#8212;</i>
-      <span>Email &amp; CRM</span><i>&#8212;</i>
+      <span>SEO</span><i>&#8212;</i>
+      <span>Websites</span><i>&#8212;</i>
+      <span>Branding</span><i>&#8212;</i>
+      <span>Social</span><i>&#8212;</i>
+      <span>Content</span><i>&#8212;</i>
+      <span>Email</span><i>&#8212;</i>
     </div>
     <div class="strip__set" aria-hidden="true">
-      <span>SEO &amp; Local Search</span><i>&#8212;</i>
-      <span>Web Design</span><i>&#8212;</i>
-      <span>Brand Identity</span><i>&#8212;</i>
-      <span>Paid Social</span><i>&#8212;</i>
-      <span>Content Studio</span><i>&#8212;</i>
-      <span>Email &amp; CRM</span><i>&#8212;</i>
+      <span>SEO</span><i>&#8212;</i>
+      <span>Websites</span><i>&#8212;</i>
+      <span>Branding</span><i>&#8212;</i>
+      <span>Social</span><i>&#8212;</i>
+      <span>Content</span><i>&#8212;</i>
+      <span>Email</span><i>&#8212;</i>
     </div>
   </div>
 </section>
