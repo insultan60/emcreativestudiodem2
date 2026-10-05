@@ -1,0 +1,143 @@
+/* ==================================================================
+   MOBILE — phone-only refinements shared by every route.
+
+   Each route imports its own stylesheet (globals.css for the home page,
+   page.css for the rest), and every one of them carries its own copy of the
+   shared pieces — the nav, the footer, the quote carousel. This file is
+   imported straight after the route's sheet on every page, so it wins on
+   source order at equal specificity, and everything in it sits inside a
+   phone-width media query: nothing here can change the desktop layout.
+   ================================================================== */
+
+@media (max-width:860px){
+  /* ---- Nav ------------------------------------------------------------
+     The pill stays centred and slides out of view while you scroll down
+     (public/scripts/navAutohide.js), so it never sits over a heading for
+     long. The links live in a full-screen panel (public/scripts/navMenu.js)
+     opened by the menu button the script adds to the pill. */
+  .nav{ top:12px; transition:transform 360ms cubic-bezier(.22,.61,.36,1); }
+  body.nav-hidden:not(.nav-open) .nav{ transform:translate(-50%, calc(-100% - 24px)); }
+  .nav-pill{ padding:5px; gap:8px; }
+  /* .nav .brand, not .brand: the inner pages size it with that selector */
+  .nav .brand{ width:52px; height:52px; }
+  .nav .brand img{ height:47px !important; }
+  body.nav-tucked:not(.nav-open) .nav .brand{ opacity:1; }
+  .nav .btn{ padding:11px 18px; }
+
+  /* the old dropdown is replaced by the panel */
+  .nav .nav-links{ display:none !important; }
+
+  /* menu button: two lines that cross into an X when open */
+  .nav-burger{
+    flex:none; width:52px; height:52px; border-radius:50%;
+    border:0; padding:0; cursor:pointer;
+    background:rgba(255,255,255,.55);
+    display:grid; place-content:center; gap:6px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .nav-burger span{
+    display:block; width:20px; height:2px; border-radius:2px; background:#3B2912;
+    transition:transform 320ms cubic-bezier(.23,1,.32,1);
+  }
+  body.nav-open .nav-burger span:first-child{ transform:translateY(4px) rotate(45deg); }
+  body.nav-open .nav-burger span:last-child{ transform:translateY(-4px) rotate(-45deg); }
+
+  /* ---- Full-screen menu panel ---- */
+  html.mnav-lock, html.mnav-lock body{ overflow:hidden; }
+  .mnav{
+    position:fixed; inset:0; z-index:59;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:104px 28px max(28px, env(safe-area-inset-bottom));
+    background:#3B2912; color:#F6F4F1;
+    transform:translateX(100%);
+    visibility:hidden;
+    transition:transform 520ms cubic-bezier(.23,1,.32,1), visibility 0s linear 520ms;
+    overflow-y:auto;
+  }
+  body.nav-open .mnav{
+    transform:none; visibility:visible;
+    transition:transform 520ms cubic-bezier(.23,1,.32,1), visibility 0s;
+  }
+  /* the pill floats above the open panel, so it reads on the dark ground */
+  body.nav-open .nav-pill{ background:rgba(246,244,241,.12); border-color:rgba(255,255,255,.18); box-shadow:none; }
+  body.nav-open .nav-burger{ background:#F6F4F1; }
+  /* the panel has its own Start a project; fade the pill's copy without
+     changing the pill's width, so the badge and button do not jump */
+  body.nav-open .nav .btn--dark{ opacity:0; visibility:hidden; }
+
+  .mnav__links{ display:flex; flex-direction:column; }
+  .mnav__links a{
+    display:flex; align-items:baseline; gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(246,244,241,.12);
+    font-size:clamp(28px, 8vw, 38px); font-weight:600; letter-spacing:-.02em; line-height:1.1;
+    color:#F6F4F1; text-decoration:none;
+    opacity:0; transform:translateX(32px);
+    transition:opacity 420ms ease, transform 520ms cubic-bezier(.23,1,.32,1);
+  }
+  body.nav-open .mnav__links a{
+    opacity:1; transform:none;
+    transition-delay:calc(140ms + var(--i) * 50ms);
+  }
+  .mnav__links a[aria-current="page"]{ color:#D6C6B4; }
+  .mnav__no{ font-size:12px; font-weight:500; letter-spacing:.1em; color:#A89A8B; min-width:22px; }
+
+  .mnav__foot{
+    display:flex; flex-direction:column; gap:12px; padding-top:32px;
+    opacity:0; transition:opacity 400ms ease;
+  }
+  body.nav-open .mnav__foot{ opacity:1; transition-delay:520ms; }
+  .mnav__cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    padding:16px 24px; border-radius:999px;
+    background:#F6F4F1; color:#3B2912; font-weight:600; font-size:16px; text-decoration:none;
+    margin-bottom:8px;
+  }
+  .mnav__contact{ color:rgba(246,244,241,.72); font-size:15px; text-decoration:none; }
+}
+@media (min-width:861px){
+  .nav-burger, .mnav{ display:none !important; }
+}
+@media (max-width:860px) and (prefers-reduced-motion:reduce){
+  .nav, .mnav, .mnav__links a, .mnav__foot, .nav-burger span{ transition:none !important; }
+}
+
+@media (max-width:860px){
+  /* ---- Testimonial carousel -------------------------------------------
+     The floating reviewer faces and hairlines drift over the whole section;
+     at phone width there is no margin for them to drift in, so they sat on
+     top of the quote itself. The quote is the content - they go. */
+  .quote__floats, .quote__line{ display:none; }
+
+  /* The dots are 8px; the home sheet already gives them a 44px touch area,
+     the inner page sheets never got that rule. */
+  .quote__dot{ box-sizing:content-box; padding:18px; background-clip:content-box; }
+  /* the inner sheets reset `background` on the active dot, which drops the clip */
+  .quote__dot.active{ background-clip:content-box; }
+  .quote__dots{ gap:0; }
+
+  /* Team bio modal close: 31px on the inner pages, 44px like the home sheet. */
+  .team-modal__close{ width:44px; height:44px; top:10px; right:10px; font-size:22px; }
+
+  /* ---- Touch targets ----------------------------------------------------
+     Text links that were ~20px tall get a 44px hit area; the negative
+     margin keeps the layout exactly where it was. */
+  .svc-row__link, .post-card__link{
+    display:inline-flex; align-items:center;
+    padding-block:12px; margin-block:-12px;
+  }
+
+  /* ---- Smallest labels --------------------------------------------------
+     A handful of tags were set at 9.5-10px, below what reads on a phone. */
+  .pack__tag, .pack__group, .seo-card__tag, .work-card__tag, .tier-pill,
+  .meta-bar__lbl, .next-case__tag{ font-size:11px; }
+}
+
+@media (max-width:560px){
+  /* ---- Footer -----------------------------------------------------------
+     One column made the footer three screens tall. Studio and Company are
+     short lists of short words, so they sit side by side; Contact, with the
+     long email address, keeps the full width. */
+  .foot__body{ grid-template-columns:1fr 1fr; row-gap:36px; }
+  .foot__body > :nth-child(3){ grid-column:1 / -1; }
+}

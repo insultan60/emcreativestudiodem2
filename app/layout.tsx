@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -58,7 +59,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           a class React never rendered. It cannot be rendered here instead -
           that is the very thing the note above rules out. One level deep, so
           nothing inside the body is excused from hydration checking. */}
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        {/* Phones only: slides the nav badge away while scrolling down so it
+            stops covering headings. Every route has the same nav, so it is
+            loaded once here rather than from each page. */}
+        <Script src="/scripts/navAutohide.js" strategy="afterInteractive" />
+        {/* Phones only: the full-screen menu panel and its button. */}
+        <Script src="/scripts/navMenu.js" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }

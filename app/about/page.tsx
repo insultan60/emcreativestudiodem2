@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { HTML } from "@/components/pages/about";
 import "./page.css";
+// Phone-only refinements shared by every route; after the page sheet so it wins.
+import "../mobile.css";
 
 export const metadata: Metadata = {
   title: "About — The EM Creative Studio",
