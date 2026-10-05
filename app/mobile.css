@@ -141,3 +141,76 @@
   .foot__body{ grid-template-columns:1fr 1fr; row-gap:36px; }
   .foot__body > :nth-child(3){ grid-column:1 / -1; }
 }
+
+@media (max-width:620px){
+  /* ---- Section rhythm ---------------------------------------------------
+     Every sheet pads sections by clamp(80px,11vh,160px) top AND bottom, so
+     two sections meet across 170px+ of empty screen - most of a phone's
+     height between a stat block and the next heading. */
+  .sec{ padding-block:64px; }
+
+  /* ---- Showreel ---------------------------------------------------------
+     The film is 16:9, the opened frame on a phone is the full portrait
+     screen, and object-fit:cover filled it by cropping away ~70% of every
+     shot. contain shows the whole film, centred on the espresso ground the
+     frame already paints. The pinned open-out is kept, on a shorter track. */
+  .showreel__video{ object-fit:contain; }
+  .showreel__track{ height:150vh; }
+
+  /* ---- Body copy ----------------------------------------------------------
+     A few running-text paragraphs were 13-13.5px; 14px is the floor for
+     reading on a phone. */
+  .tm-card__role, .pack__best, .pack li, .timeline__body, .post-card__excerpt,
+  .author-card__role, .book__fallback{ font-size:14px; }
+
+  /* "Why EM Creative Studio": the icon sits left of each point but the text
+     was centred, so every block read lopsided. Left-aligned beside its icon. */
+  .team__ceo-feat{ text-align:left; align-items:flex-start; }
+  .team__ceo-feat > div{ text-align:left; }
+
+  /* the long footer email ran into the right edge on narrow screens */
+  .foot__contact a{ overflow-wrap:anywhere; }
+}
+
+@media (max-width:380px){
+  /* ---- Nav on the smallest phones (320-380px) -----------------------------
+     badge + CTA + menu button outgrew the pill and clipped "Start a
+     project". The CTA tightens and drops its arrow. */
+  .nav-pill{ gap:6px; }
+  .nav .brand, .nav-burger{ width:46px; height:46px; }
+  .nav .brand img{ height:42px !important; }
+  .nav .btn{ padding:10px 14px; font-size:12.5px; }
+  .nav .btn svg{ display:none; }
+}
+
+@media (max-width:620px){
+  /* ---- Comparison tables (SEO plans, packages) ---------------------------
+     A 640px table in a sideways scroller, with nothing saying it scrolls and
+     the edge landing mid-word ("Setup & optimizati"). The feature column
+     is pinned, each tier is a fixed column that snaps into place, and a
+     line above the table says to swipe. */
+  .cmp{ scroll-snap-type:x mandatory; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch; }
+  .cmp::before{
+    content:"Swipe to compare tiers \2192";
+    position:sticky; left:0; display:block;
+    padding:12px 16px 0;
+    font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--ink-soft, #6b5a48); opacity:.7;
+  }
+  .cmp table{ min-width:0; width:auto; table-layout:fixed; }
+  .cmp th, .cmp td{ padding:14px 14px; }
+  .cmp thead th:first-child, .cmp tbody th{
+    position:sticky; left:0; z-index:1;
+    width:132px; min-width:132px; white-space:normal;
+    background:var(--paper, #F6F4F1);
+    box-shadow:1px 0 0 var(--hair, rgba(0,0,0,.08));
+  }
+  .cmp thead th:not(:first-child), .cmp td{
+    /* exactly the space beside the pinned column (the table box is the
+       screen less the gutters and its 1px borders), so one whole tier is in
+       view at a time and nothing is cut mid-word */
+    width:calc(100vw - 2 * var(--gut, 18px) - 2px - 132px);
+    min-width:calc(100vw - 2 * var(--gut, 18px) - 2px - 132px);
+    scroll-snap-align:end;
+  }
+}
