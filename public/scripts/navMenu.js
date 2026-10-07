@@ -8,27 +8,25 @@
 
    Open/closed is still the body.nav-open class that main.js / nav.js already
    own (brand tap, tap-away, Escape, link clicks); this only adds the panel,
-   a visible menu button in the pill, and a scroll lock. Desktop never sees
+   a close button inside it, and a scroll lock. Desktop never sees
    either: both are display:none above 860px in app/mobile.css.
    ================================================================== */
 (() => {
   if (window.__navMenu) return;
-  const pill = document.querySelector('.nav .nav-pill');
   const brand = document.querySelector('.nav .brand');
-  const links = [...document.querySelectorAll('.nav .nav-links a')];
-  if (!pill || !brand || !links.length) return;
+  /* Home leads the panel: on a phone the logo opens the menu rather than
+     linking home, so without it there was no way back to the home page. */
+  const links = [{ href: '/', label: 'Home' }].concat(
+    [...document.querySelectorAll('.nav .nav-links a')]
+      .map(a => ({ href: a.getAttribute('href'), label: a.textContent.trim() })));
+  if (!brand || links.length < 2) return;
   window.__navMenu = true;
 
-  /* menu button in the pill: the brand already toggles the menu, but nothing
-     about a logo says "menu" */
-  const btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'nav-burger';
-  btn.setAttribute('aria-label', 'Open menu');
-  btn.setAttribute('aria-controls', 'mnav');
-  btn.innerHTML = '<span></span><span></span>';
-  btn.addEventListener('click', () => brand.click());
-  pill.appendChild(btn);
+  /* On a phone the nav is the logo badge alone: main.js / nav.js already make
+     a tap on it toggle the menu, so it is the menu button. The panel carries
+     its own close button, since the badge sits apart from it. */
+  const isMobileNav = () => window.matchMedia('(max-width:860px)').matches;
+  brand.setAttribute('aria-controls', 'mnav');
 
   const here = location.pathname.replace(/\/$/, '') || '/';
   const panel = document.createElement('div');
@@ -38,13 +36,14 @@
   panel.setAttribute('aria-modal', 'true');
   panel.setAttribute('aria-label', 'Menu');
   panel.innerHTML =
+    '<button class="mnav__close" type="button" aria-label="Close menu">' +
+      '<span></span><span></span></button>' +
     '<nav class="mnav__links" aria-label="Primary">' +
-    links.map((a, i) => {
-      const href = a.getAttribute('href');
-      const cur = href.replace(/\/$/, '') === here ? ' aria-current="page"' : '';
+    links.map(({ href, label }, i) => {
+      const cur = (href.replace(/\/$/, '') || '/') === here ? ' aria-current="page"' : '';
       return '<a href="' + href + '" style="--i:' + i + '"' + cur + '>' +
         '<span class="mnav__no">' + String(i + 1).padStart(2, '0') + '</span>' +
-        a.textContent.trim() + '</a>';
+        label + '</a>';
     }).join('') +
     '</nav>' +
     '<div class="mnav__foot">' +
@@ -58,15 +57,15 @@
     document.body.classList.remove('nav-open');
     brand.setAttribute('aria-expanded', 'false');
   };
-  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  panel.querySelectorAll('a, .mnav__close').forEach(a => a.addEventListener('click', close));
 
-  /* keep the button label and the page scroll in step with the open state */
+  /* keep the badge's label and the page scroll in step with the open state.
+     The label only on a phone: on desktop the badge is the logo link home. */
   const sync = () => {
     const open = document.body.classList.contains('nav-open');
-    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.documentElement.classList.toggle('mnav-lock',
-      open && window.matchMedia('(max-width:860px)').matches);
+    if (isMobileNav()) brand.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    else brand.removeAttribute('aria-label');
+    document.documentElement.classList.toggle('mnav-lock', open && isMobileNav());
   };
   new MutationObserver(sync).observe(document.body, { attributes: true, attributeFilter: ['class'] });
   sync();

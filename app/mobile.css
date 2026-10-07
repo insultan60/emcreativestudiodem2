@@ -11,36 +11,47 @@
 
 @media (max-width:860px){
   /* ---- Nav ------------------------------------------------------------
-     The pill stays centred and slides out of view while you scroll down
-     (public/scripts/navAutohide.js), so it never sits over a heading for
-     long. The links live in a full-screen panel (public/scripts/navMenu.js)
-     opened by the menu button the script adds to the pill. */
+     On a phone the nav is the logo badge alone, centred, with no bar behind
+     it. Tapping the badge opens the full-screen panel
+     (public/scripts/navMenu.js); the panel has its own Start a project and
+     its own close button. The badge slides out of view while you scroll
+     down (public/scripts/navAutohide.js), so it never sits over a heading
+     for long. */
   .nav{ top:12px; transition:transform 360ms cubic-bezier(.22,.61,.36,1); }
   body.nav-hidden:not(.nav-open) .nav{ transform:translate(-50%, calc(-100% - 24px)); }
-  .nav-pill{ padding:5px; gap:8px; }
+  .nav-pill, body.scrolled .nav-pill, body.nav-open .nav-pill{
+    padding:0; gap:0;
+    background:none; border:0; box-shadow:none; backdrop-filter:none;
+  }
   /* .nav .brand, not .brand: the inner pages size it with that selector */
-  .nav .brand{ width:52px; height:52px; }
-  .nav .brand img{ height:47px !important; }
-  body.nav-tucked:not(.nav-open) .nav .brand{ opacity:1; }
-  .nav .btn{ padding:11px 18px; }
-
-  /* the old dropdown is replaced by the panel */
-  .nav .nav-links{ display:none !important; }
-
-  /* menu button: two lines that cross into an X when open */
-  .nav-burger{
-    flex:none; width:52px; height:52px; border-radius:50%;
-    border:0; padding:0; cursor:pointer;
-    background:rgba(255,255,255,.55);
-    display:grid; place-content:center; gap:6px;
+  .nav .brand{
+    width:56px; height:56px;
+    box-shadow:0 10px 24px -10px rgba(59,41,18,.55);
     -webkit-tap-highlight-color:transparent;
   }
-  .nav-burger span{
-    display:block; width:20px; height:2px; border-radius:2px; background:#3B2912;
-    transition:transform 320ms cubic-bezier(.23,1,.32,1);
+  .nav .brand img{ height:51px !important; }
+  body.nav-tucked:not(.nav-open) .nav .brand{ opacity:1; }
+  /* on the open panel's espresso ground the dark badge needs an edge */
+  body.nav-open .nav .brand{ box-shadow:0 0 0 1px rgba(246,244,241,.28); }
+
+  /* the CTA and the old dropdown both live in the panel now */
+  .nav .nav-collapse, .nav .nav-links{ display:none !important; }
+
+  /* panel close: two lines crossed into an X, level with the badge */
+  .mnav__close{
+    position:absolute; top:18px; right:16px;
+    width:44px; height:44px; border-radius:50%;
+    border:0; padding:0; cursor:pointer;
+    background:#F6F4F1;
+    display:grid; place-content:center;
+    -webkit-tap-highlight-color:transparent;
   }
-  body.nav-open .nav-burger span:first-child{ transform:translateY(4px) rotate(45deg); }
-  body.nav-open .nav-burger span:last-child{ transform:translateY(-4px) rotate(-45deg); }
+  .mnav__close span{
+    grid-area:1 / 1;
+    display:block; width:18px; height:2px; border-radius:2px; background:#3B2912;
+  }
+  .mnav__close span:first-child{ transform:rotate(45deg); }
+  .mnav__close span:last-child{ transform:rotate(-45deg); }
 
   /* ---- Full-screen menu panel ---- */
   html.mnav-lock, html.mnav-lock body{ overflow:hidden; }
@@ -58,12 +69,6 @@
     transform:none; visibility:visible;
     transition:transform 520ms cubic-bezier(.23,1,.32,1), visibility 0s;
   }
-  /* the pill floats above the open panel, so it reads on the dark ground */
-  body.nav-open .nav-pill{ background:rgba(246,244,241,.12); border-color:rgba(255,255,255,.18); box-shadow:none; }
-  body.nav-open .nav-burger{ background:#F6F4F1; }
-  /* the panel has its own Start a project; fade the pill's copy without
-     changing the pill's width, so the badge and button do not jump */
-  body.nav-open .nav .btn--dark{ opacity:0; visibility:hidden; }
 
   .mnav__links{ display:flex; flex-direction:column; }
   .mnav__links a{
@@ -81,6 +86,13 @@
   }
   .mnav__links a[aria-current="page"]{ color:#D6C6B4; }
   .mnav__no{ font-size:12px; font-weight:500; letter-spacing:.1em; color:#A89A8B; min-width:22px; }
+  /* eight links with Home in; on a short phone (SE, 667px) they and the
+     foot have to share one screen */
+  @media (max-height:740px){
+    .mnav{ padding-top:92px; }
+    .mnav__links a{ padding:10px 0; font-size:clamp(26px, 7.4vw, 32px); }
+    .mnav__foot{ padding-top:20px; }
+  }
 
   .mnav__foot{
     display:flex; flex-direction:column; gap:12px; padding-top:32px;
@@ -96,10 +108,10 @@
   .mnav__contact{ color:rgba(246,244,241,.72); font-size:15px; text-decoration:none; }
 }
 @media (min-width:861px){
-  .nav-burger, .mnav{ display:none !important; }
+  .mnav{ display:none !important; }
 }
 @media (max-width:860px) and (prefers-reduced-motion:reduce){
-  .nav, .mnav, .mnav__links a, .mnav__foot, .nav-burger span{ transition:none !important; }
+  .nav, .mnav, .mnav__links a, .mnav__foot{ transition:none !important; }
 }
 
 @media (max-width:860px){
@@ -170,17 +182,6 @@
 
   /* the long footer email ran into the right edge on narrow screens */
   .foot__contact a{ overflow-wrap:anywhere; }
-}
-
-@media (max-width:380px){
-  /* ---- Nav on the smallest phones (320-380px) -----------------------------
-     badge + CTA + menu button outgrew the pill and clipped "Start a
-     project". The CTA tightens and drops its arrow. */
-  .nav-pill{ gap:6px; }
-  .nav .brand, .nav-burger{ width:46px; height:46px; }
-  .nav .brand img{ height:42px !important; }
-  .nav .btn{ padding:10px 14px; font-size:12.5px; }
-  .nav .btn svg{ display:none; }
 }
 
 @media (max-width:620px){

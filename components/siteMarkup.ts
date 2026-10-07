@@ -206,6 +206,14 @@ export const SITE_BODY_HTML = `
     <span class="eyebrow">Based in Los Angeles</span>
 
     <h1 class="hero__hl" data-words>Brands that earn <em class="tint">their <span id="crownWord">crown</span></em></h1>
+
+    <!-- Phones only (display:none above 720px). The figures are the stats
+         section's own, so if those change, change these with them. -->
+    <ul class="hero__proof" aria-label="The studio at a glance">
+      <li><b>240+</b> sites</li>
+      <li><b>98%</b> retention</li>
+      <li><b>7 yrs</b> in LA</li>
+    </ul>
   </div>
 
 

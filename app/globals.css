@@ -1226,7 +1226,40 @@ body.hero-revealed .shot__frame{
 @media (max-width:720px){
   /* The gutter is tiny on a phone, so less has to be given back for the
      same-sized peek — and the headline needs the height. */
-  .hero{ padding-top:clamp(92px,13vh,130px); min-height:76svh; min-height:76vh; }
+  /* Sized to its content, not the screen: a phone's tall viewport left a
+     screenful of blank sky above and below two lines of headline. The
+     bottom padding is the room the crown's lower loop needs, since the
+     hero clips it. */
+  .hero{ padding-top:116px; padding-bottom:64px; min-height:0; }
+
+  /* The desktop hero is filled by the pointer-driven fluid field, which
+     never runs on touch (fluid.js bails without a fine pointer), so a phone
+     got two lines of ink on bare white. A warm wash stands in for it -
+     strongest behind the headline, fading to paper before the plate. */
+  .atmos__ground{
+    background:
+      radial-gradient(140% 60% at 50% 18%, #F3E8DA 0%, rgba(246,240,232,0) 72%),
+      #FBF8F4;
+  }
+
+  /* Proof chips under the headline: three facts, so the first screen says
+     something beyond the wordmark. Hidden in .hero__inner until the crown
+     intro reveals it, like the headline. */
+  .hero__proof{
+    flex-wrap:wrap; justify-content:center; gap:6px;
+    list-style:none; margin:24px 0 0; padding:0;
+    animation:proofIn 700ms var(--ease-out) 450ms both;
+    animation-play-state:paused;
+  }
+  body.hero-revealed .hero__proof{ animation-play-state:running; }
+  .hero__proof li{
+    padding:7px 12px; border-radius:999px;
+    background:rgba(255,255,255,.72);
+    border:1px solid rgba(59,41,18,.10);
+    box-shadow:0 6px 16px -10px rgba(59,41,18,.35);
+    font-size:12.5px; color:var(--ink-soft); white-space:nowrap;
+  }
+  .hero__proof b{ color:var(--ink); font-weight:700; }
   .hero__hl{ font-size:clamp(1.85rem,8.6vw,3.1rem); max-width:16ch; letter-spacing:-.028em; }
   .fan{ height:150px; }
   .fan-card{ width:96px; margin-left:-48px; }
@@ -1410,6 +1443,43 @@ body.hero-revealed .shot__frame{
 @media (max-width:900px){
   .svc{ grid-template-columns:1fr; }
   .deck{ order:2; height:clamp(360px,50vh,460px); }
+}
+
+/* Phones: the fan becomes a swipe row. Stacked under the index, the fan sat
+   a screen below the list that drives it, so a tap changed a card you could
+   not see; its side cards were blurred and ran off the right edge; and the
+   list and the cards named the same six services twice. Here the cards are
+   the list - one in full view, the next peeking to say there is more - and
+   the index goes. The text column is unwrapped (display:contents) so the
+   row can sit between the lede and View all services. main.js still writes
+   the fan's vars and inline opacity on tap; the !importants below are what
+   keep them from landing. */
+@media (max-width:720px){
+  .svc{ display:flex; flex-direction:column; align-items:flex-start; gap:0; }
+  .svc > div:not(.deck){ display:contents; }
+  .svc-index{ display:none; }
+  .svc .btn{ order:3; }
+
+  .deck{
+    order:2; align-self:stretch;
+    height:auto; perspective:none; transform:none !important;
+    display:flex; gap:12px;
+    margin:28px calc(-1 * var(--gut)) 4px;
+    padding:6px var(--gut) 30px;
+    overflow-x:auto; overscroll-behavior-x:contain;
+    scroll-snap-type:x mandatory; scroll-padding-inline:var(--gut);
+    scrollbar-width:none;
+  }
+  .deck::-webkit-scrollbar{ display:none; }
+  .deck .card{
+    position:relative; left:auto; top:auto; flex:0 0 78%;
+    height:auto; min-height:280px;
+    transform:none !important; filter:none !important; opacity:1 !important;
+    scroll-snap-align:start; cursor:auto;
+    box-shadow:0 18px 36px -24px rgba(0,0,0,.45),
+               inset 0 1px 0 rgba(255,255,255,.72),
+               inset 0 0 0 1px rgba(255,255,255,.10);
+  }
 }
 
 /* ==================================================================
@@ -1735,6 +1805,25 @@ body.hero-revealed .shot__frame{
      were clipped by the panel's own overflow:hidden. Size to content. */
   .pack{ flex:0 0 auto; }
   .pack[aria-expanded="true"]{ flex-grow:0; }
+
+  /* Stacked, a closed tier was a coloured slab with a faint "Pricing on
+     request" in it and nothing to say it opens - on a phone there is no
+     hover to give it away. The hint line now carries the cue: the price
+     note at reading strength, and a pill at the other end that says what
+     a tap does. */
+  .pack{ padding:20px 22px; }
+  .pack__hint{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-top:14px; font-size:14px; opacity:1;
+    color:color-mix(in srgb, currentColor 72%, transparent);
+  }
+  .pack__hint::after{
+    content:"What\2019s included  +";
+    white-space:pre;
+    padding:7px 14px; border-radius:999px;
+    border:1px solid color-mix(in srgb, var(--espresso) 28%, transparent);
+    font-size:13px; font-weight:600; color:var(--espresso);
+  }
 }
 
 /* The tiers all say "pricing on request", so the section needs somewhere for
@@ -2242,6 +2331,25 @@ body.hero-revealed .shot__frame{
   .team__ceo{ grid-template-columns:1fr; text-align:center; }
   .team__ceo-info{ align-items:center; }
 
+}
+/* Phones: the floating quote card sat across the lower half of the
+   founder's face and hung past the photo's left edge, because the desktop
+   offsets were tuned for a photo half the page wide. Here the card drops
+   into flow, centred, and only overlaps the photo's foot - the face stays
+   clear. The photo is cropped portrait from the top so it reads as a
+   portrait at phone width, and the CTA centres under it like the rest of
+   the stacked column. */
+@media (max-width:620px){
+  .team__ceo-photo > img{
+    aspect-ratio:4 / 4.4; object-fit:cover; object-position:50% 18%;
+  }
+  .team__ceo-quote-card{
+    position:relative; left:auto; bottom:auto;
+    max-width:none; margin:-56px 14px 0;
+    text-align:center;
+  }
+  .team__ceo-quote-head{ justify-content:center; text-align:left; }
+  .team__cta{ text-align:center; margin-top:28px; }
 }
 @media (max-width:640px){
   .team__card{ flex:0 0 75vw; }
@@ -2862,4 +2970,17 @@ html.intro-lock body{
      Present it resolved instead. */
   .showreel__cover > *{ --w:1; filter:none; transform:none; }
   .showreel__cover, .showreel__cover:hover .showreel__play{ transition:none !important; transform:none; }
+}
+
+/* Hero proof chips: phones only - see the max-width:720px hero block. */
+.hero__proof{ display:none; }
+@media (max-width:720px){
+  .hero__proof{ display:flex; }
+}
+@keyframes proofIn{
+  from{ opacity:0; transform:translateY(12px); }
+  to  { opacity:1; transform:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  .hero__proof{ animation:none !important; }
 }
