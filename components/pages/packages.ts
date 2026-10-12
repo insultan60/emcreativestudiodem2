@@ -106,7 +106,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
               <li>Monthly revenue report</li>
             </ul>
             <p class="pack__best"><strong>Best for</strong> a single agent or a small team building a foundation</p>
-            <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
@@ -127,7 +127,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
               <li>A strategist on standing call</li>
             </ul>
             <p class="pack__best"><strong>Best for</strong> a growing team ready to run paid alongside organic</p>
-            <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>

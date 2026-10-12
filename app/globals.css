@@ -1726,19 +1726,14 @@ body.hero-revealed .shot__frame{
 /* Tier colour belongs to the tier, not to whichever card happens to be open.
    While it hung off [aria-expanded] the two closed cards were both bare
    --paper - which is why they read as the same card printed twice - and the
-   dark moved around the row as you clicked. Signature holds the dark now,
-   because it is the "Most chosen" tier and it sits in the middle, so the
-   weight of the row lands in its centre. Open state is carried by width and
-   by the revealed list instead.
+   dark moved around the row as you clicked. Open state is carried by width
+   and by the revealed list instead.
 
-   Essentials was --linen, the same colour as the sec--linen section it sits
-   in, so the first card had no edge but its hairline and read as a gap in
-   the row rather than a tier. It wears Ember Soft now, the clay the first
-   service card and first process step already use, so the three tiers run
-   clay / espresso / sand. Ink on it is 7.33:1, and Signature still sits
-   between it and Sand, so the two lighter tints never touch. */
-.pack:nth-child(1){ background:var(--ember-soft); color:var(--espresso); border-color:var(--ember-soft); }
-.pack:nth-child(2){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
+   The row runs espresso / aqua glass / sand, at the client's request: the
+   first tier in brown and no clay. Paper below is only the fallback for
+   Signature; app/accent.css turns it into frosted aqua glass. */
+.pack:nth-child(1){ background:var(--espresso); color:var(--paper); border-color:var(--espresso); }
+.pack:nth-child(2){ background:var(--paper); color:var(--espresso); border-color:var(--champagne); }
 .pack:nth-child(3){ background:var(--sand); border-color:var(--champagne); }
 .pack__head{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
 .pack__name{
@@ -1842,9 +1837,12 @@ body.hero-revealed .shot__frame{
     content:"What\2019s included  +";
     white-space:pre;
     padding:7px 14px; border-radius:999px;
-    border:1px solid color-mix(in srgb, var(--espresso) 28%, transparent);
-    font-size:13px; font-weight:600; color:var(--espresso);
+    /* currentColor, so the pill reads on the espresso tier as well as the
+       light ones. */
+    border:1px solid color-mix(in srgb, currentColor 28%, transparent);
+    font-size:13px; font-weight:600; color:var(--pack-ink, var(--espresso));
   }
+  .pack:nth-child(1) .pack__hint::after{ --pack-ink:var(--paper); }
 }
 
 /* The tiers all say "pricing on request", so the section needs somewhere for

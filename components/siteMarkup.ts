@@ -644,7 +644,7 @@ export const SITE_BODY_HTML = `
               <li>Two content pieces a month</li>
               <li>Quarterly design refresh</li>
               <li>Monthly revenue report</li>
-            </ul>          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            </ul>          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
@@ -663,7 +663,7 @@ export const SITE_BODY_HTML = `
               <li>Monthly content shoot</li>
               <li>Landing pages on request</li>
               <li>A strategist on standing call</li>
-            </ul>          <span class="btn btn--paper">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+            </ul>          <span class="btn btn--dark">Start here <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
           </div>
         </div>
       </button>
