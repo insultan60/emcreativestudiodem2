@@ -3005,3 +3005,63 @@ html.intro-lock body{
 @media (prefers-reduced-motion:reduce){
   .hero__proof{ animation:none !important; }
 }
+
+/* ==================================================================
+   AQUA ACCENT - HOME-ONLY PARTS
+   The site-wide parts (tokens, label rules, button hover, highlighted
+   words, section and footer glows) live in app/accent.css, which every
+   route imports. What stays here is what only the home page has: the aqua
+   service card, process step and Signature tier, the hero haze, and the
+   home sections' three-layer background (glow + pointer pool + dot grid).
+   ================================================================== */
+
+/* active service in the index: the marker line only - the label keeps ink */
+.svc-index .bar{ background:var(--aqua); height:2px; }
+
+/* Service card 5 (it was a repeat of card 1's clay). Treated exactly like
+   the other light cards - 90% tint under the white glass sheens, espresso
+   ink - so it reads as one of the set, just in the accent. */
+.card:nth-child(5){
+  background-color:color-mix(in srgb, var(--aqua) 90%, transparent);
+  color:var(--espresso);
+}
+
+/* The last process step. Solid rather than .step's 62% glass: at 62% the
+   peach section wash came through and turned the aqua grey-green. */
+.step:nth-child(4){
+  --card-tint:var(--aqua);
+  color:var(--espresso);
+}
+
+/* Hero: two patches on the white ground, under the cloud plate (which is
+   transparent between its banks), so the haze sits IN the weather. */
+.atmos__ground{
+  background:
+    radial-gradient(42% 34% at 84% 18%, var(--aqua-glow), transparent 72%),
+    radial-gradient(34% 30% at 10% 64%, color-mix(in srgb, var(--aqua) 18%, transparent), transparent 72%),
+    #FFFFFF;
+}
+@media (max-width:720px){
+  .atmos__ground{
+    background:
+      radial-gradient(80% 32% at 90% 12%, var(--aqua-glow), transparent 72%),
+      radial-gradient(140% 60% at 50% 18%, #F3E8DA 0%, rgba(246,240,232,0) 72%),
+      #FBF8F4;
+  }
+}
+
+/* Home sections carry two layers already (the pointer pool's cover disc and
+   the dot grid); the glow goes on top of them so the grid reveal still
+   works. `html body` because accent.css loads after this sheet and sets a
+   one-layer glow for the inner pages' plain sections - this has to win on
+   the home page or the dot grid would be dropped. The corner positions come
+   from accent.css (--glow-at). */
+html body .sec, html body .quote{
+  background-image:
+    radial-gradient(48% 40% at var(--glow-at), var(--aqua-glow), transparent 70%),
+    radial-gradient(circle var(--gpool) at var(--gx) var(--gy),
+        rgba(0,0,0,0) 0%, var(--sec-bg) 100%),
+    radial-gradient(var(--grid-ink) 1.4px, transparent 1.5px);
+  background-size:100% 100%, 100% 100%, var(--grid-step) var(--grid-step);
+  background-repeat:no-repeat, no-repeat, repeat;
+}

@@ -1,0 +1,79 @@
+/* ==================================================================
+   AQUA ACCENT - SITE-WIDE (#A1D7D6, with #D1EEEA as its light end)
+   Replaced the wine trial, which the client turned down. Not on the 2026
+   brand board. Imported by every route straight after mobile.css, so it is
+   one file to adjust or remove; the home page's extra uses (aqua cards, hero
+   haze) are in the "AQUA ACCENT - HOME-ONLY PARTS" block of globals.css.
+
+   Both aquas are LIGHT (#A1D7D6 is luminance ~.61). As text on the cream
+   grounds they measure ~1.6:1 - unreadable - so aqua is never a text colour
+   here. It is used as: rules and markers, a highlighter band BEHIND accent
+   words, a button hover carrying espresso ink (~8.6:1), and soft glows mixed
+   into the existing backgrounds. Kept faint throughout: a cool hue reads
+   stronger than a warm one at the same lightness, and every ground on this
+   site is a low-chroma warm neutral.
+   ================================================================== */
+:root{
+  --aqua:      #A1D7D6;
+  --aqua-mist: #D1EEEA;
+  /* the one knob for every background glow: ~18% fainter, ~35% stronger */
+  --aqua-glow: color-mix(in srgb, var(--aqua) 26%, transparent);
+}
+
+/* rules beside every section label. `body` for specificity over the route
+   sheets' own .eyebrow rules; the dark newsletter band's .news .eyebrow
+   rules are one step higher and keep their light colour. */
+body .eyebrow::before,
+body .eyebrow::after,
+.stats__eyebrow::before, .stats__eyebrow::after,
+.team__ceo-eyebrow::before, .team__ceo-eyebrow::after{ background:var(--aqua); opacity:1; }
+
+/* dark buttons lighten to aqua on hover, ink following so it stays legible */
+@media (hover:hover) and (pointer:fine){
+  .btn--dark:hover{ background:var(--aqua); color:var(--espresso); }
+}
+
+/* Accent words in headings: a highlighter band behind the lower part of the
+   word, the word itself in cocoa (taupe washed out on the band).
+   box-decoration-break repeats the band per line when the word wraps. */
+.h2 .tint, .stats__heading span, .team__ceo-name span{
+  background-image:linear-gradient(transparent 58%,
+    color-mix(in srgb, var(--aqua) 70%, transparent) 58%,
+    color-mix(in srgb, var(--aqua) 70%, transparent) 90%, transparent 90%);
+  background-repeat:no-repeat;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+  padding-inline:.06em;
+  color:var(--cocoa);
+}
+
+/* Section glows. Each section keeps its own colour and takes one soft aqua
+   glow, alternating sides down the page. Off the edges (40% / 60% down,
+   fading out inside the section): a glow centred on an edge is at full
+   strength where the section ends and draws a line against the next one.
+   On the inner pages .sec has no background-image of its own, so this is
+   the only layer; the home page layers it over its dot grid in globals.css. */
+.sec, .quote{
+  --glow-at: 100% 40%;
+  background-image:radial-gradient(48% 40% at var(--glow-at), var(--aqua-glow), transparent 70%);
+  background-repeat:no-repeat;
+}
+section:nth-of-type(even).sec, section:nth-of-type(even).quote{ --glow-at: 0% 60%; }
+
+/* Footer: the sand ground with two glows, the larger one behind the brand
+   row and a smaller one low on the right under the crown, so it matches the
+   sections above without competing with the crown artwork. */
+.foot{
+  background-image:
+    radial-gradient(46% 55% at 6% 12%, var(--aqua-glow), transparent 70%),
+    radial-gradient(34% 45% at 96% 92%, color-mix(in srgb, var(--aqua) 20%, transparent), transparent 70%);
+  background-repeat:no-repeat;
+}
+
+/* Signature, the "Most chosen" tier, on the home page and /packages alike:
+   aqua running into its mist, espresso ink like the clay and sand tiers
+   either side of it. */
+.pack:nth-child(2){
+  background:linear-gradient(160deg, var(--aqua) 0%, var(--aqua-mist) 100%);
+  border-color:var(--aqua);
+  color:var(--espresso);
+}

@@ -4,6 +4,8 @@ import { HTML } from "@/components/pages/packages";
 import "./page.css";
 // Phone-only refinements shared by every route; after the page sheet so it wins.
 import "../mobile.css";
+// Site-wide aqua accent; after the page sheet and mobile.css so it wins.
+import "../accent.css";
 
 export const metadata: Metadata = {
   title: "Packages — The EM Creative Studio",
