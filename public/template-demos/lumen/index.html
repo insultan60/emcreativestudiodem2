@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lumen Template | Real Estate Website Preview</title>
+<meta name="description" content="Lumen, a warm editorial real estate website template: Maya Collins, Collins &amp; Co. Real Estate (sample content).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  /* Arm scroll reveals only when an observer is available, so content is never hidden without JS. */
+  (function(){try{if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("js-reveal");}}catch(e){}})();
+</script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Maya Collins, home">
+      <span class="mark"><span class="mark__mono">M<b>C</b></span><span class="mark__name">Maya Collins</span></span>
+    </a>
+    <span class="nav__brokerage">Collins &amp; Co.</span>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="search.html">Home Search</a>
+      <a href="about.html">About</a>
+      <a href="buyers.html">Buyers</a>
+      <a href="sellers.html">Sellers</a>
+      <a href="neighborhood.html">Neighborhoods</a>
+    </nav>
+    <a class="btn btn--outline-light nav__cta" href="contact.html">Let&rsquo;s Connect</a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="sideMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="sideMenu" hidden>
+  <div class="drawer__backdrop" data-drawer-close aria-hidden="true"></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <button class="drawer__close" data-drawer-close aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" fill="none"><path d="M3 3l16 16M19 3L3 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="drawer__nav" aria-label="Full menu">
+      <a class="drawer__item" href="index.html" aria-current="page">Home</a>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">About<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="about.html">Meet Maya</a><a href="about.html#testimonials">Testimonials</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Home Search<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="search.html">Search All Homes</a><a href="listing.html?id=1">Featured Listing</a><a href="search.html?status=Open%20House">Open Houses</a><a href="neighborhood.html">Featured Neighborhoods</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Buyers<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="buyers.html">The Buying Process</a><a href="buyers.html#tools">Tools for Buyers</a><a href="listing.html?id=1#calculator">Mortgage Calculator</a><a href="buyers.html#faq">Buyer FAQ</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Sellers<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="sellers.html">Selling Your Home</a><a href="sellers.html#valuation">What&rsquo;s My Home Worth?</a><a href="sellers.html#staging">Staging Checklist</a><a href="sellers.html#faq">Seller FAQ</a></div>
+      </div>
+      <a class="drawer__item" href="search.html?status=Sold">Portfolio</a>
+      <a class="drawer__item" href="neighborhood.html">Neighborhoods</a>
+      <a class="drawer__item" href="index.html#journal">The Latest Real Estate News</a>
+      <a class="drawer__item" href="contact.html">Let&rsquo;s Connect</a>
+    </nav>
+  </aside>
+</div>
+
+<main id="main">
+
+  <!-- 1 HERO -->
+  <section class="hero">
+    <img class="hero__img" src="img/hero.jpg" alt="A modern home with warm interior lights at dusk">
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="hero__content">
+      <h1 class="hero__title"><span>Luxury Real Estate,</span><span>Thoughtfully Guided</span></h1>
+      <p class="hero__sub">Helping clients buy, sell, and relocate with confidence across every neighborhood we call home.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--ghost-light" href="search.html">View Portfolio</a>
+        <a class="btn btn--solid-light" href="contact.html">Let&rsquo;s Connect</a>
+      </div>
+    </div>
+    <div class="hero__footer">
+      <div class="hero__id">
+        <p class="hero__id-name">Maya Collins</p>
+        <p>Ph. <a href="contact.html">(555) 010-0142</a></p>
+        <p><a href="contact.html">hello@example.com</a></p>
+        <p>Licensed Real Estate Advisor</p>
+      </div>
+      <div class="hero__contact">
+        <p class="hero__brokerage">Collins &amp; Co.</p>
+        <a class="hero__contact-link" href="contact.html">Let&rsquo;s Connect</a>
+        <p class="hero__contact-office">120 Market Street, Suite 400<br>Downtown District<br><a href="contact.html">(555) 010-0142</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 TRIPLE CTA -->
+  <section class="paths" id="paths">
+    <div class="container">
+      <div class="paths__grid">
+        <a class="path-card reveal" href="buyers.html">
+          <span class="path-card__num" aria-hidden="true">01</span>
+          <h2 class="path-card__title">Looking to Buy?</h2>
+          <p class="path-card__body">From first showing to final walkthrough — find a home with a story worth telling, guided at every step.</p>
+          <span class="path-card__link">Explore<i class="arrow" aria-hidden="true"></i></span>
+        </a>
+        <a class="path-card reveal" href="sellers.html" style="--d:.08s">
+          <span class="path-card__num" aria-hidden="true">02</span>
+          <h2 class="path-card__title">Looking to Sell?</h2>
+          <p class="path-card__body">Meticulous preparation, editorial‑grade marketing, and fierce negotiation to earn your home its best result.</p>
+          <span class="path-card__link">Explore<i class="arrow" aria-hidden="true"></i></span>
+        </a>
+        <a class="path-card reveal" href="contact.html" style="--d:.16s">
+          <span class="path-card__num" aria-hidden="true">03</span>
+          <h2 class="path-card__title">Let&rsquo;s Connect</h2>
+          <p class="path-card__body">Buying, selling, or simply curious about the market — start a conversation with a specialist who listens.</p>
+          <span class="path-card__link">Explore<i class="arrow" aria-hidden="true"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ABOUT -->
+  <section class="about" id="about">
+    <div class="container about__grid">
+      <figure class="about__media reveal">
+        <img src="img/agent.jpg" alt="Maya Collins, real estate advisor — portrait">
+        <figcaption class="about__media-caption">Maya Collins · Principal Advisor</figcaption>
+      </figure>
+      <div class="about__copy reveal" style="--d:.1s">
+        <p class="eyebrow">Meet Maya</p>
+        <h2 class="h2">Dedication. Expertise.<br><em>Results.</em></h2>
+        <p class="lede">Three qualities set Maya apart: an unwavering dedication to her clients, a block‑by‑block knowledge of the local market, and the quiet efficiency to keep every deal moving. Whatever the circumstances, she gets it done — and makes it feel effortless.</p>
+        <ul class="about__creds">
+          <li>REALTOR® · Principal Advisor · Certified Residential Specialist</li>
+          <li>Collins &amp; Co. Real Estate</li>
+          <li>Licensed Real Estate Advisor</li>
+        </ul>
+        <a class="btn btn--solid-moss" href="about.html">Learn More About Maya</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 STATS -->
+  <section class="stats">
+    <div class="container stats__grid">
+      <div class="stats__lead reveal">
+        <p class="eyebrow eyebrow--clay">A Record That Speaks Quietly</p>
+        <h2 class="h2 h2--light">Trusted by local homeowners for over a decade.</h2>
+        <div class="stats__awards">
+          <div class="award"><b>Top 1% Producer</b><span>Regional Ranking</span></div>
+          <div class="award"><b>Client Choice</b><span>Five‑Star Service</span></div>
+        </div>
+      </div>
+      <dl class="stats__figures">
+        <div class="stat reveal" style="--d:.05s"><dt>Homes Sold</dt><dd><span class="stat__num" data-count="150">150</span></dd></div>
+        <div class="stat reveal" style="--d:.1s"><dt>Total Sales</dt><dd><span class="stat__num" data-count="120" data-prefix="$" data-suffix="M">$120M</span></dd></div>
+        <div class="stat reveal" style="--d:.15s"><dt>Years in Real Estate</dt><dd><span class="stat__num" data-count="12">12</span></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 5 TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Real Clients. Real Stories.</p>
+        <h2 class="h2">Kind words from the neighborhoods<br>we call home.</h2>
+      </div>
+      <div class="carousel reveal" style="--d:.1s" aria-roledescription="carousel" aria-label="Client testimonials">
+        <div class="carousel__viewport">
+          <blockquote class="carousel__slide is-active">
+            <p>&ldquo;Twelve offers in the first week. Maya found us a cash buyer above list and closed escrow in under three weeks. We still can&rsquo;t quite believe how effortless she made it feel.&rdquo;</p>
+            <footer><span class="avatar" aria-hidden="true">DR</span><cite>Daniel R. &amp; Priya R.</cite><span class="carousel__place">Hillcrest</span></footer>
+          </blockquote>
+          <blockquote class="carousel__slide">
+            <p>&ldquo;Beautiful photography, a thoughtful launch, and the smoothest escrow we&rsquo;ve ever been through. Maya treats your home like the cover story it is.&rdquo;</p>
+            <footer><span class="avatar" aria-hidden="true">LM</span><cite>Laura M.</cite><span class="carousel__place">Lakeview</span></footer>
+          </blockquote>
+          <blockquote class="carousel__slide">
+            <p>&ldquo;As first‑time buyers we were nervous about everything. Maya found us a home we love and walked us through every single step with real patience.&rdquo;</p>
+            <footer><span class="avatar" aria-hidden="true">JT</span><cite>James T. &amp; Nora T.</cite><span class="carousel__place">Oak Park</span></footer>
+          </blockquote>
+          <blockquote class="carousel__slide">
+            <p>&ldquo;In a very competitive season she priced our home perfectly and sold it above asking. Sharp, calm, and relentless in the best way.&rdquo;</p>
+            <footer><span class="avatar" aria-hidden="true">SK</span><cite>Sofia K.</cite><span class="carousel__place">Riverside</span></footer>
+          </blockquote>
+          <blockquote class="carousel__slide">
+            <p>&ldquo;We were selling from across the country. Maya handled staging, repairs and every signature without us flying back once. Truly a first‑call agent.&rdquo;</p>
+            <footer><span class="avatar" aria-hidden="true">MH</span><cite>Marcus H.</cite><span class="carousel__place">Westbrook</span></footer>
+          </blockquote>
+        </div>
+        <div class="carousel__controls">
+          <button class="carousel__btn" data-dir="-1" aria-label="Previous testimonial"><i class="arrow arrow--left" aria-hidden="true"></i></button>
+          <div class="carousel__dots" role="tablist" aria-label="Choose testimonial"></div>
+          <button class="carousel__btn" data-dir="1" aria-label="Next testimonial"><i class="arrow" aria-hidden="true"></i></button>
+        </div>
+      </div>
+      <div class="section-foot reveal"><a class="text-link" href="about.html#testimonials">View All Testimonials<i class="arrow" aria-hidden="true"></i></a></div>
+    </div>
+  </section>
+
+  <!-- 6 LISTINGS -->
+  <section class="listings" id="listings">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div><p class="eyebrow">Featured Listings</p><h2 class="h2">Currently Represented</h2></div>
+        <a class="text-link" href="search.html">View Portfolio<i class="arrow" aria-hidden="true"></i></a>
+      </div>
+      <div class="listings__grid">
+        <article class="listing reveal">
+          <figure class="listing__media"><img src="img/listing-1.jpg" alt="Contemporary home with a pool terrace"><span class="badge badge--sale">For Sale</span></figure>
+          <div class="listing__body">
+            <p class="listing__price">$3,450,000</p>
+            <h3 class="listing__addr">28 Summit Ridge Road</h3>
+            <p class="listing__city">Hillcrest</p>
+            <ul class="listing__meta"><li>5 Beds</li><li>5 Baths</li><li>4,820 Sq.Ft.</li></ul>
+            <a class="text-link listing__view" href="listing.html?id=1">View<i class="arrow" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="listing reveal" style="--d:.08s">
+          <figure class="listing__media"><img src="img/listing-2.jpg" alt="Modern residence with a lap pool"><span class="badge badge--open">Open House Sun</span></figure>
+          <div class="listing__body">
+            <p class="listing__price">$2,895,000</p>
+            <h3 class="listing__addr">1140 Lakeshore Drive</h3>
+            <p class="listing__city">Lakeview</p>
+            <ul class="listing__meta"><li>4 Beds</li><li>4 Baths</li><li>3,960 Sq.Ft.</li></ul>
+            <a class="text-link listing__view" href="listing.html?id=2">View<i class="arrow" aria-hidden="true"></i></a>
+          </div>
+        </article>
+        <article class="listing reveal" style="--d:.16s">
+          <figure class="listing__media"><img src="img/listing-3.jpg" alt="Single-level modern home with glass walls"><span class="badge badge--pending">Pending</span></figure>
+          <div class="listing__body">
+            <p class="listing__price">$1,975,000</p>
+            <h3 class="listing__addr">402 Willow Lane</h3>
+            <p class="listing__city">Oak Park</p>
+            <ul class="listing__meta"><li>3 Beds</li><li>3 Baths</li><li>2,740 Sq.Ft.</li></ul>
+            <a class="text-link listing__view" href="listing.html?id=3">View<i class="arrow" aria-hidden="true"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="sold">
+        <div class="section-head section-head--split section-head--sub reveal">
+          <div><p class="eyebrow">A Portfolio of Results</p><h2 class="h2 h2--sub">Recently Sold</h2></div>
+          <a class="text-link" href="search.html?status=Sold">View Sold Listings<i class="arrow" aria-hidden="true"></i></a>
+        </div>
+        <div class="sold__grid">
+          <article class="listing listing--sold reveal"><figure class="listing__media"><img src="img/sold-1.jpg" alt="Craftsman home lit at dusk" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$4,150,000</p><h3 class="listing__addr">9 Ashford Place</h3><p class="listing__city">Hillcrest · 5 Bd · 6 Ba · 5,210 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=4">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+          <article class="listing listing--sold reveal" style="--d:.06s"><figure class="listing__media"><img src="img/sold-2.jpg" alt="Shingle-style home with a wraparound porch" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$3,280,000</p><h3 class="listing__addr">615 Harbor View Road</h3><p class="listing__city">Lakeview · 6 Bd · 5 Ba · 4,690 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=5">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+          <article class="listing listing--sold reveal" style="--d:.12s"><figure class="listing__media"><img src="img/sold-3.jpg" alt="Classic cottage-style home with a front lawn" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$2,640,000</p><h3 class="listing__addr">31 Magnolia Way</h3><p class="listing__city">Riverside · 4 Bd · 4 Ba · 3,420 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=6">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+          <article class="listing listing--sold reveal"><figure class="listing__media"><img src="img/sold-4.jpg" alt="Historic farmhouse with a picket fence" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,895,000</p><h3 class="listing__addr">208 Orchard Street</h3><p class="listing__city">Oak Park · 3 Bd · 2 Ba · 2,150 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=7">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+          <article class="listing listing--sold reveal" style="--d:.06s"><figure class="listing__media"><img src="img/sold-5.jpg" alt="Stone-front home with a two-car garage" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,620,000</p><h3 class="listing__addr">54 Fieldstone Drive</h3><p class="listing__city">Westbrook · 4 Bd · 3 Ba · 3,050 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=8">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+          <article class="listing listing--sold reveal" style="--d:.12s"><figure class="listing__media"><img src="img/sold-6.jpg" alt="Modern townhome at twilight" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,345,000</p><h3 class="listing__addr">12 Linden Row</h3><p class="listing__city">Downtown · 3 Bd · 3 Ba · 2,280 Sq.Ft.</p><a class="text-link listing__view" href="listing.html?id=9">View<i class="arrow" aria-hidden="true"></i></a></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 MLS BAND -->
+  <section class="mls" id="home-search">
+    <div class="container mls__inner reveal">
+      <div class="mls__copy">
+        <p class="eyebrow">Newest MLS Listings</p>
+        <h2 class="h2">The full local market,<br>curated to your taste.</h2>
+        <p class="lede">Search every active listing across the regional MLS — or tell Maya what character means to you, and let the right home find you.</p>
+      </div>
+      <div class="mls__ctas">
+        <a class="btn btn--solid-moss" href="search.html">Search The MLS</a>
+        <a class="btn btn--outline-moss" href="contact.html">Get New Listing Alerts</a>
+        <a class="btn btn--outline-moss" href="contact.html">Request A Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7b RELOCATION -->
+  <section class="relo" id="relocation">
+    <div class="container relo__inner">
+      <div class="relo__copy reveal">
+        <p class="eyebrow eyebrow--clay">Relocation Specialist</p>
+        <h2 class="h2 h2--light">Moving to town —<br><em>or moving on?</em> Consider it handled.</h2>
+        <p class="relo__sub">Maya has guided relocations in and out of the region for over a decade — executives on a deadline, families changing coasts, sellers managing everything from two time zones away. When your next chapter starts in another city, she&rsquo;s the first call to make.</p>
+        <div class="relo__ctas">
+          <a class="btn btn--solid-light" href="contact.html">Plan Your Relocation</a>
+          <a class="btn btn--ghost-light" href="contact.html">Call (555) 010‑0142</a>
+        </div>
+      </div>
+      <ul class="relo__points">
+        <li class="reveal" style="--d:.05s"><h3>Arriving</h3><p>Neighborhood shortlists matched to your commute, schools, and taste — with video tours and offer strategy handled before you ever board the plane.</p></li>
+        <li class="reveal" style="--d:.1s"><h3>Departing</h3><p>Your home prepared, marketed, and sold while you settle elsewhere — staging, photography, and escrow managed without a single return trip.</p></li>
+        <li class="reveal" style="--d:.15s"><h3>Every step between</h3><p>A trusted nationwide agent network, corporate relocation timelines, and one point of contact from the first box packed to the final signature.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8 NEIGHBORHOODS -->
+  <section class="hoods" id="neighborhoods">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div><p class="eyebrow">Featured Neighborhoods</p><h2 class="h2">Where character lives.</h2></div>
+        <a class="text-link" href="neighborhood.html">View All Neighborhoods<i class="arrow" aria-hidden="true"></i></a>
+      </div>
+      <div class="hoods__grid">
+        <a class="hood hood--tall reveal" href="neighborhood.html"><img src="img/hood-1.jpg" alt="Tree-lined street of classic homes in Hillcrest" loading="lazy"><div class="hood__label"><h3>Hillcrest</h3><span>Storied homes on quiet, tree‑lined streets</span></div></a>
+        <a class="hood reveal" href="neighborhood.html" style="--d:.08s"><img src="img/hood-2.jpg" alt="Hillside home at sunset in Lakeview" loading="lazy"><div class="hood__label"><h3>Lakeview</h3><span>Wide views and room to breathe</span></div></a>
+        <a class="hood reveal" href="neighborhood.html" style="--d:.16s"><img src="img/hood-3.jpg" alt="Modern infill home in Riverside" loading="lazy"><div class="hood__label"><h3>Riverside</h3><span>Modern design, creative energy</span></div></a>
+      </div>
+      <ul class="hoods__index reveal">
+        <li><a href="search.html?q=Oak%20Park">Oak Park</a></li>
+        <li><a href="search.html?q=Westbrook">Westbrook</a></li>
+        <li><a href="search.html?q=Downtown">Downtown</a></li>
+        <li><a href="search.html?q=Maple%20Heights">Maple Heights</a></li>
+        <li><a href="search.html?q=Harbor%20Point">Harbor Point</a></li>
+        <li><a href="search.html?q=Cedar%20Hollow">Cedar Hollow</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 JOURNAL -->
+  <section class="journal" id="journal">
+    <div class="container">
+      <div class="section-head section-head--split reveal">
+        <div><p class="eyebrow">From the Journal</p><h2 class="h2">Notes on architecture &amp; the market.</h2></div>
+        <a class="text-link" href="#journal">Read The Journal<i class="arrow" aria-hidden="true"></i></a>
+      </div>
+      <div class="journal__grid">
+        <a class="post reveal" href="#journal"><figure><img src="img/post-1.jpg" alt="" loading="lazy"></figure><p class="post__tag">Buying</p><h3>Your First Home, Step by Step: What to Line Up Before You Tour</h3><div class="post__foot"><span class="post__date">September 24, 2026</span><span class="text-link post__read">Read<i class="arrow" aria-hidden="true"></i></span></div></a>
+        <a class="post reveal" href="#journal" style="--d:.08s"><figure><img src="img/post-2.jpg" alt="" loading="lazy"></figure><p class="post__tag">Selling</p><h3>Staging That Sells: Five Quiet Upgrades Buyers Notice First</h3><div class="post__foot"><span class="post__date">September 12, 2026</span><span class="text-link post__read">Read<i class="arrow" aria-hidden="true"></i></span></div></a>
+        <a class="post reveal" href="#journal" style="--d:.16s"><figure><img src="img/post-3.jpg" alt="" loading="lazy"></figure><p class="post__tag">Market Notes</p><h3>The Fall Market Is Stronger Than You Think</h3><div class="post__foot"><span class="post__date">September 3, 2026</span><span class="text-link post__read">Read<i class="arrow" aria-hidden="true"></i></span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9b MAP -->
+  <section class="ck-map" id="office-map">
+    <div class="container">
+      <div class="ck-map__head reveal">
+        <p class="eyebrow">Find Us</p>
+        <h2>Visit the Office</h2>
+        <p>120 Market Street, Suite 400, Downtown District</p>
+      </div>
+      <div class="ck-map__frame reveal" role="img" aria-label="Map showing the Collins &amp; Co. office downtown">
+        <svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <rect width="1200" height="440" fill="#EEE9DA"/>
+          <path d="M0 330 C180 300 300 360 470 330 S760 250 900 290 S1120 360 1200 330 L1200 440 L0 440Z" fill="#D9DFCF"/>
+          <path d="M0 360 C200 335 320 390 480 362 S770 285 905 322 S1120 392 1200 362" fill="none" stroke="#C4CDB6" stroke-width="18"/>
+          <rect x="80" y="40" width="190" height="120" rx="6" fill="#DCE3CF"/>
+          <rect x="900" y="60" width="220" height="140" rx="6" fill="#DCE3CF"/>
+          <g stroke="#FFFFFF" stroke-width="10" fill="none">
+            <path d="M0 110 H1200"/><path d="M0 220 H1200"/><path d="M0 290 H1200"/>
+            <path d="M160 0 V440"/><path d="M360 0 V440"/><path d="M560 0 V440"/><path d="M760 0 V440"/><path d="M980 0 V440"/>
+          </g>
+          <g stroke="#FFFFFF" stroke-width="5" fill="none" opacity=".85">
+            <path d="M0 55 H1200"/><path d="M0 165 H1200"/><path d="M260 0 V440"/><path d="M460 0 V440"/><path d="M660 0 V440"/><path d="M860 0 V440"/><path d="M1090 0 V440"/>
+          </g>
+          <path d="M-20 420 L1220 20" stroke="#E4D6BC" stroke-width="16" fill="none"/>
+          <path d="M-20 420 L1220 20" stroke="#CBBBA0" stroke-width="2" fill="none" stroke-dasharray="14 10"/>
+          <g font-family="DM Sans, Arial, sans-serif" font-size="12" fill="#8A877C" letter-spacing="2">
+            <text x="20" y="104">MARKET ST</text><text x="20" y="214">ELM AVE</text><text x="1000" y="284">RIVER RD</text>
+            <text x="170" y="96" font-size="11">PARK</text><text x="930" y="135">CIVIC PARK</text>
+            <text x="560" y="420" fill="#7E8A70">RIVERWALK</text>
+          </g>
+        </svg>
+        <div class="ck-map__pin">
+          <div class="ck-map__card"><strong>Collins &amp; Co.</strong><span>120 Market Street, Suite 400</span></div>
+          <span class="ck-map__dot" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 NEWSLETTER -->
+  <section class="newsletter" id="connect">
+    <div class="container newsletter__inner reveal">
+      <div class="newsletter__copy">
+        <p class="eyebrow eyebrow--clay">Stay Close to the Market</p>
+        <h2 class="h2 h2--light">Sign up for the newsletter &amp; exclusive off‑market listings.</h2>
+        <p class="newsletter__sub">Quiet opportunities, neighborhood insight, and homes with character — before they hit the MLS.</p>
+      </div>
+      <form class="newsletter__form" data-demo-form novalidate>
+        <div class="field"><label for="nl-name">Full Name</label><input id="nl-name" name="name" type="text" autocomplete="name" placeholder="Jane Appleseed"></div>
+        <div class="field"><label for="nl-email">Email Address</label><input id="nl-email" name="email" type="email" autocomplete="email" placeholder="jane@example.com"></div>
+        <button class="btn btn--solid-light newsletter__submit" type="submit">Sign Up</button>
+        <p class="newsletter__fine" role="status" aria-live="polite">No spam, unsubscribe anytime.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <span class="mark footer__logo"><span class="mark__mono">M<b>C</b></span></span>
+      <p class="footer__name">Maya Collins</p>
+      <p class="footer__title">REALTOR® · Principal Advisor · Certified Residential Specialist</p>
+      <address class="footer__contact">
+        <a href="contact.html">(555) 010&#8209;0142</a>
+        <span>Licensed Real Estate Advisor</span>
+        <a href="contact.html">hello@example.com</a>
+        <a href="contact.html">@collinsandco.homes</a>
+      </address>
+    </div>
+    <nav class="footer__col" aria-label="Explore">
+      <h3>Explore</h3>
+      <a href="index.html">Home</a><a href="about.html">About Maya</a><a href="search.html">Home Search</a><a href="search.html?status=Sold">Portfolio</a><a href="neighborhood.html">Neighborhoods</a><a href="contact.html">Let&rsquo;s Connect</a>
+    </nav>
+    <nav class="footer__col" aria-label="Resources">
+      <h3>Resources</h3>
+      <a href="buyers.html">The Buying Process</a><a href="sellers.html">Selling Your Home</a><a href="sellers.html#valuation">Home Valuation</a><a href="listing.html?id=1#calculator">Mortgage Calculator</a><a href="sellers.html#staging">Staging Checklist</a><a href="index.html#relocation">Relocation</a><a href="about.html#testimonials">Testimonials</a><a href="index.html#journal">Market Reports</a>
+    </nav>
+    <div class="footer__col footer__office">
+      <h3>Office</h3>
+      <p class="footer__brokerage">Collins &amp; Co.</p>
+      <address class="footer__office-addr">120 Market Street, Suite 400<br>Downtown District<br><a href="contact.html">(555) 010&#8209;0142</a></address>
+      <div class="footer__badges" aria-label="Affiliations"><span>REALTOR®</span><span>EQUAL HOUSING</span></div>
+    </div>
+  </div>
+  <div class="container footer__legal">
+    <p>© 2026 Collins &amp; Co. Real Estate. Maya Collins is a licensed real estate advisor and abides by Equal Housing Opportunity laws. All material presented herein is intended for informational purposes only and is compiled from sources deemed reliable but has not been verified. Sample content for template preview.</p>
+    <p class="footer__credit">Site by The EM Creative Studio</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Scroll reveals (hidden state only exists when .js-reveal was set in head) */
+  var root = document.documentElement;
+  if (root.classList.contains("js-reveal")) {
+    try {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+      }, { rootMargin: "0px 0px -60px 0px" });
+      document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+    } catch (err) { root.classList.remove("js-reveal"); }
+  }
+
+  /* Nav: transparent over the hero, frosted once scrolled */
+  var nav = document.querySelector(".nav");
+  var onScroll = function(){ nav.classList.toggle("is-solid", window.scrollY > 40); };
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  /* Drawer */
+  var burger = document.querySelector(".nav__burger"), drawer = document.getElementById("sideMenu");
+  var closeBtn = drawer.querySelector(".drawer__close");
+  function openDrawer(){ drawer.hidden = false; void drawer.offsetHeight; drawer.classList.add("is-open"); document.body.style.overflow = "hidden"; burger.setAttribute("aria-expanded","true"); closeBtn.focus(); }
+  function closeDrawer(){ drawer.classList.remove("is-open"); document.body.style.overflow = ""; burger.setAttribute("aria-expanded","false"); setTimeout(function(){ drawer.hidden = true; }, reduced ? 0 : 300); burger.focus(); }
+  burger.addEventListener("click", openDrawer);
+  drawer.addEventListener("click", function(e){
+    if (e.target.closest("[data-drawer-close]")) { closeDrawer(); return; }
+    if (e.target.closest("a")) closeDrawer();
+  });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && !drawer.hidden) closeDrawer(); });
+  drawer.querySelectorAll(".drawer__toggle").forEach(function(btn){
+    btn.addEventListener("click", function(){ var g = btn.closest(".drawer__group"); var o = g.classList.toggle("is-open"); btn.setAttribute("aria-expanded", String(o)); });
+  });
+
+  /* Eased stat counters */
+  var nums = document.querySelectorAll(".stat__num[data-count]");
+  function count(el){
+    var target = parseInt(el.dataset.count, 10), pre = el.dataset.prefix || "", suf = el.dataset.suffix || "", start = null, dur = 1600;
+    function step(t){ if (!start) start = t; var p = Math.min((t - start) / dur, 1), v = Math.round(target * (1 - Math.pow(1 - p, 5)));
+      el.textContent = pre + v.toLocaleString("en-US") + suf; if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  if (!reduced && "IntersectionObserver" in window) {
+    var cio = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { count(e.target); cio.unobserve(e.target); } }); }, { threshold: .6 });
+    nums.forEach(function(n){ cio.observe(n); });
+  }
+
+  /* Testimonial carousel */
+  var slides = document.querySelectorAll(".carousel__slide"), dots = document.querySelector(".carousel__dots"), idx = 0, timer;
+  slides.forEach(function(_, i){
+    var b = document.createElement("button"); b.type = "button"; b.setAttribute("role","tab"); b.setAttribute("aria-label","Testimonial " + (i + 1));
+    b.addEventListener("click", function(){ go(i); restart(); }); dots.appendChild(b);
+  });
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    slides.forEach(function(s, k){ s.classList.toggle("is-active", k === idx); });
+    dots.querySelectorAll("button").forEach(function(d, k){ d.setAttribute("aria-selected", String(k === idx)); });
+  }
+  function restart(){ clearInterval(timer); if (!reduced) timer = setInterval(function(){ go(idx + 1); }, 7000); }
+  document.querySelectorAll(".carousel__btn").forEach(function(b){ b.addEventListener("click", function(){ go(idx + parseInt(b.dataset.dir, 10)); restart(); }); });
+  go(0); restart();
+
+  /* Demo forms */
+  document.querySelectorAll("form[data-demo-form]").forEach(function(f){
+    f.addEventListener("submit", function(e){
+      e.preventDefault();
+      var s = f.querySelector("[role=status]");
+      s.textContent = "This is a template preview. Forms connect when your site is built.";
+      s.classList.add("is-note");
+    });
+  });
+})();
+</script>
+<script src="../preview-bar.js" defer></script>
+</body>
+</html>

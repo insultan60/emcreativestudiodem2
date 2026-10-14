@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Meridian Template | Real Estate Website Preview</title>
+<meta name="description" content="Meridian, a cinematic editorial real estate team website template. Sample content for The Hartwell Team.">
+<meta name="theme-color" content="#070502">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Onest:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<!-- Icon sprite (line icons) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 24 24"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" x2="8" y1="5" y2="7"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="7" x2="7" y1="19" y2="21"/><line x1="17" x2="17" y1="19" y2="21"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon fill="currentColor" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+  <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo" aria-label="The Hartwell Team home">
+      <span class="logo-mark">TH</span>
+      <span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-a" href="buyers.html">Buyers<span class="rail"></span></a>
+      <a class="nav-a" href="sellers.html">Sellers<span class="rail"></span></a>
+      <a class="nav-a" href="search.html">Listings<span class="rail"></span></a>
+      <a class="nav-a" href="neighborhood.html">Explore Areas<span class="rail"></span></a>
+      <div class="dd" id="dd">
+        <button class="nav-a" type="button" aria-haspopup="true" aria-expanded="false" id="ddBtn">About<svg class="ic"><use href="#i-chev-d"/></svg><span class="rail"></span></button>
+        <div class="dd-menu">
+          <div class="dd-box">
+            <a href="about.html">Meet the Team<span></span></a>
+            <a href="about.html#stories">Client Stories<span></span></a>
+            <a href="contact.html">Get in Touch<span></span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hdr-r">
+      <a href="tel:5550100142" class="hdr-phone"><svg class="ic"><use href="#i-phone"/></svg>(555) 010-0142</a>
+      <a href="contact.html" class="btn btn-cta hdr-cta">Schedule a Consultation</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="drawer">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="t">Menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><div id="prog"></div></div>
+</header>
+
+<!-- Drawer -->
+<div class="scrim-bg" id="scrim" aria-hidden="true"></div>
+<div class="dr-clip">
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="dr-top">
+    <p>Menu</p>
+    <button type="button" class="dr-close" id="drClose" aria-label="Close navigation"><svg class="ic"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="dr-body">
+    <div class="dr-anim" style="animation-delay:40ms">
+      <div class="dr-logo"><span class="logo-mark">TH</span><span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span></div>
+      <p class="dr-sub">Led by James Hartwell</p>
+    </div>
+    <nav>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">01</span><span class="rule"></span><span>Buyers</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:100ms"><a href="buyers.html"><span>Buy a Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:130ms"><a href="search.html"><span>Property Search</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:160ms"><a href="index.html#listings"><span>Featured Listings</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:190ms"><a href="neighborhood.html"><span>Explore Areas</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">02</span><span class="rule"></span><span>Sellers</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:260ms"><a href="sellers.html"><span>Sell Your Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:290ms"><a href="sellers.html#value"><span>Home Valuation</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:320ms"><a href="sellers.html#process"><span>Staging &amp; Launch</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">03</span><span class="rule"></span><span>About</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:390ms"><a href="index.html" class="is-current" aria-current="page"><span>Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:420ms"><a href="about.html"><span>Meet the Team</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:450ms"><a href="about.html#stories"><span>Client Stories</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:480ms"><a href="contact.html"><span>Get in Touch</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">04</span><span class="rule"></span><span>Calculators</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:550ms"><a href="listing.html#calc"><span>Mortgage Calculator</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:580ms"><a href="buyers.html#faq"><span>Affordability Basics</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="dr-foot">
+    <div class="dr-anim" style="animation-delay:700ms">
+      <div class="dr-contact">
+        <a href="tel:5550100142"><span class="dot"><svg class="ic"><use href="#i-phone"/></svg></span><span><small>Call or Text</small><strong>(555) 010-0142</strong></span></a>
+        <a href="mailto:hello@example.com"><span class="dot"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small><strong>hello@example.com</strong></span></a>
+      </div>
+      <a href="contact.html" class="btn btn-cta">Let&rsquo;s Connect</a>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-insta"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-li"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+      </div>
+    </div>
+  </div>
+</aside>
+</div>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <img class="hero-img" src="img/hero.jpg" alt="Modern architectural home with a pool at golden hour" fetchpriority="high">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="hero-in">
+    <div class="hero-top rise">
+      <p class="eyebrow light"><span class="rule"></span><span>Serving Buyers, Sellers &amp; Investors Across the Metro Region</span></p>
+      <h1>A clearer path home &mdash; to <em>move smart</em>, build wealth, and live well.</h1>
+    </div>
+    <div class="btns rise" style="animation-delay:340ms">
+      <a href="contact.html" class="btn btn-cta">Schedule a Consultation</a>
+      <a href="#value" class="btn btn-ghost light">Get your home value</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec services" id="services">
+  <div class="wrap">
+    <div class="reveal center mx" style="max-width:768px">
+      <p class="eyebrow center"><span class="n">01</span><span class="rule"></span><span>Real Estate Services</span></p>
+      <h2 class="h2" style="font-size:clamp(34px,4.2vw,54px)">Turning Dreams <em>into Keys</em></h2>
+      <p class="lead">Strategic real estate guidance for every neighborhood we serve, from first showing to final signature.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="reveal" style="transition-delay:0ms">
+        <a href="buyers.html" class="svc-card">
+          <span class="svc-hair" aria-hidden="true"></span>
+          <span class="svc-icon"><svg class="ic"><use href="#i-home"/></svg></span>
+          <h3>Buy a Home</h3>
+          <p>A clear, structured plan that puts you in control of every showing, offer and negotiation.</p>
+          <p class="tag">Showings &middot; offers &middot; negotiation, handled</p>
+          <span class="go"><span>Start Home Search<svg class="ic"><use href="#i-arrow-r"/></svg></span></span>
+        </a>
+      </div>
+      <div class="reveal" style="transition-delay:130ms">
+        <a href="sellers.html" class="svc-card featured">
+          <span class="svc-hair" aria-hidden="true"></span>
+          <span class="svc-icon"><svg class="ic"><use href="#i-dollar"/></svg></span>
+          <h3>Sell Your Home</h3>
+          <p>Positioning, marketing and negotiation designed to attract the right buyers and the best terms.</p>
+          <p class="tag">Positioning &middot; pricing &middot; marketing, handled</p>
+          <span class="go"><span>Get Home Value<svg class="ic"><use href="#i-arrow-r"/></svg></span></span>
+        </a>
+      </div>
+      <div class="reveal" style="transition-delay:260ms">
+        <a href="neighborhood.html" class="svc-card">
+          <span class="svc-hair" aria-hidden="true"></span>
+          <span class="svc-icon"><svg class="ic"><use href="#i-map"/></svg></span>
+          <h3>Explore Areas</h3>
+          <p>Discover the neighborhoods, market trends and lifestyle that fit the way you want to live.</p>
+          <p class="tag">Neighborhoods &middot; trends &middot; lifestyle, mapped</p>
+          <span class="go"><span>Explore Opportunities<svg class="ic"><use href="#i-arrow-r"/></svg></span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO FILM ============ -->
+<section class="sec dark" id="intro-film">
+  <div class="wrap film-grid">
+    <div class="reveal ord2" style="transition-delay:130ms">
+      <div class="film-frame">
+        <img src="img/agent-portrait.jpg" alt="James Hartwell, team lead of The Hartwell Team" loading="lazy">
+        <button type="button" class="film-play" id="filmPlay" aria-label="Play the team's intro film">
+          <span class="c"><svg class="ic"><use href="#i-play"/></svg></span>
+          <span class="l" id="filmLabel">Watch the film</span>
+        </button>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow light"><span class="rule"></span><span>Meet James</span></p>
+      <h2 class="h2 light" style="font-size:clamp(34px,4.2vw,54px)">A minute with <em>James Hartwell</em></h2>
+      <p class="lead light" style="max-width:512px">Before you choose a team, hear how we think about the work &mdash; the strategy behind every move, and what clear, steady guidance actually looks like from first call to closing day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="reveal center mx" style="max-width:896px">
+      <p class="eyebrow center"><span class="n">02</span><span class="rule"></span><span>About Us</span></p>
+      <p class="about-quote">&ldquo;The Hartwell Team is a modern real estate group dedicated to connecting people with homes that truly fit their lifestyle and goals.&rdquo;</p>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <div class="about-photo">
+          <div class="ph"><img src="img/about-team.jpg" alt="Members of The Hartwell Team celebrating a closing" loading="lazy"></div>
+          <div class="about-badge">
+            <div><small>The Hartwell Team</small><b>Buyers &middot; Sellers &middot; Investors</b></div>
+            <span class="num" aria-hidden="true">01</span>
+          </div>
+        </div>
+      </div>
+      <div class="reveal about-copy" style="transition-delay:120ms">
+        <p class="eyebrow"><span class="rule"></span><span>Meet The Hartwell Team</span></p>
+        <h2 class="h2">Strategic Approach to <em>Real Estate</em></h2>
+        <p class="lead">Led by James Hartwell, our full-time team serves clients across every corner of the metro region. Together with Elena Brooks, Marcus Reid and Priya Shah, we combine real-world experience, business acumen and a genuine passion for helping people reach their homeownership and investment goals &mdash; with one point of contact and a whole team behind you.</p>
+        <div class="stats">
+          <p>Team Track Record</p>
+          <div class="stats-row">
+            <div><b>$310M</b><span>Team Sales Volume</span></div>
+            <div><b>640+</b><span>Families Served</span></div>
+            <div><b>4.9</b><span>Average Client Rating</span></div>
+          </div>
+        </div>
+        <div class="btns">
+          <a href="contact.html" class="btn btn-cta">Schedule a Consultation</a>
+          <a href="about.html" class="btn btn-ghost">Get to know us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="sec dark">
+  <div class="wrap why-grid">
+    <div class="reveal why-sticky">
+      <p class="eyebrow light"><span class="n">03</span><span class="rule"></span><span>Proven Results.</span></p>
+      <h2 class="h2 light">Why Work With <em>Our Team</em></h2>
+      <p class="lead light">Our commitment to exceptional service and results has earned the trust of buyers, sellers and investors across the region and beyond:</p>
+      <a href="contact.html" class="btn btn-cta">Schedule Your Consultation</a>
+    </div>
+    <div>
+      <div class="reveal why-row"><span class="n">01</span><span class="ico"><svg class="ic"><use href="#i-target"/></svg></span><div><h3>Strategic Approach</h3><p>Backed by data and deep local expertise.</p></div></div>
+      <div class="reveal why-row" style="transition-delay:60ms"><span class="n">02</span><span class="ico"><svg class="ic"><use href="#i-chat"/></svg></span><div><h3>Clear Communication</h3><p>Proactive from start to finish.</p></div></div>
+      <div class="reveal why-row" style="transition-delay:120ms"><span class="n">03</span><span class="ico"><svg class="ic"><use href="#i-pin"/></svg></span><div><h3>Local Market Depth</h3><p>Real understanding of every neighborhood we serve.</p></div></div>
+      <div class="reveal why-row" style="transition-delay:180ms"><span class="n">04</span><span class="ico"><svg class="ic"><use href="#i-hand"/></svg></span><div><h3>Skilled Negotiation</h3><p>Positioned to maximize your value.</p></div></div>
+      <div class="reveal why-row" style="transition-delay:240ms"><span class="n">05</span><span class="ico"><svg class="ic"><use href="#i-users"/></svg></span><div><h3>A Full Team Behind You</h3><p>Discipline, coverage and organization throughout.</p></div></div>
+      <div class="why-end" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LISTINGS ============ -->
+<section class="sec" id="listings" style="background:var(--bg100)">
+  <div class="wrap">
+    <div class="split-head">
+      <div class="reveal" style="max-width:672px">
+        <p class="eyebrow"><span class="n">04</span><span class="rule"></span><span>New to the Market</span></p>
+        <h2 class="h2">Featured <em>Properties</em></h2>
+        <p class="lead">Browse a selection of homes currently available across the region and see what your next chapter could look like.</p>
+      </div>
+      <div class="reveal btn-row">
+        <a href="search.html" class="btn btn-ghost">VIP Home Search</a>
+        <a href="search.html" class="btn btn-cta">View All Listings</a>
+      </div>
+    </div>
+    <div class="list-grid">
+      <div class="reveal"><a href="listing.html?id=1" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l1.jpg" alt="Contemporary home with glass walls at dusk" loading="lazy"><span class="badge">Open House</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Hillcrest</p><h3>48 Linden Ridge Drive</h3><p class="price">$2,950,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>5 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>5 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>6,240 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+      <div class="reveal" style="transition-delay:70ms"><a href="listing.html?id=2" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l2.jpg" alt="Gabled family home lit up at twilight" loading="lazy"><span class="badge">Open House</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Lakeview</p><h3>112 Harbor Pine Court</h3><p class="price">$1,685,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>5 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>4 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,980 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+      <div class="reveal" style="transition-delay:140ms"><a href="listing.html?id=3" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l3.jpg" alt="Shingle-style home with a wraparound porch" loading="lazy"><span class="badge">New</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Oak Park</p><h3>27 Whitmore Lane</h3><p class="price">$1,369,900</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,880 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+      <div class="reveal" style="transition-delay:210ms"><a href="listing.html?id=4" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l4.jpg" alt="White two-story home with a pool and palms" loading="lazy"><span class="badge">Open House</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Riverside</p><h3>9 Saltmeadow Way</h3><p class="price">$1,295,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,110 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+      <div class="reveal" style="transition-delay:280ms"><a href="listing.html?id=5" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l5.jpg" alt="Single-level modern home with a pool deck" loading="lazy"><span class="badge">New</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Westbrook</p><h3>604 Crestview Terrace</h3><p class="price">$1,240,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>4 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,460 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+      <div class="reveal" style="transition-delay:350ms"><a href="listing.html?id=6" class="lcard card-hover"><div class="im"><img class="zoom" src="img/l6.jpg" alt="Modern home with an infinity pool and lawn" loading="lazy"><span class="badge">Open House</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Downtown</p><h3>1418 Alder Street</h3><p class="price">$1,300,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>3 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,150 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUATION ============ -->
+<section class="band" id="value">
+  <div class="box">
+    <div class="val-grid">
+      <div class="val-copy">
+        <div class="reveal">
+          <p class="eyebrow"><span class="n">05</span><span class="rule"></span><span>What&rsquo;s My Home Worth</span></p>
+          <h2 class="h2">Know Your Home&rsquo;s <em>Value</em></h2>
+          <p class="lead">Curious about your home&rsquo;s market value? Our easy-to-use property valuation tool provides a quick, reliable estimate, helping you make informed decisions about selling, refinancing, or planning your next move.</p>
+        </div>
+        <div class="reveal" style="transition-delay:120ms">
+          <form class="val-form demo-form" novalidate>
+            <label for="valAddr">Property Address</label>
+            <div class="val-row">
+              <span class="val-in"><svg class="ic"><use href="#i-pin"/></svg><input id="valAddr" name="address" type="text" placeholder="Enter your street, city, state and zip" autocomplete="off"></span>
+              <button type="submit" class="val-btn">Search</button>
+            </div>
+            <p class="form-msg" role="status">This is a template preview. Forms connect when your site is built.</p>
+          </form>
+          <p class="val-note">Enter an address to see an instant estimated range. This is an estimate, not an appraisal.</p>
+        </div>
+      </div>
+      <div class="val-img">
+        <img src="img/value.jpg" alt="Elegant home glowing at dusk" loading="lazy">
+        <div class="fade" aria-hidden="true"></div>
+        <div class="cap"><small>Instant Estimate</small><p>Built for your local market</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITIES ============ -->
+<section class="comm" id="communities">
+  <div class="wrap">
+    <div class="comm-head">
+      <div class="reveal" style="max-width:672px">
+        <p class="eyebrow"><span class="n">06</span><span class="rule"></span><span>Explore the</span></p>
+        <h2 class="h2">Communities We <em>Serve</em></h2>
+        <p class="lead">Discover insights, photos, market trends, and what life is really like in each neighborhood.</p>
+      </div>
+      <div class="rail-btns">
+        <button type="button" class="rbtn" id="railPrev" aria-label="Previous communities" disabled><svg class="ic"><use href="#i-arrow-l"/></svg></button>
+        <button type="button" class="rbtn" id="railNext" aria-label="Next communities"><svg class="ic"><use href="#i-arrow-r"/></svg></button>
+      </div>
+    </div>
+    <div class="rail" id="rail">
+      <div class="reveal"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c5.jpg" alt="Downtown street at dusk" loading="lazy"><div class="ov"></div><span class="idx">01</span><div class="bt"><div><p class="kick">Explore</p><h3>Downtown</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:45ms"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c4.jpg" alt="Hillcrest modern white home" loading="lazy"><div class="ov"></div><span class="idx">02</span><div class="bt"><div><p class="kick">Explore</p><h3>Hillcrest</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:90ms"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c2.jpg" alt="Lakeview suburban street" loading="lazy"><div class="ov"></div><span class="idx">03</span><div class="bt"><div><p class="kick">Explore</p><h3>Lakeview</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:135ms"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c6.jpg" alt="Oak Park brick and stone home" loading="lazy"><div class="ov"></div><span class="idx">04</span><div class="bt"><div><p class="kick">Explore</p><h3>Oak Park</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:180ms"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c1.jpg" alt="Riverside apartment balconies" loading="lazy"><div class="ov"></div><span class="idx">05</span><div class="bt"><div><p class="kick">Explore</p><h3>Riverside</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:225ms"><a href="neighborhood.html" class="ccard card-hover"><img class="zoom" src="img/c3.jpg" alt="Westbrook cottage among the trees" loading="lazy"><div class="ov"></div><span class="idx">06</span><div class="bt"><div><p class="kick">Explore</p><h3>Westbrook</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE TABS ============ -->
+<section class="band" id="how">
+  <div class="box tabs-box">
+    <div class="reveal" style="max-width:768px">
+      <p class="eyebrow"><span class="n">07</span><span class="rule"></span><span>How We Work</span></p>
+      <h2 class="h2">Services Built Around <em>Your Goals</em></h2>
+      <p class="lead">Whether you are buying, selling, staging or simply exploring the market, every engagement begins with a clear strategy and ends with results.</p>
+    </div>
+    <div class="tabs-grid">
+      <div class="reveal">
+        <div id="tabs">
+          <button type="button" class="tab active" data-i="0" aria-pressed="true"><span class="l"><span class="n">01</span><span class="t">Buy With Us</span></span><span class="pm"><svg class="ic plus"><use href="#i-plus"/></svg><svg class="ic minus"><use href="#i-minus"/></svg></span></button>
+          <button type="button" class="tab" data-i="1" aria-pressed="false"><span class="l"><span class="n">02</span><span class="t">Sell With Us</span></span><span class="pm"><svg class="ic plus"><use href="#i-plus"/></svg><svg class="ic minus"><use href="#i-minus"/></svg></span></button>
+          <button type="button" class="tab" data-i="2" aria-pressed="false"><span class="l"><span class="n">03</span><span class="t">Strategic Staging</span></span><span class="pm"><svg class="ic plus"><use href="#i-plus"/></svg><svg class="ic minus"><use href="#i-minus"/></svg></span></button>
+          <button type="button" class="tab" data-i="3" aria-pressed="false"><span class="l"><span class="n">04</span><span class="t">Local Expertise</span></span><span class="pm"><svg class="ic plus"><use href="#i-plus"/></svg><svg class="ic minus"><use href="#i-minus"/></svg></span></button>
+          <div class="tabs-end" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="reveal" style="transition-delay:120ms">
+        <div class="tab-panel">
+          <div id="tabBody">
+            <span class="big" id="tabNum">01</span>
+            <h3 id="tabTitle">Buy With Us</h3>
+            <p id="tabText">Concierge-level guidance tailored to your lifestyle, goals, and timeline &mdash; with strategy, discretion, and clarity at every step.</p>
+          </div>
+          <div class="acts">
+            <a href="contact.html" class="btn btn-cta">Start the Conversation</a>
+            <span class="ring" aria-hidden="true"><svg class="ic"><use href="#i-arrow-ur"/></svg></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ START ============ -->
+<section class="sec start">
+  <div class="wrap">
+    <div class="reveal center mx" style="max-width:672px">
+      <p class="eyebrow center"><span class="n">08</span><span class="rule"></span><span>Where Would You Like to Start?</span></p>
+    </div>
+    <div class="start-grid">
+      <div class="reveal"><a href="buyers.html" class="scard card-hover"><img class="zoom" src="img/s1.jpg" alt="Bright open-plan living space" loading="lazy"><div class="ov"></div><div class="top"><span class="c"><svg class="ic"><use href="#i-home"/></svg></span><span class="n">01</span></div><div class="bot"><p class="kick">Looking to</p><h3>Buy</h3><p>Start your search with a clear, structured plan.</p><span class="more">Learn more<svg class="ic"><use href="#i-arrow-r"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:90ms"><a href="sellers.html" class="scard card-hover"><img class="zoom" src="img/s2.jpg" alt="Modern home with a landscaped front lawn" loading="lazy"><div class="ov"></div><div class="top"><span class="c"><svg class="ic"><use href="#i-tag"/></svg></span><span class="n">02</span></div><div class="bot"><p class="kick">Looking to</p><h3>Sell</h3><p>Know your value and position your home to win.</p><span class="more">Learn more<svg class="ic"><use href="#i-arrow-r"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:180ms"><a href="sellers.html#process" class="scard card-hover"><img class="zoom" src="img/s3.jpg" alt="Styled living room with a yellow armchair" loading="lazy"><div class="ov"></div><div class="top"><span class="c"><svg class="ic"><use href="#i-sofa"/></svg></span><span class="n">03</span></div><div class="bot"><p class="kick">Strategic</p><h3>Staging</h3><p>Prepare and present your home to stand out.</p><span class="more">Learn more<svg class="ic"><use href="#i-arrow-r"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:270ms"><a href="neighborhood.html" class="scard card-hover"><img class="zoom" src="img/s4.jpg" alt="Warm, plant-filled living room" loading="lazy"><div class="ov"></div><div class="top"><span class="c"><svg class="ic"><use href="#i-compass"/></svg></span><span class="n">04</span></div><div class="bot"><p class="kick">Local</p><h3>Expertise</h3><p>Lean on real neighborhood knowledge.</p><span class="more">Learn more<svg class="ic"><use href="#i-arrow-r"/></svg></span></div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec process" id="process">
+  <div class="wrap">
+    <div class="reveal" style="max-width:768px">
+      <p class="eyebrow"><span class="n">09</span><span class="rule"></span><span>How We Help You Succeed</span></p>
+      <h2 class="h2" style="font-size:clamp(34px,4.2vw,54px)">A Simple, <em>Strategic Approach</em></h2>
+      <p class="lead" style="max-width:672px">Real estate can feel overwhelming, but our process is designed to make it smooth, clear, and stress-free. From our first conversation to closing day, we guide you every step of the way.</p>
+    </div>
+    <div class="proc-wrap">
+      <div class="proc-line" aria-hidden="true"></div>
+      <div class="proc-grid">
+        <div class="reveal proc-step"><div class="circ"><span>01</span></div><h3>Personalized Consultation</h3><p>We start with a conversation to understand your goals, timeline, and priorities.</p></div>
+        <div class="reveal proc-step" style="transition-delay:100ms"><div class="circ"><span>02</span></div><h3>Strategic Planning</h3><p>A clear plan for buying or selling, built on data, market insight, and proven strategy.</p></div>
+        <div class="reveal proc-step" style="transition-delay:200ms"><div class="circ"><span>03</span></div><h3>Hands-On Guidance</h3><p>From tours to offer strategy and negotiations, our team handles the details so you don&rsquo;t have to.</p></div>
+        <div class="reveal proc-step" style="transition-delay:300ms"><div class="circ"><span>04</span></div><h3>Closing &amp; Beyond</h3><p>We stay with you through closing and remain a resource well into your next chapter.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AREAS ============ -->
+<section class="sec areas" id="areas">
+  <div class="wrap">
+    <div class="reveal" style="max-width:672px">
+      <p class="eyebrow"><span class="n">10</span><span class="rule"></span><span>Discover the</span></p>
+      <h2 class="h2">Vibrant Areas We <em>Serve</em></h2>
+      <p class="lead">Explore market trends, new listings, schools and local favorites across every corner of the region.</p>
+    </div>
+    <div class="reveal">
+      <div class="area-box">
+        <div class="map" id="map">
+          <div class="ring-c r1" aria-hidden="true"></div>
+          <div class="ring-c r2" aria-hidden="true"></div>
+          <div class="ring-c r3" aria-hidden="true"></div>
+          <div class="comp" aria-hidden="true"><svg class="ic"><use href="#i-compass"/></svg></div>
+        </div>
+        <div class="snap">
+          <div>
+            <p class="eyebrow"><span class="rule"></span><span>Market Snapshot</span></p>
+            <h3 id="snapName">Hillcrest</h3>
+            <div class="snap-stats">
+              <div><b id="snapPrice">$1.02M</b><span>Median Sale Price</span></div>
+              <div><b id="snapDays">19</b><span>Avg Days on Market</span></div>
+              <div><b id="snapList">112</b><span>Active Listings</span></div>
+              <div><b id="snapSales">29</b><span>Recent Sales</span></div>
+            </div>
+          </div>
+          <div class="chips" id="chips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTNERS ============ -->
+<section class="sec partners" id="partners">
+  <div class="wrap">
+    <div class="reveal" style="max-width:768px">
+      <p class="eyebrow"><span class="n">11</span><span class="rule"></span><span>Lenders, Inspectors, and Service Providers</span></p>
+      <h2 class="h2">Our Trusted <em>Partners</em></h2>
+      <p class="lead">We connect you with trusted lenders, inspectors and service providers across the region &mdash; so every step of your move is handled by people who share our standards.</p>
+    </div>
+    <div class="part-grid">
+      <div class="reveal"><a href="contact.html" class="pcard card-hover"><img class="zoom" src="img/p1.jpg" alt="Mortgage paperwork and a calculator" loading="lazy"><div class="ov"></div><div class="bt"><div><p class="kick">01</p><h3>Mortgage Specialist</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:80ms"><a href="contact.html" class="pcard card-hover"><img class="zoom" src="img/p4.jpg" alt="Bright empty room ready for inspection" loading="lazy"><div class="ov"></div><div class="bt"><div><p class="kick">02</p><h3>Home Inspector</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:160ms"><a href="contact.html" class="pcard card-hover"><img class="zoom" src="img/p3.jpg" alt="Construction crew at work" loading="lazy"><div class="ov"></div><div class="bt"><div><p class="kick">03</p><h3>Contractor</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:240ms"><a href="contact.html" class="pcard card-hover"><img class="zoom" src="img/p2.jpg" alt="Model house with keys" loading="lazy"><div class="ov"></div><div class="bt"><div><p class="kick">04</p><h3>Insurance Advisor</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+      <div class="reveal" style="transition-delay:320ms"><a href="contact.html" class="pcard card-hover"><img class="zoom" src="img/p5.jpg" alt="Electrician working on a panel" loading="lazy"><div class="ov"></div><div class="bt"><div><p class="kick">05</p><h3>Electrician</h3></div><span class="arrow-btn on-img"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="sec dark" id="testimonials">
+  <div class="wrap">
+    <div class="reveal center mx" style="max-width:768px">
+      <p class="eyebrow light center"><span class="n">12</span><span class="rule"></span><span>What Clients Are Saying</span></p>
+      <h2 class="h2 light">Our Client <em>Testimonials</em></h2>
+      <p class="lead light mx" style="max-width:672px">Reviews from buyers, sellers and investors who trusted our team with one of the biggest decisions of their lives.</p>
+    </div>
+    <div class="tgrid">
+      <div class="reveal"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>James and the team were wonderful to work with. Friendly, patient, and they walked us through the whole buying process so it never felt intimidating. They knew every detail of our loan program and it made a real difference. If you want a team that is truly by your side, call them.</blockquote><figcaption><span class="av">A</span><span><b>Andrea M.</b><small>Buyer &middot; Hillcrest</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:60ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>Five stars doesn&rsquo;t feel like enough. From our first showing to closing took less than two months. What I appreciated most was the honesty &mdash; nobody ever pushed a property just to close a deal, and I always had what I needed to make the right call.</blockquote><figcaption><span class="av">K</span><span><b>Kevin O.</b><small>Buyer &middot; Oak Park</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:120ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>Big thanks to the Hartwell Team for selling my condo in just 21 days! I appreciated their discipline, organization and straightforward approach. If you want people who get results and have your back, this is the team to call.</blockquote><figcaption><span class="av">D</span><span><b>Daniel R.</b><small>Seller &middot; Downtown</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:180ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>I had a great experience buying my first home with Elena. As a first-time buyer, she was incredibly helpful, patient, and responsive every step of the way &mdash; she made the process far less intimidating and helped me find a place I&rsquo;m excited to call home.</blockquote><figcaption><span class="av">R</span><span><b>Rafael S.</b><small>Buyer &middot; Riverside</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:240ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>A true professional team that knows the market inside and out. Their attention to detail when writing contracts is second to none, and their communication makes every transaction smoother for everyone involved.</blockquote><figcaption><span class="av">S</span><span><b>Sarah W.</b><small>Lender Partner</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:300ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>Marcus stayed with me through a search that lasted almost two years. He&rsquo;s well-informed, and if he doesn&rsquo;t know an answer he finds it and comes back with options. I never once felt alone in the process.</blockquote><figcaption><span class="av">E</span><span><b>Elijah V.</b><small>Buyer &middot; Westbrook</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:360ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>I can&rsquo;t recommend this team highly enough. While I was traveling abroad, an unexpected repair came up on my rental and they coordinated everything. That gave me tremendous peace of mind. They treat you like a partner, not just another client.</blockquote><figcaption><span class="av">R</span><span><b>Rosa E.</b><small>Investor &middot; Lakeview</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:420ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>They helped my wife and me find our dream home and made the entire process feel smooth. Knowledgeable, friendly and proactive &mdash; every document was handled on time and we were never left wondering what came next.</blockquote><figcaption><span class="av">L</span><span><b>Liam T.</b><small>Buyer &middot; Hillcrest</small></span></figcaption></figure></div>
+      <div class="reveal" style="transition-delay:480ms"><figure class="tcard"><div class="tt"><div class="stars"><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg></div><svg class="ic chk"><use href="#i-badge"/></svg></div><blockquote>Truly a pleasure to work with! Prompt, professional, and the whole process was smooth and stress-free from start to finish. Highly recommend.</blockquote><figcaption><span class="av">K</span><span><b>Kayla P.</b><small>Buyer &middot; Downtown</small></span></figcaption></figure></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="insta">
+  <div class="wrap">
+    <div class="reveal insta-head">
+      <span class="c"><svg class="ic"><use href="#i-insta"/></svg></span>
+      <h2>Follow Us On Instagram</h2>
+      <p>New listings, market insights and behind-the-scenes moments from the team&rsquo;s week.</p>
+    </div>
+    <div class="ig-grid">
+      <div class="reveal"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig1.jpg" alt="Bright living room styled for a listing shoot" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+      <div class="reveal" style="transition-delay:55ms"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig2.jpg" alt="White farmhouse with a red roof" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+      <div class="reveal" style="transition-delay:110ms"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig3.jpg" alt="Classic brick home" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+      <div class="reveal" style="transition-delay:165ms"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig4.jpg" alt="Craftsman home with a front porch" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+      <div class="reveal" style="transition-delay:220ms"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig5.jpg" alt="Dining room with a chandelier" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+      <div class="reveal" style="transition-delay:275ms"><a href="#" class="ig" aria-label="View this post on Instagram"><img class="zoom" src="img/ig6.jpg" alt="Hillside home at sunset" loading="lazy"><span class="hov"><svg class="ic"><use href="#i-insta"/></svg></span></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-band" id="contact">
+  <div class="cta-box">
+    <img src="img/cta.jpg" alt="" loading="lazy">
+    <div class="o1" aria-hidden="true"></div>
+    <div class="o2" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="reveal in">
+      <p class="eyebrow light center"><span class="n">13</span><span class="rule"></span><span>Ready To Make Your Next Move?</span></p>
+      <h2>Let&rsquo;s build a strategy that works for your goals.</h2>
+      <p>Buyers, sellers and investors across the region trust The Hartwell Team to clear the path forward.</p>
+      <div class="btns">
+        <a href="contact.html" class="btn btn-cta">Connect With Us</a>
+        <a href="tel:5550100142" class="btn btn-ghost light"><svg class="ic"><use href="#i-phone"/></svg>(555) 010-0142</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="ftr-in">
+    <div class="ftr-grid">
+      <div>
+        <a href="index.html" class="logo" aria-label="The Hartwell Team home"><span class="logo-mark">TH</span><span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span></a>
+        <p class="ftr-about">The Hartwell Team, led by James Hartwell &mdash; a full-time real estate team serving buyers, sellers and investors across the metro region and its surrounding communities.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-insta"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-li"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="ftr-cols">
+        <div><h4>Buy</h4><ul><li><a class="flink" href="buyers.html">Buyers</a></li><li><a class="flink" href="search.html">Property Search</a></li><li><a class="flink" href="index.html#listings">Featured Listings</a></li><li><a class="flink" href="listing.html#calc">Mortgage Calculator</a></li></ul></div>
+        <div><h4>Sell</h4><ul><li><a class="flink" href="sellers.html">Sellers</a></li><li><a class="flink" href="sellers.html#value">Home Valuation</a></li><li><a class="flink" href="sellers.html#process">Staging</a></li><li><a class="flink" href="sellers.html#faq">Seller FAQ</a></li></ul></div>
+        <div><h4>Explore</h4><ul><li><a class="flink" href="index.html">Home</a></li><li><a class="flink" href="neighborhood.html">Explore Areas</a></li><li><a class="flink" href="about.html">Meet the Team</a></li><li><a class="flink" href="about.html#stories">Client Stories</a></li><li><a class="flink" href="contact.html">Get in Touch</a></li></ul></div>
+      </div>
+      <div>
+        <h4>Visit &amp; Contact</h4>
+        <ul class="ftr-contact">
+          <li><svg class="ic"><use href="#i-pin"/></svg><span>200 Market Street, Suite 400, Downtown</span></li>
+          <li><svg class="ic"><use href="#i-clock"/></svg><span>Open daily 8:00am &ndash; 6:00pm &middot; reach us 24/7</span></li>
+          <li><a href="tel:5550100142"><svg class="ic"><use href="#i-phone"/></svg><span>(555) 010-0142</span></a></li>
+          <li><a href="mailto:hello@example.com"><svg class="ic"><use href="#i-mail"/></svg><span>hello@example.com</span></a></li>
+          <li><svg class="ic"><use href="#i-shield"/></svg><span>Licensed Real Estate Team &middot; Equal Housing Opportunity</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-legal">
+      <p>&copy; 2026 The Hartwell Team &middot; All rights reserved</p>
+      <ul><li><a href="#top">Accessibility</a></li><li><a href="#top">Privacy Policy</a></li><li><a href="#top">Sitemap</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:5550100142" class="call-fab" aria-label="Call The Hartwell Team"><svg class="ic"><use href="#i-phone"/></svg></a>
+
+<script src="site.js"></script>
+<script>
+(function(){
+  var d=document;
+
+  /* Film placeholder */
+  d.getElementById('filmPlay').addEventListener('click',function(){d.getElementById('filmLabel').textContent='Your intro film plays here';});
+
+  /* Communities rail */
+  var rail=d.getElementById('rail'), prev=d.getElementById('railPrev'), next=d.getElementById('railNext');
+  function arrows(){prev.disabled=rail.scrollLeft<=8;next.disabled=rail.scrollLeft>=rail.scrollWidth-rail.clientWidth-8;}
+  function by(dir){var c=rail.firstElementChild;rail.scrollBy({left:dir*((c?c.offsetWidth:400)+20),behavior:'smooth'});}
+  prev.addEventListener('click',function(){by(-1)}); next.addEventListener('click',function(){by(1)});
+  rail.addEventListener('scroll',arrows,{passive:true}); addEventListener('resize',arrows); arrows();
+
+  /* Service tabs */
+  var tabs=[
+    ['Buy With Us','Concierge-level guidance tailored to your lifestyle, goals, and timeline — with strategy, discretion, and clarity at every step.'],
+    ['Sell With Us','Thoughtful pricing, elevated presentation, and hands-on representation designed to position your home at the highest level.'],
+    ['Strategic Staging','Expert preparation and visual storytelling that helps buyers connect emotionally, see value clearly, and act with confidence.'],
+    ['Local Expertise','Deep neighborhood knowledge paired with honest advice, steady leadership, and insight built from years of experience.']
+  ];
+  var tabBtns=[].slice.call(d.querySelectorAll('#tabs .tab')), body2=d.getElementById('tabBody');
+  tabBtns.forEach(function(b){b.addEventListener('click',function(){
+    var i=+b.getAttribute('data-i');
+    tabBtns.forEach(function(x){var on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',on)});
+    d.getElementById('tabNum').textContent='0'+(i+1);
+    d.getElementById('tabTitle').textContent=tabs[i][0];
+    d.getElementById('tabText').textContent=tabs[i][1];
+    body2.classList.remove('swap'); void body2.offsetWidth; body2.classList.add('swap');
+  })});
+
+  /* Areas map */
+  var areas=[
+    ['Riverside',24,64,'$875K','21','146','38'],
+    ['Hillcrest',39,47,'$1.02M','19','112','29'],
+    ['Oak Park',53,27,'$1.34M','24','98','22'],
+    ['Westbrook',27,39,'$960K','22','74','18'],
+    ['Southport',61,76,'$640K','28','63','16'],
+    ['Maple Grove',68,63,'$520K','30','58','14'],
+    ['Lakeview',46,18,'$720K','23','131','34'],
+    ['Downtown',35,67,'$1.18M','26','204','47']
+  ];
+  var map=d.getElementById('map'), chips=d.getElementById('chips'), pins=[], chs=[];
+  function pick(i){
+    var a=areas[i];
+    d.getElementById('snapName').textContent=a[0];
+    d.getElementById('snapPrice').textContent=a[3];
+    d.getElementById('snapDays').textContent=a[4];
+    d.getElementById('snapList').textContent=a[5];
+    d.getElementById('snapSales').textContent=a[6];
+    pins.forEach(function(p,k){p.classList.toggle('active',k===i);p.setAttribute('aria-pressed',k===i)});
+    chs.forEach(function(c,k){c.classList.toggle('active',k===i)});
+  }
+  areas.forEach(function(a,i){
+    var p=d.createElement('button');p.type='button';p.className='pin';p.style.left=a[1]+'%';p.style.top=a[2]+'%';
+    p.setAttribute('aria-label','View '+a[0]+' market snapshot');
+    p.innerHTML='<span><svg class="ic"><use href="#i-pin"/></svg>'+a[0]+'</span>';
+    p.addEventListener('click',function(){pick(i)}); map.appendChild(p); pins.push(p);
+    var c=d.createElement('button');c.type='button';c.className='chip';c.textContent=a[0];
+    c.addEventListener('click',function(){pick(i)}); chips.appendChild(c); chs.push(c);
+  });
+  pick(1);
+
+})();
+</script>
+<script src="../preview-bar.js" defer></script>
+</body>
+</html>

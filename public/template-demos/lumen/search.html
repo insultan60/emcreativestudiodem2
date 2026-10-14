@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Home Search | Maya Collins · Collins &amp; Co.</title>
+<meta name="description" content="Search homes for sale with Maya Collins, Collins &amp; Co. Real Estate (sample content).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+  /* Arm scroll reveals only when an observer is available, so content is never hidden without JS. */
+  (function(){try{if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches&&"IntersectionObserver" in window){document.documentElement.classList.add("js-reveal");}}catch(e){}})();
+</script>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav nav--solid is-solid" id="top">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Maya Collins, home">
+      <span class="mark"><span class="mark__mono">M<b>C</b></span><span class="mark__name">Maya Collins</span></span>
+    </a>
+    <span class="nav__brokerage">Collins &amp; Co.</span>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="search.html" aria-current="page">Home Search</a>
+      <a href="about.html">About</a>
+      <a href="buyers.html">Buyers</a>
+      <a href="sellers.html">Sellers</a>
+      <a href="neighborhood.html">Neighborhoods</a>
+    </nav>
+    <a class="btn btn--outline-light nav__cta" href="contact.html">Let&rsquo;s Connect</a>
+    <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="sideMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="drawer" id="sideMenu" hidden>
+  <div class="drawer__backdrop" data-drawer-close aria-hidden="true"></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <button class="drawer__close" data-drawer-close aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" fill="none"><path d="M3 3l16 16M19 3L3 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="drawer__nav" aria-label="Full menu">
+      <a class="drawer__item" href="index.html">Home</a>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">About<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="about.html">Meet Maya</a><a href="about.html#testimonials">Testimonials</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Home Search<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="search.html" aria-current="page">Search All Homes</a><a href="listing.html?id=1">Featured Listing</a><a href="search.html?status=Open%20House">Open Houses</a><a href="neighborhood.html">Featured Neighborhoods</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Buyers<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="buyers.html">The Buying Process</a><a href="buyers.html#tools">Tools for Buyers</a><a href="listing.html?id=1#calculator">Mortgage Calculator</a><a href="buyers.html#faq">Buyer FAQ</a></div>
+      </div>
+      <div class="drawer__group">
+        <button class="drawer__item drawer__toggle" type="button" aria-expanded="false">Sellers<svg class="drawer__chev" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" fill="none"><path d="M3 6l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="drawer__sub"><a href="sellers.html">Selling Your Home</a><a href="sellers.html#valuation">What&rsquo;s My Home Worth?</a><a href="sellers.html#staging">Staging Checklist</a><a href="sellers.html#faq">Seller FAQ</a></div>
+      </div>
+      <a class="drawer__item" href="search.html?status=Sold">Portfolio</a>
+      <a class="drawer__item" href="neighborhood.html">Neighborhoods</a>
+      <a class="drawer__item" href="index.html#journal">The Latest Real Estate News</a>
+      <a class="drawer__item" href="contact.html">Let&rsquo;s Connect</a>
+    </nav>
+  </aside>
+</div>
+
+<main id="main" class="search-page">
+
+  <section class="page-head page-head--slim">
+    <div class="container">
+      <p class="eyebrow eyebrow--clay">Home Search</p>
+      <h1 class="page-head__title">Find a home <em>with character.</em></h1>
+      <p class="page-head__sub">Every home Maya currently represents, plus a record of recent sales. Filter by neighborhood, price and the details that matter to you.</p>
+    </div>
+  </section>
+
+  <form class="sbar" id="filters" role="search" aria-label="Property search filters">
+    <div class="sbar__inner">
+      <div class="sbar__field sbar__q">
+        <label for="f-q">Location or keyword</label>
+        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="7.5" cy="7.5" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M12 12l4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="f-q" type="search" name="q" placeholder="Neighborhood, street, pool&hellip;" autocomplete="off">
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-min">Min price</label>
+        <select id="f-min" name="min"><option value="">No min</option><option value="750000">$750K</option><option value="1000000">$1M</option><option value="1500000">$1.5M</option><option value="2000000">$2M</option><option value="3000000">$3M</option><option value="4000000">$4M</option></select>
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-max">Max price</label>
+        <select id="f-max" name="max"><option value="">No max</option><option value="1000000">$1M</option><option value="1500000">$1.5M</option><option value="2000000">$2M</option><option value="3000000">$3M</option><option value="4000000">$4M</option><option value="6000000">$6M</option></select>
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-beds">Beds</label>
+        <select id="f-beds" name="beds"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-baths">Baths</label>
+        <select id="f-baths" name="baths"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select>
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-type">Property type</label>
+        <select id="f-type" name="type"><option value="">All types</option><option>Single Family</option><option>Townhome</option><option>Condo</option><option>Estate</option></select>
+      </div>
+      <div class="sbar__field sbar__adv">
+        <label for="f-status">Status</label>
+        <select id="f-status" name="status"><option value="">Any status</option><option value="Active">Active</option><option>For Sale</option><option>Open House</option><option>Pending</option><option>Sold</option></select>
+      </div>
+      <button type="button" class="sbar__more" id="moreFilters" aria-expanded="false">Filters
+        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <button type="reset" class="sbar__reset">Reset</button>
+    </div>
+  </form>
+
+  <div class="rbar">
+    <div>
+      <p class="rbar__count" role="status" aria-live="polite"><strong id="count">18</strong> <span id="countLabel">homes</span></p>
+      <div class="chips" id="chips"></div>
+    </div>
+    <div class="rbar__right">
+      <div class="sbar__field">
+        <label class="sr-only" for="f-sort">Sort by</label>
+        <select id="f-sort" name="sort" form="filters"><option value="new">Newest</option><option value="price-desc">Price: high to low</option><option value="price-asc">Price: low to high</option><option value="sqft">Largest</option><option value="beds">Most bedrooms</option></select>
+      </div>
+      <div class="vtoggle" role="group" aria-label="Results view">
+        <button type="button" data-view="split" aria-pressed="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="2" width="6" height="12" stroke="currentColor" stroke-width="1.2"/><path d="M9.5 3.5l2-1 3 1v10l-3-1-2 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Split</button>
+        <button type="button" data-view="grid" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="9.5" y="1.5" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="9.5" width="5" height="5" stroke="currentColor" stroke-width="1.2"/><rect x="9.5" y="9.5" width="5" height="5" stroke="currentColor" stroke-width="1.2"/></svg>Grid</button>
+        <button type="button" data-view="map" aria-pressed="false"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 3.5v10l4.5-2 5 2 4.5-2v-10l-4.5 2-5-2-4.5 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>Map</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-split" id="split" data-view="split">
+    <div class="results">
+      <div class="results__grid" id="resultsGrid"><a class="listing" href="listing.html?id=1" data-id="1"><figure class="listing__media"><img src="img/listing-1.jpg" alt="28 Summit Ridge Road, Hillcrest" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$3,450,000</p><h3 class="listing__addr">28 Summit Ridge Road</h3><p class="listing__city">Hillcrest · Single Family</p><ul class="listing__meta"><li>5 Beds</li><li>5 Baths</li><li>4,820 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=2" data-id="2"><figure class="listing__media"><img src="img/listing-2.jpg" alt="1140 Lakeshore Drive, Lakeview" loading="lazy"><span class="badge badge--open">Open House</span></figure><div class="listing__body"><p class="listing__price">$2,895,000</p><h3 class="listing__addr">1140 Lakeshore Drive</h3><p class="listing__city">Lakeview · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>4 Baths</li><li>3,960 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=3" data-id="3"><figure class="listing__media"><img src="img/listing-3.jpg" alt="402 Willow Lane, Oak Park" loading="lazy"><span class="badge badge--pending">Pending</span></figure><div class="listing__body"><p class="listing__price">$1,975,000</p><h3 class="listing__addr">402 Willow Lane</h3><p class="listing__city">Oak Park · Single Family</p><ul class="listing__meta"><li>3 Beds</li><li>3 Baths</li><li>2,740 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=4" data-id="4"><figure class="listing__media"><img src="img/sold-1.jpg" alt="9 Ashford Place, Hillcrest" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$4,150,000</p><h3 class="listing__addr">9 Ashford Place</h3><p class="listing__city">Hillcrest · Estate</p><ul class="listing__meta"><li>5 Beds</li><li>6 Baths</li><li>5,210 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=5" data-id="5"><figure class="listing__media"><img src="img/sold-2.jpg" alt="615 Harbor View Road, Lakeview" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$3,280,000</p><h3 class="listing__addr">615 Harbor View Road</h3><p class="listing__city">Lakeview · Single Family</p><ul class="listing__meta"><li>6 Beds</li><li>5 Baths</li><li>4,690 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=6" data-id="6"><figure class="listing__media"><img src="img/sold-3.jpg" alt="31 Magnolia Way, Riverside" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$2,640,000</p><h3 class="listing__addr">31 Magnolia Way</h3><p class="listing__city">Riverside · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>4 Baths</li><li>3,420 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=7" data-id="7"><figure class="listing__media"><img src="img/sold-4.jpg" alt="208 Orchard Street, Oak Park" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,895,000</p><h3 class="listing__addr">208 Orchard Street</h3><p class="listing__city">Oak Park · Single Family</p><ul class="listing__meta"><li>3 Beds</li><li>2 Baths</li><li>2,150 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=8" data-id="8"><figure class="listing__media"><img src="img/sold-5.jpg" alt="54 Fieldstone Drive, Westbrook" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,620,000</p><h3 class="listing__addr">54 Fieldstone Drive</h3><p class="listing__city">Westbrook · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>3 Baths</li><li>3,050 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=9" data-id="9"><figure class="listing__media"><img src="img/sold-6.jpg" alt="12 Linden Row, Downtown" loading="lazy"><span class="badge badge--sold">Sold</span></figure><div class="listing__body"><p class="listing__price">$1,345,000</p><h3 class="listing__addr">12 Linden Row</h3><p class="listing__city">Downtown · Townhome</p><ul class="listing__meta"><li>3 Beds</li><li>3 Baths</li><li>2,280 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=10" data-id="10"><figure class="listing__media"><img src="img/ext-1.jpg" alt="77 Larkspur Court, Riverside" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$2,350,000</p><h3 class="listing__addr">77 Larkspur Court</h3><p class="listing__city">Riverside · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>4 Baths</li><li>3,380 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=11" data-id="11"><figure class="listing__media"><img src="img/ext-2.jpg" alt="16 Chestnut Hill Road, Hillcrest" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$1,785,000</p><h3 class="listing__addr">16 Chestnut Hill Road</h3><p class="listing__city">Hillcrest · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>3 Baths</li><li>2,960 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=12" data-id="12"><figure class="listing__media"><img src="img/ext-3.jpg" alt="77 Canal Street, Unit 2, Downtown" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$1,195,000</p><h3 class="listing__addr">77 Canal Street, Unit 2</h3><p class="listing__city">Downtown · Condo</p><ul class="listing__meta"><li>3 Beds</li><li>2 Baths</li><li>1,840 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=13" data-id="13"><figure class="listing__media"><img src="img/ext-4.jpg" alt="5 Meadow Gate Lane, Westbrook" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$925,000</p><h3 class="listing__addr">5 Meadow Gate Lane</h3><p class="listing__city">Westbrook · Single Family</p><ul class="listing__meta"><li>3 Beds</li><li>2 Baths</li><li>1,980 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=14" data-id="14"><figure class="listing__media"><img src="img/ext-5.jpg" alt="340 Porch Light Avenue, Maple Heights" loading="lazy"><span class="badge badge--open">Open House</span></figure><div class="listing__body"><p class="listing__price">$1,150,000</p><h3 class="listing__addr">340 Porch Light Avenue</h3><p class="listing__city">Maple Heights · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>3 Baths</li><li>2,640 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=15" data-id="15"><figure class="listing__media"><img src="img/ext-6.jpg" alt="19 Cedar Hollow Drive, Cedar Hollow" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$1,325,000</p><h3 class="listing__addr">19 Cedar Hollow Drive</h3><p class="listing__city">Cedar Hollow · Single Family</p><ul class="listing__meta"><li>4 Beds</li><li>3 Baths</li><li>2,890 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=16" data-id="16"><figure class="listing__media"><img src="img/hood-2.jpg" alt="3 Overlook Terrace, Hillcrest" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$3,995,000</p><h3 class="listing__addr">3 Overlook Terrace</h3><p class="listing__city">Hillcrest · Estate</p><ul class="listing__meta"><li>5 Beds</li><li>5 Baths</li><li>4,410 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=17" data-id="17"><figure class="listing__media"><img src="img/hood-3.jpg" alt="88 Mill Race Road, Riverside" loading="lazy"><span class="badge badge--pending">Pending</span></figure><div class="listing__body"><p class="listing__price">$1,640,000</p><h3 class="listing__addr">88 Mill Race Road</h3><p class="listing__city">Riverside · Townhome</p><ul class="listing__meta"><li>3 Beds</li><li>3 Baths</li><li>2,380 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a><a class="listing" href="listing.html?id=18" data-id="18"><figure class="listing__media"><img src="img/hero.jpg" alt="1 Lantern Point, Harbor Point" loading="lazy"><span class="badge badge--sale">For Sale</span></figure><div class="listing__body"><p class="listing__price">$5,250,000</p><h3 class="listing__addr">1 Lantern Point</h3><p class="listing__city">Harbor Point · Estate</p><ul class="listing__meta"><li>5 Beds</li><li>6 Baths</li><li>5,900 Sq.Ft.</li></ul><span class="text-link listing__view">View Home<i class="arrow" aria-hidden="true"></i></span></div></a></div>
+      <div class="results__more" id="moreWrap" hidden>
+        <p id="moreNote"></p>
+        <button type="button" class="btn btn--outline-moss" id="loadMore">Load More Homes</button>
+      </div>
+      <div class="results__note">
+        <p>Don&rsquo;t see the one?<span>Many homes sell before they reach the market. Tell Maya what you&rsquo;re after and get new listings first.</span></p>
+        <a class="btn btn--solid-moss" href="contact.html">Get Listing Alerts</a>
+      </div>
+    </div>
+
+    <div class="smap" id="map" role="region" aria-label="Map of search results">
+      <svg class="smap__bg" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+        <rect width="1000" height="1000" fill="#EEE9DA"/>
+        <path d="M560 0 H1000 V150 C960 168 930 130 905 150 C880 172 900 210 862 214 C820 218 790 160 742 150 C690 138 650 100 610 60 C590 40 572 20 560 0Z" fill="#CFD8CF"/>
+        <path d="M0 930 C160 890 300 960 460 930 S760 840 1000 880 L1000 1000 L0 1000Z" fill="#D9E0D3"/>
+        <path d="M0 950 C170 905 310 975 470 945 S770 858 1000 898" fill="none" stroke="#C3CEC6" stroke-width="20" vector-effect="non-scaling-stroke"/>
+        <rect x="120" y="330" width="150" height="120" fill="#DCE3CF"/>
+        <rect x="610" y="700" width="170" height="110" fill="#DCE3CF"/>
+        <rect x="380" y="140" width="110" height="160" fill="#DCE3CF"/>
+        <ellipse cx="860" cy="470" rx="80" ry="55" fill="#DCE3CF"/>
+        <g stroke="#FFFFFF" fill="none" vector-effect="non-scaling-stroke">
+          <path d="M0 250 H1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M0 520 H1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M0 760 H1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M300 0 V1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M600 160 V1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M820 220 V1000" stroke-width="9" vector-effect="non-scaling-stroke"/>
+          <path d="M0 120 H540 M0 400 H1000 M0 640 H1000 M150 0 V1000 M450 0 V1000 M720 140 V1000 M920 220 V1000" stroke-width="4" vector-effect="non-scaling-stroke" opacity=".85"/>
+        </g>
+        <path d="M-10 860 C250 700 520 520 1010 230" stroke="#E4D6BC" stroke-width="14" fill="none" vector-effect="non-scaling-stroke"/>
+        <path d="M-10 860 C250 700 520 520 1010 230" stroke="#CBBBA0" stroke-width="2" fill="none" stroke-dasharray="12 9" vector-effect="non-scaling-stroke"/>
+      </svg>
+      <span class="smap__label" style="left:27%;top:9%">Hillcrest</span>
+      <span class="smap__label" style="left:67%;top:18%">Lakeview</span>
+      <span class="smap__label" style="left:91%;top:30%">Harbor Point</span>
+      <span class="smap__label" style="left:66%;top:39%">Downtown</span>
+      <span class="smap__label" style="left:51%;top:70%">Oak Park</span>
+      <span class="smap__label" style="left:14%;top:47%">Westbrook</span>
+      <span class="smap__label" style="left:86%;top:55%">Maple Heights</span>
+      <span class="smap__label" style="left:85%;top:93%">Cedar Hollow</span>
+      <span class="smap__label" style="left:25%;top:90%">Riverside</span>
+      <span class="smap__label smap__label--water" style="left:78%;top:7%">Lake</span>
+      <div class="smap__pins" id="mapPins"><button type="button" class="pin" style="left:30%;top:30%" data-id="1" aria-label="28 Summit Ridge Road, $3,450,000"><span class="pin__tag">$3.45M</span></button><button type="button" class="pin" style="left:71%;top:25%" data-id="2" aria-label="1140 Lakeshore Drive, $2,895,000"><span class="pin__tag">$2.9M</span></button><button type="button" class="pin" style="left:52%;top:62%" data-id="3" aria-label="402 Willow Lane, $1,975,000"><span class="pin__tag">$1.98M</span></button><button type="button" class="pin pin--sold" style="left:24%;top:38%" data-id="4" aria-label="9 Ashford Place, $4,150,000"><span class="pin__tag">$4.15M</span></button><button type="button" class="pin pin--sold" style="left:79%;top:34%" data-id="5" aria-label="615 Harbor View Road, $3,280,000"><span class="pin__tag">$3.28M</span></button><button type="button" class="pin pin--sold" style="left:40%;top:80%" data-id="6" aria-label="31 Magnolia Way, $2,640,000"><span class="pin__tag">$2.64M</span></button><button type="button" class="pin pin--sold" style="left:58%;top:56%" data-id="7" aria-label="208 Orchard Street, $1,895,000"><span class="pin__tag">$1.9M</span></button><button type="button" class="pin pin--sold" style="left:14%;top:64%" data-id="8" aria-label="54 Fieldstone Drive, $1,620,000"><span class="pin__tag">$1.62M</span></button><button type="button" class="pin pin--sold" style="left:64%;top:47%" data-id="9" aria-label="12 Linden Row, $1,345,000"><span class="pin__tag">$1.34M</span></button><button type="button" class="pin" style="left:33%;top:73%" data-id="10" aria-label="77 Larkspur Court, $2,350,000"><span class="pin__tag">$2.35M</span></button><button type="button" class="pin" style="left:36%;top:22%" data-id="11" aria-label="16 Chestnut Hill Road, $1,785,000"><span class="pin__tag">$1.78M</span></button><button type="button" class="pin" style="left:70%;top:52%" data-id="12" aria-label="77 Canal Street, Unit 2, $1,195,000"><span class="pin__tag">$1.2M</span></button><button type="button" class="pin" style="left:18%;top:55%" data-id="13" aria-label="5 Meadow Gate Lane, $925,000"><span class="pin__tag">$925K</span></button><button type="button" class="pin" style="left:86%;top:64%" data-id="14" aria-label="340 Porch Light Avenue, $1,150,000"><span class="pin__tag">$1.15M</span></button><button type="button" class="pin" style="left:88%;top:84%" data-id="15" aria-label="19 Cedar Hollow Drive, $1,325,000"><span class="pin__tag">$1.32M</span></button><button type="button" class="pin" style="left:20%;top:18%" data-id="16" aria-label="3 Overlook Terrace, $3,995,000"><span class="pin__tag">$4M</span></button><button type="button" class="pin" style="left:46%;top:86%" data-id="17" aria-label="88 Mill Race Road, $1,640,000"><span class="pin__tag">$1.64M</span></button><button type="button" class="pin" style="left:92%;top:23%" data-id="18" aria-label="1 Lantern Point, $5,250,000"><span class="pin__tag">$5.25M</span></button></div>
+      <div class="smap__pop" id="mapPop" hidden></div>
+      <p class="smap__note">Illustrative map</p>
+      <div class="smap__legend" aria-hidden="true"><span><i style="background:var(--moss)"></i>Active</span><span><i style="background:var(--clay-light)"></i>Sold</span></div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <span class="mark footer__logo"><span class="mark__mono">M<b>C</b></span></span>
+      <p class="footer__name">Maya Collins</p>
+      <p class="footer__title">REALTOR® · Principal Advisor · Certified Residential Specialist</p>
+      <address class="footer__contact">
+        <a href="contact.html">(555) 010&#8209;0142</a>
+        <span>Licensed Real Estate Advisor</span>
+        <a href="contact.html">hello@example.com</a>
+        <a href="contact.html">@collinsandco.homes</a>
+      </address>
+    </div>
+    <nav class="footer__col" aria-label="Explore">
+      <h3>Explore</h3>
+      <a href="index.html">Home</a><a href="about.html">About Maya</a><a href="search.html">Home Search</a><a href="search.html?status=Sold">Portfolio</a><a href="neighborhood.html">Neighborhoods</a><a href="contact.html">Let&rsquo;s Connect</a>
+    </nav>
+    <nav class="footer__col" aria-label="Resources">
+      <h3>Resources</h3>
+      <a href="buyers.html">The Buying Process</a><a href="sellers.html">Selling Your Home</a><a href="sellers.html#valuation">Home Valuation</a><a href="listing.html?id=1#calculator">Mortgage Calculator</a><a href="sellers.html#staging">Staging Checklist</a><a href="index.html#relocation">Relocation</a><a href="about.html#testimonials">Testimonials</a><a href="index.html#journal">Market Reports</a>
+    </nav>
+    <div class="footer__col footer__office">
+      <h3>Office</h3>
+      <p class="footer__brokerage">Collins &amp; Co.</p>
+      <address class="footer__office-addr">120 Market Street, Suite 400<br>Downtown District<br><a href="contact.html">(555) 010&#8209;0142</a></address>
+      <div class="footer__badges" aria-label="Affiliations"><span>REALTOR®</span><span>EQUAL HOUSING</span></div>
+    </div>
+  </div>
+  <div class="container footer__legal">
+    <p>© 2026 Collins &amp; Co. Real Estate. Maya Collins is a licensed real estate advisor and abides by Equal Housing Opportunity laws. All material presented herein is intended for informational purposes only and is compiled from sources deemed reliable but has not been verified. Sample content for template preview.</p>
+    <p class="footer__credit">Site by The EM Creative Studio</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="site.js"></script>
+<script>
+/* Search: filtering, sorting, pagination, map pins and view toggle (sample data from data.js) */
+(function(){
+  var W = window;
+  W.searchPins = function(list){
+    return list.map(function(l){
+      return '<button type="button" class="pin' + (l.status === "Sold" ? " pin--sold" : "") + '" style="left:' + l.x + '%;top:' + l.y + '%" data-id="' + l.id + '" aria-label="' + W.LUMEN.esc(l.address) + ', ' + W.LUMEN.money(l.price) + '"><span class="pin__tag">' + W.LUMEN.short(l.price) + '</span></button>';
+    }).join("");
+  };
+  W.prerender = function(){
+    return { SEARCH_CARDS: W.LISTINGS.map(function(l){ return W.LUMEN.card(l); }).join(""), SEARCH_PINS: W.searchPins(W.LISTINGS), SEARCH_COUNT: String(W.LISTINGS.length) };
+  };
+})();
+
+(function(){
+  var data = window.LISTINGS, U = window.LUMEN;
+  var form = document.getElementById("filters"), grid = document.getElementById("resultsGrid"), pinsEl = document.getElementById("mapPins");
+  var countEl = document.getElementById("count"), countLabel = document.getElementById("countLabel"), chipsEl = document.getElementById("chips");
+  var moreWrap = document.getElementById("moreWrap"), moreBtn = document.getElementById("loadMore"), moreNote = document.getElementById("moreNote");
+  var split = document.getElementById("split"), pop = document.getElementById("mapPop"), sbar = form;
+  var PAGE = 12, shown = PAGE, results = [];
+  var F = function(n){ return form.elements[n]; };
+
+  /* URL parameters prefill the filters (e.g. search.html?q=Hillcrest&status=Sold) */
+  var params = new URLSearchParams(location.search);
+  ["q", "min", "max", "beds", "baths", "type", "status", "sort"].forEach(function(k){
+    if (params.has(k) && F(k)) {
+      var v = params.get(k), el = F(k);
+      if (el.tagName === "SELECT" && ![].some.call(el.options, function(o){ return o.value === v; })) return;
+      el.value = v;
+    }
+  });
+
+  function filter(){
+    var q = F("q").value.trim().toLowerCase(), min = +F("min").value || 0, max = +F("max").value || Infinity;
+    var beds = +F("beds").value || 0, baths = +F("baths").value || 0, type = F("type").value, status = F("status").value;
+    var terms = q.split(/[\s,]+/).filter(Boolean);
+    var out = data.filter(function(l){
+      if (terms.length) {
+        var hay = (l.address + " " + l.neighborhood + " " + l.type + " " + l.status + " " + l.features.join(" ")).toLowerCase();
+        if (!terms.every(function(t){ return hay.indexOf(t) > -1; })) return false;
+      }
+      if (l.price < min || l.price > max) return false;
+      if (l.beds < beds || l.baths < baths) return false;
+      if (type && l.type !== type) return false;
+      if (status === "Active") { if (l.status !== "For Sale" && l.status !== "Open House") return false; }
+      else if (status && l.status !== status) return false;
+      return true;
+    });
+    var s = F("sort").value;
+    out.sort(function(a, b){
+      if (s === "price-desc") return b.price - a.price;
+      if (s === "price-asc") return a.price - b.price;
+      if (s === "sqft") return b.sqft - a.sqft;
+      if (s === "beds") return b.beds - a.beds || b.price - a.price;
+      return a.listed < b.listed ? 1 : a.listed > b.listed ? -1 : 0;
+    });
+    return out;
+  }
+
+  function chips(){
+    var c = [], opt = function(n){ var el = F(n); return el.options[el.selectedIndex].text; };
+    if (F("q").value.trim()) c.push(["Keyword", F("q").value.trim()]);
+    if (F("min").value) c.push(["Min", opt("min")]);
+    if (F("max").value) c.push(["Max", opt("max")]);
+    if (F("beds").value) c.push(["Beds", opt("beds")]);
+    if (F("baths").value) c.push(["Baths", opt("baths")]);
+    if (F("type").value) c.push(["Type", opt("type")]);
+    if (F("status").value) c.push(["Status", opt("status")]);
+    chipsEl.innerHTML = c.map(function(x){ return '<span class="chip">' + x[0] + ': <b>' + U.esc(x[1]) + '</b></span>'; }).join("");
+  }
+
+  function syncURL(){
+    try {
+      var p = new URLSearchParams();
+      ["q", "min", "max", "beds", "baths", "type", "status"].forEach(function(k){ var v = F(k).value.trim(); if (v) p.set(k, v); });
+      if (F("sort").value !== "new") p.set("sort", F("sort").value);
+      var qs = p.toString();
+      history.replaceState(null, "", location.pathname + (qs ? "?" + qs : ""));
+    } catch (e) {}
+  }
+
+  function render(){
+    results = filter();
+    var page = results.slice(0, shown);
+    if (!results.length) {
+      grid.innerHTML = '<div class="results__empty" style="grid-column:1/-1"><h3>No homes match those filters.</h3><p>Try widening the price range or clearing a filter or two.</p><button type="button" class="btn btn--outline-moss" data-clear>Clear All Filters</button></div>';
+    } else {
+      grid.innerHTML = page.map(function(l){ return U.card(l); }).join("");
+    }
+    countEl.textContent = results.length;
+    countLabel.textContent = results.length === 1 ? "home" : "homes";
+    moreWrap.hidden = results.length <= shown;
+    moreNote.textContent = "Showing " + page.length + " of " + results.length + " homes";
+    pinsEl.innerHTML = window.searchPins(results);
+    pop.hidden = true;
+    chips(); syncURL();
+  }
+
+  var t;
+  form.addEventListener("input", function(e){ shown = PAGE; clearTimeout(t); t = setTimeout(render, e.target.type === "search" ? 160 : 0); });
+  form.addEventListener("change", function(){ shown = PAGE; render(); });
+  F("sort").addEventListener("change", function(){ render(); });
+  form.addEventListener("submit", function(e){ e.preventDefault(); render(); });
+  form.addEventListener("reset", function(){ shown = PAGE; setTimeout(render, 0); });
+  grid.addEventListener("click", function(e){ if (e.target.closest("[data-clear]")) { form.reset(); } });
+  moreBtn.addEventListener("click", function(){
+    var first = shown; shown += PAGE; render();
+    var next = grid.children[first]; if (next) { var a = next.matches("a") ? next : next.querySelector("a"); if (a) a.focus({ preventScroll: true }); }
+  });
+
+  /* mobile: collapse the advanced filters */
+  var more = document.getElementById("moreFilters");
+  more.addEventListener("click", function(){ var o = sbar.classList.toggle("is-open"); more.setAttribute("aria-expanded", String(o)); });
+
+  /* view toggle */
+  var vbtns = document.querySelectorAll(".vtoggle button");
+  function setView(v){
+    split.setAttribute("data-view", v);
+    vbtns.forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.view === v)); });
+  }
+  vbtns.forEach(function(b){ b.addEventListener("click", function(){ setView(b.dataset.view); }); });
+  if (window.matchMedia("(max-width:1023px)").matches) setView("grid");
+
+  /* map pins <-> cards */
+  function byId(id){ for (var i = 0; i < data.length; i++) if (data[i].id === id) return data[i]; }
+  function hot(id, on){
+    var p = pinsEl.querySelector('.pin[data-id="' + id + '"]'), c = grid.querySelector('.listing[data-id="' + id + '"]');
+    if (p) p.classList.toggle("is-hot", on); if (c) c.classList.toggle("is-hot", on);
+  }
+  grid.addEventListener("mouseover", function(e){ var c = e.target.closest(".listing"); if (c) hot(c.dataset.id, true); });
+  grid.addEventListener("mouseout", function(e){ var c = e.target.closest(".listing"); if (c) hot(c.dataset.id, false); });
+  pinsEl.addEventListener("mouseover", function(e){ var p = e.target.closest(".pin"); if (p) hot(p.dataset.id, true); });
+  pinsEl.addEventListener("mouseout", function(e){ var p = e.target.closest(".pin"); if (p) hot(p.dataset.id, false); });
+  pinsEl.addEventListener("click", function(e){
+    var p = e.target.closest(".pin"); if (!p) return;
+    var l = byId(+p.dataset.id); if (!l) return;
+    pop.className = "smap__pop" + (l.x < 22 ? " is-left" : l.x > 78 ? " is-right" : "") + (l.y < 50 ? " is-below" : "");
+    pop.style.left = l.x + "%"; pop.style.top = l.y + "%";
+    pop.innerHTML = '<button type="button" class="smap__pop-close" aria-label="Close preview"><svg width="12" height="12" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 3l16 16M19 3L3 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>' +
+      '<a href="listing.html?id=' + l.id + '"><img src="' + l.images[0] + '" alt=""><div class="smap__pop-body"><p class="smap__pop-price">' + U.money(l.price) + '</p><p class="smap__pop-addr">' + U.esc(l.address) + '</p><p class="smap__pop-meta">' + U.esc(l.neighborhood) + ' · ' + l.beds + ' Bd · ' + l.baths + ' Ba · ' + l.sqft.toLocaleString("en-US") + ' Sq.Ft.</p></div></a>';
+    pop.hidden = false;
+    pop.querySelector("a").focus({ preventScroll: true });
+    var card = grid.querySelector('.listing[data-id="' + l.id + '"]');
+    if (card && split.getAttribute("data-view") === "split") card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  });
+  pop.addEventListener("click", function(e){ if (e.target.closest(".smap__pop-close")) { pop.hidden = true; } });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") pop.hidden = true; });
+
+  render();
+})();
+
+</script>
+<script src="../preview-bar.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Property Search | The Hartwell Team · Meridian Template</title>
+<meta name="description" content="Search sample homes for sale with live filters and a map view. Meridian real estate template, sample content for The Hartwell Team.">
+<meta name="theme-color" content="#070502">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Onest:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<!-- Icon sprite (line icons) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+  <symbol id="i-arrow-ur" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+  <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M12 4v6"/><path d="M2 18h20"/></symbol>
+  <symbol id="i-bath" viewBox="0 0 24 24"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-.5C4.683 3 4 3.683 4 4.5V17a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/><line x1="10" x2="8" y1="5" y2="7"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="7" x2="7" y1="19" y2="21"/><line x1="17" x2="17" y1="19" y2="21"/></symbol>
+  <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><polygon fill="currentColor" points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-badge" viewBox="0 0 24 24"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-insta" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+  <symbol id="i-sofa" viewBox="0 0 24 24"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 16a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+  <symbol id="i-li" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-yt" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+  <symbol id="i-split" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M12 3v18"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"/><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 24 24"><path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+  <symbol id="i-mega" viewBox="0 0 24 24"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M10 2v2"/><path d="M14 2v2"/><path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1"/><path d="M6 2v2"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><path d="M8 15h.01"/><path d="M16 15h.01"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+</svg>
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="index.html" class="logo" aria-label="The Hartwell Team home">
+      <span class="logo-mark">TH</span>
+      <span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-a" href="buyers.html">Buyers<span class="rail"></span></a>
+      <a class="nav-a" href="sellers.html">Sellers<span class="rail"></span></a>
+      <a class="nav-a is-current" aria-current="page" href="search.html">Listings<span class="rail"></span></a>
+      <a class="nav-a" href="neighborhood.html">Explore Areas<span class="rail"></span></a>
+      <div class="dd" id="dd">
+        <button class="nav-a" type="button" aria-haspopup="true" aria-expanded="false" id="ddBtn">About<svg class="ic"><use href="#i-chev-d"/></svg><span class="rail"></span></button>
+        <div class="dd-menu">
+          <div class="dd-box">
+            <a href="about.html">Meet the Team<span></span></a>
+            <a href="about.html#stories">Client Stories<span></span></a>
+            <a href="contact.html">Get in Touch<span></span></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hdr-r">
+      <a href="tel:5550100142" class="hdr-phone"><svg class="ic"><use href="#i-phone"/></svg>(555) 010-0142</a>
+      <a href="contact.html" class="btn btn-cta hdr-cta">Schedule a Consultation</a>
+      <button type="button" class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="drawer">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="t">Menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><div id="prog"></div></div>
+</header>
+
+<!-- Drawer -->
+<div class="scrim-bg" id="scrim" aria-hidden="true"></div>
+<div class="dr-clip">
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Site navigation">
+  <div class="dr-top">
+    <p>Menu</p>
+    <button type="button" class="dr-close" id="drClose" aria-label="Close navigation"><svg class="ic"><use href="#i-x"/></svg></button>
+  </div>
+  <div class="dr-body">
+    <div class="dr-anim" style="animation-delay:40ms">
+      <div class="dr-logo"><span class="logo-mark">TH</span><span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span></div>
+      <p class="dr-sub">Led by James Hartwell</p>
+    </div>
+    <nav>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">01</span><span class="rule"></span><span>Buyers</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:100ms"><a href="buyers.html"><span>Buy a Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:130ms"><a href="search.html" class="is-current" aria-current="page"><span>Property Search</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:160ms"><a href="index.html#listings"><span>Featured Listings</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:190ms"><a href="neighborhood.html"><span>Explore Areas</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">02</span><span class="rule"></span><span>Sellers</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:260ms"><a href="sellers.html"><span>Sell Your Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:290ms"><a href="sellers.html#value"><span>Home Valuation</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:320ms"><a href="sellers.html#process"><span>Staging &amp; Launch</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">03</span><span class="rule"></span><span>About</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:390ms"><a href="index.html"><span>Home</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:420ms"><a href="about.html"><span>Meet the Team</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:450ms"><a href="about.html#stories"><span>Client Stories</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:480ms"><a href="contact.html"><span>Get in Touch</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+      <div class="dr-group">
+        <p class="eyebrow"><span class="n">04</span><span class="rule"></span><span>Calculators</span></p>
+        <ul>
+          <li class="dr-anim" style="animation-delay:550ms"><a href="listing.html#calc"><span>Mortgage Calculator</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+          <li class="dr-anim" style="animation-delay:580ms"><a href="buyers.html#faq"><span>Affordability Basics</span><svg class="ic"><use href="#i-chev-r"/></svg></a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div class="dr-foot">
+    <div class="dr-anim" style="animation-delay:700ms">
+      <div class="dr-contact">
+        <a href="tel:5550100142"><span class="dot"><svg class="ic"><use href="#i-phone"/></svg></span><span><small>Call or Text</small><strong>(555) 010-0142</strong></span></a>
+        <a href="mailto:hello@example.com"><span class="dot"><svg class="ic"><use href="#i-mail"/></svg></span><span><small>Email</small><strong>hello@example.com</strong></span></a>
+      </div>
+      <a href="contact.html" class="btn btn-cta">Let&rsquo;s Connect</a>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-insta"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-li"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+      </div>
+    </div>
+  </div>
+</aside>
+</div>
+
+<main>
+<section class="phero short" id="top">
+  <img src="img/hero-search.jpg" alt="Modern home with a pool and lawn at dusk" fetchpriority="high">
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="phero-in">
+    <div class="rise">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Home</a><svg class="ic"><use href="#i-chev-r"/></svg><span aria-current="page">Listings</span></nav>
+      <h1>Search Every Home <em>On the Market</em></h1>
+      <p class="sub">Browse homes for sale across the region, then narrow down to the exact neighborhood, price and layout that fits. Map-first search, clear data, and an agent one click away.</p>
+    </div>
+    <form class="qsearch rise" id="heroSearch" action="search.html" method="get" role="search" style="animation-delay:200ms">
+      <label class="f"><svg class="ic"><use href="#i-pin"/></svg><span class="sr">City, neighborhood, address or keyword</span><input type="search" name="q" id="heroQ" placeholder="Neighborhood, address or keyword (try “pool”)" autocomplete="off"></label>
+      <button type="submit" class="btn btn-cta"><svg class="ic"><use href="#i-search"/></svg>Search</button>
+    </form>
+    <div class="phero-foot rise" style="animation-delay:320ms"><dl class="hl"><div><dt>Map-First Search</dt><dd>Browse the list and the map side by side, or switch to a full map.</dd></div><div><dt>Live Filters</dt><dd>Price, beds, baths and home type update results instantly.</dd></div><div><dt>Agent On Call</dt><dd>Request a private tour the moment something fits.</dd></div></dl></div>
+  </div>
+</section>
+
+
+<!-- ============ FILTER BAR ============ -->
+<div class="fbar-wrap" id="feed">
+  <form class="fbar" id="filters" action="search.html" method="get" role="search" aria-label="Filter listings">
+    <label class="fld kw"><svg class="ic"><use href="#i-search"/></svg><span class="sr">Keyword</span><input type="search" name="q" id="fQ" placeholder="Neighborhood, address or keyword" autocomplete="off" list="hoods"></label>
+    <datalist id="hoods"><option value="Hillcrest"><option value="Lakeview"><option value="Oak Park"><option value="Westbrook"><option value="Riverside"><option value="Downtown"><option value="Southport"><option value="Maple Grove"></datalist>
+    <label class="fld sel"><span>Min</span><select name="min" id="fMin" aria-label="Minimum price"><option value="">Any</option><option value="500000">$500K+</option><option value="750000">$750K+</option><option value="1000000">$1M+</option><option value="1500000">$1.5M+</option><option value="2000000">$2M+</option><option value="3000000">$3M+</option></select></label>
+    <label class="fld sel"><span>Max</span><select name="max" id="fMax" aria-label="Maximum price"><option value="">Any</option><option value="750000">$750K</option><option value="1000000">$1M</option><option value="1500000">$1.5M</option><option value="2000000">$2M</option><option value="3000000">$3M</option><option value="4000000">$4M</option></select></label>
+    <label class="fld sel"><span>Beds</span><select name="beds" id="fBeds" aria-label="Minimum bedrooms"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option><option value="5">5+</option></select></label>
+    <label class="fld sel"><span>Baths</span><select name="baths" id="fBaths" aria-label="Minimum bathrooms"><option value="">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option></select></label>
+    <label class="fld sel"><span>Type</span><select name="type" id="fType" aria-label="Property type"><option value="">All</option><option value="Single Family">Single Family</option><option value="Townhome">Townhome</option><option value="Condo">Condo</option><option value="Estate">Estate</option></select></label>
+    <label class="fld sel"><span>Sort</span><select name="sort" id="fSort" aria-label="Sort listings"><option value="new">Newest</option><option value="plh">Price: Low to High</option><option value="phl">Price: High to Low</option><option value="size">Largest</option><option value="beds">Most Bedrooms</option></select></label>
+    <button type="reset" class="fbtn" id="fReset"><svg class="ic"><use href="#i-reset"/></svg>Reset</button>
+  </form>
+</div>
+<div class="chips-row" id="chipsRow" aria-label="Active filters"></div>
+<div class="rbar">
+  <p class="rcount" role="status" aria-live="polite"><b id="rNum">20</b><span id="rTxt">homes for sale &middot; sorted by newest</span></p>
+  <div class="vtog no-js-hide" role="group" aria-label="Results view">
+    <button type="button" class="split-only" data-v="split" aria-pressed="false"><svg class="ic"><use href="#i-split"/></svg>Split</button>
+    <button type="button" data-v="grid" aria-pressed="true" class="on"><svg class="ic"><use href="#i-grid"/></svg>Grid</button>
+    <button type="button" data-v="map" aria-pressed="false"><svg class="ic"><use href="#i-map"/></svg>Map</button>
+  </div>
+</div>
+
+<section class="sres v-grid" id="sres" aria-label="Search results">
+  <div class="rlist">
+    <div class="rgrid" id="rgrid">
+      <a href="listing.html?id=16" class="lcard card-hover compact" data-id="16"><div class="im"><img class="zoom" src="img/x10.jpg" alt="8 Summit Ridge Court, Hillcrest" loading="lazy"><span class="badge st-new">Coming Soon</span><span class="type">Estate</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Hillcrest</p><h3>8 Summit Ridge Court</h3><p class="price">$3,450,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>5 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>6 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>6,800 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=11" class="lcard card-hover compact" data-id="11"><div class="im"><img class="zoom" src="img/x5.jpg" alt="403 Bluebell Avenue, Maple Grove" loading="lazy"><span class="badge st-new">New Listing</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Maple Grove</p><h3>403 Bluebell Avenue</h3><p class="price">$615,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>3 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>2 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>1,780 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=3" class="lcard card-hover compact" data-id="3"><div class="im"><img class="zoom" src="img/l3.jpg" alt="27 Whitmore Lane, Oak Park" loading="lazy"><span class="badge st-new">New Listing</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Oak Park</p><h3>27 Whitmore Lane</h3><p class="price">$1,369,900</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,880 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=5" class="lcard card-hover compact" data-id="5"><div class="im"><img class="zoom" src="img/l5.jpg" alt="604 Crestview Terrace, Westbrook" loading="lazy"><span class="badge st-new">New Listing</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Westbrook</p><h3>604 Crestview Terrace</h3><p class="price">$1,240,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>4 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,460 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=1" class="lcard card-hover compact" data-id="1"><div class="im"><img class="zoom" src="img/l1.jpg" alt="48 Linden Ridge Drive, Hillcrest" loading="lazy"><span class="badge">Open House</span><span class="type">Estate</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Hillcrest</p><h3>48 Linden Ridge Drive</h3><p class="price">$2,950,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>5 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>5 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>6,240 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=20" class="lcard card-hover compact" data-id="20"><div class="im"><img class="zoom" src="img/c1.jpg" alt="88 River Walk #3B, Riverside" loading="lazy"><span class="badge">For Sale</span><span class="type">Condo</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Riverside</p><h3>88 River Walk #3B</h3><p class="price">$529,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>2 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>2 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>1,105 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=2" class="lcard card-hover compact" data-id="2"><div class="im"><img class="zoom" src="img/l2.jpg" alt="112 Harbor Pine Court, Lakeview" loading="lazy"><span class="badge">Open House</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Lakeview</p><h3>112 Harbor Pine Court</h3><p class="price">$1,685,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>5 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>4 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,980 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=18" class="lcard card-hover compact" data-id="18"><div class="im"><img class="zoom" src="img/x12.jpg" alt="145 Greenbriar Drive, Maple Grove" loading="lazy"><span class="badge">For Sale</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Maple Grove</p><h3>145 Greenbriar Drive</h3><p class="price">$735,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,480 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=4" class="lcard card-hover compact" data-id="4"><div class="im"><img class="zoom" src="img/l4.jpg" alt="9 Saltmeadow Way, Riverside" loading="lazy"><span class="badge">Open House</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Riverside</p><h3>9 Saltmeadow Way</h3><p class="price">$1,295,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>3,110 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=12" class="lcard card-hover compact" data-id="12"><div class="im"><img class="zoom" src="img/x6.jpg" alt="58 Sterling Park Way, Lakeview" loading="lazy"><span class="badge">For Sale</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Lakeview</p><h3>58 Sterling Park Way</h3><p class="price">$845,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>4 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,640 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=6" class="lcard card-hover compact" data-id="6"><div class="im"><img class="zoom" src="img/l6.jpg" alt="1418 Alder Street, Downtown" loading="lazy"><span class="badge">Open House</span><span class="type">Townhome</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Downtown</p><h3>1418 Alder Street</h3><p class="price">$1,300,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>3 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>3 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>2,150 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+      <a href="listing.html?id=15" class="lcard card-hover compact" data-id="15"><div class="im"><img class="zoom" src="img/x9.jpg" alt="336 Palmetto Drive, Southport" loading="lazy"><span class="badge">For Sale</span><span class="type">Single Family</span></div><div class="bd"><div><p class="loc"><svg class="ic"><use href="#i-pin"/></svg>Southport</p><h3>336 Palmetto Drive</h3><p class="price">$689,000</p></div><div class="meta"><div class="facts"><span><svg class="ic"><use href="#i-bed"/></svg>3 Bd</span><span><svg class="ic"><use href="#i-bath"/></svg>2 Ba</span><span><svg class="ic"><use href="#i-ruler"/></svg>1,960 Sqft</span></div><span class="arrow-btn"><svg class="ic"><use href="#i-arrow-ur"/></svg></span></div></div></a>
+    </div>
+    <div class="more-wrap" id="moreWrap">
+      <p id="moreTxt">Showing 12 of 20 homes</p>
+      <div class="bar"><i id="moreBar" style="width:60%"></i></div>
+      <button type="button" class="btn btn-ghost no-js-hide" id="moreBtn">Load more homes</button>
+    </div>
+    <p class="disclaimer">Listings shown are sample properties for this template preview. Prices, details and availability are fictional and for demonstration only.</p>
+  </div>
+  <div class="smap">
+    <div class="smap-in" id="smap">
+      <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+  <rect width="1000" height="1000" fill="#efebe3"/>
+  <g fill="#e2e7d6">
+    <path d="M330 380c40-30 120-40 160-10s40 90 0 120-130 30-170 0-30-80 10-110z"/>
+    <path d="M90 250c50-40 140-30 170 10s0 110-60 120-150-10-160-50 0-50 50-80z"/>
+    <path d="M620 520c50-20 120 0 140 40s-20 90-80 90-110-30-110-70 10-45 50-60z"/>
+    <path d="M760 160c40-20 110-10 130 30s-10 80-60 80-100-20-100-60 0-35 30-50z"/>
+  </g>
+  <path d="M400 40c60-20 160-10 180 50s-40 110-120 110-130-40-120-90 20-55 60-70z" fill="#cfdde2"/>
+  <path d="M-20 520C80 560 160 600 210 650s60 140 160 170 220-20 330 30 160 120 330 140" fill="none" stroke="#cfdde2" stroke-width="34" stroke-linecap="round"/>
+  <g fill="none" stroke="#e5dfd3" stroke-width="3">
+    <path d="M0 120H1000M0 300H1000M0 470H1000M0 590H1000M0 760H1000M0 900H1000"/>
+    <path d="M110 0V1000M250 0V1000M420 0V1000M560 0V1000M700 0V1000M860 0V1000"/>
+  </g>
+  <g fill="none" stroke="#e8e2d6" stroke-width="2">
+    <path d="M300 640h160M300 670h160M300 700h160M300 730h160M320 620v140M360 620v140M400 620v140M440 620v140"/>
+  </g>
+  <g fill="none" stroke="#fff" stroke-linecap="round">
+    <path d="M0 690C200 640 380 560 520 470s260-150 480-170" stroke-width="12"/>
+    <path d="M520 0C510 200 470 330 430 470s-60 330-40 530" stroke-width="10"/>
+    <path d="M60 1000C120 820 200 700 330 610" stroke-width="7"/>
+    <path d="M560 1000C600 860 680 760 820 690" stroke-width="7"/>
+    <path d="M150 0C200 160 230 280 300 380" stroke-width="6"/>
+  </g>
+  <g fill="none" stroke="#d9d2c4" stroke-width="1.5" stroke-dasharray="6 6">
+    <path d="M0 690C200 640 380 560 520 470s260-150 480-170"/>
+  </g>
+</svg>
+      <span class="map-legend">Map Search &middot; <span id="mapN">20</span> homes</span>
+      <span class="alabel" style="left:39%;top:51%">Hillcrest</span><span class="alabel" style="left:46%;top:22%">Lakeview</span><span class="alabel" style="left:53%;top:31%">Oak Park</span><span class="alabel" style="left:27%;top:43%">Westbrook</span><span class="alabel" style="left:24%;top:68%">Riverside</span><span class="alabel" style="left:35%;top:71%">Downtown</span><span class="alabel" style="left:61%;top:80%">Southport</span><span class="alabel" style="left:68%;top:67%">Maple Grove</span>
+      <div id="pins"><button type="button" class="ppin" data-id="16" style="left:38%;top:37%" aria-label="8 Summit Ridge Court, $3.5M"><span>$3.5M</span></button><button type="button" class="ppin" data-id="11" style="left:68%;top:62%" aria-label="403 Bluebell Avenue, $615K"><span>$615K</span></button><button type="button" class="ppin" data-id="3" style="left:54%;top:27%" aria-label="27 Whitmore Lane, $1.4M"><span>$1.4M</span></button><button type="button" class="ppin" data-id="5" style="left:28%;top:38%" aria-label="604 Crestview Terrace, $1.2M"><span>$1.2M</span></button><button type="button" class="ppin" data-id="1" style="left:40%;top:43%" aria-label="48 Linden Ridge Drive, $3M"><span>$3M</span></button><button type="button" class="ppin" data-id="20" style="left:21%;top:67%" aria-label="88 River Walk #3B, $529K"><span>$529K</span></button><button type="button" class="ppin" data-id="2" style="left:47%;top:16%" aria-label="112 Harbor Pine Court, $1.7M"><span>$1.7M</span></button><button type="button" class="ppin" data-id="18" style="left:71%;top:58%" aria-label="145 Greenbriar Drive, $735K"><span>$735K</span></button><button type="button" class="ppin" data-id="4" style="left:25%;top:63%" aria-label="9 Saltmeadow Way, $1.3M"><span>$1.3M</span></button><button type="button" class="ppin" data-id="12" style="left:43%;top:20%" aria-label="58 Sterling Park Way, $845K"><span>$845K</span></button><button type="button" class="ppin" data-id="6" style="left:36%;top:68%" aria-label="1418 Alder Street, $1.3M"><span>$1.3M</span></button><button type="button" class="ppin" data-id="15" style="left:58%;top:80%" aria-label="336 Palmetto Drive, $689K"><span>$689K</span></button><button type="button" class="ppin" data-id="8" style="left:23%;top:33%" aria-label="220 Quarry View Lane, $1.1M"><span>$1.1M</span></button><button type="button" class="ppin" data-id="19" style="left:33%;top:71%" aria-label="500 Market Street #1204, $685K"><span>$685K</span></button><button type="button" class="ppin" data-id="7" style="left:36%;top:48%" aria-label="31 Juniper Hollow Road, $1.9M"><span>$1.9M</span></button><button type="button" class="ppin" data-id="13" style="left:62%;top:76%" aria-label="9 Larkspur Lane, $579K"><span>$579K</span></button><button type="button" class="ppin" data-id="9" style="left:58%;top:23%" aria-label="77 Fairmont Circle, $1.5M"><span>$1.5M</span></button><button type="button" class="ppin" data-id="10" style="left:44%;top:40%" aria-label="15 Beacon Crest Drive, $2.4M"><span>$2.4M</span></button><button type="button" class="ppin" data-id="17" style="left:31%;top:34%" aria-label="72 Chateau Lane, $2.2M"><span>$2.2M</span></button><button type="button" class="ppin" data-id="14" style="left:51%;top:31%" aria-label="1201 Rosewood Avenue, $1.7M"><span>$1.7M</span></button></div>
+      <div class="map-pop" id="mapPop" role="dialog" aria-label="Selected listing"></div>
+    </div>
+  </div>
+</section>
+<!-- ============ CTA ============ -->
+<section class="cta-band" id="contact">
+  <div class="cta-box">
+    <img src="img/cta.jpg" alt="" loading="lazy">
+    <div class="o1" aria-hidden="true"></div>
+    <div class="o2" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="reveal in">
+      <p class="eyebrow light center"><span class="rule"></span><span>Ready To Make Your Next Move?</span></p>
+      <h2>Didn&rsquo;t see the one? Let&rsquo;s find it together.</h2>
+      <p>Tell us what you&rsquo;re looking for and we&rsquo;ll set up a private, curated search &mdash; including homes before they hit the market.</p>
+      <div class="btns">
+        <a href="contact.html" class="btn btn-cta">Connect With Us</a>
+        <a href="tel:5550100142" class="btn btn-ghost light"><svg class="ic"><use href="#i-phone"/></svg>(555) 010-0142</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ftr">
+  <div class="ftr-in">
+    <div class="ftr-grid">
+      <div>
+        <a href="index.html" class="logo" aria-label="The Hartwell Team home"><span class="logo-mark">TH</span><span class="logo-word"><b>Hartwell</b><small>Real Estate Team</small></span></a>
+        <p class="ftr-about">The Hartwell Team, led by James Hartwell &mdash; a full-time real estate team serving buyers, sellers and investors across the metro region and its surrounding communities.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg class="ic"><use href="#i-fb"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="ic"><use href="#i-insta"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-li"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="ftr-cols">
+        <div><h4>Buy</h4><ul><li><a class="flink" href="buyers.html">Buyers</a></li><li><a class="flink" href="search.html">Property Search</a></li><li><a class="flink" href="index.html#listings">Featured Listings</a></li><li><a class="flink" href="listing.html#calc">Mortgage Calculator</a></li></ul></div>
+        <div><h4>Sell</h4><ul><li><a class="flink" href="sellers.html">Sellers</a></li><li><a class="flink" href="sellers.html#value">Home Valuation</a></li><li><a class="flink" href="sellers.html#process">Staging</a></li><li><a class="flink" href="sellers.html#faq">Seller FAQ</a></li></ul></div>
+        <div><h4>Explore</h4><ul><li><a class="flink" href="index.html">Home</a></li><li><a class="flink" href="neighborhood.html">Explore Areas</a></li><li><a class="flink" href="about.html">Meet the Team</a></li><li><a class="flink" href="about.html#stories">Client Stories</a></li><li><a class="flink" href="contact.html">Get in Touch</a></li></ul></div>
+      </div>
+      <div>
+        <h4>Visit &amp; Contact</h4>
+        <ul class="ftr-contact">
+          <li><svg class="ic"><use href="#i-pin"/></svg><span>200 Market Street, Suite 400, Downtown</span></li>
+          <li><svg class="ic"><use href="#i-clock"/></svg><span>Open daily 8:00am &ndash; 6:00pm &middot; reach us 24/7</span></li>
+          <li><a href="tel:5550100142"><svg class="ic"><use href="#i-phone"/></svg><span>(555) 010-0142</span></a></li>
+          <li><a href="mailto:hello@example.com"><svg class="ic"><use href="#i-mail"/></svg><span>hello@example.com</span></a></li>
+          <li><svg class="ic"><use href="#i-shield"/></svg><span>Licensed Real Estate Team &middot; Equal Housing Opportunity</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ftr-legal">
+      <p>&copy; 2026 The Hartwell Team &middot; All rights reserved</p>
+      <ul><li><a href="#top">Accessibility</a></li><li><a href="#top">Privacy Policy</a></li><li><a href="#top">Sitemap</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:5550100142" class="call-fab" aria-label="Call The Hartwell Team"><svg class="ic"><use href="#i-phone"/></svg></a>
+
+<script src="site.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+  var d=document, L=window.LISTINGS||[], HT=window.HT;
+  var f={q:d.getElementById('fQ'),min:d.getElementById('fMin'),max:d.getElementById('fMax'),beds:d.getElementById('fBeds'),baths:d.getElementById('fBaths'),type:d.getElementById('fType'),sort:d.getElementById('fSort')};
+  var grid=d.getElementById('rgrid'), sres=d.getElementById('sres'), pinsBox=d.getElementById('pins'), pop=d.getElementById('mapPop');
+  var PAGE=12, shown=PAGE, results=[], view='grid';
+  var sortNames={'new':'newest','plh':'price, low to high','phl':'price, high to low','size':'largest first','beds':'most bedrooms'};
+
+  /* URL params -> controls */
+  try{var p=new URLSearchParams(location.search);Object.keys(f).forEach(function(k){var v=p.get(k);if(v!==null&&v!=='')f[k].value=v;});}catch(e){}
+  d.getElementById('heroQ').value=f.q.value;
+
+  function hay(l){return (l.address+' '+l.neighborhood+' '+l.type+' '+l.status+' '+l.features.join(' ')+' '+l.description).toLowerCase();}
+  function filter(){
+    var toks=f.q.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+    var mn=+f.min.value||0, mx=+f.max.value||Infinity, bd=+f.beds.value||0, ba=+f.baths.value||0, ty=f.type.value;
+    return L.filter(function(l){
+      if(l.price<mn||l.price>mx||l.beds<bd||l.baths<ba)return false;
+      if(ty&&l.type!==ty)return false;
+      var h=hay(l);for(var i=0;i<toks.length;i++){if(h.indexOf(toks[i])<0)return false;}
+      return true;
+    }).sort(function(a,b){
+      switch(f.sort.value){case 'plh':return a.price-b.price;case 'phl':return b.price-a.price;case 'size':return b.sqft-a.sqft;case 'beds':return b.beds-a.beds||b.price-a.price;default:return a.dom-b.dom;}
+    });
+  }
+  function chips(){
+    var c=[], row=d.getElementById('chipsRow');
+    if(f.q.value.trim())c.push(['q','“'+f.q.value.trim()+'”']);
+    if(f.min.value)c.push(['min','From '+HT.short(+f.min.value)]);
+    if(f.max.value)c.push(['max','Up to '+HT.short(+f.max.value)]);
+    if(f.beds.value)c.push(['beds',f.beds.value+'+ beds']);
+    if(f.baths.value)c.push(['baths',f.baths.value+'+ baths']);
+    if(f.type.value)c.push(['type',f.type.value]);
+    row.innerHTML=c.map(function(x){return '<button type="button" class="chip active" data-k="'+x[0]+'">'+HT.esc(x[1])+'<svg class="ic"><use href="#i-x"/></svg></button>';}).join('');
+  }
+  function renderList(){
+    var n=Math.min(shown,results.length);
+    if(!results.length){grid.innerHTML='<div class="empty"><h3>No matches yet</h3><p>Try widening your price range, removing a filter or searching a nearby neighborhood.</p><button type="button" class="btn btn-ghost" id="emptyReset">Reset all filters</button></div>';d.getElementById('emptyReset').onclick=reset;}
+    else grid.innerHTML=results.slice(0,n).map(function(l){return HT.card(l,{compact:true});}).join('');
+    d.getElementById('moreTxt').textContent=results.length?('Showing '+n+' of '+results.length+' homes'):'No homes to show';
+    d.getElementById('moreBar').style.width=(results.length?Math.round(n/results.length*100):0)+'%';
+    d.getElementById('moreBtn').style.display=n<results.length?'':'none';
+  }
+  function renderPins(){
+    pinsBox.innerHTML=results.map(function(l){return '<button type="button" class="ppin" data-id="'+l.id+'" style="left:'+l.x+'%;top:'+l.y+'%" aria-label="'+HT.esc(l.address)+', '+HT.short(l.price)+'"><span>'+HT.short(l.price)+'</span></button>';}).join('');
+    d.getElementById('mapN').textContent=results.length;
+    pop.classList.remove('show');
+  }
+  function apply(keepShown){
+    results=filter(); if(!keepShown)shown=PAGE;
+    d.getElementById('rNum').textContent=results.length;
+    d.getElementById('rTxt').textContent=(results.length===1?'home':'homes')+' for sale \u00b7 sorted by '+sortNames[f.sort.value||'new'];
+    chips(); renderList(); renderPins();
+    try{var q=new URLSearchParams();Object.keys(f).forEach(function(k){if(f[k].value&&!(k==='sort'&&f[k].value==='new'))q.set(k,f[k].value);});history.replaceState(null,'',location.pathname+(q.toString()?'?'+q:''));}catch(e){}
+  }
+  function reset(){Object.keys(f).forEach(function(k){f[k].value=k==='sort'?'new':'';});d.getElementById('heroQ').value='';apply();}
+
+  /* Events */
+  var t; f.q.addEventListener('input',function(){clearTimeout(t);t=setTimeout(function(){apply();},180);});
+  ['min','max','beds','baths','type','sort'].forEach(function(k){f[k].addEventListener('change',function(){apply();});});
+  d.getElementById('filters').addEventListener('submit',function(e){e.preventDefault();apply();});
+  d.getElementById('fReset').addEventListener('click',function(e){e.preventDefault();reset();});
+  d.getElementById('heroSearch').addEventListener('submit',function(e){e.preventDefault();f.q.value=d.getElementById('heroQ').value;apply();d.getElementById('feed').scrollIntoView({behavior:'smooth'});});
+  d.getElementById('chipsRow').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;var k=b.getAttribute('data-k');f[k].value='';if(k==='q')d.getElementById('heroQ').value='';apply();});
+  d.getElementById('moreBtn').addEventListener('click',function(){shown+=PAGE;renderList();});
+
+  /* View toggle */
+  var vbtns=[].slice.call(d.querySelectorAll('.vtog button'));
+  function setView(v){view=v;sres.className='sres v-'+v;vbtns.forEach(function(b){var on=b.getAttribute('data-v')===v;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});}
+  vbtns.forEach(function(b){b.addEventListener('click',function(){setView(b.getAttribute('data-v'));});});
+  setView(innerWidth>=1100?'split':'grid');
+  addEventListener('resize',function(){if(innerWidth<1100&&view==='split')setView('grid');});
+
+  /* Card <-> pin linking */
+  function hot(id,on){var p=pinsBox.querySelector('.ppin[data-id="'+id+'"]');if(p)p.classList.toggle('hot',on);}
+  grid.addEventListener('mouseover',function(e){var c=e.target.closest('.lcard');if(c)hot(c.getAttribute('data-id'),true);});
+  grid.addEventListener('mouseout',function(e){var c=e.target.closest('.lcard');if(c)hot(c.getAttribute('data-id'),false);});
+  pinsBox.addEventListener('click',function(e){
+    var b=e.target.closest('.ppin');if(!b)return;var id=+b.getAttribute('data-id'),l=L.filter(function(x){return x.id===id;})[0];if(!l)return;
+    [].forEach.call(pinsBox.querySelectorAll('.ppin.hot'),function(x){x.classList.remove('hot');});b.classList.add('hot');
+    pop.innerHTML='<a href="listing.html?id='+l.id+'"><img src="'+l.images[0]+'" alt=""><span><b>'+HT.money(l.price)+'</b><span>'+HT.esc(l.address)+'</span><small>'+l.beds+' bd \u00b7 '+l.baths+' ba \u00b7 '+l.sqft.toLocaleString('en-US')+' sqft</small></span></a><button type="button" class="x" aria-label="Close preview"><svg class="ic"><use href="#i-x"/></svg></button>';
+    pop.classList.add('show');
+    pop.querySelector('.x').onclick=function(){pop.classList.remove('show');b.classList.remove('hot');};
+    [].forEach.call(grid.querySelectorAll('.lcard.hot'),function(x){x.classList.remove('hot');});
+    var c=grid.querySelector('.lcard[data-id="'+id+'"]');if(c&&view==='split'){c.classList.add('hot');c.scrollIntoView({behavior:'smooth',block:'center'});}
+  });
+
+  apply();
+})();
+</script>
+<script src="../preview-bar.js" defer></script>
+</body>
+</html>

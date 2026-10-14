@@ -167,3 +167,16 @@ if (resetBtn) {
 }
 
 })();
+
+/* Arriving from a template's "Start with ..." button (/contact?template=haven)
+   starts the message off with the template's name, so the enquiry says which
+   design the visitor liked. Never overwrites anything already typed. */
+(function () {
+  var slug = new URLSearchParams(location.search).get('template');
+  var msg = document.getElementById('cf-message');
+  if (!slug || !msg || msg.value) return;
+  var name = slug.replace(/[^a-z0-9-]/gi, '');
+  if (!name) return;
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+  msg.value = "I'm interested in the " + name + " website template. ";
+})();

@@ -1,4 +1,24 @@
 import { FOOTER_HTML } from "./footer";
+import { TEMPLATES } from "@/lib/templates";
+
+// Home page teaser cards for /templates, one per entry in lib/templates.ts.
+const TEMPLATE_CARDS = TEMPLATES.map(
+  (t) => `
+      <a class="tplh" href="/templates/${t.slug}" data-rise data-hot>
+        <div class="tplh__browser">
+          <div class="tplh__chrome" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="tplh__screen">
+            <img src="/images/templates/${t.slug}.jpg" alt="${t.name} website template, desktop home page" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="tplh__body">
+          <span class="tplh__fit">${t.fit}</span>
+          <h3 class="tplh__name">${t.name}</h3>
+          <span class="tplh__swatches" aria-hidden="true">${t.palette.map((c) => `<i style="background:${c}"></i>`).join("")}</span>
+          <span class="tplh__go">Preview live <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+        </div>
+      </a>`,
+).join("");
 
 // Auto-extracted static markup from the original em-creative-studio-home_17.html.
 // Rendered via dangerouslySetInnerHTML to preserve pixel-exact structure that the
@@ -763,6 +783,35 @@ export const SITE_BODY_HTML = `
       <p>Not in real estate? There is a second track for every other kind of business.</p>
       <a class="btn btn--dark" href="/services/seo" data-hot>
         See all SEO plans <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== TEMPLATES ========================= -->
+<!-- Teaser for /templates: the four website templates, each card opening its
+     live preview. Cards come from lib/templates.ts, so a new template shows up
+     here and on /templates at once. Styles: "TEMPLATES TEASER" in globals.css. -->
+<section class="sec sec--linen" id="templates">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow" data-rise>
+          <svg class="crown" viewBox="0 0 120 74"><use href="#crown"/></svg>
+          Website templates
+        </span>
+        <h2 class="h2" data-rise>Try a site on before <span class="tint">it&rsquo;s yours</span></h2>
+      </div>
+      <p class="lede" data-rise>Four real estate sites we have built and launched, rebuilt with placeholder content. Each one is a full site, with search, listing pages, buyers, sellers and more. Click in and explore it like your clients would.</p>
+    </div>
+
+    <div class="tplh-grid">${TEMPLATE_CARDS}
+    </div>
+
+    <div class="tplh-foot" data-rise>
+      <p>Every template is tailored to your brand, pages and listings before launch.</p>
+      <a class="btn btn--dark" href="/templates" data-hot>
+        See all templates <svg width="17" height="10" viewBox="0 0 17 10"><use href="#arw"/></svg>
       </a>
     </div>
   </div>

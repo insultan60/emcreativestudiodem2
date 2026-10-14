@@ -1,0 +1,109 @@
+/* /templates - the template cards and the three steps. Everything else on the
+   page (nav, hero, section heads, buttons, CTA band) comes from the /work
+   sheet, imported just before this one. */
+
+.tpl-list{ display:flex; flex-direction:column; gap:clamp(56px,8vw,120px); margin-top:clamp(40px,5vw,72px); }
+
+.tpl{
+  display:grid; grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:clamp(32px,5vw,88px); align-items:center;
+}
+.tpl:nth-child(even) .tpl__stage{ order:2; }
+
+/* ---- the preview: a browser window with a phone in front ---- */
+.tpl__stage{
+  position:relative; display:block; color:inherit; text-decoration:none;
+  padding:0 clamp(28px,4vw,64px) clamp(28px,3.5vw,48px) 0;
+}
+.tpl:nth-child(even) .tpl__stage{ padding:0 0 clamp(28px,3.5vw,48px) clamp(28px,4vw,64px); }
+
+.tpl__browser{
+  border-radius:14px; overflow:hidden; background:var(--paper);
+  border:1px solid var(--hair);
+  box-shadow:0 40px 80px -48px rgba(59,41,18,.55), 0 2px 6px rgba(59,41,18,.06);
+  transition:transform 500ms var(--ease-out, cubic-bezier(.2,.7,.2,1)), box-shadow 500ms;
+}
+.tpl__chrome{
+  display:flex; align-items:center; gap:6px; height:34px; padding:0 14px;
+  background:var(--linen); border-bottom:1px solid var(--hair);
+}
+.tpl__chrome i{ width:9px; height:9px; border-radius:50%; background:var(--champagne); }
+.tpl__chrome span{
+  margin-left:12px; flex:1; max-width:260px; height:20px; border-radius:6px;
+  background:var(--paper); font-size:11px; line-height:20px; padding-left:10px; color:var(--ink-faint);
+}
+/* The desktop shot is a tall full-page capture. It sits at the top and
+   glides down on hover, so a visitor gets a feel for the whole page
+   before clicking in. */
+.tpl__screen{ aspect-ratio:16/10; overflow:hidden; position:relative; background:var(--linen); }
+.tpl__screen img{
+  position:absolute; inset:0 0 auto 0; width:100%; height:auto; display:block;
+  transform:translateY(0); transition:transform 6s cubic-bezier(.45,.05,.35,1);
+}
+.tpl__phone{
+  position:absolute; right:0; bottom:0; width:clamp(92px,17%,150px); aspect-ratio:390/844;
+  border-radius:22px; overflow:hidden; background:#111;
+  border:5px solid #1b1612;
+  box-shadow:0 30px 60px -28px rgba(59,41,18,.7);
+  transition:transform 500ms var(--ease-out, cubic-bezier(.2,.7,.2,1));
+}
+.tpl:nth-child(even) .tpl__phone{ right:auto; left:0; }
+.tpl__phone img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; }
+
+@media (hover:hover){
+  .tpl__stage:hover .tpl__browser{ transform:translateY(-6px); box-shadow:0 50px 90px -46px rgba(59,41,18,.6), 0 2px 6px rgba(59,41,18,.06); }
+  .tpl__stage:hover .tpl__screen img{ transform:translateY(calc(-100% + var(--screen-h, 0px))); }
+  .tpl__stage:hover .tpl__phone{ transform:translateY(-12px) rotate(-2deg); }
+}
+@media (prefers-reduced-motion: reduce){
+  .tpl__screen img, .tpl__browser, .tpl__phone{ transition:none; }
+}
+
+/* ---- the copy column ---- */
+.tpl__no{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--cocoa); opacity:.65; }
+.tpl__name{
+  font-family:var(--display); font-weight:700; letter-spacing:-.03em; line-height:1;
+  font-size:clamp(40px,4.6vw,72px); margin:14px 0 18px; color:var(--ink);
+}
+.tpl__sum{ font-size:clamp(15px,1.1vw,17px); line-height:1.55; color:var(--ink-soft); max-width:46ch; }
+.tpl__feats{ list-style:none; padding:0; margin:24px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; }
+.tpl__feats li{ position:relative; padding-left:18px; font-size:14px; line-height:1.4; color:var(--ink); }
+.tpl__feats li::before{
+  content:""; position:absolute; left:0; top:.45em; width:8px; height:8px; border-radius:50%;
+  background:var(--aqua, #A1D7D6);
+}
+.tpl__meta{
+  display:flex; flex-wrap:wrap; align-items:center; gap:14px 20px;
+  margin-top:26px; padding-top:20px; border-top:1px solid var(--hair);
+}
+.tpl__swatches{ display:flex; }
+.tpl__swatches i{
+  width:26px; height:26px; border-radius:50%; border:2px solid var(--paper);
+  box-shadow:0 0 0 1px var(--hair); margin-right:-6px;
+}
+.tpl__fonts{ font-size:12px; letter-spacing:.06em; color:var(--ink-faint); }
+.tpl__acts{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+
+/* ---- how it works ---- */
+.tpl-steps{
+  list-style:none; padding:0; margin:clamp(36px,4vw,56px) 0 0;
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(16px,2vw,28px);
+}
+.tpl-steps li{
+  background:var(--paper); border:1px solid var(--hair); border-radius:18px;
+  padding:clamp(24px,2.6vw,36px);
+}
+.tpl-steps__n{ font-size:12px; letter-spacing:.16em; color:var(--cocoa); opacity:.6; }
+.tpl-steps h3{ font-family:var(--display); font-weight:700; font-size:clamp(20px,1.6vw,24px); letter-spacing:-.02em; margin:14px 0 10px; color:var(--ink); }
+.tpl-steps p{ font-size:15px; line-height:1.55; color:var(--ink-soft); margin:0; }
+
+@media (max-width: 960px){
+  .tpl{ grid-template-columns:1fr; }
+  .tpl:nth-child(even) .tpl__stage{ order:0; padding:0 clamp(28px,4vw,64px) clamp(28px,3.5vw,48px) 0; }
+  .tpl:nth-child(even) .tpl__phone{ left:auto; right:0; }
+  .tpl-steps{ grid-template-columns:1fr; }
+}
+@media (max-width: 560px){
+  .tpl__feats{ grid-template-columns:1fr; }
+  .tpl__acts .btn{ flex:1 1 100%; justify-content:center; }
+}

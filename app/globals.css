@@ -3063,3 +3063,58 @@ html body .sec, html body .quote{
   background-size:100% 100%, 100% 100%, var(--grid-step) var(--grid-step);
   background-repeat:no-repeat, no-repeat, repeat;
 }
+
+
+/* ==================================================================
+   TEMPLATES TEASER (#templates) - four cards linking to the live
+   template previews. Each card's desktop shot is a tall full-page
+   capture that glides to its bottom on hover; the screen is a size
+   container so 100cqh is its own height and no script is needed.
+   ================================================================== */
+.tplh-grid{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(16px,1.8vw,28px); margin-top:clamp(36px,4vw,56px);
+}
+.tplh{ display:flex; flex-direction:column; color:inherit; text-decoration:none; }
+.tplh__browser{
+  border-radius:12px; overflow:hidden; background:var(--paper);
+  border:1px solid var(--hair);
+  box-shadow:0 30px 60px -40px rgba(59,41,18,.55);
+  transition:transform 450ms cubic-bezier(.2,.7,.2,1), box-shadow 450ms;
+}
+.tplh__chrome{ display:flex; gap:5px; align-items:center; height:22px; padding:0 10px; background:var(--paper); border-bottom:1px solid var(--hair); }
+.tplh__chrome i{ width:7px; height:7px; border-radius:50%; background:var(--champagne); }
+.tplh__screen{ aspect-ratio:4/5; overflow:hidden; position:relative; container-type:size; background:var(--linen); }
+.tplh__screen img{
+  position:absolute; inset:0 0 auto 0; width:100%; height:auto; display:block;
+  transition:transform 7s cubic-bezier(.45,.05,.35,1);
+}
+.tplh__body{ display:flex; flex-wrap:wrap; align-items:center; gap:6px 12px; padding:18px 4px 0; }
+.tplh__fit{ flex:1 1 100%; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--cocoa); opacity:.6; }
+.tplh__name{ font-family:var(--display); font-weight:700; font-size:clamp(22px,1.8vw,28px); letter-spacing:-.02em; margin:0; color:var(--ink); }
+.tplh__swatches{ display:flex; margin-right:auto; }
+.tplh__swatches i{ width:14px; height:14px; border-radius:50%; border:1.5px solid var(--paper); box-shadow:0 0 0 1px var(--hair); margin-right:-4px; }
+.tplh__go{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:var(--ink); }
+.tplh__go svg{ transition:transform 260ms; }
+@media (hover:hover){
+  .tplh:hover .tplh__browser{ transform:translateY(-6px); box-shadow:0 40px 70px -38px rgba(59,41,18,.6); }
+  .tplh:hover .tplh__screen img{ transform:translateY(calc(-100% + 100cqh)); }
+  .tplh:hover .tplh__go svg{ transform:translateX(4px); }
+}
+@media (prefers-reduced-motion: reduce){ .tplh__screen img, .tplh__browser{ transition:none; } }
+.tplh-foot{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px 24px;
+  margin-top:clamp(32px,4vw,52px); padding-top:24px; border-top:1px solid var(--hair);
+}
+.tplh-foot p{ margin:0; color:var(--ink-soft); font-size:clamp(14px,1.05vw,16px); }
+@media (max-width:1100px){ .tplh-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:560px){
+  /* phones: a swipeable row instead of a tall stack */
+  .tplh-grid{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px;
+    margin-inline:calc(var(--gut) * -1); padding-inline:var(--gut); scroll-padding-inline:var(--gut); scrollbar-width:none;
+  }
+  .tplh-grid::-webkit-scrollbar{ display:none; }
+  .tplh{ flex:0 0 78%; scroll-snap-align:start; }
+  .tplh-foot .btn{ flex:1 1 100%; justify-content:center; }
+}

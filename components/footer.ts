@@ -29,6 +29,7 @@ export const FOOTER_HTML = `
         <ul>
           <li><a href="/services" data-hot>Services</a></li>
           <li><a href="/packages" data-hot>Packages</a></li>
+          <li><a href="/templates" data-hot>Templates</a></li>
           <li><a href="/services/seo" data-hot>SEO Plans</a></li>
           <li><a href="/#quiz" data-hot>Assessment</a></li>
           <li><a href="/#process" data-hot>Process</a></li>
