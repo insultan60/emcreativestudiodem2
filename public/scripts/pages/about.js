@@ -98,6 +98,27 @@ const TEAM = [
     bio:"Basit is the technology mind behind EM Creative Studio. He supports the websites, digital tools, integrations, and technical systems that keep the studio and its client projects running smoothly.",
     tags:['Web Development','Systems &amp; Integrations','Digital Workflows'],
     quote:'"Reliable solutions that let the creative team move faster."'
+  },
+  {
+    name:'Thomas', nick:'EM Creative Studio', role:'Team Member',
+    img:'/images/pg/thomas.webp',
+    bio:"Thomas is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
+    tags:['EM Creative Studio'],
+    quote:''
+  },
+  {
+    name:'Zayn', nick:'EM Creative Studio', role:'Team Member',
+    img:'/images/pg/zayn.webp',
+    bio:"Zayn is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
+    tags:['EM Creative Studio'],
+    quote:''
+  },
+  {
+    name:'Johnny', nick:'EM Creative Studio', role:'Team Member',
+    img:'/images/pg/johnny.webp',
+    bio:"Johnny is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
+    tags:['EM Creative Studio'],
+    quote:''
   }
 ];
 

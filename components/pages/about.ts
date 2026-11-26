@@ -55,7 +55,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </div>
 
   <p class="hero__lede">
-    <strong>Six people</strong> who take real estate marketing personally, not one more logo in an agency roster.
+    <strong>Nine people</strong> who take real estate marketing personally, not one more logo in an agency roster.
   </p>
 
   <div class="hero__acts">
@@ -77,7 +77,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       <div class="story__facts" data-rise>
         <span>Founded 2019</span>
         <span>Los Angeles, CA</span>
-        <span>Team of 6</span>
+        <span>Team of 9</span>
         <span>Real Estate Specialists</span>
       </div>
     </div>
@@ -135,7 +135,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
     <div class="sec-head">
       <div>
         <span class="eyebrow" data-rise>The People</span>
-        <h2 class="h2" data-rise>Six people, one studio.</h2>
+        <h2 class="h2" data-rise>Nine people, one studio.</h2>
       </div>
       <p class="lede" data-rise>Every project runs through this same small group. Click anyone to read their full story.</p>
     </div>
@@ -204,6 +204,39 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
           <span class="tm-card__nick">The Tech Guru</span>
           <h4 class="tm-card__name">Basit</h4>
           <p class="tm-card__role">Technology &amp; Web Solutions Lead</p>
+        </div>
+      </div>
+
+      <div class="tm-card" data-open-team="6">
+        <div class="tm-card__frame"><img src="/images/pg/thomas.webp" alt="Thomas"></div>
+        <div class="tm-card__wash"></div>
+        <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+        <div class="tm-card__body">
+          <span class="tm-card__nick">EM Creative Studio</span>
+          <h4 class="tm-card__name">Thomas</h4>
+          <p class="tm-card__role">Team Member</p>
+        </div>
+      </div>
+
+      <div class="tm-card" data-open-team="7">
+        <div class="tm-card__frame"><img src="/images/pg/zayn.webp" alt="Zayn"></div>
+        <div class="tm-card__wash"></div>
+        <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+        <div class="tm-card__body">
+          <span class="tm-card__nick">EM Creative Studio</span>
+          <h4 class="tm-card__name">Zayn</h4>
+          <p class="tm-card__role">Team Member</p>
+        </div>
+      </div>
+
+      <div class="tm-card" data-open-team="8">
+        <div class="tm-card__frame"><img src="/images/pg/johnny.webp" alt="Johnny"></div>
+        <div class="tm-card__wash"></div>
+        <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
+        <div class="tm-card__body">
+          <span class="tm-card__nick">EM Creative Studio</span>
+          <h4 class="tm-card__name">Johnny</h4>
+          <p class="tm-card__role">Team Member</p>
         </div>
       </div>
     </div>
