@@ -55,7 +55,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
   </div>
 
   <p class="hero__lede">
-    <strong>Ten people</strong> who take real estate marketing personally, not one more logo in an agency roster.
+    <strong>Nine people</strong> who take real estate marketing personally, not one more logo in an agency roster.
   </p>
 
   <div class="hero__acts">
@@ -77,7 +77,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       <div class="story__facts" data-rise>
         <span>Founded 2019</span>
         <span>Los Angeles, CA</span>
-        <span>Team of 10</span>
+        <span>Team of 9</span>
         <span>Real Estate Specialists</span>
       </div>
     </div>
@@ -135,7 +135,7 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
     <div class="sec-head">
       <div>
         <span class="eyebrow" data-rise>The People</span>
-        <h2 class="h2" data-rise>Ten people, one studio.</h2>
+        <h2 class="h2" data-rise>Nine people, one studio.</h2>
       </div>
       <p class="lede" data-rise>Every project runs through this same small group. Click anyone to read their full story.</p>
     </div>
@@ -240,16 +240,6 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         </div>
       </div>
 
-      <div class="tm-card" data-open-team="9">
-        <div class="tm-card__frame"><img src="/images/pg/zohaib.webp" alt="Zohaib"></div>
-        <div class="tm-card__wash"></div>
-        <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
-        <div class="tm-card__body">
-          <span class="tm-card__nick">The Engineer</span>
-          <h4 class="tm-card__name">Zohaib</h4>
-          <p class="tm-card__role">Full Stack Developer &amp; AI Engineer</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>

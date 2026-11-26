@@ -119,13 +119,6 @@ const TEAM = [
     bio:"Johnny keeps creative projects on track. He turns client goals into clear plans, coordinates designers, editors and developers, and makes sure work lands on time.",
     tags:['Project Management','Creative Production','Client Communication'],
     quote:''
-  },
-  {
-    name:'Zohaib', nick:'The Engineer', role:'Full Stack Developer &amp; AI Engineer',
-    img:'/images/pg/zohaib.webp',
-    bio:"Zohaib builds the studio's websites and web apps end to end, from front-end design to back-end systems, and develops the AI features and automations that power client projects.",
-    tags:['Full Stack Development','AI Engineering','Web Apps'],
-    quote:''
   }
 ];
 
