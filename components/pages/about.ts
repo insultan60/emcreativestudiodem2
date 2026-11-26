@@ -197,12 +197,12 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       </div>
 
       <div class="tm-card" data-open-team="5">
-        <div class="tm-card__frame"><img src="/images/pg/basit.webp" alt="Basit"></div>
+        <div class="tm-card__frame"><img src="/images/pg/basit.webp" alt="Ben"></div>
         <div class="tm-card__wash"></div>
         <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
         <div class="tm-card__body">
           <span class="tm-card__nick">The Project Lead</span>
-          <h4 class="tm-card__name">Basit</h4>
+          <h4 class="tm-card__name">Ben</h4>
           <p class="tm-card__role">Senior Project Director &amp; Manager</p>
         </div>
       </div>
@@ -219,12 +219,12 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
       </div>
 
       <div class="tm-card" data-open-team="7">
-        <div class="tm-card__frame"><img src="/images/pg/zayn.webp" alt="Zayn"></div>
+        <div class="tm-card__frame"><img src="/images/pg/zayn.webp" alt="Zane"></div>
         <div class="tm-card__wash"></div>
         <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
         <div class="tm-card__body">
           <span class="tm-card__nick">The Builder</span>
-          <h4 class="tm-card__name">Zayn</h4>
+          <h4 class="tm-card__name">Zane</h4>
           <p class="tm-card__role">Developer &amp; AI Specialist</p>
         </div>
       </div>

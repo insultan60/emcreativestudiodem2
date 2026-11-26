@@ -93,9 +93,9 @@ const TEAM = [
     quote:'"Every piece of content should feel cohesive and true to the brand."'
   },
   {
-    name:'Basit', nick:'The Project Lead', role:'Senior Project Director &amp; Manager',
+    name:'Ben', nick:'The Project Lead', role:'Senior Project Director &amp; Manager',
     img:'/images/pg/basit.webp',
-    bio:"Basit leads projects across EM Creative Studio. He plans timelines, coordinates the team and keeps every client project moving from kickoff to launch.",
+    bio:"Ben leads projects across EM Creative Studio. He plans timelines, coordinates the team and keeps every client project moving from kickoff to launch.",
     tags:['Project Direction','Team Coordination','Client Delivery'],
     quote:'"Reliable solutions that let the creative team move faster."'
   },
@@ -107,9 +107,9 @@ const TEAM = [
     quote:''
   },
   {
-    name:'Zayn', nick:'The Builder', role:'Developer &amp; AI Specialist',
+    name:'Zane', nick:'The Builder', role:'Developer &amp; AI Specialist',
     img:'/images/pg/zayn.webp',
-    bio:"Zayn builds and maintains the websites and tools behind the studio's work, and brings AI into the workflow where it saves time and improves results.",
+    bio:"Zane builds and maintains the websites and tools behind the studio's work, and brings AI into the workflow where it saves time and improves results.",
     tags:['Web Development','AI Tools','Automation'],
     quote:''
   },
