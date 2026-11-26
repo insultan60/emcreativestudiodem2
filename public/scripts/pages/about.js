@@ -93,31 +93,31 @@ const TEAM = [
     quote:'"Every piece of content should feel cohesive and true to the brand."'
   },
   {
-    name:'Basit', nick:'The Tech Guru', role:'Technology &amp; Web Solutions Lead',
-    avatar:'B', avatarBg:'var(--espresso)',
-    bio:"Basit is the technology mind behind EM Creative Studio. He supports the websites, digital tools, integrations, and technical systems that keep the studio and its client projects running smoothly.",
-    tags:['Web Development','Systems &amp; Integrations','Digital Workflows'],
+    name:'Basit', nick:'The Project Lead', role:'Senior Project Director &amp; Manager',
+    img:'/images/pg/basit.webp',
+    bio:"Basit leads projects across EM Creative Studio. He plans timelines, coordinates the team and keeps every client project moving from kickoff to launch.",
+    tags:['Project Direction','Team Coordination','Client Delivery'],
     quote:'"Reliable solutions that let the creative team move faster."'
   },
   {
-    name:'Thomas', nick:'EM Creative Studio', role:'Team Member',
+    name:'Thomas', nick:'The Search Specialist', role:'SEO Specialist',
     img:'/images/pg/thomas.webp',
-    bio:"Thomas is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
-    tags:['EM Creative Studio'],
+    bio:"Thomas handles search for the studio's clients. He researches keywords, shapes page content and site structure, and tracks how pages rank, so clients get found by the people looking for them.",
+    tags:['SEO','Keyword Research','Content Optimization'],
     quote:''
   },
   {
-    name:'Zayn', nick:'EM Creative Studio', role:'Team Member',
+    name:'Zayn', nick:'The Builder', role:'Developer &amp; AI Specialist',
     img:'/images/pg/zayn.webp',
-    bio:"Zayn is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
-    tags:['EM Creative Studio'],
+    bio:"Zayn builds and maintains the websites and tools behind the studio's work, and brings AI into the workflow where it saves time and improves results.",
+    tags:['Web Development','AI Tools','Automation'],
     quote:''
   },
   {
-    name:'Johnny', nick:'EM Creative Studio', role:'Team Member',
+    name:'Johnny', nick:'The Organizer', role:'Creative Project Manager',
     img:'/images/pg/johnny.webp',
-    bio:"Johnny is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
-    tags:['EM Creative Studio'],
+    bio:"Johnny keeps creative projects on track. He turns client goals into clear plans, coordinates designers, editors and developers, and makes sure work lands on time.",
+    tags:['Project Management','Creative Production','Client Communication'],
     quote:''
   }
 ];
