@@ -121,10 +121,10 @@ const TEAM = [
     quote:''
   },
   {
-    name:'Zohaib', nick:'EM Creative Studio', role:'Team Member',
+    name:'Zohaib', nick:'The Engineer', role:'Full Stack Developer &amp; AI Engineer',
     img:'/images/pg/zohaib.webp',
-    bio:"Zohaib is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
-    tags:['EM Creative Studio'],
+    bio:"Zohaib builds the studio's websites and web apps end to end, from front-end design to back-end systems, and develops the AI features and automations that power client projects.",
+    tags:['Full Stack Development','AI Engineering','Web Apps'],
     quote:''
   }
 ];

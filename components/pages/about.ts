@@ -245,9 +245,9 @@ export const HTML = `<svg width="0" height="0" style="position:absolute" aria-hi
         <div class="tm-card__wash"></div>
         <span class="tm-card__hint"><svg width="14" height="14" viewBox="0 0 17 10"><use href="#arw"/></svg></span>
         <div class="tm-card__body">
-          <span class="tm-card__nick">EM Creative Studio</span>
+          <span class="tm-card__nick">The Engineer</span>
           <h4 class="tm-card__name">Zohaib</h4>
-          <p class="tm-card__role">Team Member</p>
+          <p class="tm-card__role">Full Stack Developer &amp; AI Engineer</p>
         </div>
       </div>
     </div>
