@@ -119,6 +119,13 @@ const TEAM = [
     bio:"Johnny keeps creative projects on track. He turns client goals into clear plans, coordinates designers, editors and developers, and makes sure work lands on time.",
     tags:['Project Management','Creative Production','Client Communication'],
     quote:''
+  },
+  {
+    name:'Zohaib', nick:'EM Creative Studio', role:'Team Member',
+    img:'/images/pg/zohaib.webp',
+    bio:"Zohaib is part of the EM Creative Studio team, helping deliver client projects from first idea to finished work.",
+    tags:['EM Creative Studio'],
+    quote:''
   }
 ];
 
